@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "zero-tolerance-app": {
+      "hosting": {
+        "zero-tolerance-app": [
+          "zero-tolerance-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "zero-tolerance-app"
+  }
+}
