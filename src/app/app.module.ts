@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
