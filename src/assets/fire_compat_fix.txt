@@ -1,0 +1,14 @@
+Since this version of Angular and Firebase are not optimized together properly this issue might come up in the interfaces.d.ts file in the node_modules/@angular/fire/compat/firestore folder.
+
+The lines where the issue persists are:
+	- export interface DocumentSnapshotExists<T>...
+	- export interface DocumentSnapshot<T>...
+	- export interface QuerySnapshot<T>...
+	- export interface DocumentChange<T>...
+
+In the following lines go to the end of the header and add <T> so e.g.:
+This header:
+	export interface DocumentSnapshotExists<T> extends firebase.firestore.DocumentSnapshot
+
+will become this:
+	export interface DocumentSnapshotExists<T> extends firebase.firestore.DocumentSnapshot<T>
