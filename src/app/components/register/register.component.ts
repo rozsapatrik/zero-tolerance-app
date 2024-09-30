@@ -54,7 +54,6 @@ export class RegisterComponent implements OnInit{
       'username': this.registerForm.value.username,
       'email': this.registerForm.value.password,
       'profilePicUrl': "",
-      'bio': "No bio found.",
       'favoriteDrink': 'No favorite drink',
       'registerAgeInDays': '0 days'
     };
