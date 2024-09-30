@@ -1,0 +1,28 @@
+<form [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+
+    <mat-form-field class="username-mat-form-field">
+        <input class="username-input" placeholder="Username" formControlName="username" matInput/>
+        <mat-error *ngIf="username?.errors?.['required']">Please enter a username!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="email-mat-form-field">
+        <input class="email-input" placeholder="E-mail" formControlName="email" matInput/>
+        <mat-error *ngIf="email?.errors?.['required']">Please enter an e-mail!</mat-error>
+        <mat-error *ngIf="email?.errors?.['emailFormat']">Please enter a valid e-mail address!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="password-mat-form-field">
+        <input class="password-input" placeholder="Password" formControlName="password" matInput/>
+        <mat-error *ngIf="password?.errors?.['required']">Please type in a password!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="confirm-password-mat-form-field">
+        <input class="confirm-password-input" placeholder="Confirm Password" formControlName="confirmPassword" matInput/>
+        <mat-error *ngIf="confirmPassword?.errors?.['required']">Please confirm your password!</mat-error>
+    </mat-form-field>
+
+    <mat-error *ngIf="registerForm.errors?.['passwordsDontMatch']">The passwords do not match</mat-error>
+    <div class="center margin-top">
+        <button type="submit" mat-flat-button color="primary">Register</button>
+    </div>
+</form>

@@ -48,11 +48,13 @@ export class RegisterComponent implements OnInit{
 
   //Registers the user's data into the Firestore database and shows a toast message.
   registerSubmit(){
-    if(!this.registerForm.valid){ return; }
+    if(!this.registerForm.valid){ 
+      console.log("Form nich gut");
+      return; }
 
     let userData = {
       'username': this.registerForm.value.username,
-      'email': this.registerForm.value.password,
+      'email': this.registerForm.value.email,
       'profilePicUrl': "",
       'favoriteDrink': 'No favorite drink',
       'registerAgeInDays': '0 days'
