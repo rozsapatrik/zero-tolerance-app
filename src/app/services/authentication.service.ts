@@ -9,10 +9,16 @@ import { from, map, Observable, switchMap } from 'rxjs';
 })
 export class AuthenticationService {
 
-  constructor(private auth: Auth, private fireAuth: AngularFireAuth, private afs: AngularFirestore) { }
-
   //Observable that gets the current user's authetntication state
   currentUser$ = authState(this.auth);
+  
+  constructor(private auth: Auth, private fireAuth: AngularFireAuth, private afs: AngularFirestore) { }
+
+  login(username: string, password: string){
+    return from(
+      signInWithEmailAndPassword(this.auth, username, password));
+  }
+
   //Returns an observable of the currently aunthenticated user
   getUser(){ return this.currentUser$; }
 

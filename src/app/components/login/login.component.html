@@ -1,1 +1,20 @@
-<p>login works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="submit()" class="loginForm">
+
+    <mat-form-field>
+      <input laceholder="E-mail" formControlName="email" matInput p/>
+      <mat-error *ngIf="email?.errors?.['required']">Type in an<b>e-mail</b> address</mat-error>
+      <mat-error *ngIf="email?.errors?.['email']">Invalid <b>e-mail</b> address</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input placeholder="Password" formControlName="password" type="password" matInput/>
+      <mat-error *ngIf="password?.errors?.['required']"
+        >Type in your <b>password</b>
+      </mat-error>
+    </mat-form-field>
+
+    <div class="center margin-top">
+      <button class="loginButton" type="submit">Login</button>
+    </div>
+         
+  </form>

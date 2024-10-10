@@ -5,6 +5,7 @@ export class UserModule {
   profilePicUrl: string;
   favoriteDrink: string;
   registerAgeInDays: string;
+  registerDate: Date;
 
   constructor(User: UserModule){
     this.id = User.id;
@@ -13,6 +14,7 @@ export class UserModule {
     this.profilePicUrl = User.profilePicUrl;
     this.favoriteDrink = User.favoriteDrink;
     this.registerAgeInDays = User.registerAgeInDays;
+    this.registerDate = User.registerDate;
   }
 }
 
