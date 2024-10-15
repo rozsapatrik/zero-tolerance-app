@@ -36,7 +36,6 @@ export class ProfileComponent {
           const tempString: string = result || '';
           this.currentUserID = tempString;
           console.log(this.currentUserID);
-          const currentRoute = this.route.snapshot.url.join('/profile');
 
           this.getUsername();
           this.getFavoriteDrink();
@@ -76,4 +75,7 @@ export class ProfileComponent {
     const profilePicHtml = document.getElementById("profilePic") as HTMLImageElement;
     profilePicHtml.src = picUrl ? picUrl : "https://cdn.discordapp.com/attachments/905132673356410932/1295650761803567144/c0749b7cc401421662ae901ec8f9f660.jpg?ex=670f6c4d&is=670e1acd&hm=c475e7139b4d6fea1067d23489cbf043e59050b17f9f5cab50cc39cf9c7cee11&"
   }
+
+  redirectToPersonalStats(){ this.router.navigate(['/personalstats']); }
+  redirectToUpdateProfile(){ this.router.navigate(['/updateprofile']); }
 }

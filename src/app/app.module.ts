@@ -64,6 +64,8 @@ import { MatTableModule } from '@angular/material/table';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StatsComponent } from './components/stats/stats.component';
+import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 
 
 @NgModule({
@@ -76,6 +78,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProfileComponent,
     AdminPageComponent,
     PageNotFoundComponent,
+    StatsComponent,
+    UpdateProfileComponent,
   ],
   imports: [
     BrowserModule,
