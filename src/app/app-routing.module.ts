@@ -14,6 +14,7 @@ import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [UserGuard]},
   {path: 'login', component: LoginComponent},

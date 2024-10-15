@@ -57,7 +57,6 @@ export class RegisterComponent implements OnInit{
       'email': this.registerForm.value.email,
       'profilePicUrl': "",
       'favoriteDrink': 'No favorite drink',
-      'registerAgeInDays': '0 days',
       'registerDate': new Date().toLocaleDateString()
     };
 

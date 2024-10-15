@@ -1,1 +1,22 @@
-<p>profile works!</p>
+<div class="profileContainer">
+    <div class="headerContainer">
+        <img id="profilePic" src="" style="width: 100px;">
+        <h1 class="usernameText">{{username}}</h1>
+    </div>
+    <div>
+        <span>{{favoriteDrink}}: Favorite drink</span>
+    </div>
+    <div>
+        <span>{{registerDate}}: Registration date</span>
+    </div>
+    <div>
+        <button mat-flat-button>Personal Stats</button>
+    </div>
+    <div>
+        <button mat-flat-button>Update Profile</button>
+    </div>
+    <div></div>
+    <div>
+        <button mat-flat-button (click)="logoutUser()">Logout</button>
+    </div>
+</div>
