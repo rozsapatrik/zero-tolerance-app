@@ -36,9 +36,7 @@ export class RegisterComponent implements OnInit{
 
   constructor(private authService: AuthenticationService, private router: Router, private toast: HotToastService, private afs: AngularFirestore){}
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   //Get methods for the registerForm
   get username(){ return this.registerForm.get('username') }
