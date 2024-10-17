@@ -5,17 +5,10 @@
     </div>
 </div>
 
-<form [formGroup]="updateProfileForm" (ngSubmit)="updateProfileSubmit()">
-
-    <mat-form-field class="username-mat-form-field">
-        <input class="username-input" [value]="usernameFromDB" placeholder="Username" formControlName="username" matInput/>
-        <mat-error *ngIf="username?.errors?.['required']">Please enter a username!</mat-error>
-    </mat-form-field>
+<form [formGroup]="updateProfileForm">
 
     <mat-form-field class="profilepicurl-mat-form-field">
-        <input class="email-input" [value]="profilePicUrlFromDB" placeholder="Picture URL" formControlName="profilePicUrl" matInput/>
-        <mat-error *ngIf="profilePicUrl?.errors?.['required']">Please enter an e-mail!</mat-error>
-        <mat-error *ngIf="profilePicUrl?.errors?.['profilePicUrlFormat']">Please enter a valid image link!</mat-error>
+        <input class="profilePic-input" id="profilePicInput" [value]="profilePicUrlFromDB" placeholder="Picture URL" formControlName="profilePicUrl" matInput/>
     </mat-form-field>
 
     <mat-form-field class="password-mat-form-field">
@@ -29,6 +22,6 @@
     </mat-form-field>
 
     <div class="center margin-top">
-        <button type="submit" mat-flat-button color="primary">Update</button>
+        <button type="submit" mat-flat-button color="primary" (click)="updateProfileSubmit()">Update profile</button>
     </div>
 </form>

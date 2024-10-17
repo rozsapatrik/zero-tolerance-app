@@ -18,8 +18,6 @@ export class UpdateProfileComponent implements OnInit{
   profilePicUrlFromDB: string;
   
   updateProfileForm = new FormGroup({
-    username: new FormControl('', Validators.required),
-    profilePicUrl: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.minLength(8)]),
     confirmPassword: new FormControl('')
   }, {})
@@ -36,9 +34,7 @@ export class UpdateProfileComponent implements OnInit{
     this.getUsername();
     this.getProfilePicUrl();
   }
-  
-  get username(){ return this.updateProfileForm.get('username') }
-  get email(){ return this.updateProfileForm.get('email') }
+
   get profilePicUrl(){ return this.updateProfileForm.get('profilePicUrl') }
   get password(){ return this.updateProfileForm.get('password') }
   get confirmPassword(){ return this.updateProfileForm.get('confirmPassword') }
@@ -57,7 +53,26 @@ export class UpdateProfileComponent implements OnInit{
     profilePicHtml.src = this.profilePicUrlFromDB ? this.profilePicUrlFromDB : "https://cdn.discordapp.com/attachments/905132673356410932/1295650761803567144/c0749b7cc401421662ae901ec8f9f660.jpg?ex=670f6c4d&is=670e1acd&hm=c475e7139b4d6fea1067d23489cbf043e59050b17f9f5cab50cc39cf9c7cee11&"
   }
 
-  updateProfileSubmit(){}
+  async updateProfileSubmit(){
+    const user = this.userService.getCurrentUserId();
+    if (!user) {
+      console.error('User not logged in');
+      return;
+    }
 
+    const userId = await this.userService.getUserId();
+    const userDocRef = this.afs.collection('user').doc(userId).ref;
 
+    const newProfilePicUrl = (document.getElementById('profilePicInput') as HTMLInputElement).value;
+    if (newProfilePicUrl !== this.profilePicUrlFromDB && newProfilePicUrl != "") {
+      this.profilePicUrlFromDB = newProfilePicUrl;
+      userDocRef.update({ profilePicUrl: newProfilePicUrl })
+        .then(() => console.log('URL updated successfully')) //TODO: Toaster
+        .catch((error) => console.error('Error updating URL:', error));
+    }
+
+    this.router.navigate(['/profile']);
+  }
+
+  //Copy code from GameVault, probably just remove validators and update the given field if there is content in it
 }
