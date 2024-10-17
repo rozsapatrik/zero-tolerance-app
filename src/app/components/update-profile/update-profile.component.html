@@ -5,7 +5,7 @@
     </div>
 </div>
 
-<form [formGroup]="updateProfileForm">
+<form [formGroup]="updateProfileForm" (ngSubmit)="updateProfileSubmit()">
 
     <mat-form-field class="profilepicurl-mat-form-field">
         <input class="profilePic-input" id="profilePicInput" [value]="profilePicUrlFromDB" placeholder="Picture URL" formControlName="profilePicUrl" matInput/>
@@ -13,15 +13,16 @@
 
     <mat-form-field class="password-mat-form-field">
         <input class="password-input" placeholder="Password" formControlName="password" type="password" matInput/>
-        <mat-error *ngIf="password?.errors?.['required']">Please type in a password!</mat-error>
     </mat-form-field>
 
     <mat-form-field class="confirm-password-mat-form-field">
         <input class="confirm-password-input" placeholder="Confirm Password" formControlName="confirmPassword" type="password" matInput/>
-        <mat-error *ngIf="confirmPassword?.errors?.['required']">Please confirm your password!</mat-error>
     </mat-form-field>
 
+    <mat-error *ngIf="updateProfileForm.errors?.['passwordsDontMatch']">The passwords do not match</mat-error>
+    <mat-error *ngIf="updateProfileForm.errors?.['passwordLengthMin']">Password must be at least 8 characters!</mat-error>
+
     <div class="center margin-top">
-        <button type="submit" mat-flat-button color="primary" (click)="updateProfileSubmit()">Update profile</button>
+        <button type="submit" mat-flat-button color="primary">Update profile</button>
     </div>
 </form>

@@ -1,11 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DocumentReference, getDoc } from "firebase/firestore";
 import { UserService } from 'src/app/services/user/user.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+
+export function passwordsMatchValidator(): ValidatorFn{
+  return(AbsControl: AbstractControl): ValidationErrors | null => {
+    const password = AbsControl.get('password')?.value;
+    const confirmPassword = AbsControl.get('confirmPassword')?.value;
+    
+    if(password && (password !== confirmPassword)){
+      return{ passwordsDontMatch: true }
+    }
+    else if(password != "" && (password.length < 8 || confirmPassword.length < 8)){
+      return{ passwordLengthMin: true }
+
+    }
+    return null;
+  }
+}
 
 @Component({
   selector: 'app-update-profile',
@@ -16,18 +33,21 @@ export class UpdateProfileComponent implements OnInit{
   
   usernameFromDB: string;
   profilePicUrlFromDB: string;
+  pwCheck: boolean = true;
   
   updateProfileForm = new FormGroup({
     password: new FormControl('', [Validators.minLength(8)]),
-    confirmPassword: new FormControl('')
-  }, {})
+    confirmPassword: new FormControl(''),
+    profilePicUrl: new FormControl('')
+  }, { validators: passwordsMatchValidator() });
 
   constructor(
     private authService: AuthenticationService,
     private router: Router,
     private toast: HotToastService,
     private afs: AngularFirestore,
-    private userService: UserService
+    private userService: UserService,
+    private afAuth: AngularFireAuth
   ){}
 
   ngOnInit(): void {
@@ -71,8 +91,22 @@ export class UpdateProfileComponent implements OnInit{
         .catch((error) => console.error('Error updating URL:', error));
     }
 
-    this.router.navigate(['/profile']);
-  }
+    const newPassword = this.password?.value;
+    if(newPassword){
+      try{
+        const currentUser = await this.afAuth.currentUser;
+        if(currentUser){
+          await currentUser.updatePassword(newPassword);
+          this.toast.success('Password updated successfully.');
+          this.pwCheck = true;
+        }
+      } catch (error){
+        this.toast.error('Error updating password. Please try again.')
+        console.error('Error updating password: ', error);
+        this.pwCheck = false;
+      }
+    }
 
-  //Copy code from GameVault, probably just remove validators and update the given field if there is content in it
+    if(this.pwCheck){ this.router.navigate(['/profile']); }
+  }
 }

@@ -11,8 +11,17 @@ export function passwordsMatchValidator(): ValidatorFn{
     const password = AbsControl.get('password')?.value;
     const confirmPassword = AbsControl.get('confirmPassword')?.value;
 
-    if(password && confirmPassword !== confirmPassword){
+    /*if(password !== confirmPassword){
       return{ passwordsDontMatch: true }
+    }
+    return null;*/
+
+    if(password && (password !== confirmPassword)){
+      return{ passwordsDontMatch: true }
+    }
+    else if(password != "" && (password.length < 8 || confirmPassword.length < 8)){
+      return{ passwordLengthMin: true }
+
     }
     return null;
   }
