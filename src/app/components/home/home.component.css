@@ -1,0 +1,30 @@
+.date-picker-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .date-display-box {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 150px;
+  }
+  
+  .date-picker-field {
+    display: none; /* Hides the default date picker input */
+  }
+
+  .customDatePicker {
+    transform: translateX(-50%) !important;
+    left: 50% !important;
+  }
+
+  .mat-datepicker-content {
+    transform: translateX(-50%) !important; /* Shift left to center */
+    left: 50% !important; /* Start from the center */
+  }
+  
+  

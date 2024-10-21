@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit{
     private afs: AngularFirestore,
   ){}
 
-  ngOnInit(): void {}
+  ngOnInit(): void { console.log('HELLO'); }
 
   get email(){ return this.loginForm.get('email'); }
   get password(){ return this.loginForm.get('password'); }

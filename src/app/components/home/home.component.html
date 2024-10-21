@@ -1,1 +1,10 @@
-<p>home works!</p>
+<div class="date-picker-container">
+    <div class="date-display-box" (click)="picker.open()">
+      {{ selectedDate | date: 'yyyy-MM-dd' }}
+    </div>
+    <mat-form-field class="date-picker-field">
+      <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event)" hidden />
+      <mat-datepicker #picker panelClass="customDatePicker"></mat-datepicker>
+    </mat-form-field>
+  </div>
+  

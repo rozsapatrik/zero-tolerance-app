@@ -15,7 +15,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', component: HomeComponent},
+  {path: '', pathMatch: 'full', redirectTo: '/home'},
   {path: 'home', component: HomeComponent, canActivate: [UserGuard]},
   {path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [UserGuard]},
