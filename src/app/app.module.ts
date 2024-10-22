@@ -67,6 +67,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StatsComponent } from './components/stats/stats.component';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
     PageNotFoundComponent,
     StatsComponent,
     UpdateProfileComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
