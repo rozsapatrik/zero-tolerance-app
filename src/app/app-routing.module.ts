@@ -13,9 +13,11 @@ import { StatsComponent } from './components/stats/stats.component';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 import { AdminGuard } from './guards/admin.guard';
 import { UserGuard } from './guards/user.guard';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: '/home'},
+  {path: '', pathMatch: 'full', redirectTo: '/landing'},
+  {path: 'landing', component: LandingPageComponent, canActivate: [UserGuard]},
   {path: 'home', component: HomeComponent, canActivate: [UserGuard]},
   {path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [UserGuard]},
