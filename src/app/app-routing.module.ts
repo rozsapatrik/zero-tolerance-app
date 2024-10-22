@@ -17,7 +17,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/landing'},
-  {path: 'landing', component: LandingPageComponent, canActivate: [UserGuard]},
+  {path: 'landing', component: LandingPageComponent},
   {path: 'home', component: HomeComponent, canActivate: [UserGuard]},
   {path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [UserGuard]},
