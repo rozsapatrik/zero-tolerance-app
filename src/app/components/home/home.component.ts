@@ -21,15 +21,9 @@ export class HomeComponent implements OnInit{
     private router: Router
   ){}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
   selectedDate: Date = new Date();
-
-  onDateChange(event: any) {
-    this.selectedDate = event.value;
-  }
-
+  onDateChange(event: any) {this.selectedDate = event.value;}
   redirectToDrinks(){ this.router.navigate(['/drinklist']); }
   
 }

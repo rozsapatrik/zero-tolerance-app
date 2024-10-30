@@ -14,6 +14,7 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
 import { AdminGuard } from './guards/admin.guard';
 import { UserGuard } from './guards/user.guard';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { DrinkListComponent } from './components/drink-list/drink-list.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/landing'},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'personalstats', component: StatsComponent, canActivate: [UserGuard]},
   {path: 'updateprofile', component: UpdateProfileComponent, canActivate: [UserGuard]},
+  {path: 'drinklist', component: DrinkListComponent, canActivate: [UserGuard]},
   {path: '**', component: PageNotFoundComponent}
 ];
 
