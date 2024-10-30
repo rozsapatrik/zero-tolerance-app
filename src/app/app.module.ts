@@ -68,6 +68,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StatsComponent } from './components/stats/stats.component';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { DrinkListComponent } from './components/drink-list/drink-list.component';
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     StatsComponent,
     UpdateProfileComponent,
     LandingPageComponent,
+    DrinkListComponent,
   ],
   imports: [
     BrowserModule,

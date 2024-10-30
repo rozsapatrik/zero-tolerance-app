@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +12,14 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class HomeComponent implements OnInit{
   
-  constructor(private authService: AuthenticationService){}
+  constructor(
+    private afs: AngularFirestore,
+    private authService: AuthenticationService,
+    private route: ActivatedRoute,
+    private auth: AngularFireAuth,
+    private userService: UserService,
+    private router: Router
+  ){}
 
   ngOnInit(): void {
   }
@@ -18,5 +29,7 @@ export class HomeComponent implements OnInit{
   onDateChange(event: any) {
     this.selectedDate = event.value;
   }
+
+  redirectToDrinks(){ this.router.navigate(['/drinklist']); }
   
 }
