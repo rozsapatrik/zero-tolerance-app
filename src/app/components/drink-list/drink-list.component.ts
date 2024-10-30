@@ -20,6 +20,7 @@ export interface Drink{
 export class DrinkListComponent {
 
   drinksList: Drink[] = [];
+  selectedDrink: Drink | null = null;
   
   constructor(private afs: AngularFirestore){}
 
@@ -34,6 +35,14 @@ export class DrinkListComponent {
         return data;
       }))
     );
+  }
+
+  selectDrink(drink: Drink): void {
+    if(this.selectedDrink === drink){
+      this.selectedDrink = null;
+    } else {
+      this.selectedDrink = drink;
+    }
   }
 
 }
