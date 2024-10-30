@@ -1,1 +1,9 @@
-<p>drink-list works!</p>
+<div class="drink-list">
+    <h2>Drinks</h2>
+    <ul>
+      <li *ngFor="let drink of drinksList">
+        {{ drink.brand }} {{ drink.name }}
+      </li>
+    </ul>
+  </div>
+  
