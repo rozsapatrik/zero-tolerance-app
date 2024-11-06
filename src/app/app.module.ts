@@ -64,6 +64,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StatsComponent } from './components/stats/stats.component';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
@@ -126,6 +127,7 @@ import { DrinkListComponent } from './components/drink-list/drink-list.component
     MatSortModule,
     MatTableModule,
     ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
     AngularFireModule,
     AngularFireModule.initializeApp(environment.firebase),

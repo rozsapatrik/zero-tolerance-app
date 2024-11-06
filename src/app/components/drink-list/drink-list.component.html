@@ -1,7 +1,11 @@
 <div class="drink-list">
     <h2>Drinks</h2>
+
+    <input type="text" placeholder="Search by brand or name"
+    [(ngModel)]="searchTerm" (input)="filterDrinks()" class="search-bar"/>
+
     <ul>
-      <li *ngFor="let drink of drinksList" (click)="selectDrink(drink)">
+      <li *ngFor="let drink of filteredDrinks" (click)="selectDrink(drink)">
         {{ drink.brand }} {{ drink.name }}
         <div *ngIf="selectedDrink === drink" class="drink-details">
             <p><strong>ABV:</strong> {{ drink.abv}}</p>

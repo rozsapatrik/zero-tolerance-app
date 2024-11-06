@@ -21,11 +21,16 @@ export class DrinkListComponent {
 
   drinksList: Drink[] = [];
   selectedDrink: Drink | null = null;
+  filteredDrinks: Drink[] = [];
+  searchTerm: string = '';
   
   constructor(private afs: AngularFirestore){}
 
   ngOnInit(){
-    this.getDrinks().subscribe(drinks => {this.drinksList = drinks});
+    this.getDrinks().subscribe(drinks => {
+      this.drinksList = drinks;
+      this.filteredDrinks = drinks;
+    });
   }
   
   getDrinks(): Observable<Drink[]>{
@@ -43,6 +48,14 @@ export class DrinkListComponent {
     } else {
       this.selectedDrink = drink;
     }
+  }
+
+  filterDrinks(): void {
+    const terms = this.searchTerm.trim().toLowerCase().split(' ');
+    this.filteredDrinks = this.drinksList.filter(drink => terms.every(term =>
+      drink.brand.toLowerCase().includes(term) ||
+      drink.name.toLowerCase().includes(term))
+    );
   }
 
 }
