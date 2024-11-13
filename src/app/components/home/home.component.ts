@@ -13,7 +13,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class HomeComponent implements OnInit{
   
-  selectedDate: Date | null = null;
+  selectedDate: Date;
   
   constructor(
     private afs: AngularFirestore,
@@ -26,8 +26,11 @@ export class HomeComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-    this.selectedDate = new Date();
-    this.dateService.setSelectedDate(this.selectedDate);
+    //this.selectedDate = new Date();
+    //this.dateService.setSelectedDate(this.selectedDate);
+    this.dateService.selectedDate$.subscribe(date => {
+      this.selectedDate = date || new Date(); // Default to today if date is null
+    });
   }
   onDateChange(event: any) {
     this.selectedDate = new Date(event.target.value);
