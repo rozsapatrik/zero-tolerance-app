@@ -3,7 +3,6 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map, Observable } from 'rxjs';
 
 export interface Drink{
-  brand: string;
   name: string;
   abv: number;
   caloriesPerServing: number;
@@ -23,8 +22,8 @@ export class DrinkListComponent {
   selectedDrink: Drink | null = null;
   filteredDrinks: Drink[] = [];
   searchTerm: string = '';
-  drinkAmounts: { drinkName: string, amount: number }[] = [];
-  tempAmounts: { [key: string]: number } = {};
+  drinkAmounts: { drinkName: string, amount: number, time:string }[] = [];
+  tempAmounts: { [key: string]: {ml: number, time: string} } = {};
   
   constructor(private afs: AngularFirestore){}
 
@@ -34,6 +33,13 @@ export class DrinkListComponent {
       this.filteredDrinks = drinks;
     });
   }
+
+  initializeDrinkData(drinkName: string): void {
+    if (!this.tempAmounts[drinkName]) {
+      this.tempAmounts[drinkName] = { ml: 0, time: '' };
+    }
+  }
+  
   
   getDrinks(): Observable<Drink[]>{
     return this.afs.collection('drink').snapshotChanges().pipe(
@@ -45,32 +51,32 @@ export class DrinkListComponent {
   }
 
   selectDrink(drink: Drink): void {
-    if(this.selectedDrink === drink){
-      this.selectedDrink = null;
-    } else {
-      this.selectedDrink = drink;
-    }
+    this.initializeDrinkData(drink.name);
+    this.selectedDrink = this.selectedDrink === drink ? null : drink;
   }
+  
 
   filterDrinks(): void {
     const terms = this.searchTerm.trim().toLowerCase().split(' ');
     this.filteredDrinks = this.drinksList.filter(drink => terms.every(term =>
-      drink.brand.toLowerCase().includes(term) ||
       drink.name.toLowerCase().includes(term))
     );
   }
 
   addDrinkAmount(drink: Drink): void {
-    const amountDrank = this.tempAmounts[drink.name];
-    if (amountDrank > 0) {
-      // Add a new entry for this drink in drinkAmounts
-      this.drinkAmounts.push({ drinkName: drink.name, amount: amountDrank });
-      console.log(`Added ${amountDrank} ml of ${drink.name}`);
-      // Reset the temporary input for this drink after adding
-      this.tempAmounts[drink.name] = 0;
+    const drinkData = this.tempAmounts[drink.name];
+    if (drinkData && drinkData.ml > 0 && drinkData.time) {
+      const formattedTime = new Date(`1970-01-01T${drinkData.time}:00`).toLocaleTimeString('en-GB', {
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+      this.drinkAmounts.push({
+        drinkName: drink.name,
+        amount: drinkData.ml,
+        time: formattedTime
+      });
+      this.tempAmounts[drink.name] = { ml: 0, time: '' };
       this.drinkAmounts.forEach(console.log);
-    } else {
-      console.log('Please enter a valid amount');
     }
   }
 
