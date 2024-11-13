@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map, Observable } from 'rxjs';
+import { DateService } from 'src/app/services/date.service';
 
 export interface Drink{
   name: string;
@@ -22,10 +23,11 @@ export class DrinkListComponent {
   selectedDrink: Drink | null = null;
   filteredDrinks: Drink[] = [];
   searchTerm: string = '';
-  drinkAmounts: { drinkName: string, amount: number, time:string }[] = [];
-  tempAmounts: { [key: string]: {ml: number, time: string} } = {};
+  //drinkAmounts: { drinkName: string, amount: number, time:string, date: string }[] = [];
+  drinkAmounts: Map<string, { drinkName: string, amount: number, time: string, date: string }> = new Map();
+  tempAmounts: { [key: string]: {ml: number, time: string, date: string} } = {};
   
-  constructor(private afs: AngularFirestore){}
+  constructor(private afs: AngularFirestore, private dateService: DateService){}
 
   ngOnInit(){
     this.getDrinks().subscribe(drinks => {
@@ -36,7 +38,7 @@ export class DrinkListComponent {
 
   initializeDrinkData(drinkName: string): void {
     if (!this.tempAmounts[drinkName]) {
-      this.tempAmounts[drinkName] = { ml: 0, time: '' };
+      this.tempAmounts[drinkName] = { ml: 0, time: '', date: '' };
     }
   }
   
@@ -66,18 +68,25 @@ export class DrinkListComponent {
   addDrinkAmount(drink: Drink): void {
     const drinkData = this.tempAmounts[drink.name];
     if (drinkData && drinkData.ml > 0 && drinkData.time) {
-      const formattedTime = new Date(`1970-01-01T${drinkData.time}:00`).toLocaleTimeString('en-GB', {
-        hour: '2-digit',
-        minute: '2-digit'
-      });
-      this.drinkAmounts.push({
-        drinkName: drink.name,
-        amount: drinkData.ml,
-        time: formattedTime
-      });
-      this.tempAmounts[drink.name] = { ml: 0, time: '' };
-      this.drinkAmounts.forEach(console.log);
+      const selectedDate = this.dateService.getSelectedDate();
+      if (selectedDate) {
+        const formattedDate = selectedDate.toLocaleDateString()
+        this.drinkAmounts.set(drink.name, {
+          drinkName: drink.name,
+          amount: drinkData.ml,
+          time: drinkData.time,
+          date: formattedDate
+        });
+        this.tempAmounts[drink.name] = { ml: 0, time: '', date: '' };
+        this.drinkAmounts.forEach(console.log);
+        console.log(this.drinkAmounts.get(drink.name)?.amount);
+      }
     }
+  }
+
+  getDrinkDataByName(name: string) {
+    return this.drinkAmounts.get(name);
+    console.log()
   }
 
 }
