@@ -23,6 +23,8 @@ export class DrinkListComponent {
   selectedDrink: Drink | null = null;
   filteredDrinks: Drink[] = [];
   searchTerm: string = '';
+  drinkAmounts: { drinkName: string, amount: number }[] = [];
+  tempAmounts: { [key: string]: number } = {};
   
   constructor(private afs: AngularFirestore){}
 
@@ -56,6 +58,20 @@ export class DrinkListComponent {
       drink.brand.toLowerCase().includes(term) ||
       drink.name.toLowerCase().includes(term))
     );
+  }
+
+  addDrinkAmount(drink: Drink): void {
+    const amountDrank = this.tempAmounts[drink.name];
+    if (amountDrank > 0) {
+      // Add a new entry for this drink in drinkAmounts
+      this.drinkAmounts.push({ drinkName: drink.name, amount: amountDrank });
+      console.log(`Added ${amountDrank} ml of ${drink.name}`);
+      // Reset the temporary input for this drink after adding
+      this.tempAmounts[drink.name] = 0;
+      this.drinkAmounts.forEach(console.log);
+    } else {
+      console.log('Please enter a valid amount');
+    }
   }
 
 }

@@ -12,8 +12,21 @@
             <p><strong>Calories per Serving:</strong> {{ drink.caloriesPerServing}}</p>
             <p><strong>Category:</strong> {{ drink.category}}</p>
             <p><strong>Size:</strong> {{ drink.ml}}</p>
+            <div>
+              <input type="number" placeholder="ml" [(ngModel)]="tempAmounts[drink.name]" min="0" (click)="$event.stopPropagation()">
+              <button (click)="addDrinkAmount(drink)">Add</button>
+            </div>
           </div>
       </li>
     </ul>
+
+    <div class="added-amounts">
+      <h3>Drink Amounts</h3>
+      <ul>
+        <li *ngFor="let entry of drinkAmounts">
+          {{ entry.drinkName }}: {{ entry.amount }} ml
+        </li>
+      </ul>
+    </div>
   </div>
   
