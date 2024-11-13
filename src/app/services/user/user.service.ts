@@ -63,13 +63,14 @@ export class UserService {
       const userDoc = await userRef.get().toPromise();
       const currentEmail = userDoc?.get('email') as string;
       this.currentUserEmail = currentEmail;
+      console.log('fetched email:', this.currentUserEmail);
     }
   }
 
   //Returns the currently logged in user's e-mail as a string.
-  getCurrentUserEmailString()
+  async getCurrentUserEmailString()
   {
-    this.getCurrentUserEmail();
+    await this.getCurrentUserEmail();
     return this.currentUserEmail;
   }
 }
