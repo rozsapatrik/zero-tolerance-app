@@ -13,4 +13,17 @@
     <button mat-flat-button (click)="redirectToDrinks()">Add Drink</button>
   </div>
 </div>
+
+<div *ngIf="drinksForTheDay.length > 0">
+  <h3>Drinks for {{ selectedDate | date: 'yyyy-MM-dd' }}</h3>
+  <ul>
+    <li *ngFor="let drink of drinksForTheDay" (click)="onDrinkClick(drink)" style="background-color: lightblue;">
+      <strong>{{ drink.name }}</strong> - {{ drink.amount }} ml at {{ drink.time }} ({{ drink.calories }} kcal) ({{drink.alcohol}} alcohol)
+    </li>
+  </ul>
+</div>
+<div *ngIf="drinksForTheDay.length === 0">
+  <p>No drinks recorded for this day.</p>
+</div>
+
   

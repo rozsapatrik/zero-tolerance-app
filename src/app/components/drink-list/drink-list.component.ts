@@ -16,6 +16,8 @@ export interface Drink{
 interface DrinkAmount {
   amount: number;
   time: string;
+  calories: number;
+  alcohol: number;
 }
 
 interface DrinkAmountsMap {
@@ -39,8 +41,8 @@ export class DrinkListComponent {
   filteredDrinks: Drink[] = [];
   searchTerm: string = '';
   //drinkAmounts: { drinkName: string, amount: number, time:string, date: string }[] = [];
-  drinkAmounts: Map<string, { drinkName: string, amount: number, time: string, date: string }> = new Map();
-  tempAmounts: { [key: string]: {ml: number, time: string, date: string} } = {};
+  drinkAmounts: Map<string, { drinkName: string, amount: number, calories: number, alcohol: number, time: string, date: string }> = new Map();
+  tempAmounts: { [key: string]: {ml: number, cps: number, time: string, date: string} } = {};
   selectedDate: any;
   
   constructor(private afs: AngularFirestore,
@@ -60,7 +62,7 @@ export class DrinkListComponent {
 
   initializeDrinkData(drinkName: string): void {
     if (!this.tempAmounts[drinkName]) {
-      this.tempAmounts[drinkName] = { ml: 0, time: '', date: '' };
+      this.tempAmounts[drinkName] = { ml: 0, time: '', date: '', cps: 0 };
     }
   }
   
@@ -119,17 +121,28 @@ export class DrinkListComponent {
         updatedDrinkAmounts = existingData ? existingData.drinkAmounts : {};
       }
 
+      const calories = drink.caloriesPerServing * (drinkData.ml / 100);
+      const alcohol = drink.abv * (drinkData.ml / 100);
+
+      console.log("ml log: ", drinkData.ml)
+      console.log("cps log: ", calories)
+      console.log("ml ethanol log", alcohol);
+
       // Check if the drink already exists in the map for that day
       if (updatedDrinkAmounts[drink.name]) {
         // If it exists, append the new entry to the array for that drink
         updatedDrinkAmounts[drink.name].push({
           amount: drinkData.ml,
+          calories: calories,
+          alcohol: alcohol,
           time: formattedTime,
         });
       } else {
         // If it doesn't exist, create a new array and add the first entry
         updatedDrinkAmounts[drink.name] = [{
           amount: drinkData.ml,
+          calories: calories,
+          alcohol: alcohol,
           time: formattedTime,
         }];
       }
@@ -148,7 +161,7 @@ export class DrinkListComponent {
         console.log('Drink added to Firestore');
           
         // Clear the temporary data
-        this.tempAmounts[drink.name] = { ml: 0, time: '', date: '' };
+        this.tempAmounts[drink.name] = { ml: 0, time: '', date: '', cps: 0 };
       } catch (error) {
         console.error('Error adding drink to Firestore: ', error);
       }
