@@ -7,7 +7,7 @@ import { DateService } from 'src/app/services/date.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 interface DrinkData {
-  drinkAmounts: { [key: string]: { amount: number; calories: number, alcohol: number, time: string }[] };
+  drinkAmounts: { [key: string]: { id: string, amount: number; calories: number, alcohol: number, time: string }[] };
 }
 
 @Component({
@@ -59,12 +59,13 @@ export class HomeComponent implements OnInit{
       const docSnapshot = await docRef.get().toPromise();
 
       if (docSnapshot && docSnapshot.exists) {
-        const drinkData = docSnapshot.data() as { drinkAmounts?: Record<string, {amount: number, time: string, calories: number, alcohol: number }[]> };
+        const drinkData = docSnapshot.data() as { drinkAmounts?: Record<string, {id: string, amount: number, time: string, calories: number, alcohol: number }[]> };
 
         this.drinksForTheDay = drinkData?.drinkAmounts
           ? Object.entries(drinkData.drinkAmounts).map(([name, detailsArray]) => {
             return detailsArray.map(detail => ({
               name,
+              id: detail.id,
               amount: detail.amount,
               calories: detail.calories,
               alcohol: detail.alcohol,
@@ -97,7 +98,46 @@ export class HomeComponent implements OnInit{
     console.log('UID: ', userId);
     console.log('DATE: ', formattedDate);
 
+    const docRef = this.afs.collection('drankDrinks').doc(docId);
+    
+    try {
+      const docSnapshot = await docRef.get().toPromise();
+      if (docSnapshot && docSnapshot.exists) {
+        const drinkData = docSnapshot.data() as DrinkData;
+        console.log("drinkData: ", drinkData);
+        if (drinkData && drinkData.drinkAmounts) {
+          const drinkAmounts = drinkData.drinkAmounts;
+  
+          // Iterate through the drink amounts and find the drink to delete by name and id
+          for (const drinkName in drinkAmounts) {
+            const entries = drinkAmounts[drinkName];
+            
+            // Find the specific entry by name and id
+            const entryIndex = entries.findIndex((entry: any) => entry.id === drink.id);
+  
+            if (entryIndex !== -1) {
+              // Delete the specific entry by its id
+              entries.splice(entryIndex, 1);
+              break; // Exit loop once the drink is deleted
+            }
+          }
+  
+          // Update the document with the remaining drink amounts
+          await docRef.set({ ...drinkData, drinkAmounts }, { merge: true });
+          console.log(`Deleted drink ${drink.name} at ${drink.time} from Firestore`);
+  
+          // Reload the drinks for the day after deletion
+          this.fetchDrinksForTheDay();
+        }
+      } else {
+        console.log('No document found to delete');
+      }
+    } catch (error) {
+      console.error('Error fetching or deleting document: ', error);
+    }
 
+    /*try {
+    
     // Get the document reference
     const docRef = this.afs.collection('drankDrinks').doc(docId);
 
@@ -111,21 +151,31 @@ export class HomeComponent implements OnInit{
           console.log(3)
           const drinkAmounts = drinkData.drinkAmounts;
 
+          for(const drinkName in drinkAmounts){
+            const entries = drinkAmounts[drinkName];
+
+            const entryIndex = entries.findIndex((entry: any) => entry.id === drink.id);
+
+            if(entryIndex !== -1){
+              entries.splice(entryIndex, 1);
+              break;
+            }
+          }
+
           // Delete the drink by its name
-          delete drinkAmounts[drink.name];
+          //delete drinkAmounts[drink.name];
 
           // Update the document without the deleted drink
-          docRef.set({ ...drinkData, drinkAmounts }, { merge: true }).then(() => {
-            console.log(`Deleted drink ${drink.name} from Firestore`);
+          await docRef.set({ ...drinkData, drinkAmounts }, { merge: true });
+          console.log(`Deleted drink ${drink.name} from Firestore with the id of ${drink.id}`);
             // Reload the drinks for the day after deletion
             this.fetchDrinksForTheDay();
-          }).catch(error => {
-            console.error('Error deleting drink from Firestore: ', error);
-          });
         }
+      } else {
+        console.log("No document found to delete");
       }
-    }).catch(error => {
-      console.error('Error fetching document snapshot for deletion: ', error);
-    });
-  }  
+    } catch (error) {
+      console.error('Error fetching or deleting the document: ', error);
+    }*/
+  }
 }

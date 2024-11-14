@@ -14,6 +14,7 @@ export interface Drink{
 }
 
 interface DrinkAmount {
+  id: string;
   amount: number;
   time: string;
   calories: number;
@@ -128,10 +129,14 @@ export class DrinkListComponent {
       console.log("cps log: ", calories)
       console.log("ml ethanol log", alcohol);
 
+      // Generate a unique entryId for the drink
+      const entryId = `${new Date().getTime()}-${Math.random()}`;
+
       // Check if the drink already exists in the map for that day
       if (updatedDrinkAmounts[drink.name]) {
         // If it exists, append the new entry to the array for that drink
         updatedDrinkAmounts[drink.name].push({
+          id: entryId,
           amount: drinkData.ml,
           calories: calories,
           alcohol: alcohol,
@@ -140,6 +145,7 @@ export class DrinkListComponent {
       } else {
         // If it doesn't exist, create a new array and add the first entry
         updatedDrinkAmounts[drink.name] = [{
+          id: entryId,
           amount: drinkData.ml,
           calories: calories,
           alcohol: alcohol,
