@@ -15,12 +15,14 @@ import { AdminGuard } from './guards/admin.guard';
 import { UserGuard } from './guards/user.guard';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { DrinkListComponent } from './components/drink-list/drink-list.component';
+import { AdminFormComponent } from './components/admin-form/admin-form.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/landing'},
   {path: 'landing', component: LandingPageComponent},
   {path: 'home', component: HomeComponent, canActivate: [UserGuard]},
   {path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard]},
+  {path: 'adminform', component: AdminFormComponent, canActivate: [AdminGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [UserGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
