@@ -4,6 +4,7 @@
     <ul>
       <li *ngFor="let drink of drinks">
         <strong>{{ drink.name }}</strong>
+        <button mat-button color="warn" (click)="deleteDrink(drink.id)">Delete</button>
       </li>
     </ul>
   </div>

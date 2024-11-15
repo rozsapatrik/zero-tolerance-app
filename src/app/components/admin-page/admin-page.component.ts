@@ -33,4 +33,21 @@ export class AdminPageComponent {
     this.router.navigate(['/adminform']); // Redirects to the admin form page
   }
 
+  deleteDrink(drinkId: string): void {
+    if (confirm('Are you sure you want to delete this drink?')) {
+      this.afs
+        .collection('drink')
+        .doc(drinkId)
+        .delete()
+        .then(() => {
+          console.log(`Drink with ID ${drinkId} deleted successfully`);
+          // Refresh the list of drinks
+          this.fetchAllDrinks();
+        })
+        .catch((error) => {
+          console.error('Error deleting drink: ', error);
+        });
+    }
+  }
+
 }
