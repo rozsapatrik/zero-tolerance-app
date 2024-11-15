@@ -1,1 +1,9 @@
-<p>admin-page works!</p>
+<div class="admin-container">
+    <h1>All Drinks</h1>
+    <ul>
+      <li *ngFor="let drink of drinks">
+        <strong>{{ drink.name }}</strong>
+      </li>
+    </ul>
+  </div>
+  
