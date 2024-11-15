@@ -1,5 +1,6 @@
 <div class="admin-container">
     <h1>All Drinks</h1>
+    <button class="addDrinkBtn" (click)="redirectToAdminFormAddDrink()">Add Drink</button>
     <ul>
       <li *ngFor="let drink of drinks">
         <strong>{{ drink.name }}</strong>

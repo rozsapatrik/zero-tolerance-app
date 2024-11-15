@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-page',
@@ -10,7 +11,7 @@ export class AdminPageComponent {
 
   drinks: any[] = [];
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(private afs: AngularFirestore, private router: Router) {}
 
   ngOnInit(){
     this.fetchAllDrinks();
@@ -26,6 +27,10 @@ export class AdminPageComponent {
         console.error('Error fetching drinks', error);
       }
     )
+  }
+
+  redirectToAdminFormAddDrink(): void {
+    this.router.navigate(['/adminform']); // Redirects to the admin form page
   }
 
 }
