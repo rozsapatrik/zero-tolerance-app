@@ -33,6 +33,10 @@ export class AdminPageComponent {
     this.router.navigate(['/adminform']); // Redirects to the admin form page
   }
 
+  editDrink(drink: any): void {
+    this.router.navigate(['/adminform'], { state: { drink } });
+  }
+
   deleteDrink(drinkId: string): void {
     if (confirm('Are you sure you want to delete this drink?')) {
       this.afs

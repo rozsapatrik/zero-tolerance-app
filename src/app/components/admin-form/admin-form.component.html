@@ -1,5 +1,5 @@
 <div class="admin-form-container">
-    <h1>Add a New Drink</h1>
+    <h1>{{ isEditMode ? 'Update drink' : 'Add a new drink' }}</h1>
   
     <form [formGroup]="drinkForm" (ngSubmit)="onSubmit()">
       <!-- Name Input -->

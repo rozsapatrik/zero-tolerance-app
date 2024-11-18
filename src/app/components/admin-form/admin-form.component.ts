@@ -11,11 +11,42 @@ import { Route, Router } from '@angular/router';
 export class AdminFormComponent {
 
   drinkForm: FormGroup;
+  editingDrinkId: string | null = null;
+  isEditMode: boolean = false;
 
-  constructor(private fb: FormBuilder, private afs: AngularFirestore, private router: Router) {}
+  constructor(private fb: FormBuilder, private afs: AngularFirestore, private router: Router) {
+    // Retrieve passed drink data
+    const navigation = this.router.getCurrentNavigation();
+    const state = navigation?.extras?.state as { drink: any };
+    if (state && state.drink) {
+      const { id, name, ml, category, caloriesPerServing, abv } = state.drink;
+      this.editingDrinkId = id;
+      this.drinkForm = this.fb.group({
+        name: [name, Validators.required],
+        ml: [ml, [Validators.required, Validators.pattern('^[0-9]+$')]],
+        category: [category, Validators.required],
+        caloriesPerServing: [caloriesPerServing, [Validators.required, Validators.pattern('^[0-9]+$')]],
+        abv: [abv, [Validators.required, Validators.pattern('^[0-9]+$')]],
+      });
+    } else {
+      this.drinkForm = this.fb.group({
+        name: ['', Validators.required],
+        ml: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+        category: ['', Validators.required],
+        caloriesPerServing: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+        abv: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      });
+    }
+  }
 
   ngOnInit(): void {
     this.initializeForm();
+    const drinkToEdit = history.state.drink;
+    if (drinkToEdit) {
+      this.isEditMode = true;
+      this.editingDrinkId = drinkToEdit.id;
+      this.drinkForm.patchValue(drinkToEdit);
+    }
   }
 
   initializeForm(): void {
@@ -33,9 +64,15 @@ export class AdminFormComponent {
       const drinkData = this.drinkForm.value;
 
       try {
-        // Add new drink to the Firestore 'drink' collection
-        await this.afs.collection('drink').add(drinkData);
-        console.log('Drink added successfully:', drinkData);
+        if (this.editingDrinkId) {
+          // Update existing drink
+          await this.afs.collection('drink').doc(this.editingDrinkId).update(drinkData);
+          console.log('Drink updated successfully:', drinkData);
+        } else {
+          // Add new drink
+          await this.afs.collection('drink').add(drinkData);
+          console.log('Drink added successfully:', drinkData);
+        }
 
         // Navigate back to the admin page
         this.router.navigate(['/admin']);
