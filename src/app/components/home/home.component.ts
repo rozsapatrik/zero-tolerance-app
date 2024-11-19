@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit{
   
   selectedDate: Date;
   drinksForTheDay: any[] = [];
+  totalCalories: number = 0;
   
   constructor(
     private afs: AngularFirestore,
@@ -72,8 +73,14 @@ export class HomeComponent implements OnInit{
               time: detail.time
           }));
         }).flat() : [];
+
+        this.calculateTotalCalories();
       }
     }
+  }
+
+  calculateTotalCalories(): void {
+    this.totalCalories = this.drinksForTheDay.reduce((sum, drink) => sum + (drink.calories || 0), 0);
   }
 
   onDateChange(event: any) {
