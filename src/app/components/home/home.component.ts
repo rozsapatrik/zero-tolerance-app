@@ -115,16 +115,6 @@ export class HomeComponent implements OnInit{
     const metabolismRate = 0.015; // Average alcohol elimination rate per hour
     const weightInGrams = weight * 1000;
     const currentTime = new Date();
-
-    // Calculate BAC based on total alcohol grams, body water, and time since first drink
-    /*if (this.drinksForTheDay.length > 0) {
-      const drinkTimes = this.drinksForTheDay.map((drink) => {
-        const [hours, minutes] = drink.time.split(':').map(Number);
-        const drinkDate = new Date(this.selectedDate);
-        drinkDate.setHours(hours, minutes, 0, 0);
-        return drinkDate;
-      });*/
-
     // Construct full date objects for drink times
       const drinkTimes = this.drinksForTheDay.map((drink) => {
         const [hours, minutes] = drink.time.split(':').map(Number);
@@ -150,7 +140,7 @@ export class HomeComponent implements OnInit{
         console.log('Time elapsed since first drink (hours):', timeElapsedHours);
 
         this.bac =
-            (totalPastAlcoholGrams / (weightInGrams * bodyWaterConstant)) * 100 - metabolismRate * timeElapsedHours;
+            ((totalPastAlcoholGrams) / (weightInGrams * bodyWaterConstant)) * 100 - metabolismRate * timeElapsedHours;
         this.bac = Math.max(this.bac, 0); // Ensure BAC does not go negative
         console.log('Current BAC:', this.bac);
       } else {
@@ -168,18 +158,7 @@ export class HomeComponent implements OnInit{
       const estimatedSoberTime = new Date(Math.max(currentTime.getTime(), earliestAllDrinkTime.getTime()) + soberHours * 60 * 60 * 1000);
 
       this.soberTime = estimatedSoberTime;
-      console.log('Estimated time to be sober:', this.soberTime);
-      
-      /*const earliestDrinkTime = new Date(Math.min(...drinkTimes.map((d) => d.getTime())));
-      console.log('Earliest drink time:', earliestDrinkTime);
-
-      const timeElapsedHours = Math.max(0, (new Date().getTime() - earliestDrinkTime.getTime()) / (1000 * 60 * 60));
-      console.log('Time elapsed in hours:', timeElapsedHours);
-
-      this.bac =
-        (totalAlcoholGrams / (weightInGrams * bodyWaterConstant)) * 100 - metabolismRate * timeElapsedHours;
-      this.bac = Math.max(this.bac, 0); // Ensure BAC does not go negative
-      console.log('BAC: ', this.bac);*/    
+      console.log('Estimated time to be sober:', this.soberTime);  
   }
 
   calculateTotals(): void {

@@ -123,7 +123,7 @@ export class DrinkListComponent {
       }
 
       const calories = drink.caloriesPerServing * (drinkData.ml / 100);
-      const alcohol = drink.abv * (drinkData.ml / 100);
+      const alcohol = ((drink.abv/100) * drinkData.ml) * 0.789;
 
       console.log("ml log: ", drinkData.ml)
       console.log("cps log: ", calories)

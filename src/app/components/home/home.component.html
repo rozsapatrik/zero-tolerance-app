@@ -35,7 +35,7 @@
 <!-- New Section for BAC -->
 <div class="bac-display">
   <h3>Estimated BAC: {{ bac | number: '1.2-2' }}%</h3>
-  <p *ngIf="soberTime">Estimated time to be sober: {{ soberTime | date: 'shortTime' }}</p>
+  <p *ngIf="soberTime">Estimated time to be sober: {{ soberTime | date: 'EEE MMM dd yyyy HH:mm:ss' }}</p>
 </div>
 
 
