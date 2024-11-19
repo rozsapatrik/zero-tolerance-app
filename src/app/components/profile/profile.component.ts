@@ -18,6 +18,9 @@ export class ProfileComponent {
   favoriteDrink: string;
   registerDate: Date;
   profileSub?: Subscription;
+  gender: string;
+  weight: number;
+
   
   constructor(
     private afs: AngularFirestore,
@@ -41,6 +44,8 @@ export class ProfileComponent {
           this.getFavoriteDrink();
           this.getRegisterDate();
           this.getProfilePicture();
+          this.getGender();
+          this.getWeight();
         })
       }
     })
@@ -74,6 +79,18 @@ export class ProfileComponent {
     const picUrl = userDoc?.get('profilePicUrl');
     const profilePicHtml = document.getElementById("profilePic") as HTMLImageElement;
     profilePicHtml.src = picUrl ? picUrl : "https://cdn.discordapp.com/attachments/905132673356410932/1295650761803567144/c0749b7cc401421662ae901ec8f9f660.jpg?ex=670f6c4d&is=670e1acd&hm=c475e7139b4d6fea1067d23489cbf043e59050b17f9f5cab50cc39cf9c7cee11&"
+  }
+
+  async getGender(){
+    const userDocRef = this.afs.collection("user").doc(this.currentUserID);
+    const userDoc = await userDocRef.get().toPromise();
+    this.gender = userDoc?.get('gender');
+  }
+
+  async getWeight(){
+    const userDocRef = this.afs.collection("user").doc(this.currentUserID);
+    const userDoc = await userDocRef.get().toPromise();
+    this.weight = userDoc?.get('weight');
   }
 
   redirectToPersonalStats(){ this.router.navigate(['/personalstats']); }

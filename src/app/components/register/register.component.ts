@@ -40,7 +40,9 @@ export class RegisterComponent implements OnInit{
     username: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    confirmPassword: new FormControl('', Validators.required)
+    confirmPassword: new FormControl('', Validators.required),
+    weight: new FormControl('', [Validators.required, Validators.min(30)]), // Minimum weight validation
+    gender: new FormControl('', Validators.required) // Gender must be selected
   }, { validators: passwordsMatchValidator() })
 
   constructor(private authService: AuthenticationService, private router: Router, private toast: HotToastService, private afs: AngularFirestore){}
@@ -52,6 +54,8 @@ export class RegisterComponent implements OnInit{
   get email(){ return this.registerForm.get('email') }
   get password(){ return this.registerForm.get('password') }
   get confirmPassword(){ return this.registerForm.get('confirmPassword') }
+  get weight() { return this.registerForm.get('weight'); }
+  get gender() { return this.registerForm.get('gender'); }
 
   //Registers the user's data into the Firestore database and shows a toast message.
   registerSubmit(){
@@ -64,7 +68,9 @@ export class RegisterComponent implements OnInit{
       'email': this.registerForm.value.email,
       'profilePicUrl': "",
       'favoriteDrink': 'No favorite drink',
-      'registerDate': new Date().toLocaleDateString()
+      'registerDate': new Date().toLocaleDateString(),
+      'weight': this.registerForm.value.weight,
+      'gender': this.registerForm.value.gender
     };
 
     this.afs.collection('user').add(userData);

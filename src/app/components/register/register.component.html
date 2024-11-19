@@ -23,6 +23,27 @@
 
     <mat-error *ngIf="registerForm.errors?.['passwordsDontMatch']">The passwords do not match</mat-error>
     <mat-error *ngIf="registerForm.errors?.['passwordLengthMin']">Password must be at least 8 characters!</mat-error>
+
+    <!-- Weight Input -->
+    <mat-form-field class="weight-mat-form-field">
+        <input class="weight-input" type="number" placeholder="Weight (kg)" formControlName="weight" matInput />
+        <mat-error *ngIf="weight?.errors?.['required']">Please enter your weight!</mat-error>
+        <mat-error *ngIf="weight?.errors?.['min']">Weight must be at least 30kg!</mat-error>
+    </mat-form-field>
+
+      <!-- Gender Selection -->
+    <div class="gender-selection">
+        <label>
+        <input type="radio" formControlName="gender" value="male" />
+        Male
+        </label>
+        <label>
+        <input type="radio" formControlName="gender" value="female" />
+        Female
+        </label>
+        <mat-error *ngIf="gender?.errors?.['required']">Please select your gender!</mat-error>
+    </div>
+
     <div class="center margin-top">
         <button type="submit" mat-flat-button color="primary">Register</button>
     </div>
