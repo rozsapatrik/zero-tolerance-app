@@ -110,7 +110,6 @@ export class HomeComponent implements OnInit{
     console.log('UDATA: ', this.userData);
 
     const { weight, gender } = this.userData;
-    const totalAlcoholGrams = this.drinksForTheDay.reduce((sum, drink) => sum + (drink.alcohol || 0), 0);
     const bodyWaterConstant = gender === 'male' ? 0.58 : 0.49;
     const metabolismRate = 0.015; // Average alcohol elimination rate per hour
     const weightInGrams = weight * 1000;
@@ -152,10 +151,10 @@ export class HomeComponent implements OnInit{
       const soberHours = allAlcoholGrams / (metabolismRate * weightInGrams * bodyWaterConstant);
 
       console.log('Total alcohol grams (past + future):', allAlcoholGrams);
-      console.log('Estimated hours to sober:', soberHours);
+      console.log('Estimated hours to sober:', soberHours*100);
 
       const earliestAllDrinkTime = new Date(Math.min(...drinkTimes.map((drink) => drink.drinkDate.getTime())));
-      const estimatedSoberTime = new Date(Math.max(currentTime.getTime(), earliestAllDrinkTime.getTime()) + soberHours * 60 * 60 * 1000);
+      const estimatedSoberTime = new Date(Math.max(currentTime.getTime(), earliestAllDrinkTime.getTime()) + (soberHours*100) * 60 * 60 * 1000);
 
       this.soberTime = estimatedSoberTime;
       console.log('Estimated time to be sober:', this.soberTime);  
@@ -225,47 +224,5 @@ export class HomeComponent implements OnInit{
     } catch (error) {
       console.error('Error fetching or deleting document: ', error);
     }
-
-    /*try {
-    
-    // Get the document reference
-    const docRef = this.afs.collection('drankDrinks').doc(docId);
-
-    docRef.get().toPromise().then((docSnapshot) => {
-      console.log(1)
-      if (docSnapshot && docSnapshot.exists) {
-        console.log(2)
-        const drinkData = docSnapshot?.data() as DrinkData;
-        console.log("drinkData: ", drinkData);
-        if (drinkData && drinkData.drinkAmounts) {
-          console.log(3)
-          const drinkAmounts = drinkData.drinkAmounts;
-
-          for(const drinkName in drinkAmounts){
-            const entries = drinkAmounts[drinkName];
-
-            const entryIndex = entries.findIndex((entry: any) => entry.id === drink.id);
-
-            if(entryIndex !== -1){
-              entries.splice(entryIndex, 1);
-              break;
-            }
-          }
-
-          // Delete the drink by its name
-          //delete drinkAmounts[drink.name];
-
-          // Update the document without the deleted drink
-          await docRef.set({ ...drinkData, drinkAmounts }, { merge: true });
-          console.log(`Deleted drink ${drink.name} from Firestore with the id of ${drink.id}`);
-            // Reload the drinks for the day after deletion
-            this.fetchDrinksForTheDay();
-        }
-      } else {
-        console.log("No document found to delete");
-      }
-    } catch (error) {
-      console.error('Error fetching or deleting the document: ', error);
-    }*/
   }
 }
