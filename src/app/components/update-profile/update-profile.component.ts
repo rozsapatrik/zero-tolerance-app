@@ -33,12 +33,16 @@ export class UpdateProfileComponent implements OnInit{
   
   usernameFromDB: string;
   profilePicUrlFromDB: string;
+  weightFromDB: number;
+  genderFromDB: string;
   pwCheck: boolean = true;
   
   updateProfileForm = new FormGroup({
     password: new FormControl('', [Validators.minLength(8)]),
     confirmPassword: new FormControl(''),
-    profilePicUrl: new FormControl('')
+    profilePicUrl: new FormControl(''),
+    weight: new FormControl('', [Validators.required, Validators.min(30)]),
+    gender: new FormControl('', Validators.required)
   }, { validators: passwordsMatchValidator() });
 
   constructor(
@@ -52,12 +56,15 @@ export class UpdateProfileComponent implements OnInit{
 
   ngOnInit(): void {
     this.getUsername();
+    this.getGenderAndWeight();
     this.getProfilePicUrl();
   }
 
   get profilePicUrl(){ return this.updateProfileForm.get('profilePicUrl') }
   get password(){ return this.updateProfileForm.get('password') }
   get confirmPassword(){ return this.updateProfileForm.get('confirmPassword') }
+  get weight() { return this.updateProfileForm.get('weight'); }
+  get gender() { return this.updateProfileForm.get('gender'); }
 
   async getUsername() {
     const userDocRef = this.afs.collection("user").doc(await this.userService.getUserId());
@@ -73,6 +80,18 @@ export class UpdateProfileComponent implements OnInit{
     profilePicHtml.src = this.profilePicUrlFromDB ? this.profilePicUrlFromDB : "https://cdn.discordapp.com/attachments/905132673356410932/1295650761803567144/c0749b7cc401421662ae901ec8f9f660.jpg?ex=670f6c4d&is=670e1acd&hm=c475e7139b4d6fea1067d23489cbf043e59050b17f9f5cab50cc39cf9c7cee11&"
   }
 
+  async getGenderAndWeight(){
+    const userDocRef = this.afs.collection("user").doc(await this.userService.getUserId());
+    const userDoc = await userDocRef.get().toPromise();
+    this.weightFromDB = userDoc?.get('weight');
+    this.genderFromDB = userDoc?.get('gender');
+
+    this.updateProfileForm.patchValue({
+      weight: this.weightFromDB.toString(),
+      gender: this.genderFromDB
+    });
+  }
+
   async updateProfileSubmit(){
     const user = this.userService.getCurrentUserId();
     if (!user) {
@@ -80,6 +99,9 @@ export class UpdateProfileComponent implements OnInit{
       return;
     }
 
+    if(this.updateProfileForm.invalid) return;
+    
+    const updates: any = {};
     const userId = await this.userService.getUserId();
     const userDocRef = this.afs.collection('user').doc(userId).ref;
 
@@ -89,6 +111,22 @@ export class UpdateProfileComponent implements OnInit{
       userDocRef.update({ profilePicUrl: newProfilePicUrl })
         .then(() => console.log('URL updated successfully')) //TODO: Toaster
         .catch((error) => console.error('Error updating URL:', error));
+    }
+
+    const newWeight = this.weight?.value;
+    if (newWeight !== this.weightFromDB.toString()) {
+      updates.weight = newWeight;
+    }
+
+    const newGender = this.gender?.value;
+    if (newGender !== this.genderFromDB) {
+      updates.gender = newGender;
+    }
+
+    if (Object.keys(updates).length > 0) {
+      userDocRef.update(updates)
+        .then(() => this.toast.success('Profile updated successfully.'))
+        .catch(error => this.toast.error('Error updating profile: ' + error));
     }
 
     const newPassword = this.password?.value;
