@@ -32,5 +32,12 @@
 <div class="drinks-total">
   <h3>Number of drinks for {{ selectedDate | date:'yyyy-MM-dd' }}: {{ totalDrinks }}</h3>
 </div>
+<!-- New Section for BAC -->
+<div class="bac-display">
+  <h3>Estimated BAC: {{ bac | number: '1.2-2' }}%</h3>
+  <p *ngIf="soberTime">Estimated time to be sober: {{ soberTime | date: 'shortTime' }}</p>
+</div>
+
+
 
   

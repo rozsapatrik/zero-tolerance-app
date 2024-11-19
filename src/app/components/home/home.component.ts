@@ -10,6 +10,11 @@ interface DrinkData {
   drinkAmounts: { [key: string]: { id: string, amount: number; calories: number, alcohol: number, time: string }[] };
 }
 
+interface UserData {
+  weight: number;
+  gender: string;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,6 +26,9 @@ export class HomeComponent implements OnInit{
   drinksForTheDay: any[] = [];
   totalCalories: number = 0;
   totalDrinks: number = 0;
+  bac: number = 0;
+  soberTime: Date | null = null;
+  userData: UserData;
   
   constructor(
     private afs: AngularFirestore,
@@ -35,6 +43,7 @@ export class HomeComponent implements OnInit{
   async ngOnInit(): Promise<void> {
     // Initialize selected date from DateService or today's date
     this.selectedDate = this.dateService.getSelectedDate() || new Date();
+    await this.fetchUserData();
 
     // Fetch drinks data for the selected date
     this.fetchDrinksForTheDay();
@@ -47,6 +56,16 @@ export class HomeComponent implements OnInit{
 
     // Initial load of drinks for the selected date
     //await this.loadDrinksForSeletectedDate();
+  }
+
+  async fetchUserData(): Promise<void> {
+    const currentUserID = await this.userService.getCurrentUserId();
+    if (currentUserID) {
+      const userDoc = await this.afs.collection('user').doc(currentUserID).get().toPromise();
+      if (userDoc && userDoc.exists) {
+        this.userData = userDoc.data() as UserData;
+      }
+    }
   }
 
   async fetchDrinksForTheDay(): Promise<void> {
@@ -76,8 +95,91 @@ export class HomeComponent implements OnInit{
         }).flat() : [];
 
         this.calculateTotals();
+        this.calculateBAC();
       }
     }
+  }
+  
+  calculateBAC(): void {
+    if (!this.userData) {
+      console.error('User data not available for BAC calculation');
+      this.bac = 0;
+      return;
+    }
+
+    console.log('UDATA: ', this.userData);
+
+    const { weight, gender } = this.userData;
+    const totalAlcoholGrams = this.drinksForTheDay.reduce((sum, drink) => sum + (drink.alcohol || 0), 0);
+    const bodyWaterConstant = gender === 'male' ? 0.58 : 0.49;
+    const metabolismRate = 0.015; // Average alcohol elimination rate per hour
+    const weightInGrams = weight * 1000;
+    const currentTime = new Date();
+
+    // Calculate BAC based on total alcohol grams, body water, and time since first drink
+    /*if (this.drinksForTheDay.length > 0) {
+      const drinkTimes = this.drinksForTheDay.map((drink) => {
+        const [hours, minutes] = drink.time.split(':').map(Number);
+        const drinkDate = new Date(this.selectedDate);
+        drinkDate.setHours(hours, minutes, 0, 0);
+        return drinkDate;
+      });*/
+
+    // Construct full date objects for drink times
+      const drinkTimes = this.drinksForTheDay.map((drink) => {
+        const [hours, minutes] = drink.time.split(':').map(Number);
+        const drinkDate = new Date(this.selectedDate);
+        drinkDate.setHours(hours, minutes, 0, 0); // Set hours and minutes to the drink's time
+        return { ...drink, drinkDate };
+      });
+      console.log('Drink times:', drinkTimes);
+
+      // Separate past and future drinks
+      const pastDrinks = drinkTimes.filter((drink) => drink.drinkDate <= currentTime);
+      const futureDrinks = drinkTimes.filter((drink) => drink.drinkDate > currentTime);
+      console.log('Past Drinks:', pastDrinks);
+      console.log('Future Drinks:', futureDrinks);
+
+    // Calculate BAC based on past drinks
+      const totalPastAlcoholGrams = pastDrinks.reduce((sum, drink) => sum + (drink.alcohol || 0), 0);
+      if (pastDrinks.length > 0) {
+        const earliestDrinkTime = new Date(Math.min(...pastDrinks.map((drink) => drink.drinkDate.getTime())));
+        const timeElapsedHours = Math.max(0, (currentTime.getTime() - earliestDrinkTime.getTime()) / (1000 * 60 * 60));
+
+        console.log('Earliest past drink time:', earliestDrinkTime);
+        console.log('Time elapsed since first drink (hours):', timeElapsedHours);
+
+        this.bac =
+            (totalPastAlcoholGrams / (weightInGrams * bodyWaterConstant)) * 100 - metabolismRate * timeElapsedHours;
+        this.bac = Math.max(this.bac, 0); // Ensure BAC does not go negative
+        console.log('Current BAC:', this.bac);
+      } else {
+        this.bac = 0; // No past drinks, no BAC
+      }
+      
+      // Calculate sober time (including future drinks)
+      const allAlcoholGrams = drinkTimes.reduce((sum, drink) => sum + (drink.alcohol || 0), 0);
+      const soberHours = allAlcoholGrams / (metabolismRate * weightInGrams * bodyWaterConstant);
+
+      console.log('Total alcohol grams (past + future):', allAlcoholGrams);
+      console.log('Estimated hours to sober:', soberHours);
+
+      const earliestAllDrinkTime = new Date(Math.min(...drinkTimes.map((drink) => drink.drinkDate.getTime())));
+      const estimatedSoberTime = new Date(Math.max(currentTime.getTime(), earliestAllDrinkTime.getTime()) + soberHours * 60 * 60 * 1000);
+
+      this.soberTime = estimatedSoberTime;
+      console.log('Estimated time to be sober:', this.soberTime);
+      
+      /*const earliestDrinkTime = new Date(Math.min(...drinkTimes.map((d) => d.getTime())));
+      console.log('Earliest drink time:', earliestDrinkTime);
+
+      const timeElapsedHours = Math.max(0, (new Date().getTime() - earliestDrinkTime.getTime()) / (1000 * 60 * 60));
+      console.log('Time elapsed in hours:', timeElapsedHours);
+
+      this.bac =
+        (totalAlcoholGrams / (weightInGrams * bodyWaterConstant)) * 100 - metabolismRate * timeElapsedHours;
+      this.bac = Math.max(this.bac, 0); // Ensure BAC does not go negative
+      console.log('BAC: ', this.bac);*/    
   }
 
   calculateTotals(): void {
