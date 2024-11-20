@@ -32,7 +32,7 @@ interface FirestoreDocumentData {
 @Component({
   selector: 'app-drink-list',
   templateUrl: './drink-list.component.html',
-  styleUrls: ['./drink-list.component.css']
+  styleUrls: ['./drink-list.component.scss']
 })
 
 export class DrinkListComponent {
