@@ -6,7 +6,7 @@ import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-admin-form',
   templateUrl: './admin-form.component.html',
-  styleUrls: ['./admin-form.component.css']
+  styleUrls: ['./admin-form.component.scss']
 })
 export class AdminFormComponent {
 
