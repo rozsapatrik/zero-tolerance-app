@@ -71,6 +71,7 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { DrinkListComponent } from './components/drink-list/drink-list.component';
 import { AdminFormComponent } from './components/admin-form/admin-form.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -132,6 +133,7 @@ import { AdminFormComponent } from './components/admin-form/admin-form.component
     FormsModule,
     BrowserAnimationsModule,
     AngularFireModule,
+    NgxChartsModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

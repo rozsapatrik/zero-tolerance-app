@@ -1,6 +1,14 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 //@import '/src/assets/myTheme.css';
 
+
+/*
+
+CHANGE BLUE BACKGROUND TO BLACK SO REGARDLESS OF
+THE SCREEN SIZE YOU WON'T BE ABLE TO TELL HOW WIDE THE CONTAINER ELEMENT IS
+
+*/
+
 .outer-container {
   height: 100vh;
   width: 100vw;
@@ -17,9 +25,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: white;
   box-sizing: border-box;
-  color: white;
+  color: black;
   overflow: hidden;
 }
 
