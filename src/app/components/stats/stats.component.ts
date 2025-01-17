@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -8,6 +8,9 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./stats.component.scss']
 })
 export class StatsComponent implements OnInit {
+  chartWidth: number = 700;
+  chartHeight: number = 400;
+  
   graphData: { name: string; value: number }[] = [];
   pieChartData: { name: string; value: number }[] = [];
 
