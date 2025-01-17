@@ -19,6 +19,7 @@ interface DrinkAmount {
   time: string;
   calories: number;
   alcohol: number;
+  category: string;
 }
 
 interface DrinkAmountsMap {
@@ -42,7 +43,7 @@ export class DrinkListComponent {
   filteredDrinks: Drink[] = [];
   searchTerm: string = '';
   //drinkAmounts: { drinkName: string, amount: number, time:string, date: string }[] = [];
-  drinkAmounts: Map<string, { drinkName: string, amount: number, calories: number, alcohol: number, time: string, date: string }> = new Map();
+  drinkAmounts: Map<string, { drinkName: string, amount: number, calories: number, alcohol: number, time: string, date: string, category: string }> = new Map();
   tempAmounts: { [key: string]: {ml: number, cps: number, time: string, date: string} } = {};
   selectedDate: any;
   
@@ -141,6 +142,7 @@ export class DrinkListComponent {
           calories: calories,
           alcohol: alcohol,
           time: formattedTime,
+          category: drink.category
         });
       } else {
         // If it doesn't exist, create a new array and add the first entry
@@ -150,6 +152,7 @@ export class DrinkListComponent {
           calories: calories,
           alcohol: alcohol,
           time: formattedTime,
+          category: drink.category
         }];
       }
     
