@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { LegendPosition } from '@swimlane/ngx-charts';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -8,20 +9,45 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./stats.component.scss']
 })
 export class StatsComponent implements OnInit {
-  chartWidth: number = 700;
-  chartHeight: number = 400;
+  barChartView: [number, number] = [700, 400];
+  pieChartView: [number, number] = [400, 400];
+  legendPosPie: LegendPosition = LegendPosition.Below;
   
   graphData: { name: string; value: number }[] = [];
   pieChartData: { name: string; value: number }[] = [];
 
   constructor(private afs: AngularFirestore, private userService: UserService) {}
 
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.adjustChartSizes();
+  }
+
   async ngOnInit(): Promise<void> {
     const currentUserID = await this.userService.getCurrentUserId();
     if (!currentUserID) return;
 
+    this.adjustChartSizes();
+
     await this.loadBarChartData(currentUserID);
     await this.loadPieChartData(currentUserID);
+  }
+
+  private adjustChartSizes(): void {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    //this.barChartView = [Math.min(width * 0.8, 700), Math.min(height * 0.4, 400)];
+    //this.pieChartView = [Math.min(width * 0.5, 400), Math.min(height * 0.5, 400)];
+
+    const barChartWidth = Math.max(Math.min(width * 0.8, 700), 300); // Minimum 300, maximum 700
+    const barChartHeight = Math.max(Math.min(height * 0.4, 400), 200); // Minimum 200, maximum 400
+
+    const pieChartWidth = Math.max(Math.min(width * 0.5, 400), 300); // Minimum 250, maximum 400
+    const pieChartHeight = Math.max(Math.min(height * 0.5, 400), 300); // Minimum 250, maximum 400
+
+    this.barChartView = [barChartWidth, barChartHeight];
+    this.pieChartView = [pieChartWidth, pieChartHeight];
   }
 
   private async loadBarChartData(currentUserID: string): Promise<void> {

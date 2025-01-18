@@ -1,9 +1,8 @@
 <div class="stats-container">
     <!-- Bar Chart -->
     <div class="chart-section">
-      <h2>Drinks in the Last 7 Days</h2>
       <ngx-charts-bar-vertical
-      [view]="[700, 400]"
+      [view]="barChartView"
       [results]="graphData"
       [gradient]="false"
       [xAxis]="true"
@@ -19,18 +18,19 @@
   
     <!-- Pie Chart -->
     <div class="chart-section">
-      <h2>Drink Type Distribution</h2>
       <ngx-charts-pie-chart
-      [view]="[700, 400]"
+      [view]="pieChartView"
       [results]="pieChartData"
       [legend]="false"
-      [labels]="true"
+      [labels]="false"
       [doughnut]="false"
       [explodeSlices]="false"
       [gradient]="false"
       [animations]="false"
+      [legendPosition]="legendPosPie"
       >
       </ngx-charts-pie-chart>
     </div>
+    <p class="chart-label" style="text-align: center;">Distribution of Drinks (by category)</p>
   </div>
   
