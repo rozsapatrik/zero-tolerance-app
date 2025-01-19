@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HotToastService } from '@ngneat/hot-toast';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DocumentReference, getDoc } from "firebase/firestore";
 import { UserService } from 'src/app/services/user/user.service';
@@ -48,7 +47,6 @@ export class UpdateProfileComponent implements OnInit{
   constructor(
     private authService: AuthenticationService,
     private router: Router,
-    private toast: HotToastService,
     private afs: AngularFirestore,
     private userService: UserService,
     private afAuth: AngularFireAuth
@@ -109,7 +107,7 @@ export class UpdateProfileComponent implements OnInit{
     if (newProfilePicUrl !== this.profilePicUrlFromDB && newProfilePicUrl != "") {
       this.profilePicUrlFromDB = newProfilePicUrl;
       userDocRef.update({ profilePicUrl: newProfilePicUrl })
-        .then(() => console.log('URL updated successfully')) //TODO: Toaster
+        .then(() => console.log('URL updated successfully'))
         .catch((error) => console.error('Error updating URL:', error));
     }
 
@@ -124,9 +122,7 @@ export class UpdateProfileComponent implements OnInit{
     }
 
     if (Object.keys(updates).length > 0) {
-      userDocRef.update(updates)
-        .then(() => this.toast.success('Profile updated successfully.'))
-        .catch(error => this.toast.error('Error updating profile: ' + error));
+      userDocRef.update(updates);
     }
 
     const newPassword = this.password?.value;
@@ -135,11 +131,9 @@ export class UpdateProfileComponent implements OnInit{
         const currentUser = await this.afAuth.currentUser;
         if(currentUser){
           await currentUser.updatePassword(newPassword);
-          this.toast.success('Password updated successfully.');
           this.pwCheck = true;
         }
       } catch (error){
-        this.toast.error('Error updating password. Please try again.')
         console.error('Error updating password: ', error);
         this.pwCheck = false;
       }

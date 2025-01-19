@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HotToastService } from '@ngneat/hot-toast';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 //Checks if the two password typed in the registerForm match
@@ -45,7 +44,7 @@ export class RegisterComponent implements OnInit{
     gender: new FormControl('', Validators.required) // Gender must be selected
   }, { validators: passwordsMatchValidator() })
 
-  constructor(private authService: AuthenticationService, private router: Router, private toast: HotToastService, private afs: AngularFirestore){}
+  constructor(private authService: AuthenticationService, private router: Router, private afs: AngularFirestore){}
 
   ngOnInit(): void {}
 
@@ -56,8 +55,6 @@ export class RegisterComponent implements OnInit{
   get confirmPassword(){ return this.registerForm.get('confirmPassword') }
   get weight() { return this.registerForm.get('weight'); }
   get gender() { return this.registerForm.get('gender'); }
-
-  //Registers the user's data into the Firestore database and shows a toast message.
   registerSubmit(){
     if(!this.registerForm.valid){ 
       console.log("Invalid form");
@@ -76,15 +73,8 @@ export class RegisterComponent implements OnInit{
     this.afs.collection('user').add(userData);
 
     const{ username, email, password } = this.registerForm.value;
-    this.authService.registerUser(username as string, email as string, password as string).pipe(
-      this.toast.observe({
-        success: 'Registration done!',
-        loading: 'Logging in...',
-        error: ({errorMessage}) => `${errorMessage}`
-      })
-    ).subscribe(() => {
-      this.authService.logoutUser();
-      this.router.navigate(['/login'])
-    })
+    this.authService.registerUser(username as string, email as string, password as string);
+    this.authService.logoutUser();
+    this.router.navigate(['/login']);
   }
 }

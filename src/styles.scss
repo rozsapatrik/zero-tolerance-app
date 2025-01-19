@@ -1,40 +1,9 @@
-@use 'node_modules/@ngneat/hot-toast/src/styles/styles.scss';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 //@import '/src/assets/myTheme.css';
-
-.ht-toast {
-  background-color: #323232;
-  color: #fff;
-  padding: 1rem;
-  border-radius: 0.25rem;
-  margin-top: 0.5rem;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
-  min-width: 15rem;
-  max-width: 20rem;
-  transition: transform 0.3s ease;
-}
-
-.ht-toast.ht-enter {
-  transform: translateX(20rem);
-}
-
-.ht-toast.ht-enter-active {
-  transform: translateX(0);
-}
-
-.ht-toast.ht-exit {
-  transform: translateX(0);
-}
-
-.ht-toast.ht-exit-active {
-  transform: translateX(20rem);
-}
-
 
 /*
 
@@ -59,9 +28,9 @@ THE SCREEN SIZE YOU WON'T BE ABLE TO TELL HOW WIDE THE CONTAINER ELEMENT IS
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: #323232;
   box-sizing: border-box;
-  color: black;
+  color: white;
   overflow: hidden;
 }
 

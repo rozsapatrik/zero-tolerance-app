@@ -1,7 +1,6 @@
 import { Injectable, Input } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { HotToastService } from '@ngneat/hot-toast';
 import { ActivatedRoute, Router } from '@angular/router';
 import { increment } from 'firebase/firestore';
 import { UserModule } from './user.module';
@@ -18,7 +17,6 @@ export class UserService {
   constructor(
     private afs : AngularFirestore,
     public auth : AngularFireAuth,
-    private toast: HotToastService,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -37,7 +35,6 @@ export class UserService {
       const userDoc = userDocs?.docs[0];
       return userDoc?.id;
     } else {
-      this.toast.error("Login to use this feature.");
       this.router.navigate(['/login']);
       throw new Error('No currently logged in user');
     }
