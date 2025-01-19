@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { NotyfService } from '../../services/notyf/notyf.service';
 
 @Component({
   selector: 'app-login',
@@ -24,9 +25,10 @@ export class LoginComponent implements OnInit{
     private auth: AngularFireAuth,
     private userService: UserService,
     private afs: AngularFirestore,
+    private notyfService: NotyfService
   ){}
 
-  ngOnInit(): void { console.log('HELLO'); }
+  ngOnInit(): void { console.log('HELLO');}
 
   get email(){ return this.loginForm.get('email'); }
   get password(){ return this.loginForm.get('password'); }
@@ -36,12 +38,26 @@ export class LoginComponent implements OnInit{
 
     const { email, password } = this.loginForm.value;
 
-    this.authService.login(email as string, password as string);
-
-    this.auth.user.subscribe(async user => {
-      if(user){
-        this.router.navigate(['/home'])
-      } 
+    this.authService.login(email as string, password as string).subscribe({
+      next: () => {
+        this.showSuccess();
+        this.auth.user.subscribe(async user => {
+          if(user){
+            this.router.navigate(['/home'])
+          } 
+        });
+      },
+      error: (error) => {
+        this.showError();
+      }
     })
+  }
+
+  showSuccess(): void {
+    this.notyfService.success('Logged in!');
+  }
+
+  showError(): void {
+    this.notyfService.error('Something went wrong.');
   }
 }

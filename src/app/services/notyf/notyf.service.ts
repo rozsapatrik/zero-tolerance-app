@@ -10,19 +10,18 @@ export class NotyfService {
   private notyf = new Notyf({
     duration: 4000, // Duration in milliseconds
     position: {
-      x: 'right',
+      x: 'center',
       y: 'top',
     },
+    ripple: false,
     types: [
       {
         type: 'success',
-        background: '#4CAF50',
-        icon: false,
+        background: '#4CAF50'
       },
       {
         type: 'error',
-        background: '#F44336',
-        icon: false,
+        background: '#F44336'
       },
     ],
   });
