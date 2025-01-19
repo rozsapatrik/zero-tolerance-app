@@ -8,7 +8,7 @@ export class NotyfService {
   constructor() { }
   
   private notyf = new Notyf({
-    duration: 4000, // Duration in milliseconds
+    duration: 4000,
     position: {
       x: 'center',
       y: 'top',

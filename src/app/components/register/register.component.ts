@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { NotyfService } from '../../services/notyf/notyf.service';
 
 //Checks if the two password typed in the registerForm match
 export function passwordsMatchValidator(): ValidatorFn{
@@ -44,7 +45,12 @@ export class RegisterComponent implements OnInit{
     gender: new FormControl('', Validators.required) // Gender must be selected
   }, { validators: passwordsMatchValidator() })
 
-  constructor(private authService: AuthenticationService, private router: Router, private afs: AngularFirestore){}
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router,
+    private afs: AngularFirestore,
+    private notyfService: NotyfService
+  ){}
 
   ngOnInit(): void {}
 
@@ -73,8 +79,15 @@ export class RegisterComponent implements OnInit{
     this.afs.collection('user').add(userData);
 
     const{ username, email, password } = this.registerForm.value;
-    this.authService.registerUser(username as string, email as string, password as string);
-    this.authService.logoutUser();
-    this.router.navigate(['/login']);
+    this.authService.registerUser(username as string, email as string, password as string).subscribe({
+      next: () => {
+        this.notyfService.success('Registered successfully');
+        this.authService.logoutUser();
+        this.router.navigate(['/login']);
+      },
+      error: (error) => {
+        this.notyfService.error('Something went wrong');
+      }
+    })
   }
 }

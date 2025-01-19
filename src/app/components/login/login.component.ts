@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit{
 
     this.authService.login(email as string, password as string).subscribe({
       next: () => {
-        this.showSuccess();
+        this.notyfService.success('Logged in');
         this.auth.user.subscribe(async user => {
           if(user){
             this.router.navigate(['/home'])
@@ -48,16 +48,8 @@ export class LoginComponent implements OnInit{
         });
       },
       error: (error) => {
-        this.showError();
+        this.notyfService.error('Something went wrong');
       }
     })
-  }
-
-  showSuccess(): void {
-    this.notyfService.success('Logged in!');
-  }
-
-  showError(): void {
-    this.notyfService.error('Something went wrong.');
   }
 }
