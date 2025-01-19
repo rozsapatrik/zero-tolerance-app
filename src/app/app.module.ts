@@ -72,6 +72,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { DrinkListComponent } from './components/drink-list/drink-list.component';
 import { AdminFormComponent } from './components/admin-form/admin-form.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 
 @NgModule({
@@ -139,6 +140,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
+    HotToastModule.forRoot(),
   ],
   providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent]
