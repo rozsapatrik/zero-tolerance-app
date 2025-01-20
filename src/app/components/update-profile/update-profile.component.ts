@@ -6,6 +6,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DocumentReference, getDoc } from "firebase/firestore";
 import { UserService } from 'src/app/services/user/user.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { NotyfService } from '../../services/notyf/notyf.service';
 
 export function passwordsMatchValidator(): ValidatorFn{
   return(AbsControl: AbstractControl): ValidationErrors | null => {
@@ -49,7 +50,8 @@ export class UpdateProfileComponent implements OnInit{
     private router: Router,
     private afs: AngularFirestore,
     private userService: UserService,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private notyfService: NotyfService
   ){}
 
   ngOnInit(): void {
@@ -94,6 +96,7 @@ export class UpdateProfileComponent implements OnInit{
     const user = this.userService.getCurrentUserId();
     if (!user) {
       console.error('User not logged in');
+      this.notyfService.error('User is not logged in');
       return;
     }
 
@@ -107,8 +110,8 @@ export class UpdateProfileComponent implements OnInit{
     if (newProfilePicUrl !== this.profilePicUrlFromDB && newProfilePicUrl != "") {
       this.profilePicUrlFromDB = newProfilePicUrl;
       userDocRef.update({ profilePicUrl: newProfilePicUrl })
-        .then(() => console.log('URL updated successfully'))
-        .catch((error) => console.error('Error updating URL:', error));
+        .then(() => this.notyfService.success('URL updated'))
+        .catch((error) => this.notyfService.error('Something went wrong'));
     }
 
     const newWeight = this.weight?.value;
@@ -132,10 +135,12 @@ export class UpdateProfileComponent implements OnInit{
         if(currentUser){
           await currentUser.updatePassword(newPassword);
           this.pwCheck = true;
+          this.notyfService.success('Password updated');
         }
       } catch (error){
         console.error('Error updating password: ', error);
         this.pwCheck = false;
+        this.notyfService.error('Something went wrong');
       }
     }
 
