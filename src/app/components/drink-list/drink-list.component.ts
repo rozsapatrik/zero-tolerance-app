@@ -4,6 +4,7 @@ import { map, Observable } from 'rxjs';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DateService } from 'src/app/services/date.service';
 import { UserService } from 'src/app/services/user/user.service';
+import { NotyfService } from '../../services/notyf/notyf.service';
 
 export interface Drink{
   name: string;
@@ -50,7 +51,8 @@ export class DrinkListComponent {
   constructor(private afs: AngularFirestore,
     private dateService: DateService,
     private authService: AuthenticationService,
-    private userService: UserService
+    private userService: UserService,
+    private notyfService: NotyfService
   ){}
 
   ngOnInit(){
@@ -167,11 +169,13 @@ export class DrinkListComponent {
       try {
         // Store the updated data to Firestore, merging with existing document
         await docRef.set(drinkAmountData, { merge: true });
+        this.notyfService.success('Drink added');
         console.log('Drink added to Firestore');
           
         // Clear the temporary data
         this.tempAmounts[drink.name] = { ml: 0, time: '', date: '', cps: 0 };
       } catch (error) {
+        this.notyfService.error('Something went wrong');
         console.error('Error adding drink to Firestore: ', error);
       }
     } else {
