@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { NotyfService } from '../../services/notyf/notyf.service';
 
 @Component({
   selector: 'app-admin-form',
@@ -14,7 +15,12 @@ export class AdminFormComponent {
   editingDrinkId: string | null = null;
   isEditMode: boolean = false;
 
-  constructor(private fb: FormBuilder, private afs: AngularFirestore, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private afs: AngularFirestore,
+    private router: Router,
+    private notyfService: NotyfService
+  ) {
     // Retrieve passed drink data
     const navigation = this.router.getCurrentNavigation();
     const state = navigation?.extras?.state as { drink: any };
@@ -67,16 +73,19 @@ export class AdminFormComponent {
         if (this.editingDrinkId) {
           // Update existing drink
           await this.afs.collection('drink').doc(this.editingDrinkId).update(drinkData);
+          this.notyfService.success('Drink updated');
           console.log('Drink updated successfully:', drinkData);
         } else {
           // Add new drink
           await this.afs.collection('drink').add(drinkData);
+          this.notyfService.success('Drink added');
           console.log('Drink added successfully:', drinkData);
         }
 
         // Navigate back to the admin page
         this.router.navigate(['/admin']);
       } catch (error) {
+        this.notyfService.error('Something went wrong');
         console.error('Error adding drink to Firestore:', error);
       }
     }
