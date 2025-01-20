@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DateService } from 'src/app/services/date.service';
 import { UserService } from 'src/app/services/user/user.service';
+import { NotyfService } from '../../services/notyf/notyf.service';
 
 interface DrinkData {
   drinkAmounts: { [key: string]: { id: string, amount: number; calories: number, alcohol: number, time: string }[] };
@@ -37,7 +38,8 @@ export class HomeComponent implements OnInit{
     private auth: AngularFireAuth,
     private userService: UserService,
     private dateService: DateService,
-    private router: Router
+    private router: Router,
+    private notyfService: NotyfService
   ){}
 
   async ngOnInit(): Promise<void> {
@@ -213,15 +215,18 @@ export class HomeComponent implements OnInit{
   
           // Update the document with the remaining drink amounts
           await docRef.set({ ...drinkData, drinkAmounts }, { merge: true });
+          this.notyfService.success('Drink deleted');
           console.log(`Deleted drink ${drink.name} at ${drink.time} from Firestore`);
   
           // Reload the drinks for the day after deletion
           this.fetchDrinksForTheDay();
         }
       } else {
+        this.notyfService.error('No document found');
         console.log('No document found to delete');
       }
     } catch (error) {
+      this.notyfService.error('Something went wrong');
       console.error('Error fetching or deleting document: ', error);
     }
   }
