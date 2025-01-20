@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
+import { NotyfService } from '../../services/notyf/notyf.service';
 
 @Component({
   selector: 'app-profile',
@@ -28,7 +29,8 @@ export class ProfileComponent {
     private route: ActivatedRoute,
     private auth: AngularFireAuth,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private notyfService: NotyfService
   ){}
 
   ngOnInit(){
@@ -52,7 +54,10 @@ export class ProfileComponent {
   }
 
   logoutUser(){
-    this.authService.logoutUser().subscribe(() => { this.router.navigate(['']); });
+    this.authService.logoutUser().subscribe(() => {
+      this.notyfService.success('Logged out');
+      this.router.navigate(['']);
+    });
   }
 
   async getUsername(){
