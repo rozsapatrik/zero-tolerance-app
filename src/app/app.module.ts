@@ -72,6 +72,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { DrinkListComponent } from './components/drink-list/drink-list.component';
 import { AdminFormComponent } from './components/admin-form/admin-form.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { TrimDecimalsPipe } from './pipes/trim-decimals.pipe';
 
 
 @NgModule({
@@ -89,6 +90,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     LandingPageComponent,
     DrinkListComponent,
     AdminFormComponent,
+    TrimDecimalsPipe,
   ],
   imports: [
     BrowserModule,

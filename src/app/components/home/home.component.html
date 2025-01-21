@@ -18,7 +18,7 @@
   <h3>Drinks for {{ selectedDate | date: 'yyyy-MM-dd' }}</h3>
   <ul>
     <li *ngFor="let drink of drinksForTheDay" (click)="onDrinkClick(drink)" style="background-color: lightblue;">
-      <strong>{{ drink.name }}</strong> - {{ drink.amount }} ml at {{ drink.time }} ({{ drink.calories }} kcal) ({{drink.alcohol}} alcohol)
+      <strong>{{ drink.name }}</strong> - {{ drink.amount }} ml at {{ drink.time }} ({{ drink.calories | trimDecimals:2 }} kcal) ({{drink.alcohol | trimDecimals:2 }} alcohol)
     </li>
   </ul>
 </div>
@@ -27,7 +27,7 @@
 </div>
 
 <div class="calorie-total">
-  <h3>Total calories for {{ selectedDate | date:'yyyy-MM-dd' }}: {{ totalCalories }}</h3>
+  <h3>Total calories for {{ selectedDate | date:'yyyy-MM-dd' }}: {{ totalCalories | trimDecimals:2 }}</h3>
 </div>
 <div class="drinks-total">
   <h3>Number of drinks for {{ selectedDate | date:'yyyy-MM-dd' }}: {{ totalDrinks }}</h3>
