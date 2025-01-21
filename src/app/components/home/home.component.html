@@ -17,8 +17,9 @@
 <div *ngIf="drinksForTheDay.length > 0">
   <h3>Drinks for {{ selectedDate | date: 'yyyy-MM-dd' }}</h3>
   <ul>
-    <li *ngFor="let drink of drinksForTheDay" (click)="onDrinkClick(drink)" style="background-color: lightblue;">
+    <li *ngFor="let drink of drinksForTheDay" style="background-color: lightblue;">
       <strong>{{ drink.name }}</strong> - {{ drink.amount }} ml at {{ drink.time }} ({{ drink.calories | trimDecimals:2 }} kcal) ({{drink.alcohol | trimDecimals:2 }} alcohol)
+      <span (click)="onDrinkClick(drink)">DELETE</span>
     </li>
   </ul>
 </div>
