@@ -19,7 +19,7 @@
   <ul>
     <li *ngFor="let drink of drinksForTheDay" style="background-color: lightblue;">
       <strong>{{ drink.name }}</strong> - {{ drink.amount }} ml at {{ drink.time }} ({{ drink.calories | trimDecimals:2 }} kcal) ({{drink.alcohol | trimDecimals:2 }} alcohol)
-      <span (click)="onDrinkClick(drink)">DELETE</span>
+      <span (click)="onDrinkClick(drink)" class="bi bi-x-circle-fill" style="cursor: pointer;"></span>
     </li>
   </ul>
 </div>
