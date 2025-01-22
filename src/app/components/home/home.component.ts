@@ -134,11 +134,11 @@ export class HomeComponent implements OnInit{
     // Calculate BAC based on past drinks
       const totalPastAlcoholGrams = pastDrinks.reduce((sum, drink) => sum + (drink.alcohol || 0), 0);
       if (pastDrinks.length > 0) {
-        const earliestDrinkTime = new Date(Math.min(...pastDrinks.map((drink) => drink.drinkDate.getTime())));
-        const timeElapsedHours = Math.max(0, (currentTime.getTime() - earliestDrinkTime.getTime()) / (1000 * 60 * 60));
+        const lastDrinkTime = new Date(Math.max(...pastDrinks.map((drink) => drink.drinkDate.getTime())));
+        const timeElapsedHours = Math.max(0, (currentTime.getTime() - lastDrinkTime.getTime()) / (1000 * 60 * 60));
 
-        console.log('Earliest past drink time:', earliestDrinkTime);
-        console.log('Time elapsed since first drink (hours):', timeElapsedHours);
+        console.log('Last past drink time:', lastDrinkTime);
+        console.log('Time elapsed since last drink (hours):', timeElapsedHours);
 
         this.bac =
             ((totalPastAlcoholGrams) / (weightInGrams * bodyWaterConstant)) * 100 - metabolismRate * timeElapsedHours;
@@ -156,7 +156,7 @@ export class HomeComponent implements OnInit{
       console.log('Estimated hours to sober:', soberHours*100);
 
       const earliestAllDrinkTime = new Date(Math.min(...drinkTimes.map((drink) => drink.drinkDate.getTime())));
-      const estimatedSoberTime = new Date(Math.max(currentTime.getTime(), earliestAllDrinkTime.getTime()) + (soberHours*100) * 60 * 60 * 1000);
+      const estimatedSoberTime = new Date(Math.max(earliestAllDrinkTime.getTime()) + (soberHours*100) * 60 * 60 * 1000);
 
       this.soberTime = estimatedSoberTime;
       console.log('Estimated time to be sober:', this.soberTime);  
