@@ -13,8 +13,8 @@ export class UserGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
-     return this.authService.isUser();
+           
+      return this.authService.isUser();
   }
   
 }

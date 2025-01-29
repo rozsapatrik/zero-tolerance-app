@@ -73,6 +73,7 @@ import { DrinkListComponent } from './components/drink-list/drink-list.component
 import { AdminFormComponent } from './components/admin-form/admin-form.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { TrimDecimalsPipe } from './pipes/trim-decimals.pipe';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 
 @NgModule({
@@ -91,6 +92,7 @@ import { TrimDecimalsPipe } from './pipes/trim-decimals.pipe';
     DrinkListComponent,
     AdminFormComponent,
     TrimDecimalsPipe,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,

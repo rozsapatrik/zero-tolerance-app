@@ -16,6 +16,7 @@ import { UserGuard } from './guards/user.guard';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { DrinkListComponent } from './components/drink-list/drink-list.component';
 import { AdminFormComponent } from './components/admin-form/admin-form.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/landing'},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'personalstats', component: StatsComponent, canActivate: [UserGuard]},
   {path: 'updateprofile', component: UpdateProfileComponent, canActivate: [UserGuard]},
   {path: 'drinklist', component: DrinkListComponent, canActivate: [UserGuard]},
+  {path: 'aboutus', component: AboutUsComponent, canActivate: [UserGuard]},
   {path: '**', component: PageNotFoundComponent}
 ];
 
