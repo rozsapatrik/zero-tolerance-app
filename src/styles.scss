@@ -14,6 +14,12 @@ THE SCREEN SIZE YOU WON'T BE ABLE TO TELL HOW WIDE THE CONTAINER ELEMENT IS
 
 */
 
+:root {
+  --ccPurple: #6f00ff;
+  --ccPink: #ff00dd;
+  --ccBlue: #0004ff;
+}
+
 .outer-container {
   height: 100vh;
   width: 100vw;
