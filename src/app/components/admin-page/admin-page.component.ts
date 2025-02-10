@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { NotyfService } from '../../services/notyf/notyf.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -15,10 +16,12 @@ export class AdminPageComponent {
   constructor(
     private afs: AngularFirestore,
     private router: Router,
-    private notyfService: NotyfService
+    private notyfService: NotyfService,
+    private userService: UserService
   ) {}
 
-  ngOnInit(){
+  ngOnInit(): void{
+    this.userService.getCurrentUserId();
     this.fetchAllDrinks();
   }
 

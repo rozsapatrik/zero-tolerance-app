@@ -56,6 +56,7 @@ export class DrinkListComponent {
   ){}
 
   ngOnInit(){
+    this.userService.getCurrentUserId();
     this.selectedDate = this.dateService.getSelectedDate();
 
     this.getDrinks().subscribe(drinks => {

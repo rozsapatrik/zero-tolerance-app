@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { NotyfService } from '../../services/notyf/notyf.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-admin-form',
@@ -19,7 +20,8 @@ export class AdminFormComponent {
     private fb: FormBuilder,
     private afs: AngularFirestore,
     private router: Router,
-    private notyfService: NotyfService
+    private notyfService: NotyfService,
+    private userService: UserService
   ) {
     // Retrieve passed drink data
     const navigation = this.router.getCurrentNavigation();
@@ -46,6 +48,7 @@ export class AdminFormComponent {
   }
 
   ngOnInit(): void {
+    this.userService.getCurrentUserId();
     this.initializeForm();
     const drinkToEdit = history.state.drink;
     if (drinkToEdit) {
