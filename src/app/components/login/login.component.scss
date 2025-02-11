@@ -1,0 +1,20 @@
+.loginForm {
+    width: 100%;
+}
+
+.loginButtonDiv {
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loginButton {
+    margin-top: 5%;
+    width: 80%;
+    height: 3.5rem;
+    border-radius: 50px 50px 50px 50px;
+    font-size: large;
+    color: white;
+    background-color: var(--ccBlue);
+}
