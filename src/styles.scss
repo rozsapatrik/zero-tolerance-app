@@ -3,16 +3,13 @@
 @tailwind utilities;
 
 @import "~bootstrap-icons/font/bootstrap-icons.css";
-
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-//@import '/src/assets/myTheme.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-/*
+body {
+    font-family: 'Roboto', sans-serif;
+}
 
-CHANGE BLUE BACKGROUND TO BLACK SO REGARDLESS OF
-THE SCREEN SIZE YOU WON'T BE ABLE TO TELL HOW WIDE THE CONTAINER ELEMENT IS
-
-*/
 
 :root {
   --ccPurple: #6f00ff;

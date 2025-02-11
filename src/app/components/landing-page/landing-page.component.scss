@@ -1,0 +1,42 @@
+.inner-container {
+    margin-bottom: 100%;
+
+  }
+
+  .inner-container > div > p {
+    text-align: center;
+    font-size: 2vh;
+  }
+
+  .inner-container > div > h1 {
+    text-align: center;
+    font-size: 5vh;
+    font-weight: bold;
+  }
+
+  .landingButtonDiv {
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #landingRegister {
+    width: 60%;
+    height: 3.5rem;
+    margin-top: 10%;
+    border-radius: 50px 50px 50px 50px;
+    font-size: large;
+    background-color: var(--ccBlue);
+    color: white;
+  }
+
+  #landingLogin {
+    margin-top: 5%;
+    width: 60%;
+    height: 3.5rem;
+    border-radius: 50px 50px 50px 50px;
+    font-size: large;
+    background-color: var(--ccPurple);
+    color: white;
+  }
