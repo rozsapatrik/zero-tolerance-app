@@ -1,50 +1,55 @@
-<form [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+<div class="formContainer">
+    <h1>Sign Up</h1><br>
+    <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" class="registerForm">
 
-    <mat-form-field class="username-mat-form-field">
-        <input class="username-input" placeholder="Username" formControlName="username" matInput/>
-        <mat-error *ngIf="username?.errors?.['required']">Please enter a username!</mat-error>
-    </mat-form-field>
+        <mat-form-field class="username-mat-form-field matFormRegister">
+            <input class="username-input" placeholder="Username" formControlName="username" matInput class="inputFieldZT"/>
+            <mat-error *ngIf="username?.errors?.['required']">Please enter a username!</mat-error>
+        </mat-form-field><br>
 
-    <mat-form-field class="email-mat-form-field">
-        <input class="email-input" placeholder="E-mail" formControlName="email" matInput/>
-        <mat-error *ngIf="email?.errors?.['required']">Please enter an e-mail!</mat-error>
-        <mat-error *ngIf="email?.errors?.['emailFormat']">Please enter a valid e-mail address!</mat-error>
-    </mat-form-field>
+        <mat-form-field class="email-mat-form-field matFormRegister">
+            <input class="email-input" placeholder="E-mail" formControlName="email" matInput class="inputFieldZT"/>
+            <mat-error *ngIf="email?.errors?.['required']">Please enter an e-mail!</mat-error>
+            <mat-error *ngIf="email?.errors?.['emailFormat']">Please enter a valid e-mail address!</mat-error>
+        </mat-form-field><br>
 
-    <mat-form-field class="password-mat-form-field">
-        <input class="password-input" placeholder="Password" formControlName="password" type="password" matInput/>
-        <mat-error *ngIf="password?.errors?.['required']">Please type in a password!</mat-error>
-    </mat-form-field>
+        <mat-form-field class="password-mat-form-field matFormRegister">
+            <input class="password-input" placeholder="Password" formControlName="password" type="password" matInput class="inputFieldZT"/>
+            <mat-error *ngIf="password?.errors?.['required']">Please type in a password!</mat-error>
+        </mat-form-field><br>
 
-    <mat-form-field class="confirm-password-mat-form-field">
-        <input class="confirm-password-input" placeholder="Confirm Password" formControlName="confirmPassword" type="password" matInput/>
-        <mat-error *ngIf="confirmPassword?.errors?.['required']">Please confirm your password!</mat-error>
-    </mat-form-field>
+        <mat-form-field class="confirm-password-mat-form-field matFormRegister">
+            <input class="confirm-password-input" placeholder="Confirm Password" formControlName="confirmPassword"
+                type="password" matInput class="inputFieldZT"/>
+            <mat-error *ngIf="confirmPassword?.errors?.['required']">Please confirm your password!</mat-error>
+        </mat-form-field><br>
 
-    <mat-error *ngIf="registerForm.errors?.['passwordsDontMatch']">The passwords do not match</mat-error>
-    <mat-error *ngIf="registerForm.errors?.['passwordLengthMin']">Password must be at least 8 characters!</mat-error>
+        <mat-error *ngIf="registerForm.errors?.['passwordsDontMatch']">The passwords do not match</mat-error>
+        <mat-error *ngIf="registerForm.errors?.['passwordLengthMin']">Password must be at least 8
+            characters!</mat-error>
 
-    <!-- Weight Input -->
-    <mat-form-field class="weight-mat-form-field">
-        <input class="weight-input" type="number" placeholder="Weight (kg)" formControlName="weight" matInput />
-        <mat-error *ngIf="weight?.errors?.['required']">Please enter your weight!</mat-error>
-        <mat-error *ngIf="weight?.errors?.['min']">Weight must be at least 30kg!</mat-error>
-    </mat-form-field>
+        <!-- Weight Input -->
+        <mat-form-field class="weight-mat-form-field matFormRegister">
+            <input class="weight-input" type="number" placeholder="Weight (kg)" formControlName="weight" matInput class="inputFieldZT"/>
+            <mat-error *ngIf="weight?.errors?.['required']">Please enter your weight!</mat-error>
+            <mat-error *ngIf="weight?.errors?.['min']">Weight must be at least 30kg!</mat-error>
+        </mat-form-field><br>
 
-      <!-- Gender Selection -->
-    <div class="gender-selection">
-        <label>
-        <input type="radio" formControlName="gender" value="male" />
-        Male
-        </label>
-        <label>
-        <input type="radio" formControlName="gender" value="female" />
-        Female
-        </label>
-        <mat-error *ngIf="gender?.errors?.['required']">Please select your gender!</mat-error>
-    </div>
+        <!-- Gender Selection -->
+        <div class="gender-selection">
+            <label>
+                <input type="radio" formControlName="gender" value="male" />
+                Male
+            </label>
+            <label>
+                <input type="radio" formControlName="gender" value="female" />
+                Female
+            </label>
+            <mat-error *ngIf="gender?.errors?.['required']">Please select your gender!</mat-error>
+        </div><br>
 
-    <div class="center margin-top">
-        <button type="submit" mat-flat-button color="primary">Register</button>
-    </div>
-</form>
+        <div class="registerButtonDiv">
+            <button type="submit" mat-flat-button class="registerButton">Sign Up</button>
+        </div>
+    </form>
+</div>
