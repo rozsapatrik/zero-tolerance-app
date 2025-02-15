@@ -43,7 +43,7 @@ export class ProfileComponent {
           console.log(this.currentUserID);
 
           this.getUsername();
-          this.getFavoriteDrink();
+          //this.getFavoriteDrink();
           this.getRegisterDate();
           this.getProfilePicture();
           this.getGender();
@@ -66,11 +66,11 @@ export class ProfileComponent {
     this.username = userDoc?.get('username');
   }
 
-  async getFavoriteDrink(){
+  /*async getFavoriteDrink(){
     const userDocRef = this.afs.collection("user").doc(this.currentUserID);
     const userDoc = await userDocRef.get().toPromise();
     this.favoriteDrink = userDoc?.get('favoriteDrink');
-  }
+  }*/
 
   async getRegisterDate(){
     const userDocRef = this.afs.collection("user").doc(this.currentUserID);
@@ -89,7 +89,8 @@ export class ProfileComponent {
   async getGender(){
     const userDocRef = this.afs.collection("user").doc(this.currentUserID);
     const userDoc = await userDocRef.get().toPromise();
-    this.gender = userDoc?.get('gender');
+    const genderTemp = userDoc?.get('gender');
+    this.gender = genderTemp.charAt(0).toUpperCase() + genderTemp.slice(1);
   }
 
   async getWeight(){
