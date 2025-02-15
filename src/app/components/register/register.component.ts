@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit{
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     confirmPassword: new FormControl('', Validators.required),
     weight: new FormControl('', [Validators.required, Validators.min(30)]), // Minimum weight validation
-    gender: new FormControl('', Validators.required) // Gender must be selected
+    gender: new FormControl('male', Validators.required) // Gender must be selected
   }, { validators: passwordsMatchValidator() })
 
   constructor(
