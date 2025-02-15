@@ -1,0 +1,58 @@
+.profileContainer {
+    //width: 100%;
+    width: 25vh;
+    margin-bottom: 100%;
+}
+
+.headerContainer > h1 {
+    text-align: center;
+    font-size: 5vh;
+}
+
+.headerContainer > img {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50px 50px 50px 50px;
+}
+
+.infoContainer {
+    text-align: center;
+    padding-bottom: 5vh;
+}
+
+.profileButtonDiv {
+  text-align: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profileStatsBtn {
+  width: 100%;
+  height: 3.5rem;
+  //margin-top: 10%;
+  border-radius: 50px 50px 50px 50px;
+  font-size: large;
+  background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
+  color: white;
+}
+
+.profileUpdateBtn {
+  width: 100%;
+  height: 3.5rem;
+  margin-top: 10%;
+  border-radius: 50px 50px 50px 50px;
+  font-size: large;
+  background-image: linear-gradient(135deg, #8400ff 0%, #48009b 100%);
+  color: white;
+}
+
+.profileLogoutBtn {
+    width: 100%;
+    height: 3.5rem;
+    margin-top: 10%;
+    border-radius: 50px 50px 50px 50px;
+    font-size: large;
+    background-image: linear-gradient(135deg, #ff00ff 0%, #6e0065 100%);
+    color: white;
+  }
