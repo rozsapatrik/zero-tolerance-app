@@ -74,6 +74,7 @@ import { AdminFormComponent } from './components/admin-form/admin-form.component
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { TrimDecimalsPipe } from './pipes/trim-decimals.pipe';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 @NgModule({
@@ -93,6 +94,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     AdminFormComponent,
     TrimDecimalsPipe,
     AboutUsComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
