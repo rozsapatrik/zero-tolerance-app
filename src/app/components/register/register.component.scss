@@ -30,7 +30,8 @@
 }
 
 .mat-mdc-unelevated-button:not(:disabled) {
-    background-color: var(--ccBlue);
+    //background-color: var(--ccBlue);
+    background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
 }
 
 .registerButton {

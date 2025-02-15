@@ -125,7 +125,7 @@ export class UpdateProfileComponent implements OnInit{
     }
 
     if (Object.keys(updates).length > 0) {
-      userDocRef.update(updates);
+      userDocRef.update(updates).then(() => this.notyfService.success('Profile updated'));
     }
 
     const newPassword = this.password?.value;

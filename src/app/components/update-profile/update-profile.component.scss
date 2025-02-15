@@ -1,0 +1,106 @@
+.formContainer {
+    width: 100%;
+    margin-bottom: 150%;
+}
+
+.formContainer>h1 {
+    text-align: center;
+    font-size: 5vh;
+}
+
+.updateForm {
+    width: 30vh;
+    height: 25vh;
+    padding-top: 5vh;
+}
+
+.matFormFieldUpdate {
+    min-width: 100%;
+    min-height: 10vh;
+}
+
+.matFormFieldUpdate>mat-error {
+    height: 10vh;
+}
+
+.inputFieldZT {
+    background-color: #212121;
+    color: white;
+    border-radius: 50px 50px 50px 50px;
+    width: 100%;
+    text-align: center;
+    min-height: 6vh;
+    padding-bottom: 0%;
+}
+
+.updateButtonDiv {
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+}
+
+.mat-mdc-unelevated-button:not(:disabled) {
+    //background-color: var(--ccBlue);
+    background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
+}
+
+.updateButton {
+    margin-top: 5%;
+    width: 85%;
+    height: 3.5rem;
+    border-radius: 50px 50px 50px 50px;
+    font-size: large;
+    color: white;
+    //background-color: var(--ccBlue);
+    background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
+}
+
+.genderSelection div {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    justify-content: center;
+}
+
+.genderSelection input[type="radio"] {
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.genderSelection input[type="radio"]:checked+span {
+    //box-shadow: 0 0 0 0.0625em var(--ccPink);
+    box-shadow: 0 0 0 0.0625em linear-gradient(135deg, #f700ff 0%, #87008b 100%);
+    //background-color: var(--ccPink);
+    background-image: linear-gradient(135deg, #f700ff 0%, #87008b 100%);
+    z-index: 1;
+    color: white;
+}
+
+label span {
+    display: block;
+    cursor: pointer;
+    background-color: #212121;
+    padding: 0.375em .75em;
+    position: relative;
+    margin-left: .0625em;
+    box-shadow: 0 0 0 0.0625em #212121;
+    letter-spacing: .05em;
+    color: lightgray;
+    text-align: center;
+    transition: background-color .5s ease;
+  }
+
+  label:first-child span {
+    border-radius: .375em 0 0 .375em;
+  }
+  
+  label:last-child span {
+    border-radius: 0 .375em .375em 0;
+  }

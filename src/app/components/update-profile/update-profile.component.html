@@ -1,48 +1,93 @@
-<div class="profileContainer">
-    <div class="headerContainer">
-        <img id="profilePic" src="" style="width: 100px;">
-        <h1 class="usernameText">{{usernameFromDB}}</h1>
+<div class="formContainer">
+  <h1>Update Profile</h1>
+
+  <form
+    [formGroup]="updateProfileForm"
+    (ngSubmit)="updateProfileSubmit()"
+    class="updateForm"
+  >
+    <mat-form-field class="profilepicurl-mat-form-field matFormFieldUpdate">
+      <input
+        class="profilePic-input inputFieldZT"
+        id="profilePicInput"
+        [value]="profilePicUrlFromDB"
+        placeholder="Picture URL"
+        formControlName="profilePicUrl"
+        matInput
+      />
+    </mat-form-field>
+
+    <mat-form-field class="password-mat-form-field matFormFieldUpdate">
+      <input
+        class="password-input inputFieldZT"
+        placeholder="Password"
+        formControlName="password"
+        type="password"
+        matInput
+      />
+    </mat-form-field>
+
+    <mat-form-field class="confirm-password-mat-form-field matFormFieldUpdate">
+      <input
+        class="confirm-password-input inputFieldZT"
+        placeholder="Confirm Password"
+        formControlName="confirmPassword"
+        type="password"
+        matInput
+      />
+    </mat-form-field>
+
+    <mat-error *ngIf="updateProfileForm.errors?.['passwordsDontMatch']"
+      >The passwords do not match</mat-error
+    >
+    <mat-error *ngIf="updateProfileForm.errors?.['passwordLengthMin']"
+      >Password must be at least 8 characters!</mat-error
+    >
+
+    <!-- Weight Input -->
+    <mat-form-field class="weight-mat-form-field matFormFieldUpdate">
+      <input
+        type="number"
+        placeholder="Weight (kg)"
+        formControlName="weight"
+        matInput
+        id="weightInput"
+        class="inputFieldZT"
+      />
+      <mat-error *ngIf="weight?.errors?.['required']"
+        >Please enter your weight!</mat-error
+      >
+      <mat-error *ngIf="weight?.errors?.['min']"
+        >Weight must be at least 30kg!</mat-error
+      >
+    </mat-form-field>
+
+    <!-- Gender Selection -->
+    <div class="genderSelection">
+      <div>
+        <label>
+          <input type="radio" formControlName="gender" value="male" />
+          <span>&nbsp; Male &nbsp;</span>
+        </label>
+        <label>
+          <input type="radio" formControlName="gender" value="female" />
+          <span>Female</span>
+        </label>
+        <mat-error *ngIf="gender?.errors?.['required']"
+          >Please select your gender!</mat-error
+        >
+      </div>
     </div>
+
+    <div class="updateButtonDiv">
+      <button
+        type="submit"
+        mat-flat-button
+        color="primary"
+        class="updateButton"
+      >
+        Update Profile
+      </button>
+    </div>
+  </form>
 </div>
-
-<form [formGroup]="updateProfileForm" (ngSubmit)="updateProfileSubmit()">
-
-    <mat-form-field class="profilepicurl-mat-form-field">
-        <input class="profilePic-input" id="profilePicInput" [value]="profilePicUrlFromDB" placeholder="Picture URL" formControlName="profilePicUrl" matInput/>
-    </mat-form-field>
-
-    <mat-form-field class="password-mat-form-field">
-        <input class="password-input" placeholder="Password" formControlName="password" type="password" matInput/>
-    </mat-form-field>
-
-    <mat-form-field class="confirm-password-mat-form-field">
-        <input class="confirm-password-input" placeholder="Confirm Password" formControlName="confirmPassword" type="password" matInput/>
-    </mat-form-field>
-
-    <mat-error *ngIf="updateProfileForm.errors?.['passwordsDontMatch']">The passwords do not match</mat-error>
-    <mat-error *ngIf="updateProfileForm.errors?.['passwordLengthMin']">Password must be at least 8 characters!</mat-error>
-
-      <!-- Weight Input -->
-    <mat-form-field class="weight-mat-form-field">
-        <input type="number" placeholder="Weight (kg)" formControlName="weight" matInput id="weightInput"/>
-        <mat-error *ngIf="weight?.errors?.['required']">Please enter your weight!</mat-error>
-        <mat-error *ngIf="weight?.errors?.['min']">Weight must be at least 30kg!</mat-error>
-    </mat-form-field>
-
-      <!-- Gender Selection -->
-    <div class="gender-selection">
-        <label>
-        <input type="radio" formControlName="gender" value="male" />
-        Male
-        </label>
-        <label>
-        <input type="radio" formControlName="gender" value="female" />
-        Female
-        </label>
-        <mat-error *ngIf="gender?.errors?.['required']">Please select your gender!</mat-error>
-    </div>
-
-    <div class="center margin-top">
-        <button type="submit" mat-flat-button color="primary">Update profile</button>
-    </div>
-</form>
