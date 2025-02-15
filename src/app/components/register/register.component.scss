@@ -40,7 +40,8 @@
     border-radius: 50px 50px 50px 50px;
     font-size: large;
     color: white;
-    background-color: var(--ccBlue);
+    //background-color: var(--ccBlue);
+    background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
 }
 
 .matFormRegister {
@@ -88,8 +89,10 @@
 }
 
 .genderSelection input[type="radio"]:checked+span {
-    box-shadow: 0 0 0 0.0625em var(--ccPink);
-    background-color: var(--ccPink);
+    //box-shadow: 0 0 0 0.0625em var(--ccPink);
+    box-shadow: 0 0 0 0.0625em linear-gradient(135deg, #f700ff 0%, #87008b 100%);
+    //background-color: var(--ccPink);
+    background-image: linear-gradient(135deg, #f700ff 0%, #87008b 100%);
     z-index: 1;
     color: white;
 }
