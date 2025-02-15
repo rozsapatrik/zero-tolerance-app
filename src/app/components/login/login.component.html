@@ -1,20 +1,23 @@
-<form [formGroup]="loginForm" (ngSubmit)="submit()" class="loginForm">
+<div class="formContainer">
+  <h1>Sign In</h1><br>
+  <form [formGroup]="loginForm" (ngSubmit)="submit()" class="loginForm">
 
     <mat-form-field class="matFormLogin">
-      <input placeholder="E-mail" formControlName="email"  class="inputFieldZT"/>
-      <mat-error *ngIf="email?.errors?.['required']">Type in an<b>e-mail</b> address</mat-error>
-      <mat-error *ngIf="email?.errors?.['email']">Invalid <b>e-mail</b> address</mat-error>
+      <input placeholder="E-mail" formControlName="email" class="inputFieldZT" matInput/>
+      <mat-error *ngIf="email?.errors?.['required']" class="matError">Type in an e-mail address</mat-error>
+      <mat-error *ngIf="email?.errors?.['email']" class="matError">Invalid e-mail address</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field class="matFormLogin">
-      <input placeholder="Password" formControlName="password" type="password" class="inputFieldZT"/>
-      <mat-error *ngIf="password?.errors?.['required']"
-        >Type in your <b>password</b>
+      <input placeholder="Password" formControlName="password" type="password" class="inputFieldZT" matInput/>
+      <mat-error *ngIf="password?.errors?.['required']" class="matError">Type in your password
       </mat-error>
     </mat-form-field>
+    <br>
 
     <div class="loginButtonDiv">
       <button mat-flat-button class="loginButton" type="submit">Sign In</button>
     </div>
-         
+
   </form>
+</div>
