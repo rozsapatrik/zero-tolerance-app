@@ -35,7 +35,7 @@ export class UserService {
       const userDoc = userDocs?.docs[0];
       return userDoc?.id;
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/landing']);
       throw new Error('No currently logged in user');
     }
   }
