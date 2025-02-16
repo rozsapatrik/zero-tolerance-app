@@ -1,12 +1,21 @@
 <div class="home-container">
   <div class="date-picker-container">
-    <div class="date-display-box" (click)="picker.open()">
+    <!--<div class="date-display-box" (click)="picker.open()">
+      {{ selectedDate | date: 'yyyy-MM-dd' }}
+    </div>-->
+
+    <div class="date-display-box" (click)="openDatePicker()">
       {{ selectedDate | date: 'yyyy-MM-dd' }}
     </div>
-    <mat-form-field class="date-picker-field">
+
+    <!--<mat-form-field class="date-picker-field">
       <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event)" hidden />
       <mat-datepicker #picker panelClass="customDatePicker"></mat-datepicker>
-    </mat-form-field>
+    </mat-form-field>-->
+
+    <div class="date-picker-field">
+      <input type="date" [value]="getFormattedDate(selectedDate)" (change)="onDateChange($event)" #dateInput class="hidden-date-input"/>
+    </div>
   </div>
 
   <div *ngIf="drinksForTheDay.length > 0">
@@ -35,7 +44,8 @@
     <!-- New Section for BAC -->
     <div class="bac-display">
       <h3>Estimated BAC:<span class="info-container-right">{{ bac | number: '1.2-2' }}%</span></h3>
-      <p *ngIf="soberTime">Sober:<span class="info-container-right">~ {{ soberTime | date: 'EEE MMM dd yyyy HH:mm:ss' }}</span></p>
+      <p *ngIf="soberTime">Sober:<span class="info-container-right">~ {{ soberTime | date: 'EEE MMM dd yyyy HH:mm:ss'
+          }}</span></p>
     </div>
   </div>
   <div class="add-drink-container">

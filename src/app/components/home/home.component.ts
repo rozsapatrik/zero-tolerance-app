@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -41,6 +41,8 @@ export class HomeComponent implements OnInit{
     private router: Router,
     private notyfService: NotyfService
   ){}
+
+  @ViewChild('dateInput') dateInput!: ElementRef<HTMLInputElement>;
 
   async ngOnInit(): Promise<void> {
     // Initialize selected date from DateService or today's date
@@ -171,6 +173,14 @@ export class HomeComponent implements OnInit{
     this.selectedDate = new Date(event.target.value);
     this.dateService.setSelectedDate(this.selectedDate);
     this.fetchDrinksForTheDay();
+  }
+
+  getFormattedDate(date: Date): string {
+    return date.toISOString().split('T')[0]; // Formats date as YYYY-MM-DD for the input field
+  }
+
+  openDatePicker() {
+    this.dateInput.nativeElement.showPicker(); // Opens the native date picker
   }
 
   redirectToDrinks(){ this.router.navigate(['/drinklist']); }

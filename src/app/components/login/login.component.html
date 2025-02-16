@@ -3,7 +3,7 @@
   <form [formGroup]="loginForm" (ngSubmit)="submit()" class="loginForm">
 
     <mat-form-field class="matFormLogin">
-      <input placeholder="E-mail" formControlName="email" class="inputFieldZT" matInput/>
+      <input placeholder="E-mail" formControlName="email" class="inputFieldZT" matInput type="text"/>
       <mat-error *ngIf="email?.errors?.['required']" class="matError">Type in an e-mail address</mat-error>
       <mat-error *ngIf="email?.errors?.['email']" class="matError">Invalid e-mail address</mat-error>
     </mat-form-field>

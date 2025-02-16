@@ -3,11 +3,11 @@
   <br />
   <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" class="registerForm">
     <mat-form-field class="username-mat-form-field matFormRegister">
-      <input class="username-input" placeholder="Username" formControlName="username" matInput class="inputFieldZT" />
+      <input class="username-input" placeholder="Username" formControlName="username" matInput class="inputFieldZT" type="text"/>
       <mat-error *ngIf="username?.errors?.['required']">Please enter a username!</mat-error> </mat-form-field><br />
 
     <mat-form-field class="email-mat-form-field matFormRegister">
-      <input class="email-input" placeholder="E-mail" formControlName="email" matInput class="inputFieldZT" />
+      <input class="email-input" placeholder="E-mail" formControlName="email" matInput class="inputFieldZT" type="text"/>
       <mat-error *ngIf="email?.errors?.['required']">Please enter an e-mail!</mat-error>
       <mat-error *ngIf="email?.errors?.['emailFormat']">Please enter a valid e-mail address!</mat-error>
     </mat-form-field><br />

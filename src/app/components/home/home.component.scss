@@ -83,3 +83,14 @@ ul li:not(:last-child) {
   margin-right: -1vh;
   margin-top: -1.5vh;
 }
+
+.hidden-date-input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.date-picker-field {
+  padding-bottom: 10%;
+}
