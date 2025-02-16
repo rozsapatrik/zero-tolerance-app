@@ -9,6 +9,7 @@
         <span>{{weight}} kg</span><br>
     </div>
     <div class="profileButtonDiv">
+        <button mat-flat-button (click)="redirectToAdminPage()" class="profileAdminBtn" *ngIf="this.username === 'admin'">Admin Page</button><br>
         <button mat-flat-button (click)="redirectToPersonalStats()" class="profileStatsBtn">Personal Stats</button><br>
         <button mat-flat-button (click)="redirectToUpdateProfile()" class="profileUpdateBtn">Update Profile</button><br>
         <button mat-flat-button (click)="logoutUser()" class="profileLogoutBtn">Logout</button>

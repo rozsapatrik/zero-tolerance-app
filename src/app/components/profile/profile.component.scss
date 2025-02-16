@@ -30,7 +30,7 @@
 .profileStatsBtn {
   width: 100%;
   height: 3.5rem;
-  //margin-top: 10%;
+  margin-top: 10%;
   border-radius: 50px 50px 50px 50px;
   font-size: large;
   background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
@@ -54,5 +54,15 @@
     border-radius: 50px 50px 50px 50px;
     font-size: large;
     background-image: linear-gradient(135deg, #ff00ff 0%, #6e0065 100%);
+    color: white;
+  }
+
+  .profileAdminBtn {
+    width: 100%;
+    height: 3.5rem;
+    //margin-top: 10%;
+    border-radius: 50px 50px 50px 50px;
+    font-size: large;
+    background-image: linear-gradient(135deg, #0099ff 0%, #003c6e 100%);
     color: white;
   }

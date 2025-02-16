@@ -101,4 +101,5 @@ export class ProfileComponent {
 
   redirectToPersonalStats(){ this.router.navigate(['/personalstats']); }
   redirectToUpdateProfile(){ this.router.navigate(['/updateprofile']); }
+  redirectToAdminPage() { this.router.navigate(['/admin']); }
 }
