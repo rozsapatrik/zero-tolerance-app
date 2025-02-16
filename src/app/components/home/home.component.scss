@@ -1,30 +1,85 @@
+.home-container {
+  //width: 100%;
+  width: 40vh;
+  //margin-bottom: 100%;
+  padding-top: 20%;
+  height: 100vh;
+}
+
 .date-picker-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .date-display-box {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-    width: 150px;
-  }
-  
-  .date-picker-field {
-    display: none; /* Hides the default date picker input */
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .customDatePicker {
-    transform: translateX(-50%) !important;
-    left: 50% !important;
-  }
+.date-display-box {
+  background-color: #212121;
+  color: white;
+  border-radius: 50px 50px 50px 50px;
+  width: 100%;
+  text-align: center;
+  min-height: 6vh;
+  padding: 20px;
+  cursor: pointer;
+}
 
-  .mat-datepicker-content {
-    transform: translateX(-50%) !important; /* Shift left to center */
-    left: 50% !important; /* Start from the center */
-  }
-  
-  
+.info-container {
+  padding-top: 5%;
+}
+
+.info-container-right {
+  float: right;
+}
+
+ul > li {
+  text-align: center;
+}
+
+.add-drink-container {
+  text-align: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2vh;
+}
+
+.add-drink-button {
+  margin-top: 5%;
+  width: 65%;
+  height: 3.5rem;
+  border-radius: 50px 50px 50px 50px;
+  font-size: large;
+  color: white;
+  background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
+}
+
+.no-drinks {
+  text-align: center;
+}
+
+.home-container ul {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  background-color: #21212180;
+  border-radius: 20px 20px 20px 20px;
+  border: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
+}
+
+ul li:not(:last-child) {
+  border-bottom: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
+}
+
+
+.home-container li {
+  position: relative;
+  cursor: pointer;
+  padding: 20px;
+}
+
+.remove-drink {
+  color: red;
+  float: right;
+  margin-right: -1vh;
+  margin-top: -1.5vh;
+}

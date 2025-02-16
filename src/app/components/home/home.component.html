@@ -1,4 +1,5 @@
-<div class="date-picker-container">
+<div class="home-container">
+  <div class="date-picker-container">
     <div class="date-display-box" (click)="picker.open()">
       {{ selectedDate | date: 'yyyy-MM-dd' }}
     </div>
@@ -6,39 +7,38 @@
       <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event)" hidden />
       <mat-datepicker #picker panelClass="customDatePicker"></mat-datepicker>
     </mat-form-field>
-</div>
+  </div>
 
-<div>
-  <div>
-    <button mat-flat-button (click)="redirectToDrinks()">Add Drink</button>
+  <div *ngIf="drinksForTheDay.length > 0">
+    <ul>
+      <li *ngFor="let drink of drinksForTheDay">
+        <span class="drink-name">{{ drink.name }}</span>
+        <span (click)="onDrinkClick(drink)" class="bi bi-x-lg remove-drink" style="cursor: pointer;"></span>
+        <br> {{ drink.amount }} ml - {{ drink.time }} - {{ drink.calories |
+        trimDecimals:2 }} kcal - {{drink.alcohol | trimDecimals:2 }} alcohol
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="drinksForTheDay.length === 0" class="no-drinks">
+    <p>No drinks recorded for this day</p>
+  </div>
+
+  <div class="info-container" *ngIf="totalDrinks != 0">
+    <div class="calorie-total">
+      <!--<h3>Total calories for {{ selectedDate | date:'yyyy-MM-dd' }}: {{ totalCalories | trimDecimals:2 }}</h3>-->
+      <p>Total calories:<span class="info-container-right">{{ totalCalories | trimDecimals:2 }} kcal</span></p>
+    </div>
+    <div class="drinks-total">
+      <!--<h3>Number of drinks for {{ selectedDate | date:'yyyy-MM-dd' }}: {{ totalDrinks }}</h3>-->
+      <p>Number of drinks:<span class="info-container-right">{{ totalDrinks }}</span></p>
+    </div>
+    <!-- New Section for BAC -->
+    <div class="bac-display">
+      <h3>Estimated BAC:<span class="info-container-right">{{ bac | number: '1.2-2' }}%</span></h3>
+      <p *ngIf="soberTime">Sober:<span class="info-container-right">~ {{ soberTime | date: 'EEE MMM dd yyyy HH:mm:ss' }}</span></p>
+    </div>
+  </div>
+  <div class="add-drink-container">
+    <button mat-flat-button (click)="redirectToDrinks()" class="add-drink-button">Add Drink</button>
   </div>
 </div>
-
-<div *ngIf="drinksForTheDay.length > 0">
-  <h3>Drinks for {{ selectedDate | date: 'yyyy-MM-dd' }}</h3>
-  <ul>
-    <li *ngFor="let drink of drinksForTheDay" style="background-color: lightblue;">
-      <strong>{{ drink.name }}</strong> - {{ drink.amount }} ml at {{ drink.time }} ({{ drink.calories | trimDecimals:2 }} kcal) ({{drink.alcohol | trimDecimals:2 }} alcohol)
-      <span (click)="onDrinkClick(drink)" class="bi bi-x-circle-fill" style="cursor: pointer;"></span>
-    </li>
-  </ul>
-</div>
-<div *ngIf="drinksForTheDay.length === 0">
-  <p>No drinks recorded for this day.</p>
-</div>
-
-<div class="calorie-total">
-  <h3>Total calories for {{ selectedDate | date:'yyyy-MM-dd' }}: {{ totalCalories | trimDecimals:2 }}</h3>
-</div>
-<div class="drinks-total">
-  <h3>Number of drinks for {{ selectedDate | date:'yyyy-MM-dd' }}: {{ totalDrinks }}</h3>
-</div>
-<!-- New Section for BAC -->
-<div class="bac-display">
-  <h3>Estimated BAC: {{ bac | number: '1.2-2' }}%</h3>
-  <p *ngIf="soberTime">Estimated time to be sober: {{ soberTime | date: 'EEE MMM dd yyyy HH:mm:ss' }}</p>
-</div>
-
-
-
-  
