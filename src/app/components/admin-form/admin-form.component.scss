@@ -46,3 +46,14 @@
   //background-color: var(--ccBlue);
   background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
 }
+
+.admin-form-button:disabled {
+  width: 60%;
+  height: 3.5rem;
+  border-radius: 50px 50px 50px 50px;
+  font-size: large;
+  color: gray;
+  //background-color: var(--ccBlue);
+  background-image: linear-gradient(135deg, #00115c 0%, #000436 100%);
+  cursor: not-allowed;
+}
