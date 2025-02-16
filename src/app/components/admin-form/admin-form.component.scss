@@ -1,6 +1,8 @@
 .admin-form-container {
   width: 40vh;
-  margin-bottom: 140%;
+  //margin-bottom: 100%;
+  overflow-y: auto;
+  height: 95vh;
 }
 
 .admin-form-container > h1 {

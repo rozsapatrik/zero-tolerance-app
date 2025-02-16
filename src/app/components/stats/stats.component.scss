@@ -3,6 +3,8 @@
   flex-direction: column; /* Default: charts stack vertically */
   align-items: center;
   gap: 20px; /* Add spacing between charts */
+  overflow-y: auto;
+  height: 80vh;
 }
 
 .chart-container {

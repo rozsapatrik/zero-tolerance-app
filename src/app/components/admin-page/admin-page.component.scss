@@ -1,7 +1,9 @@
 .admin-container {
-  margin-bottom: 50%;
+  //margin-bottom: 50%;
   width: 40vh;
   //position: relative;
+  overflow-y: auto;
+  height: 95vh;
 }
 
 .admin-container > h1 {

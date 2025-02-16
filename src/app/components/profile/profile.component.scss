@@ -1,7 +1,10 @@
 .profileContainer {
     //width: 100%;
     width: 25vh;
-    margin-bottom: 80%;
+    //margin-bottom: 80%;
+    overflow-y: auto;
+    height: 95vh;
+    padding-top: 20%;
 }
 
 .headerContainer > h1 {
