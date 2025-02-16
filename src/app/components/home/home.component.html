@@ -24,7 +24,8 @@
         <span class="drink-name">{{ drink.name }}</span>
         <span (click)="onDrinkClick(drink)" class="bi bi-x-lg remove-drink" style="cursor: pointer;"></span>
         <br> {{ drink.amount }} ml - {{ drink.time }} - {{ drink.calories |
-        trimDecimals:2 }} kcal - {{drink.alcohol | trimDecimals:2 }} alcohol
+        trimDecimals:2 }} kcal
+        <!--  - {{drink.alcohol | trimDecimals:2 }} alcohol-->
       </li>
     </ul>
   </div>
