@@ -65,6 +65,8 @@ ul > li {
   background-color: #21212180;
   border-radius: 20px 20px 20px 20px;
   border: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
+  max-height: 30vh;
+  overflow-y: auto;
 }
 
 ul li:not(:last-child) {
