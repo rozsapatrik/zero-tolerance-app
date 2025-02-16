@@ -1,25 +1,28 @@
 <div class="drink-list">
-    <h1>Add Drink</h1>
+  <h1>Add Drink</h1>
 
-    <input type="text" placeholder="Search drink"
-    [(ngModel)]="searchTerm" (input)="filterDrinks()" class="search-bar"/>
+  <input type="text" placeholder="Search drink" [(ngModel)]="searchTerm" (input)="filterDrinks()" class="search-bar" />
 
-    <ul>
-      <li *ngFor="let drink of filteredDrinks" (click)="selectDrink(drink)">
-        {{ drink.name }}
-        <div *ngIf="selectedDrink === drink" class="drink-details">
-            <p>ABV: {{ drink.abv}}</p>
-            <p>Kcal/Serving: {{ drink.caloriesPerServing}}</p>
-            <p>Category: {{ drink.category}}</p>
-            <p>Size: {{ drink.ml}} ml</p>
-            <div>
-              <p>Amount (ml)</p>
-              <input type="number" [(ngModel)]="tempAmounts[drink.name].ml" min="0" (click)="$event.stopPropagation()" class="drinkMlInput">
-              <p>Time</p>
-              <input type="time" [(ngModel)]="tempAmounts[drink.name].time" (click)="$event.stopPropagation()" class="drinkTimeInput">
-              <button (click)="addDrinkAmount(drink)" class="add-drink-button">Add</button>
-            </div>
-          </div>
-      </li>
-    </ul>
-  
+  <ul>
+    <li *ngFor="let drink of filteredDrinks" (click)="selectDrink(drink)">
+      {{ drink.name }}
+      <div *ngIf="selectedDrink === drink" class="drink-details">
+        <span class="bi bi-x-lg close-drink-detail"></span>
+        <p class="drink-name">{{drink.name}}</p>
+        <p>ABV: {{ drink.abv}}</p>
+        <p>Kcal/Serving: {{ drink.caloriesPerServing}}</p>
+        <p>Category: {{ drink.category}}</p>
+        <p>Size: {{ drink.ml}} ml</p>
+        <div>
+          <p>Amount (ml)</p>
+          <input type="number" [(ngModel)]="tempAmounts[drink.name].ml" min="0" (click)="$event.stopPropagation()"
+            class="drinkMlInput">
+          <p>Time</p>
+          <input type="time" [(ngModel)]="tempAmounts[drink.name].time" (click)="$event.stopPropagation()"
+            class="drinkTimeInput">
+          <button (click)="addDrinkAmount(drink)" class="add-drink-button">Add</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

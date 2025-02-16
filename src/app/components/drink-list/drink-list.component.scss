@@ -1,9 +1,11 @@
 .drink-list {
-  margin-bottom: 50vh;
+  margin-bottom: 45vh;
   width: 25vh;
+  position: relative;
 }
 
 .drink-list ul {
+  position: relative; 
   list-style: none;
   padding: 0;
   margin-top: 5vh;
@@ -20,6 +22,7 @@
 }
 
 .drink-list li {
+  position: relative;
   cursor: pointer;
   text-align: center;
   padding: 20px;
@@ -30,8 +33,24 @@ ul li:not(:last-child) {
 }
 
 .drink-details {
-  margin-top: 2.5vh;
+  padding: 1vh;
+  position: fixed;
+  top: 0;
+  margin-top: 28vh;
+  margin-left: -5vh;
+  width: 30vh;
   color: rgb(201, 201, 201);
+
+  z-index: 10;
+  background-color: #212121;
+  border-radius: 20px 20px 20px 20px;
+  border: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
+  text-align: center;
+}
+
+.drink-name {
+  margin-bottom: 2vh;
+  color: white;
 }
 
 div.drink-details div:last-of-type {
@@ -57,6 +76,7 @@ div.drink-details div:last-of-type {
   text-align: center;
   min-height: 6vh;
   padding-bottom: 0%;
+  border: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
 }
 
 .drinkMlInput {
@@ -72,4 +92,10 @@ div.drink-details div:last-of-type {
   color: white;
   //background-color: var(--ccBlue);
   background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
+}
+
+.close-drink-detail {
+  color: rgb(255, 0, 0);
+  margin-left: 40%;
+  position: absolute;
 }

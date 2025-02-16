@@ -85,7 +85,6 @@ export class DrinkListComponent {
     this.initializeDrinkData(drink.name);
     this.selectedDrink = this.selectedDrink === drink ? null : drink;
   }
-  
 
   filterDrinks(): void {
     const terms = this.searchTerm.trim().toLowerCase().split(' ');
