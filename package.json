@@ -29,7 +29,7 @@
     "d3-scale": "^4.0.2",
     "d3-selection": "^3.0.0",
     "d3-shape": "^3.2.0",
-    "firebase-tools": "^12.9.1",
+    "firebase-tools": "^11.30.0",
     "notyf": "^3.10.0",
     "remixicon": "^4.6.0",
     "rxfire": "^6.0.3",
