@@ -1,39 +1,40 @@
 <div class="admin-form-container">
-    <h1>{{ isEditMode ? 'Update drink' : 'Add a new drink' }}</h1>
-  
-    <form [formGroup]="drinkForm" (ngSubmit)="onSubmit()">
-      <!-- Name Input -->
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" formControlName="name" placeholder="Enter drink name"/>
-      </div>
-  
-      <!-- ABV Input -->
-      <div class="form-group">
-        <label for="abv">Alcohol by Volume (ABV %)</label>
-        <input type="number" id="abv" formControlName="abv" placeholder="Enter ABV" min="0" max="100"/>
-      </div>
-  
-      <!-- Calories Input -->
-      <div class="form-group">
-        <label for="calories">Calories per Serving</label>
-        <input type="number" id="calories" formControlName="caloriesPerServing" placeholder="Enter calories" min="0"/>
-      </div>
-  
-      <!-- Volume Input -->
-      <div class="form-group">
-        <label for="volume">Volume (ml)</label>
-        <input type="number" id="volume" formControlName="ml" placeholder="Enter volume" min="1"/>
-      </div>
-  
-      <!-- Category Select -->
-      <div class="form-group">
-        <label for="category">Category</label>
-        <input type="text" id="category" formControlName="category" placeholder="Enter drink category"/>
-      </div>
-  
-      <!-- Submit Button -->
-      <button type="submit" [disabled]="!drinkForm.valid">Submit</button>
-    </form>
-  </div>
-  
+  <h1>{{ isEditMode ? 'Update drink' : 'Add a new drink' }}</h1>
+
+  <form [formGroup]="drinkForm" (ngSubmit)="onSubmit()" class="drink-form">
+    <!-- Name Input -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" formControlName="name" placeholder="Enter drink name" />
+    </div>
+
+    <!-- ABV Input -->
+    <div class="form-group">
+      <label for="abv">Alcohol by Volume (ABV %)</label>
+      <input type="number" id="abv" formControlName="abv" placeholder="Enter ABV" min="0" max="100" />
+    </div>
+
+    <!-- Calories Input -->
+    <div class="form-group">
+      <label for="calories">Calories per Serving</label>
+      <input type="number" id="calories" formControlName="caloriesPerServing" placeholder="Enter calories" min="0" />
+    </div>
+
+    <!-- Volume Input -->
+    <div class="form-group">
+      <label for="volume">Volume (ml)</label>
+      <input type="number" id="volume" formControlName="ml" placeholder="Enter volume" min="1" />
+    </div>
+
+    <!-- Category Select -->
+    <div class="form-group">
+      <label for="category">Category</label>
+      <input type="text" id="category" formControlName="category" placeholder="Enter drink category" />
+    </div>
+
+    <!-- Submit Button -->
+    <div class="admin-form-button-div">
+      <button type="submit" [disabled]="!drinkForm.valid" class="admin-form-button">Submit</button>
+    </div>
+  </form>
+</div>
