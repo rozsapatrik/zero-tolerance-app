@@ -1,6 +1,6 @@
 .drink-list {
   margin-bottom: 45vh;
-  width: 25vh;
+  width: 35vh;
   position: relative;
 }
 
@@ -38,7 +38,7 @@ ul li:not(:last-child) {
   top: 0;
   margin-top: 28vh;
   margin-left: -5vh;
-  width: 30vh;
+  width: 40vh;
   color: rgb(201, 201, 201);
 
   z-index: 10;
@@ -85,7 +85,7 @@ div.drink-details div:last-of-type {
 
 .add-drink-button {
   margin-top: 20%;
-  width: 100%;
+  width: 60%;
   height: 3.5rem;
   border-radius: 50px 50px 50px 50px;
   font-size: large;
