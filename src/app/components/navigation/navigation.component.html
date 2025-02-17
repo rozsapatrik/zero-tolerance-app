@@ -1,4 +1,4 @@
-<div class="outer-container-nav">
+<!--<div class="outer-container-nav">
 <nav class="nav">
     <ul class="nav__list">
         <li>
@@ -20,4 +20,19 @@
        </li>
     </ul>
  </nav>
-</div>
+</div>-->
+
+<div class="hamburger-menu-container" [class.open]="isOpen">
+   <div class="menu-content">
+     <ul>
+       <li><a href="/home"><span class="ri-home-line"></span>Home</a></li>
+       <li><a href="/aboutus"><span class="ri-questionnaire-line"></span>About Us</a></li>
+       <li><a href="/profile"><span class="ri-user-line"></span>Profile</a></li>
+     </ul>
+   </div>
+ </div>
+ <div class="menu-overlay" (click)="toggleMenu()" *ngIf="isOpen"></div>
+
+ <button class="hamburger-icon" (click)="toggleMenu()">
+   <i class="bi bi-list"></i>
+ </button>
