@@ -17,11 +17,13 @@ export class NotyfService {
     types: [
       {
         type: 'success',
-        background: '#4CAF50'
+        background: '#4CAF50',
+        dismissible: true
       },
       {
         type: 'error',
-        background: '#F44336'
+        background: '#F44336',
+        dismissible: true
       },
     ],
   });
