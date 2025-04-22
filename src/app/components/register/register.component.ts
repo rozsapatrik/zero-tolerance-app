@@ -70,7 +70,6 @@ export class RegisterComponent implements OnInit{
       'username': this.registerForm.value.username,
       'email': this.registerForm.value.email,
       'profilePicUrl': "",
-      'favoriteDrink': 'No favorite drink',
       'registerDate': new Date().toLocaleDateString(),
       'weight': this.registerForm.value.weight,
       'gender': this.registerForm.value.gender
