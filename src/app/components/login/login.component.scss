@@ -6,8 +6,6 @@
 
 .formContainer {
     width: 100%;
-    //margin-bottom: 100%;
-    //padding-top: 20%;
     overflow-y: auto;
     height: 85vh;
     margin-top: -30%;
@@ -20,7 +18,6 @@
 
 .loginForm {
     width: 40vh;
-    //background-color: blue;
     height: 50vh;
     padding-top: 2vh;
 }
@@ -39,12 +36,10 @@
     border-radius: 50px 50px 50px 50px;
     font-size: large;
     color: white;
-    //background-color: var(--ccBlue);
     background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
 }
 
 .mat-mdc-unelevated-button:not(:disabled) {
-    //background-color: var(--ccBlue);
     background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
 }
 

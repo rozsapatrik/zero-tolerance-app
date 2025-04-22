@@ -37,14 +37,11 @@ export class StatsComponent implements OnInit {
     const width = window.innerWidth;
     const height = window.innerHeight;
 
-    //this.barChartView = [Math.min(width * 0.8, 700), Math.min(height * 0.4, 400)];
-    //this.pieChartView = [Math.min(width * 0.5, 400), Math.min(height * 0.5, 400)];
+    const barChartWidth = Math.max(Math.min(width * 0.8, 700), 300);
+    const barChartHeight = Math.max(Math.min(height * 0.4, 400), 200);
 
-    const barChartWidth = Math.max(Math.min(width * 0.8, 700), 300); // Minimum 300, maximum 700
-    const barChartHeight = Math.max(Math.min(height * 0.4, 400), 200); // Minimum 200, maximum 400
-
-    const pieChartWidth = Math.max(Math.min(width * 0.5, 400), 300); // Minimum 250, maximum 400
-    const pieChartHeight = Math.max(Math.min(height * 0.5, 400), 300); // Minimum 250, maximum 400
+    const pieChartWidth = Math.max(Math.min(width * 0.5, 400), 300);
+    const pieChartHeight = Math.max(Math.min(height * 0.5, 400), 300);
 
     this.barChartView = [barChartWidth, barChartHeight];
     this.pieChartView = [pieChartWidth, pieChartHeight];
@@ -97,8 +94,6 @@ export class StatsComponent implements OnInit {
         }
       });
     });
-  
-    //const totalDrinks = Object.values(categoryCounts).reduce((sum, count) => sum + count, 0);
     this.pieChartData = Object.entries(categoryCounts).map(([category, count]) => ({
       name: category,
       value: count,

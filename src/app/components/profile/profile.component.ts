@@ -43,7 +43,6 @@ export class ProfileComponent {
           console.log(this.currentUserID);
 
           this.getUsername();
-          //this.getFavoriteDrink();
           this.getRegisterDate();
           this.getProfilePicture();
           this.getGender();

@@ -5,16 +5,11 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { NotyfService } from '../../services/notyf/notyf.service';
 
-//Checks if the two password typed in the registerForm match
+// Checks if the two passwords typed in the registerForm match
 export function passwordsMatchValidator(): ValidatorFn{
   return(AbsControl: AbstractControl): ValidationErrors | null => {
     const password = AbsControl.get('password')?.value;
     const confirmPassword = AbsControl.get('confirmPassword')?.value;
-
-    /*if(password !== confirmPassword){
-      return{ passwordsDontMatch: true }
-    }
-    return null;*/
 
     if(password && (password !== confirmPassword)){
       return{ passwordsDontMatch: true }
@@ -34,8 +29,6 @@ export function passwordsMatchValidator(): ValidatorFn{
 })
 
 export class RegisterComponent implements OnInit{
-
-  //registerForm FormGroup with it's FormControls
   registerForm = new FormGroup({
     username: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.email, Validators.required]),
@@ -54,7 +47,7 @@ export class RegisterComponent implements OnInit{
 
   ngOnInit(): void {}
 
-  //Get methods for the registerForm
+  // Get methods for the registerForm
   get username(){ return this.registerForm.get('username') }
   get email(){ return this.registerForm.get('email') }
   get password(){ return this.registerForm.get('password') }

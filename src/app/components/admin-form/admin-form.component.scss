@@ -1,6 +1,5 @@
 .admin-form-container {
   width: 40vh;
-  //margin-bottom: 100%;
   overflow-y: auto;
   height: 85vh;
   margin-top: -30%;
@@ -46,7 +45,6 @@
   border-radius: 50px 50px 50px 50px;
   font-size: large;
   color: white;
-  //background-color: var(--ccBlue);
   background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
 }
 
@@ -56,7 +54,6 @@
   border-radius: 50px 50px 50px 50px;
   font-size: large;
   color: gray;
-  //background-color: var(--ccBlue);
   background-image: linear-gradient(135deg, #00115c 0%, #000436 100%);
   cursor: not-allowed;
 }

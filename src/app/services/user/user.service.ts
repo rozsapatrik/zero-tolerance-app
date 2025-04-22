@@ -19,13 +19,7 @@ export class UserService {
     public auth : AngularFireAuth,
     private router: Router,
     private route: ActivatedRoute
-  ) {
-    this.auth.authState.subscribe(async (user) => {
-      if (user) {
-        //... MAJD HA KÉSZ LESZ A TRACKING RÉSZ + DB
-      }
-    });
-  }
+  ) {}
 
   //Gets the current user's ID from the databse
   async getCurrentUserId(): Promise<string | undefined> {

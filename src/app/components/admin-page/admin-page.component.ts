@@ -25,6 +25,7 @@ export class AdminPageComponent {
     this.fetchAllDrinks();
   }
 
+  // Refreshes the list of drinks
   fetchAllDrinks(): void {
     this.afs.collection("drink").valueChanges({idField: 'id'}).subscribe(
       (drinks) => {
@@ -38,13 +39,14 @@ export class AdminPageComponent {
   }
 
   redirectToAdminFormAddDrink(): void {
-    this.router.navigate(['/adminform']); // Redirects to the admin form page
+    this.router.navigate(['/adminform']);
   }
 
   editDrink(drink: any): void {
     this.router.navigate(['/adminform'], { state: { drink } });
   }
 
+  // Delete a specific drink
   deleteDrink(drinkId: string): void {
     if (confirm('Are you sure you want to delete this drink?')) {
       this.afs
@@ -54,7 +56,6 @@ export class AdminPageComponent {
         .then(() => {
           this.notyfService.success('Drink deleted');
           console.log(`Drink with ID ${drinkId} deleted successfully`);
-          // Refresh the list of drinks
           this.fetchAllDrinks();
         })
         .catch((error) => {

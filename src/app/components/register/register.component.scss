@@ -6,7 +6,6 @@
 
 .formContainer {
     width: 100%;
-    //margin-bottom: 100%;
     overflow-y: auto;
     height: 85vh;
     margin-top: -30%;
@@ -19,7 +18,6 @@
 
 .registerForm {
     width: 40vh;
-    //background-color: blue;
     height: 50vh;
     padding-top: 2vh;
 }
@@ -32,7 +30,6 @@
 }
 
 .mat-mdc-unelevated-button:not(:disabled) {
-    //background-color: var(--ccBlue);
     background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
 }
 
@@ -43,7 +40,6 @@
     border-radius: 50px 50px 50px 50px;
     font-size: large;
     color: white;
-    //background-color: var(--ccBlue);
     background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
 }
 
@@ -92,9 +88,7 @@
 }
 
 .genderSelection input[type="radio"]:checked+span {
-    //box-shadow: 0 0 0 0.0625em var(--ccPink);
     box-shadow: 0 0 0 0.0625em linear-gradient(135deg, #f700ff 0%, #87008b 100%);
-    //background-color: var(--ccPink);
     background-image: linear-gradient(135deg, #f700ff 0%, #87008b 100%);
     z-index: 1;
     color: white;

@@ -43,7 +43,6 @@ export class DrinkListComponent {
   selectedDrink: Drink | null = null;
   filteredDrinks: Drink[] = [];
   searchTerm: string = '';
-  //drinkAmounts: { drinkName: string, amount: number, time:string, date: string }[] = [];
   drinkAmounts: Map<string, { drinkName: string, amount: number, calories: number, alcohol: number, time: string, date: string, category: string }> = new Map();
   tempAmounts: { [key: string]: {ml: number, cps: number, time: string, date: string} } = {};
   selectedDate: any;
@@ -161,7 +160,6 @@ export class DrinkListComponent {
       // Store the drink data in Firestore
       const drinkAmountData = {
         email: userEmail,
-        //date: this.selectedDate.toISOString().split('T')[0],  // Store as YYYY-MM-DD
         date: formattedDate,
         drinkAmounts: updatedDrinkAmounts
       };

@@ -1,8 +1,8 @@
 .stats-container {
   display: flex;
-  flex-direction: column; /* Default: charts stack vertically */
+  flex-direction: column;
   align-items: center;
-  gap: 20px; /* Add spacing between charts */
+  gap: 20px;
   overflow-y: auto;
   height: 80vh;
 }
@@ -29,12 +29,12 @@
 
 @media (min-aspect-ratio: 4/3) {
   .stats-container {
-    flex-direction: row; /* Charts side by side */
+    flex-direction: row;
     justify-content: center;
   }
 
   .chart-section {
-    flex: 1 1 50%; /* Each chart takes up half the width */
+    flex: 1 1 50%;
     max-width: 50%;
   }
 }
