@@ -3,26 +3,56 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { LegendPosition } from '@swimlane/ngx-charts';
 import { UserService } from 'src/app/services/user/user.service';
 
+/**
+ * Displaying user's personal statistics.
+ */
 @Component({
   selector: 'app-stats',
   templateUrl: './stats.component.html',
   styleUrls: ['./stats.component.scss']
 })
 export class StatsComponent implements OnInit {
+  /**
+   * Default for bar chart.
+   */
   barChartView: [number, number] = [700, 400];
+  /**
+   * Default for pie chart.
+   */
   pieChartView: [number, number] = [400, 400];
+  /**
+   * Position of the legend for graph.
+   */
   legendPosPie: LegendPosition = LegendPosition.Below;
   
+  /**
+   * Data of the bar graph.
+   */
   graphData: { name: string; value: number }[] = [];
+  /**
+   * Data of the pie graph.
+   */
   pieChartData: { name: string; value: number }[] = [];
 
+  /**
+   * 
+   * @param afs Angular Firestore.
+   * @param userService Service for user data.
+   */
   constructor(private afs: AngularFirestore, private userService: UserService) {}
 
+  /**
+   * Listens for event to re-arrange charts if needed.
+   */
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.adjustChartSizes();
   }
 
+  /**
+   * Initializes the two charts.
+   * @returns If the current userID is invalid returns.
+   */
   async ngOnInit(): Promise<void> {
     const currentUserID = await this.userService.getCurrentUserId();
     if (!currentUserID) return;
@@ -33,6 +63,9 @@ export class StatsComponent implements OnInit {
     await this.loadPieChartData(currentUserID);
   }
 
+  /**
+   * Sets the size of the charts.
+   */
   private adjustChartSizes(): void {
     const width = window.innerWidth;
     const height = window.innerHeight;
@@ -47,6 +80,10 @@ export class StatsComponent implements OnInit {
     this.pieChartView = [pieChartWidth, pieChartHeight];
   }
 
+  /**
+   * Loads the data for the bar chart.
+   * @param currentUserID The currently logged in user's ID.
+   */
   private async loadBarChartData(currentUserID: string): Promise<void> {
     const last7Days = Array.from({ length: 7 }, (_, i) => {
       const date = new Date();
@@ -72,6 +109,10 @@ export class StatsComponent implements OnInit {
     this.graphData = await Promise.all(promises);
   }
 
+  /**
+   * Loads the data for the pie chart.
+   * @param currentUserID The currently logged in user's ID.
+   */
   private async loadPieChartData(currentUserID: string): Promise<void> {
     const drankDrinksRef = this.afs.collection('drankDrinks').ref;
     const querySnapshot = await drankDrinksRef

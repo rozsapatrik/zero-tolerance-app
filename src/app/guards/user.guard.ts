@@ -1,15 +1,28 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { map, Observable, take } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthenticationService } from '../services/authentication.service';
 
+/**
+ * User guard.
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class UserGuard implements CanActivate {
   
-  constructor(private authService: AuthenticationService, private router: Router){}
+  /**
+   * 
+   * @param authService Service for authentication.
+   */
+  constructor(private authService: AuthenticationService){}
   
+  /**
+   * Returns if current user is user or not.
+   * @param route Currently loaded route.
+   * @param state Current state of router.
+   * @returns If current user is user.
+   */
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
