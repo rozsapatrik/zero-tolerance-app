@@ -1,27 +1,44 @@
-import { Injectable, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { ActivatedRoute, Router } from '@angular/router';
-import { increment } from 'firebase/firestore';
+import { Router } from '@angular/router';
 import { UserModule } from './user.module';
 
+/**
+ * Service for getting user data.
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
+  /**
+   * User module.
+   */
   formData: UserModule;
+  /**
+   * Currently logged in user's e-mail.
+   */
   currentUserEmail: string;
+  /**
+   * Currently logged in user's ID.
+   */
   currentUserID: string;
   
+  /**
+   * 
+   * @param afs Angular Firestore.
+   * @param auth Angular Firebase Authentication.
+   * @param router Router for routing.
+   */
   constructor(
     private afs : AngularFirestore,
     public auth : AngularFireAuth,
-    private router: Router,
-    private route: ActivatedRoute
+    private router: Router
   ) {}
 
-  //Gets the current user's ID from the databse
+  /**
+   * Gets the current user's ID from the databse.
+   */
   async getCurrentUserId(): Promise<string | undefined> {
     const user = await this.auth.currentUser;
     if (user) {
@@ -34,7 +51,9 @@ export class UserService {
     }
   }
 
-  //Returns with the ID base on the getCurrentUserId() method
+  /**
+   * Returns with the ID based on the `getCurrentUserId()` method.
+   */
   async getUserId(){
     try {
       const userID = await this.getCurrentUserId();
@@ -45,7 +64,9 @@ export class UserService {
     }
   }
 
-  //Returns the currently logged in user's e-mail
+  /**
+   * Returns the currently logged in user's e-mail.
+   */
   async getCurrentUserEmail()
   {
     const user = await this.auth.currentUser;
@@ -58,7 +79,9 @@ export class UserService {
     }
   }
 
-  //Returns the currently logged in user's e-mail as a string.
+  /**
+   * Returns the currently logged in user's e-mail as a string.
+   */
   async getCurrentUserEmailString()
   {
     await this.getCurrentUserEmail();

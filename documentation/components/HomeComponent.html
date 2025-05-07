@@ -1,0 +1,1739 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>zero-tolerance-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">zero-tolerance-app documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  HomeComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/home/home.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-home</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./home.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./home.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#bac" >bac</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#dateInput" >dateInput</a>
+                            </li>
+                            <li>
+                                <a href="#drinksForTheDay" >drinksForTheDay</a>
+                            </li>
+                            <li>
+                                <a href="#selectedDate" >selectedDate</a>
+                            </li>
+                            <li>
+                                <a href="#soberTime" >soberTime</a>
+                            </li>
+                            <li>
+                                <a href="#totalCalories" >totalCalories</a>
+                            </li>
+                            <li>
+                                <a href="#totalDrinks" >totalDrinks</a>
+                            </li>
+                            <li>
+                                <a href="#userData" >userData</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#calculateBAC" >calculateBAC</a>
+                            </li>
+                            <li>
+                                <a href="#calculateTotals" >calculateTotals</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#deleteDrinkFromFirestore" >deleteDrinkFromFirestore</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#fetchDrinksForTheDay" >fetchDrinksForTheDay</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#fetchUserData" >fetchUserData</a>
+                            </li>
+                            <li>
+                                <a href="#getFormattedDate" >getFormattedDate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onDateChange" >onDateChange</a>
+                            </li>
+                            <li>
+                                <a href="#onDrinkClick" >onDrinkClick</a>
+                            </li>
+                            <li>
+                                <a href="#openDatePicker" >openDatePicker</a>
+                            </li>
+                            <li>
+                                <a href="#redirectToDrinks" >redirectToDrinks</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(afs: AngularFirestore, authService: <a href="../injectables/AuthenticationService.html" target="_self">AuthenticationService</a>, route: ActivatedRoute, auth: AngularFireAuth, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, dateService: <a href="../injectables/DateService.html" target="_self">DateService</a>, router: Router, notyfService: <a href="../injectables/NotyfService.html" target="_self">NotyfService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/home/home.component.ts:32</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>afs</td>
+                                                  
+                                                        <td>
+                                                                    <code>AngularFirestore</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                    <code>AngularFireAuth</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dateService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/DateService.html" target="_self" >DateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>notyfService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NotyfService.html" target="_self" >NotyfService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calculateBAC"></a>
+                    <span class="name">
+                        <span ><b>calculateBAC</b></span>
+                        <a href="#calculateBAC"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calculateBAC()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="107"
+                                    class="link-to-prism">src/app/components/home/home.component.ts:107</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calculateTotals"></a>
+                    <span class="name">
+                        <span ><b>calculateTotals</b></span>
+                        <a href="#calculateTotals"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calculateTotals()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="167"
+                                    class="link-to-prism">src/app/components/home/home.component.ts:167</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteDrinkFromFirestore"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>deleteDrinkFromFirestore</b></span>
+                        <a href="#deleteDrinkFromFirestore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deleteDrinkFromFirestore(drink: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="195"
+                                    class="link-to-prism">src/app/components/home/home.component.ts:195</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>drink</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fetchDrinksForTheDay"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>fetchDrinksForTheDay</b></span>
+                        <a href="#fetchDrinksForTheDay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>fetchDrinksForTheDay()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/app/components/home/home.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fetchUserData"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>fetchUserData</b></span>
+                        <a href="#fetchUserData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>fetchUserData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/components/home/home.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getFormattedDate"></a>
+                    <span class="name">
+                        <span ><b>getFormattedDate</b></span>
+                        <a href="#getFormattedDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getFormattedDate(date: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="178"
+                                    class="link-to-prism">src/app/components/home/home.component.ts:178</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>date</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/components/home/home.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDateChange"></a>
+                    <span class="name">
+                        <span ><b>onDateChange</b></span>
+                        <a href="#onDateChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onDateChange(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="172"
+                                    class="link-to-prism">src/app/components/home/home.component.ts:172</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDrinkClick"></a>
+                    <span class="name">
+                        <span ><b>onDrinkClick</b></span>
+                        <a href="#onDrinkClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onDrinkClick(drink: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="188"
+                                    class="link-to-prism">src/app/components/home/home.component.ts:188</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>drink</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openDatePicker"></a>
+                    <span class="name">
+                        <span ><b>openDatePicker</b></span>
+                        <a href="#openDatePicker"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openDatePicker()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="182"
+                                    class="link-to-prism">src/app/components/home/home.component.ts:182</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="redirectToDrinks"></a>
+                    <span class="name">
+                        <span ><b>redirectToDrinks</b></span>
+                        <a href="#redirectToDrinks"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>redirectToDrinks()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="186"
+                                    class="link-to-prism">src/app/components/home/home.component.ts:186</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bac"></a>
+                    <span class="name">
+                        <span ><b>bac</b></span>
+                        <a href="#bac"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/components/home/home.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dateInput"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>dateInput</b></span>
+                        <a href="#dateInput"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef&lt;HTMLInputElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;dateInput&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/components/home/home.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="drinksForTheDay"></a>
+                    <span class="name">
+                        <span ><b>drinksForTheDay</b></span>
+                        <a href="#drinksForTheDay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/components/home/home.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedDate"></a>
+                    <span class="name">
+                        <span ><b>selectedDate</b></span>
+                        <a href="#selectedDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/components/home/home.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="soberTime"></a>
+                    <span class="name">
+                        <span ><b>soberTime</b></span>
+                        <a href="#soberTime"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Date | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/home/home.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="totalCalories"></a>
+                    <span class="name">
+                        <span ><b>totalCalories</b></span>
+                        <a href="#totalCalories"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/home/home.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="totalDrinks"></a>
+                    <span class="name">
+                        <span ><b>totalDrinks</b></span>
+                        <a href="#totalDrinks"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/components/home/home.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userData"></a>
+                    <span class="name">
+                        <span ><b>userData</b></span>
+                        <a href="#userData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/UserData.html" target="_self" >UserData</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/home/home.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+import { AngularFireAuth } from &#x27;@angular/fire/compat/auth&#x27;;
+import { AngularFirestore } from &#x27;@angular/fire/compat/firestore&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { AuthenticationService } from &#x27;src/app/services/authentication.service&#x27;;
+import { DateService } from &#x27;src/app/services/date.service&#x27;;
+import { UserService } from &#x27;src/app/services/user/user.service&#x27;;
+import { NotyfService } from &#x27;../../services/notyf/notyf.service&#x27;;
+
+interface DrinkData {
+  drinkAmounts: { [key: string]: { id: string, amount: number; calories: number, alcohol: number, time: string }[] };
+}
+
+interface UserData {
+  weight: number;
+  gender: string;
+}
+
+@Component({
+  selector: &#x27;app-home&#x27;,
+  templateUrl: &#x27;./home.component.html&#x27;,
+  styleUrls: [&#x27;./home.component.scss&#x27;]
+})
+export class HomeComponent implements OnInit{
+  
+  selectedDate: Date;
+  drinksForTheDay: any[] &#x3D; [];
+  totalCalories: number &#x3D; 0;
+  totalDrinks: number &#x3D; 0;
+  bac: number &#x3D; 0;
+  soberTime: Date | null &#x3D; null;
+  userData: UserData;
+  
+  constructor(
+    private afs: AngularFirestore,
+    private authService: AuthenticationService,
+    private route: ActivatedRoute,
+    private auth: AngularFireAuth,
+    private userService: UserService,
+    private dateService: DateService,
+    private router: Router,
+    private notyfService: NotyfService
+  ){}
+
+  @ViewChild(&#x27;dateInput&#x27;) dateInput!: ElementRef&lt;HTMLInputElement&gt;;
+
+  async ngOnInit(): Promise&lt;void&gt; {
+    // Initialize selected date from DateService or today&#x27;s date
+    this.selectedDate &#x3D; this.dateService.getSelectedDate() || new Date();
+    await this.fetchUserData();
+
+    // Fetch drinks data for the selected date
+    this.fetchDrinksForTheDay();
+    
+    // Watch for date changes and load drinks
+    await this.dateService.selectedDate$.subscribe(date &#x3D;&gt; {
+      this.selectedDate &#x3D; date;
+      this.fetchDrinksForTheDay();
+    });
+
+    // Initial load of drinks for the selected date
+    //await this.loadDrinksForSeletectedDate();
+  }
+
+  async fetchUserData(): Promise&lt;void&gt; {
+    const currentUserID &#x3D; await this.userService.getCurrentUserId();
+    if (currentUserID) {
+      const userDoc &#x3D; await this.afs.collection(&#x27;user&#x27;).doc(currentUserID).get().toPromise();
+      if (userDoc &amp;&amp; userDoc.exists) {
+        this.userData &#x3D; userDoc.data() as UserData;
+      }
+    }
+  }
+
+  async fetchDrinksForTheDay(): Promise&lt;void&gt; {
+    this.drinksForTheDay &#x3D; [];  // Clear previous data
+    const currentUserID &#x3D; await this.userService.getCurrentUserId();
+    
+    if (currentUserID &amp;&amp; this.selectedDate) {
+      const formattedDate &#x3D; &#x60;${this.selectedDate.getFullYear()}-${(this.selectedDate.getMonth() + 1).toString().padStart(2, &#x27;0&#x27;)}-${this.selectedDate.getDate().toString().padStart(2, &#x27;0&#x27;)}&#x60;;
+      const docId &#x3D; &#x60;${currentUserID}-${formattedDate}&#x60;; // Create document ID based on user and date
+
+      const docRef &#x3D; this.afs.collection(&#x27;drankDrinks&#x27;).doc(docId);
+      const docSnapshot &#x3D; await docRef.get().toPromise();
+
+      if (docSnapshot &amp;&amp; docSnapshot.exists) {
+        const drinkData &#x3D; docSnapshot.data() as { drinkAmounts?: Record&lt;string, {id: string, amount: number, time: string, calories: number, alcohol: number }[]&gt; };
+
+        this.drinksForTheDay &#x3D; drinkData?.drinkAmounts
+          ? Object.entries(drinkData.drinkAmounts).map(([name, detailsArray]) &#x3D;&gt; {
+            return detailsArray.map(detail &#x3D;&gt; ({
+              name,
+              id: detail.id,
+              amount: detail.amount,
+              calories: detail.calories,
+              alcohol: detail.alcohol,
+              time: detail.time
+          }));
+        }).flat() : [];
+
+        this.calculateTotals();
+        this.calculateBAC();
+      }
+    }
+  }
+  
+  calculateBAC(): void {
+    if (!this.userData) {
+      console.error(&#x27;User data not available for BAC calculation&#x27;);
+      this.bac &#x3D; 0;
+      return;
+    }
+
+    console.log(&#x27;UDATA: &#x27;, this.userData);
+
+    const { weight, gender } &#x3D; this.userData;
+    const bodyWaterConstant &#x3D; gender &#x3D;&#x3D;&#x3D; &#x27;male&#x27; ? 0.58 : 0.49;
+    const metabolismRate &#x3D; 0.015; // Average alcohol elimination rate per hour
+    const weightInGrams &#x3D; weight * 1000;
+    const currentTime &#x3D; new Date();
+    // Construct full date objects for drink times
+      const drinkTimes &#x3D; this.drinksForTheDay.map((drink) &#x3D;&gt; {
+        const [hours, minutes] &#x3D; drink.time.split(&#x27;:&#x27;).map(Number);
+        const drinkDate &#x3D; new Date(this.selectedDate);
+        drinkDate.setHours(hours, minutes, 0, 0); // Set hours and minutes to the drink&#x27;s time
+        return { ...drink, drinkDate };
+      });
+      console.log(&#x27;Drink times:&#x27;, drinkTimes);
+
+      // Separate past and future drinks
+      const pastDrinks &#x3D; drinkTimes.filter((drink) &#x3D;&gt; drink.drinkDate &lt;&#x3D; currentTime);
+      const futureDrinks &#x3D; drinkTimes.filter((drink) &#x3D;&gt; drink.drinkDate &gt; currentTime);
+      console.log(&#x27;Past Drinks:&#x27;, pastDrinks);
+      console.log(&#x27;Future Drinks:&#x27;, futureDrinks);
+
+    // Calculate BAC based on past drinks
+      const totalPastAlcoholGrams &#x3D; pastDrinks.reduce((sum, drink) &#x3D;&gt; sum + (drink.alcohol || 0), 0);
+      if (pastDrinks.length &gt; 0) {
+        const lastDrinkTime &#x3D; new Date(Math.max(...pastDrinks.map((drink) &#x3D;&gt; drink.drinkDate.getTime())));
+        const timeElapsedHours &#x3D; Math.max(0, (currentTime.getTime() - lastDrinkTime.getTime()) / (1000 * 60 * 60));
+
+        console.log(&#x27;Last past drink time:&#x27;, lastDrinkTime);
+        console.log(&#x27;Time elapsed since last drink (hours):&#x27;, timeElapsedHours);
+
+        this.bac &#x3D;
+            ((totalPastAlcoholGrams) / (weightInGrams * bodyWaterConstant)) * 100 - metabolismRate * timeElapsedHours;
+        this.bac &#x3D; Math.max(this.bac, 0); // Ensure BAC does not go negative
+        console.log(&#x27;Current BAC:&#x27;, this.bac);
+      } else {
+        this.bac &#x3D; 0; // No past drinks, no BAC
+      }
+      
+      // Calculate sober time (including future drinks)
+      const allAlcoholGrams &#x3D; drinkTimes.reduce((sum, drink) &#x3D;&gt; sum + (drink.alcohol || 0), 0);
+      const soberHours &#x3D; allAlcoholGrams / (metabolismRate * weightInGrams * bodyWaterConstant);
+
+      console.log(&#x27;Total alcohol grams (past + future):&#x27;, allAlcoholGrams);
+      console.log(&#x27;Estimated hours to sober:&#x27;, soberHours*100);
+
+      const earliestAllDrinkTime &#x3D; new Date(Math.min(...drinkTimes.map((drink) &#x3D;&gt; drink.drinkDate.getTime())));
+      const estimatedSoberTime &#x3D; new Date(Math.max(earliestAllDrinkTime.getTime()) + (soberHours*100) * 60 * 60 * 1000);
+
+      this.soberTime &#x3D; estimatedSoberTime;
+      console.log(&#x27;Estimated time to be sober:&#x27;, this.soberTime);  
+  }
+
+  calculateTotals(): void {
+    this.totalCalories &#x3D; this.drinksForTheDay.reduce((sum, drink) &#x3D;&gt; sum + (drink.calories || 0), 0);
+    this.totalDrinks &#x3D; this.drinksForTheDay.length;
+  }
+
+  onDateChange(event: any) {
+    this.selectedDate &#x3D; new Date(event.target.value);
+    this.dateService.setSelectedDate(this.selectedDate);
+    this.fetchDrinksForTheDay();
+  }
+
+  getFormattedDate(date: Date): string {
+    return date.toISOString().split(&#x27;T&#x27;)[0]; // Formats date as YYYY-MM-DD for the input field
+  }
+
+  openDatePicker() {
+    this.dateInput.nativeElement.showPicker(); // Opens the native date picker
+  }
+
+  redirectToDrinks(){ this.router.navigate([&#x27;/drinklist&#x27;]); }
+
+  onDrinkClick(drink: any): void {
+    const confirmDelete &#x3D; window.confirm(&#x60;Are you sure you want to delete the drink ${drink.name}?&#x60;);
+    if (confirmDelete) {
+      this.deleteDrinkFromFirestore(drink);
+    }
+  }
+
+  async deleteDrinkFromFirestore(drink: any): Promise&lt;void&gt; {
+    const userId &#x3D; await this.userService.getCurrentUserId();
+    const formattedDate &#x3D; &#x60;${this.selectedDate.getFullYear()}-${(this.selectedDate.getMonth() + 1).toString().padStart(2, &#x27;0&#x27;)}-${this.selectedDate.getDate().toString().padStart(2, &#x27;0&#x27;)}&#x60;;
+    const docId &#x3D; &#x60;${userId}-${formattedDate}&#x60;;
+    console.log(&#x27;UID: &#x27;, userId);
+    console.log(&#x27;DATE: &#x27;, formattedDate);
+
+    const docRef &#x3D; this.afs.collection(&#x27;drankDrinks&#x27;).doc(docId);
+    
+    try {
+      const docSnapshot &#x3D; await docRef.get().toPromise();
+      if (docSnapshot &amp;&amp; docSnapshot.exists) {
+        const drinkData &#x3D; docSnapshot.data() as DrinkData;
+        console.log(&quot;drinkData: &quot;, drinkData);
+        if (drinkData &amp;&amp; drinkData.drinkAmounts) {
+          const drinkAmounts &#x3D; drinkData.drinkAmounts;
+  
+          // Iterate through the drink amounts and find the drink to delete by name and id
+          for (const drinkName in drinkAmounts) {
+            const entries &#x3D; drinkAmounts[drinkName];
+            
+            // Find the specific entry by name and id
+            const entryIndex &#x3D; entries.findIndex((entry: any) &#x3D;&gt; entry.id &#x3D;&#x3D;&#x3D; drink.id);
+  
+            if (entryIndex !&#x3D;&#x3D; -1) {
+              // Delete the specific entry by its id
+              entries.splice(entryIndex, 1);
+              break; // Exit loop once the drink is deleted
+            }
+          }
+  
+          // Update the document with the remaining drink amounts
+          await docRef.set({ ...drinkData, drinkAmounts }, { merge: true });
+          this.notyfService.success(&#x27;Drink deleted&#x27;);
+          console.log(&#x60;Deleted drink ${drink.name} at ${drink.time} from Firestore&#x60;);
+  
+          // Reload the drinks for the day after deletion
+          this.fetchDrinksForTheDay();
+        }
+      } else {
+        this.notyfService.error(&#x27;No document found&#x27;);
+        console.log(&#x27;No document found to delete&#x27;);
+      }
+    } catch (error) {
+      this.notyfService.error(&#x27;Something went wrong&#x27;);
+      console.error(&#x27;Error fetching or deleting document: &#x27;, error);
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;home-container&quot;&gt;
+  &lt;div class&#x3D;&quot;date-picker-container&quot;&gt;
+    &lt;!--&lt;div class&#x3D;&quot;date-display-box&quot; (click)&#x3D;&quot;picker.open()&quot;&gt;
+      {{ selectedDate | date: &#x27;yyyy-MM-dd&#x27; }}
+    &lt;/div&gt;--&gt;
+
+    &lt;div class&#x3D;&quot;date-display-box&quot; (click)&#x3D;&quot;openDatePicker()&quot;&gt;
+      {{ selectedDate | date: &#x27;yyyy-MM-dd&#x27; }}
+    &lt;/div&gt;
+
+    &lt;!--&lt;mat-form-field class&#x3D;&quot;date-picker-field&quot;&gt;
+      &lt;input matInput [matDatepicker]&#x3D;&quot;picker&quot; (dateChange)&#x3D;&quot;onDateChange($event)&quot; hidden /&gt;
+      &lt;mat-datepicker #picker panelClass&#x3D;&quot;customDatePicker&quot;&gt;&lt;/mat-datepicker&gt;
+    &lt;/mat-form-field&gt;--&gt;
+
+    &lt;div class&#x3D;&quot;date-picker-field&quot;&gt;
+      &lt;input type&#x3D;&quot;date&quot; [value]&#x3D;&quot;getFormattedDate(selectedDate)&quot; (change)&#x3D;&quot;onDateChange($event)&quot; #dateInput class&#x3D;&quot;hidden-date-input&quot;/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;drinksForTheDay.length &gt; 0&quot;&gt;
+    &lt;ul&gt;
+      &lt;li *ngFor&#x3D;&quot;let drink of drinksForTheDay&quot;&gt;
+        &lt;span class&#x3D;&quot;drink-name&quot;&gt;{{ drink.name }}&lt;/span&gt;
+        &lt;span (click)&#x3D;&quot;onDrinkClick(drink)&quot; class&#x3D;&quot;bi bi-x-lg remove-drink&quot; style&#x3D;&quot;cursor: pointer;&quot;&gt;&lt;/span&gt;
+        &lt;br&gt; {{ drink.amount }} ml - {{ drink.time }} - {{ drink.calories |
+        trimDecimals:2 }} kcal
+        &lt;!--  - {{drink.alcohol | trimDecimals:2 }} alcohol--&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;div *ngIf&#x3D;&quot;drinksForTheDay.length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;no-drinks&quot;&gt;
+    &lt;p&gt;No drinks recorded for this day&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;info-container&quot; *ngIf&#x3D;&quot;totalDrinks !&#x3D; 0&quot;&gt;
+    &lt;div class&#x3D;&quot;calorie-total&quot;&gt;
+      &lt;!--&lt;h3&gt;Total calories for {{ selectedDate | date:&#x27;yyyy-MM-dd&#x27; }}: {{ totalCalories | trimDecimals:2 }}&lt;/h3&gt;--&gt;
+      &lt;p&gt;Total calories:&lt;span class&#x3D;&quot;info-container-right&quot;&gt;{{ totalCalories | trimDecimals:2 }} kcal&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;drinks-total&quot;&gt;
+      &lt;!--&lt;h3&gt;Number of drinks for {{ selectedDate | date:&#x27;yyyy-MM-dd&#x27; }}: {{ totalDrinks }}&lt;/h3&gt;--&gt;
+      &lt;p&gt;Number of drinks:&lt;span class&#x3D;&quot;info-container-right&quot;&gt;{{ totalDrinks }}&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;!-- New Section for BAC --&gt;
+    &lt;div class&#x3D;&quot;bac-display&quot;&gt;
+      &lt;h3&gt;Estimated BAC:&lt;span class&#x3D;&quot;info-container-right&quot;&gt;{{ bac | number: &#x27;1.2-2&#x27; }}%&lt;/span&gt;&lt;/h3&gt;
+      &lt;p *ngIf&#x3D;&quot;soberTime&quot;&gt;Sober:&lt;span class&#x3D;&quot;info-container-right&quot;&gt;~ {{ soberTime | date: &#x27;EEE MMM dd yyyy HH:mm:ss&#x27;
+          }}&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;add-drink-container&quot;&gt;
+    &lt;button mat-flat-button (click)&#x3D;&quot;redirectToDrinks()&quot; class&#x3D;&quot;add-drink-button&quot;&gt;Add Drink&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./home.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.home-container {
+  width: 40vh;
+  overflow-y: auto;
+  height: 85vh;
+  margin-top: -10%;
+}
+
+.date-picker-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.date-display-box {
+  background-color: #212121;
+  color: white;
+  border-radius: 50px 50px 50px 50px;
+  width: 100%;
+  text-align: center;
+  min-height: 6vh;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.info-container {
+  padding-top: 5%;
+}
+
+.info-container-right {
+  float: right;
+}
+
+ul &gt; li {
+  text-align: center;
+}
+
+.add-drink-container {
+  text-align: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2vh;
+}
+
+.add-drink-button {
+  margin-top: 5%;
+  width: 65%;
+  height: 3.5rem;
+  border-radius: 50px 50px 50px 50px;
+  font-size: large;
+  color: white;
+  background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
+}
+
+.no-drinks {
+  text-align: center;
+}
+
+.home-container ul {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  background-color: #21212180;
+  border-radius: 20px 20px 20px 20px;
+  border: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
+  max-height: 30vh;
+  overflow-y: auto;
+}
+
+ul li:not(:last-child) {
+  border-bottom: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
+}
+
+
+.home-container li {
+  position: relative;
+  cursor: pointer;
+  padding: 20px;
+}
+
+.remove-drink {
+  color: red;
+  float: right;
+  margin-right: -1vh;
+  margin-top: -1.5vh;
+}
+
+.hidden-date-input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.date-picker-field {
+  padding-bottom: 10%;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="home-container">  <div class="date-picker-container">    <!--<div class="date-display-box" (click)="picker.open()">      {{ selectedDate | date: \'yyyy-MM-dd\' }}    </div>-->    <div class="date-display-box" (click)="openDatePicker()">      {{ selectedDate | date: \'yyyy-MM-dd\' }}    </div>    <!--<mat-form-field class="date-picker-field">      <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event)" hidden />      <mat-datepicker #picker panelClass="customDatePicker"></mat-datepicker>    </mat-form-field>-->    <div class="date-picker-field">      <input type="date" [value]="getFormattedDate(selectedDate)" (change)="onDateChange($event)" #dateInput class="hidden-date-input"/>    </div>  </div>  <div *ngIf="drinksForTheDay.length > 0">    <ul>      <li *ngFor="let drink of drinksForTheDay">        <span class="drink-name">{{ drink.name }}</span>        <span (click)="onDrinkClick(drink)" class="bi bi-x-lg remove-drink" style="cursor: pointer;"></span>        <br> {{ drink.amount }} ml - {{ drink.time }} - {{ drink.calories |        trimDecimals:2 }} kcal        <!--  - {{drink.alcohol | trimDecimals:2 }} alcohol-->      </li>    </ul>  </div>  <div *ngIf="drinksForTheDay.length === 0" class="no-drinks">    <p>No drinks recorded for this day</p>  </div>  <div class="info-container" *ngIf="totalDrinks != 0">    <div class="calorie-total">      <!--<h3>Total calories for {{ selectedDate | date:\'yyyy-MM-dd\' }}: {{ totalCalories | trimDecimals:2 }}</h3>-->      <p>Total calories:<span class="info-container-right">{{ totalCalories | trimDecimals:2 }} kcal</span></p>    </div>    <div class="drinks-total">      <!--<h3>Number of drinks for {{ selectedDate | date:\'yyyy-MM-dd\' }}: {{ totalDrinks }}</h3>-->      <p>Number of drinks:<span class="info-container-right">{{ totalDrinks }}</span></p>    </div>    <!-- New Section for BAC -->    <div class="bac-display">      <h3>Estimated BAC:<span class="info-container-right">{{ bac | number: \'1.2-2\' }}%</span></h3>      <p *ngIf="soberTime">Sober:<span class="info-container-right">~ {{ soberTime | date: \'EEE MMM dd yyyy HH:mm:ss\'          }}</span></p>    </div>  </div>  <div class="add-drink-container">    <button mat-flat-button (click)="redirectToDrinks()" class="add-drink-button">Add Drink</button>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'HomeComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HomeComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
