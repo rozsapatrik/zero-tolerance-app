@@ -124,6 +124,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Handles the logging in of the user.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -248,12 +255,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(authService: <a href="../injectables/AuthenticationService.html" target="_self">AuthenticationService</a>, router: Router, auth: AngularFireAuth, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, afs: AngularFirestore, notyfService: <a href="../injectables/NotyfService.html" target="_self">NotyfService</a>)</code>
+<code>constructor(authService: <a href="../injectables/AuthenticationService.html" target="_self">AuthenticationService</a>, router: Router, auth: AngularFireAuth, notyfService: <a href="../injectables/NotyfService.html" target="_self">NotyfService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/login/login.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/login/login.component.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -267,6 +274,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -281,6 +289,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service for user authentication.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -293,6 +305,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Router for routing.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>auth</td>
@@ -305,30 +321,10 @@
                                                             No
                                                     </td>
                                                     
-                                                </tr>
-                                                <tr>
-                                                        <td>userService</td>
-                                                  
                                                         <td>
-                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                                <p>Angular Firebase Authentication.</p>
+
                                                         </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>afs</td>
-                                                  
-                                                        <td>
-                                                                    <code>AngularFirestore</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
                                                 </tr>
                                                 <tr>
                                                         <td>notyfService</td>
@@ -341,6 +337,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service for displaying messages.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -380,8 +380,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/app/components/login/login.component.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="39"
+                                    class="link-to-prism">src/app/components/login/login.component.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -417,19 +417,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="36"
-                                    class="link-to-prism">src/app/components/login/login.component.ts:36</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/app/components/login/login.component.ts:54</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Submits the typed in data for log in.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>The user&#39;s credentials.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -461,10 +467,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/login/login.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/login/login.component.ts:20</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The login form group.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -490,9 +502,16 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/login/login.component.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/login/login.component.ts:44</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Gets the e-mail input.</p>
+</div>
+
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -512,9 +531,16 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/components/login/login.component.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/components/login/login.component.ts:48</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Gets the password input.</p>
+</div>
+
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -524,40 +550,58 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AngularFireAuth } from &#x27;@angular/fire/compat/auth&#x27;;
-import firebase from &#x27;firebase/compat/app&#x27;;
 import { AuthenticationService } from &#x27;../../services/authentication.service&#x27;;
 import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { FormControl, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
-import { UserService } from &#x27;src/app/services/user/user.service&#x27;;
-import { AngularFirestore } from &#x27;@angular/fire/compat/firestore&#x27;;
 import { NotyfService } from &#x27;../../services/notyf/notyf.service&#x27;;
 
+/**
+ * Handles the logging in of the user.
+ */
 @Component({
   selector: &#x27;app-login&#x27;,
   templateUrl: &#x27;./login.component.html&#x27;,
   styleUrls: [&#x27;./login.component.scss&#x27;]
 })
 export class LoginComponent implements OnInit{
+  /**
+   * The login form group.
+   */
   loginForm &#x3D; new FormGroup({
     email: new FormControl(&#x27;&#x27;, [Validators.required, Validators.email]),
     password: new FormControl(&#x27;&#x27;, [Validators.required])
   })
 
+  /**
+   * 
+   * @param authService Service for user authentication.
+   * @param router Router for routing.
+   * @param auth Angular Firebase Authentication.
+   * @param notyfService Service for displaying messages.
+   */
   constructor(
     private authService: AuthenticationService,
     private router: Router,
     private auth: AngularFireAuth,
-    private userService: UserService,
-    private afs: AngularFirestore,
     private notyfService: NotyfService
   ){}
 
-  ngOnInit(): void { console.log(&#x27;HELLO&#x27;);}
+  ngOnInit(): void {}
 
+  /**
+   * Gets the e-mail input.
+   */
   get email(){ return this.loginForm.get(&#x27;email&#x27;); }
+  /**
+   * Gets the password input.
+   */
   get password(){ return this.loginForm.get(&#x27;password&#x27;); }
 
+  /**
+   * Submits the typed in data for log in.
+   * @returns The user&#x27;s credentials.
+   */
   submit(){
     if(!this.loginForm.valid){ return; }
 

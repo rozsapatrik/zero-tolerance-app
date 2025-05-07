@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service for date selector.</p>
+
+            </p>
 
 
 
@@ -197,19 +204,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="15"
-                                    class="link-to-prism">src/app/services/date.service.ts:15</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/app/services/date.service.ts:32</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Gets the selected date.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>    <code>Date | null</code>
 
                         </div>
+                            <div class="io-description">
+                                <p>The set date.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -234,14 +247,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="11"
-                                    class="link-to-prism">src/app/services/date.service.ts:11</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="24"
+                                    class="link-to-prism">src/app/services/date.service.ts:24</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Sets the selected date.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -252,6 +267,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -266,6 +282,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The selected date.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -305,10 +325,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/services/date.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/services/date.service.ts:18</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Date as observable.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -331,10 +357,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/services/date.service.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/date.service.ts:14</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Date that always holds the latest value and emits that instantly to subscribers.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -347,17 +379,34 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { BehaviorSubject } from &#x27;rxjs&#x27;;
 
+/**
+ * Service for date selector.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class DateService {
+  /**
+   * Date that always holds the latest value and emits that instantly to subscribers.
+   */
   private selectedDateSubject &#x3D; new BehaviorSubject&lt;Date&gt;(new Date());
+  /**
+   * Date as observable.
+   */
   selectedDate$ &#x3D; this.selectedDateSubject.asObservable();
 
+  /**
+   * Sets the selected date.
+   * @param date The selected date.
+   */
   setSelectedDate(date: Date): void {
     this.selectedDateSubject.next(date);
   }
 
+  /**
+   * Gets the selected date.
+   * @returns The set date.
+   */
   getSelectedDate(): Date | null {
     return this.selectedDateSubject.value;
   }

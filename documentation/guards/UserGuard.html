@@ -121,6 +121,13 @@
             </p>
 
 
+                <p class="comment">
+                <h3>Description</h3>
+                </p>
+                <p class="comment">
+                    <p>User guard.</p>
+
+                </p>
 
 
 
@@ -159,12 +166,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(authService: <a href="../injectables/AuthenticationService.html" target="_self">AuthenticationService</a>, router: Router)</code>
+<code>constructor(authService: <a href="../injectables/AuthenticationService.html" target="_self">AuthenticationService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/guards/user.guard.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/guards/user.guard.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -178,6 +185,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -192,18 +200,10 @@
                                                             No
                                                     </td>
                                                     
-                                                </tr>
-                                                <tr>
-                                                        <td>router</td>
-                                                  
                                                         <td>
-                                                                    <code>Router</code>
+                                                                <p>Service for authentication.</p>
+
                                                         </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -239,14 +239,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="13"
-                                    class="link-to-prism">src/app/guards/user.guard.ts:13</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="26"
+                                    class="link-to-prism">src/app/guards/user.guard.ts:26</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Returns if current user is user or not.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -257,6 +259,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -271,6 +274,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Currently loaded route.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>state</td>
@@ -283,6 +290,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Current state of router.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -292,7 +303,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>If current user is user.</p>
+
                             </div>
                 </td>
             </tr>
@@ -304,17 +316,30 @@
 
         <div class="tab-pane fade  tab-source-code" id="source">
             <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from &#x27;@angular/router&#x27;;
-import { map, Observable, take } from &#x27;rxjs&#x27;;
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from &#x27;@angular/router&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
 import { AuthenticationService } from &#x27;../services/authentication.service&#x27;;
 
+/**
+ * User guard.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class UserGuard implements CanActivate {
   
-  constructor(private authService: AuthenticationService, private router: Router){}
+  /**
+   * 
+   * @param authService Service for authentication.
+   */
+  constructor(private authService: AuthenticationService){}
   
+  /**
+   * Returns if current user is user or not.
+   * @param route Currently loaded route.
+   * @param state Current state of router.
+   * @returns If current user is user.
+   */
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable&lt;boolean | UrlTree&gt; | Promise&lt;boolean | UrlTree&gt; | boolean | UrlTree {

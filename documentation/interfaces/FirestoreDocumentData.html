@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interface for consumed drinks with proper type.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -198,11 +205,13 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { AngularFirestore } from &#x27;@angular/fire/compat/firestore&#x27;;
 import { map, Observable } from &#x27;rxjs&#x27;;
-import { AuthenticationService } from &#x27;src/app/services/authentication.service&#x27;;
 import { DateService } from &#x27;src/app/services/date.service&#x27;;
 import { UserService } from &#x27;src/app/services/user/user.service&#x27;;
 import { NotyfService } from &#x27;../../services/notyf/notyf.service&#x27;;
 
+/**
+ * Interface for a drink.
+ */
 export interface Drink{
   name: string;
   abv: number;
@@ -211,6 +220,9 @@ export interface Drink{
   ml: number;
 }
 
+/**
+ * Interface for the consumed drink.
+ */
 interface DrinkAmount {
   id: string;
   amount: number;
@@ -220,17 +232,23 @@ interface DrinkAmount {
   category: string;
 }
 
+/**
+ * Interface for a map of consumed drinks.
+ */
 interface DrinkAmountsMap {
   [key: string]: DrinkAmount[];
 }
 
+/**
+ * Interface for consumed drinks with proper type.
+ */
 interface FirestoreDocumentData {
   drinkAmounts: DrinkAmountsMap;
 }
 
 /**
  * Lists out all the drinks in the database.
- * If the user clicks on a specific drink they can add it to their tracking.
+ * If the user clicks on a specific drink they can add it to their tracking after providing the necessary data.
  */
 @Component({
   selector: &#x27;app-drink-list&#x27;,
@@ -240,14 +258,42 @@ interface FirestoreDocumentData {
 
 export class DrinkListComponent {
 
+  /**
+   * List of the drinks from the database.
+   */
   drinksList: Drink[] &#x3D; [];
+  /**
+   * The selected drink.
+   */
   selectedDrink: Drink | null &#x3D; null;
+  /**
+   * The drinks matching the search term.
+   */
   filteredDrinks: Drink[] &#x3D; [];
+  /**
+   * The search term in the search bar.
+   */
   searchTerm: string &#x3D; &#x27;&#x27;;
+  /**
+   * A map of the user&#x27;s selected consumed drink.
+   */
   drinkAmounts: Map&lt;string, { drinkName: string, amount: number, calories: number, alcohol: number, time: string, date: string, category: string }&gt; &#x3D; new Map();
+  /**
+   * Temporary data for consumed drink.
+   */
   tempAmounts: { [key: string]: {ml: number, cps: number, time: string, date: string} } &#x3D; {};
+  /**
+   * The selected date.
+   */
   selectedDate: any;
   
+  /**
+   * 
+   * @param afs Angular Firestore.
+   * @param dateService Service for proper date usage.
+   * @param userService Service for user data.
+   * @param notyfService Service for displaying messages.
+   */
   constructor(private afs: AngularFirestore,
     private dateService: DateService,
     private userService: UserService,
@@ -327,9 +373,7 @@ export class DrinkListComponent {
       const userEmail &#x3D; await this.userService.getCurrentUserEmailString();
       const userID &#x3D; await this.userService.getCurrentUserId();
     
-      /**
-       * Creates a unique document ID based on the user and the date
-       */
+      // Creates a unique document ID based on the user and the date
       const docId &#x3D; &#x60;${userID}-${formattedDate}&#x60;;
       const docRef &#x3D; this.afs.collection(&#x27;drankDrinks&#x27;).doc(docId);
       const docSnapshot &#x3D; await docRef.get().toPromise();
@@ -344,18 +388,12 @@ export class DrinkListComponent {
       const calories &#x3D; drink.caloriesPerServing * (drinkData.ml / 100);
       const alcohol &#x3D; ((drink.abv/100) * drinkData.ml) * 0.789;
 
-      /**
-       * Generates a unique entryId for the drink
-       */
+      // Generates a unique entryId for the drink
       const entryId &#x3D; &#x60;${new Date().getTime()}-${Math.random()}&#x60;;
 
-      /**
-       * Checks if the drink already exists in the map for that day
-       */
+      // Checks if the drink already exists in the map for that day.
       if (updatedDrinkAmounts[drink.name]) {
-        /**
-         * If the drink exists, appends the new entry to the array for that drink
-         */
+        // If the drink exists, appends the new entry to the array for that drink
         updatedDrinkAmounts[drink.name].push({
           id: entryId,
           amount: drinkData.ml,
@@ -365,9 +403,7 @@ export class DrinkListComponent {
           category: drink.category
         });
       } else {
-        /**
-         * If the drink doesn&#x27;t exist, creates a new array and add the first entry
-         */
+        // If the drink doesn&#x27;t exist, creates a new array and add the first entry.
         updatedDrinkAmounts[drink.name] &#x3D; [{
           id: entryId,
           amount: drinkData.ml,
@@ -378,9 +414,7 @@ export class DrinkListComponent {
         }];
       }
     
-      /**
-       * Stores the drink data in Firestore
-       */
+      // Stores the drink data in Firestore.
       const drinkAmountData &#x3D; {
         email: userEmail,
         date: formattedDate,
@@ -388,22 +422,18 @@ export class DrinkListComponent {
       };
     
       try {
-        /**
-         * Stores the updated data to Firestore, merging with existing document
-         */
+        // Stores the updated data to Firestore, merging with existing document.
         await docRef.set(drinkAmountData, { merge: true });
         this.notyfService.success(&#x27;Drink added&#x27;);
           
-        /**
-         * Clears the temporary data
-         */
+        // Clears the temporary data.
         this.tempAmounts[drink.name] &#x3D; { ml: 0, time: &#x27;&#x27;, date: &#x27;&#x27;, cps: 0 };
       } catch (error) {
         this.notyfService.error(&#x27;Something went wrong&#x27;);
         console.error(&#x27;Error adding drink to Firestore: &#x27;, error);
       }
     } else {
-      console.log(&#x27;BAD&#x27;);
+      console.log(&#x27;Invalid data&#x27;);
     }
   }
 

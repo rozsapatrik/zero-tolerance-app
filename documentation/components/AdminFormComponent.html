@@ -614,7 +614,7 @@ On error shows an error notification.</p>
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { AngularFirestore } from &#x27;@angular/fire/compat/firestore&#x27;;
 import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
-import { Route, Router } from &#x27;@angular/router&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
 import { NotyfService } from &#x27;../../services/notyf/notyf.service&#x27;;
 import { UserService } from &#x27;src/app/services/user/user.service&#x27;;
 
@@ -722,22 +722,16 @@ export class AdminFormComponent {
 
       try {
         if (this.editingDrinkId) {
-          /**
-           * Updates existing drink
-           */
+          // Updates existing drink.
           await this.afs.collection(&#x27;drink&#x27;).doc(this.editingDrinkId).update(drinkData);
           this.notyfService.success(&#x27;Drink updated&#x27;);
         } else {
-          /**
-           * Adds new drink
-           */
+          // Adds new drink.
           await this.afs.collection(&#x27;drink&#x27;).add(drinkData);
           this.notyfService.success(&#x27;Drink added&#x27;);
         }
 
-        /**
-         * Navigates back to the admin page
-         */
+        // Navigates back to the admin page.
         this.router.navigate([&#x27;/admin&#x27;]);
       } catch (error) {
         this.notyfService.error(&#x27;Something went wrong&#x27;);

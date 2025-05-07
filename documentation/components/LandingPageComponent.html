@@ -124,6 +124,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Displays the landing page.</p>
+
+    </p>
 
 
 
@@ -211,12 +218,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(afs: AngularFirestore, authService: <a href="../injectables/AuthenticationService.html" target="_self">AuthenticationService</a>, route: ActivatedRoute, auth: AngularFireAuth, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, router: Router)</code>
+<code>constructor(router: Router)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/landing-page/landing-page.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/components/landing-page/landing-page.component.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -230,69 +237,10 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                                <tr>
-                                                        <td>afs</td>
-                                                  
-                                                        <td>
-                                                                    <code>AngularFirestore</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>authService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>route</td>
-                                                  
-                                                        <td>
-                                                                    <code>ActivatedRoute</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>auth</td>
-                                                  
-                                                        <td>
-                                                                    <code>AngularFireAuth</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>userService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
                                                 <tr>
                                                         <td>router</td>
                                                   
@@ -304,6 +252,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Router for routing.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -343,14 +295,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/app/components/landing-page/landing-page.component.ts:28</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/app/components/landing-page/landing-page.component.ts:32</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Redirects to the login page.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -380,14 +334,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="24"
-                                    class="link-to-prism">src/app/components/landing-page/landing-page.component.ts:24</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="25"
+                                    class="link-to-prism">src/app/components/landing-page/landing-page.component.ts:25</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Redirects to the register page.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -404,12 +360,11 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
-import { AngularFireAuth } from &#x27;@angular/fire/compat/auth&#x27;;
-import { AngularFirestore } from &#x27;@angular/fire/compat/firestore&#x27;;
-import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
-import { AuthenticationService } from &#x27;src/app/services/authentication.service&#x27;;
-import { UserService } from &#x27;src/app/services/user/user.service&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
 
+/**
+ * Displays the landing page.
+ */
 @Component({
   selector: &#x27;app-landing-page&#x27;,
   templateUrl: &#x27;./landing-page.component.html&#x27;,
@@ -417,19 +372,24 @@ import { UserService } from &#x27;src/app/services/user/user.service&#x27;;
 })
 export class LandingPageComponent {
 
+  /**
+   * 
+   * @param router Router for routing.
+   */
   constructor(
-    private afs: AngularFirestore,
-    private authService: AuthenticationService,
-    private route: ActivatedRoute,
-    private auth: AngularFireAuth,
-    private userService: UserService,
     private router: Router
   ){}
 
+  /**
+   * Redirects to the register page.
+   */
   redirectToRegister(){
     this.router.navigate([&#x27;/register&#x27;]);
   }
 
+  /**
+   * Redirects to the login page.
+   */
   redirectToLogin(){
     this.router.navigate([&#x27;/login&#x27;]);
   }

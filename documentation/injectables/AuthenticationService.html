@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service for user authentication.</p>
+
+            </p>
 
 
 
@@ -188,12 +195,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(auth: Auth, fireAuth: AngularFireAuth, afs: AngularFirestore)</code>
+<code>constructor(auth: Auth, fireAuth: AngularFireAuth)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/services/authentication.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/services/authentication.service.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -207,6 +214,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -221,6 +229,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Authentication.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>fireAuth</td>
@@ -233,18 +245,10 @@
                                                             No
                                                     </td>
                                                     
-                                                </tr>
-                                                <tr>
-                                                        <td>afs</td>
-                                                  
                                                         <td>
-                                                                    <code>AngularFirestore</code>
+                                                                <p>Angular Firebase Authentication.</p>
+
                                                         </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -280,14 +284,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/app/services/authentication.service.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="40"
+                                    class="link-to-prism">src/app/services/authentication.service.ts:40</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Returns an observable of the currently aunthenticated user</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
@@ -317,14 +323,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/app/services/authentication.service.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/app/services/authentication.service.ts:52</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Checks if the currently authenticated user is an admin by checking if the email matches the admin email.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>    <code>Observable&lt;boolean&gt;</code>
@@ -354,14 +362,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/app/services/authentication.service.ts:26</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/app/services/authentication.service.ts:45</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Checks if the user is currently authenticated based on the user from AngularFireAuth and the current user from Auth</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>    <code>Observable&lt;boolean&gt;</code>
@@ -391,14 +401,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="17"
-                                    class="link-to-prism">src/app/services/authentication.service.ts:17</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/app/services/authentication.service.ts:32</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Logs in user.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -409,6 +421,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -423,6 +436,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Current user&#39;s username.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>password</td>
@@ -435,6 +452,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Current user&#39;s password.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -444,7 +465,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Logged in user.</p>
+
                             </div>
                 </td>
             </tr>
@@ -470,14 +492,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="42"
-                                    class="link-to-prism">src/app/services/authentication.service.ts:42</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/app/services/authentication.service.ts:69</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Logs in an existing user with the provided username and password.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -488,6 +512,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -502,6 +527,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Username to be logged in with.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>password</td>
@@ -514,6 +543,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Password to be logged in with.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -549,14 +582,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="47"
-                                    class="link-to-prism">src/app/services/authentication.service.ts:47</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="76"
+                                    class="link-to-prism">src/app/services/authentication.service.ts:76</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Logs out the currently authenticated user.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
@@ -586,14 +621,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="36"
-                                    class="link-to-prism">src/app/services/authentication.service.ts:36</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/app/services/authentication.service.ts:59</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Registers a new user with the given email and password, and sets the user&#39;s display name to the provided username.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -681,10 +718,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/services/authentication.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/services/authentication.service.ts:17</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable that gets the current user&#39;s authetntication state</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -695,51 +738,80 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { AngularFirestore } from &#x27;@angular/fire/compat/firestore&#x27;;
 import { AngularFireAuth } from &#x27;@angular/fire/compat/auth&#x27;;
 import { Auth, signInWithEmailAndPassword, authState, createUserWithEmailAndPassword, updateProfile } from &#x27;@angular/fire/auth&#x27;;
 import { from, map, Observable, switchMap } from &#x27;rxjs&#x27;;
 
+/**
+ * Service for user authentication.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class AuthenticationService {
 
-  //Observable that gets the current user&#x27;s authetntication state
+  /**
+   * Observable that gets the current user&#x27;s authetntication state
+   */
   currentUser$ &#x3D; authState(this.auth);
   
-  constructor(private auth: Auth, private fireAuth: AngularFireAuth, private afs: AngularFirestore) { }
+  /**
+   * 
+   * @param auth Authentication.
+   * @param fireAuth Angular Firebase Authentication.
+   */
+  constructor(private auth: Auth, private fireAuth: AngularFireAuth) { }
 
+  /**
+   * Logs in user.
+   * @param username Current user&#x27;s username.
+   * @param password Current user&#x27;s password.
+   * @returns Logged in user.
+   */
   login(username: string, password: string){
     return from(
       signInWithEmailAndPassword(this.auth, username, password));
   }
 
-  //Returns an observable of the currently aunthenticated user
+  /**
+   * Returns an observable of the currently aunthenticated user
+   */
   getUser(){ return this.currentUser$; }
 
-  //Checks if the user is currently authenticated based on the user from AngularFireAuth anmd the current user from Auth
+  /**
+   * Checks if the user is currently authenticated based on the user from AngularFireAuth and the current user from Auth
+   */
   isUser(): Observable&lt;boolean&gt;{
     return this.fireAuth.user.pipe(map(user &#x3D;&gt; {return user?.email &#x3D;&#x3D; this.auth.currentUser?.email;}));
   }
 
-  //Checks if the currently authenticated user is an admin by checking if the email matches the admin email.
+  /**
+   * Checks if the currently authenticated user is an admin by checking if the email matches the admin email.
+   */
   isAdmin(): Observable&lt;boolean&gt;{
     return this.fireAuth.user.pipe(map(user &#x3D;&gt; {return user?.email &#x3D;&#x3D; &quot;admin@zt.com&quot;}));
   }
 
-  //Registers a new user with the given email and password, and sets the user&#x27;s display name to the provided username.
+  /**
+   * Registers a new user with the given email and password, and sets the user&#x27;s display name to the provided username.
+   */
   registerUser(username: string, email: string, password: string){
     return from(createUserWithEmailAndPassword(this.auth, email, password))
     .pipe(switchMap(({user}) &#x3D;&gt; updateProfile(user, {displayName: username})));
   }
 
-  //Logs in an existing user with the provided username and password.
+  /**
+   * Logs in an existing user with the provided username and password.
+   * @param username Username to be logged in with.
+   * @param password Password to be logged in with.
+   */
   loginUser(username: string, password: string){
     return from(signInWithEmailAndPassword(this.auth, username, password));
   }
 
-  //Logs out the currently authenticated user.
+  /**
+   * Logs out the currently authenticated user.
+   */
   logoutUser(){ return from(this.auth.signOut()); }
 }
 </code></pre>

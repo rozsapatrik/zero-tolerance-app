@@ -123,6 +123,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Pipe for trimming decimals for proper data display.</p>
+
+            </p>
 
 
         <section data-compodoc="block-metadata">
@@ -162,14 +169,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="8"
-                                    class="link-to-prism">src/app/pipes/trim-decimals.pipe.ts:8</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="17"
+                                    class="link-to-prism">src/app/pipes/trim-decimals.pipe.ts:17</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Trims decimal places off of value.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -181,6 +190,7 @@
                                                 <td>Type</td>
                                             <td>Optional</td>
                                                 <td>Default value</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -197,6 +207,10 @@
                                             <td>
                                             </td>
 
+                                            <td>
+                                                    <p>The value to be trimmed.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>decimalPlaces</td>
@@ -212,6 +226,10 @@
                                                     <code>2</code>
                                             </td>
 
+                                            <td>
+                                                    <p>Amount of decimal places to be trimmer.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -221,7 +239,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Trimmed value as string.</p>
+
                             </div>
                 </td>
             </tr>
@@ -235,11 +254,20 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Pipe, PipeTransform } from &#x27;@angular/core&#x27;;
 
+/**
+ * Pipe for trimming decimals for proper data display.
+ */
 @Pipe({
   name: &#x27;trimDecimals&#x27;
 })
 export class TrimDecimalsPipe implements PipeTransform {
 
+  /**
+   * Trims decimal places off of value.
+   * @param value The value to be trimmed.
+   * @param decimalPlaces Amount of decimal places to be trimmer.
+   * @returns Trimmed value as string.
+   */
   transform(value: number, decimalPlaces: number &#x3D; 2): string {
     if (!value) return &#x27;0&#x27;;
     const formatted &#x3D; value.toFixed(decimalPlaces); // Fixed to max decimalPlaces
