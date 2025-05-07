@@ -1,0 +1,46 @@
+@startuml
+skinparam componentStyle uml2
+skinparam rectangle {
+  BackgroundColor Cornsilk
+  BorderColor DarkSlateGray
+  FontName Arial
+}
+
+skinparam node {
+  BackgroundColor LightSteelBlue
+  BorderColor DarkSlateGray
+  FontName Arial
+}
+
+skinparam cloud {
+  BackgroundColor LightGrey
+  BorderColor DarkSlateGray
+  FontName Arial
+}
+
+' Kliens oldal
+node "Felhasználó böngészője" as Browser
+
+' Frontend oldal
+cloud "Firebase Hosting" {
+  [Angular alkalmazás] as Frontend
+}
+
+' Backend szolgáltatások (Firebase)
+cloud "Firebase" {
+  rectangle "Firebase Authentication\n(Felhasználói bejelentkezés, regisztráció)" as Auth
+  rectangle "Firestore Database\n(Adatok tárolása: italok, naplózott bejegyzések stb.)" as Firestore
+  rectangle "Firebase Hosting\n(Statikus fájlok hosztolása, frontend kiszolgálása)" as Hosting
+}
+
+' Kommunikáció
+Browser --> Frontend : "HTTP/HTTPS\nOldal betöltése"
+Frontend --> Auth : "API hívások\nFirebase SDK-n keresztül"
+Frontend --> Firestore : "API hívások\nFirebase SDK-n keresztül"
+Frontend --> Hosting : "API hívások\nFirebase SDK-n keresztül"
+
+' Kiegészítések
+note right of Firebase : Nincs saját szerver, minden felhőalapú.
+note right of Frontend : A felhasználók csak a frontenddel\nlépnek kapcsolatba, a Firebase API\nhívásokat az Angular végzi.
+
+@enduml
