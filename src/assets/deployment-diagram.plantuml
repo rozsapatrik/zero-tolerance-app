@@ -35,9 +35,9 @@ cloud "Firebase" {
 
 ' Kommunikáció
 Browser --> Frontend : "HTTP/HTTPS\nOldal betöltése"
-Frontend --> Auth : "API hívások\nFirebase SDK-n keresztül"
-Frontend --> Firestore : "API hívások\nFirebase SDK-n keresztül"
-Frontend --> Hosting : "API hívások\nFirebase SDK-n keresztül"
+Frontend --> Auth : "API hívások\nFirebase-n keresztül"
+Frontend --> Firestore : "API hívások\nFirebase-n keresztül"
+Frontend --> Hosting : "API hívások\nFirebase-n keresztül"
 
 ' Kiegészítések
 note right of Firebase : Felhőalapú
