@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+/**
+ * Displays message for page not found.
+ */
 @Component({
   selector: 'app-page-not-found',
   templateUrl: './page-not-found.component.html',

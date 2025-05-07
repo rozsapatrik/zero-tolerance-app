@@ -1,9 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { NotyfService } from '../../services/notyf/notyf.service';
 import { UserService } from 'src/app/services/user/user.service';
 
+/**
+ * Serves as the admin interface for managing drinks in the Firestore database.
+ * It allows the admin to:
+ * - View the list of all drinks
+ * - Navigate to a form to add a new drink
+ * - Edit an existing drink
+ * - Delete drinks from the collection
+ */
 @Component({
   selector: 'app-admin-page',
   templateUrl: './admin-page.component.html',
@@ -11,8 +19,18 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class AdminPageComponent {
 
+  /**
+   * Array for the drinks.
+   */
   drinks: any[] = [];
 
+  /**
+   * 
+   * @param afs Angular Firestore.
+   * @param router Router for routing.
+   * @param notyfService Service for displaying messages.
+   * @param userService Service for user data.
+   */
   constructor(
     private afs: AngularFirestore,
     private router: Router,
@@ -20,17 +38,21 @@ export class AdminPageComponent {
     private userService: UserService
   ) {}
 
+  /**
+   * Initializes with current user ID and drinks
+   */
   ngOnInit(): void{
     this.userService.getCurrentUserId();
     this.fetchAllDrinks();
   }
 
-  // Refreshes the list of drinks
+  /**
+   * Fetches all the drinks from the database
+   */
   fetchAllDrinks(): void {
     this.afs.collection("drink").valueChanges({idField: 'id'}).subscribe(
       (drinks) => {
         this.drinks = drinks;
-        console.log("Fetched drinks: ", this.drinks);
       },
       (error) => {
         console.error('Error fetching drinks', error);
@@ -38,15 +60,25 @@ export class AdminPageComponent {
     )
   }
 
+  /**
+   * Redirects to the admin form
+   */
   redirectToAdminFormAddDrink(): void {
     this.router.navigate(['/adminform']);
   }
 
+  /**
+   * Redirects to the admin form filled with the data of the selected drink
+   * @param drink The drink that we want to edit
+   */
   editDrink(drink: any): void {
     this.router.navigate(['/adminform'], { state: { drink } });
   }
 
-  // Delete a specific drink
+  /**
+   * Deletes the drink specified by the ID
+   * @param drinkId The ID of the drink we want to delete
+   */
   deleteDrink(drinkId: string): void {
     if (confirm('Are you sure you want to delete this drink?')) {
       this.afs
@@ -55,7 +87,6 @@ export class AdminPageComponent {
         .delete()
         .then(() => {
           this.notyfService.success('Drink deleted');
-          console.log(`Drink with ID ${drinkId} deleted successfully`);
           this.fetchAllDrinks();
         })
         .catch((error) => {

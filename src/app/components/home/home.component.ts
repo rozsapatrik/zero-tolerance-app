@@ -1,21 +1,28 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Router } from '@angular/router';
 import { DateService } from 'src/app/services/date.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { NotyfService } from '../../services/notyf/notyf.service';
 
+/**
+ * Interface for the consumed drink data.
+ */
 interface DrinkData {
   drinkAmounts: { [key: string]: { id: string, amount: number; calories: number, alcohol: number, time: string }[] };
 }
 
+/**
+ * Interface for the user's personal data.
+ */
 interface UserData {
   weight: number;
   gender: string;
 }
 
+/**
+ * Displays the drink tracking page and the overall data.
+ */
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -23,45 +30,83 @@ interface UserData {
 })
 export class HomeComponent implements OnInit{
   
+  /**
+   * The selected date.
+   */
   selectedDate: Date;
+  /**
+   * Drinks for the selected day.
+   */
   drinksForTheDay: any[] = [];
+  /**
+   * Total calories for the day.
+   */
   totalCalories: number = 0;
+  /**
+   * Total amount of drinks for the day.
+   */
   totalDrinks: number = 0;
+  /**
+   * Blood alcohol content for the day.
+   */
   bac: number = 0;
+  /**
+   * The time by the user will be sober approximately.
+   */
   soberTime: Date | null = null;
+  /**
+   * The user's personal data.
+   */
   userData: UserData;
   
+  /**
+   * 
+   * @param afs Angular Firestore.
+   * @param userService Service for user data.
+   * @param dateService Service for proper date usage.
+   * @param router Router for routing.
+   * @param notyfService Service for displaying messages.
+   */
   constructor(
     private afs: AngularFirestore,
-    private authService: AuthenticationService,
-    private route: ActivatedRoute,
-    private auth: AngularFireAuth,
     private userService: UserService,
     private dateService: DateService,
     private router: Router,
     private notyfService: NotyfService
   ){}
 
+  /**
+   * Reference to the `dateInput` element.
+   */
   @ViewChild('dateInput') dateInput!: ElementRef<HTMLInputElement>;
 
+  /**
+   * Initializes the page.
+   */
   async ngOnInit(): Promise<void> {
-    // Initialize selected date from DateService or today's date
+    /**
+     * Initializes selected date from DateService or today's date.
+     */
     this.selectedDate = this.dateService.getSelectedDate() || new Date();
     await this.fetchUserData();
 
-    // Fetch drinks data for the selected date
+    /**
+     * Fetches drinks data for the selected date.
+     */
     this.fetchDrinksForTheDay();
     
-    // Watch for date changes and load drinks
+    /**
+     * Watches for date changes and loads drinks.
+     */
     await this.dateService.selectedDate$.subscribe(date => {
       this.selectedDate = date;
       this.fetchDrinksForTheDay();
     });
-
-    // Initial load of drinks for the selected date
-    //await this.loadDrinksForSeletectedDate();
   }
 
+  /**
+   * Fetches user data.
+   */
   async fetchUserData(): Promise<void> {
     const currentUserID = await this.userService.getCurrentUserId();
     if (currentUserID) {
@@ -72,8 +117,12 @@ export class HomeComponent implements OnInit{
     }
   }
 
+  /**
+   * Fetches the user's consumed drinks for the day.
+   */
   async fetchDrinksForTheDay(): Promise<void> {
-    this.drinksForTheDay = [];  // Clear previous data
+    // Clears previous data
+    this.drinksForTheDay = [];
     const currentUserID = await this.userService.getCurrentUserId();
     
     if (currentUserID && this.selectedDate) {
@@ -104,6 +153,10 @@ export class HomeComponent implements OnInit{
     }
   }
   
+  /**
+   * Calculates approximate blood alcohol content for given day.
+   * @returns If user data is not present then returns.
+   */
   calculateBAC(): void {
     if (!this.userData) {
       console.error('User data not available for BAC calculation');
@@ -164,27 +217,49 @@ export class HomeComponent implements OnInit{
       console.log('Estimated time to be sober:', this.soberTime);  
   }
 
+  /**
+   * Calculates total calories and drinks for the day.
+   */
   calculateTotals(): void {
     this.totalCalories = this.drinksForTheDay.reduce((sum, drink) => sum + (drink.calories || 0), 0);
     this.totalDrinks = this.drinksForTheDay.length;
   }
 
+  /**
+   * Sets proper data on date change.
+   * @param event The event that triggers this method.
+   */
   onDateChange(event: any) {
     this.selectedDate = new Date(event.target.value);
     this.dateService.setSelectedDate(this.selectedDate);
     this.fetchDrinksForTheDay();
   }
 
+  /**
+   * Formats the given date.
+   * @param date The given date.
+   * @returns The given date but properly formatted.
+   */
   getFormattedDate(date: Date): string {
     return date.toISOString().split('T')[0]; // Formats date as YYYY-MM-DD for the input field
   }
 
+  /**
+   * Opens the date picker.
+   */
   openDatePicker() {
     this.dateInput.nativeElement.showPicker(); // Opens the native date picker
   }
 
+  /**
+   * Redirects to drink list page.
+   */
   redirectToDrinks(){ this.router.navigate(['/drinklist']); }
 
+  /**
+   * Shows alert for drink deletion.
+   * @param drink The currently clicked drink.
+   */
   onDrinkClick(drink: any): void {
     const confirmDelete = window.confirm(`Are you sure you want to delete the drink ${drink.name}?`);
     if (confirmDelete) {
@@ -192,6 +267,10 @@ export class HomeComponent implements OnInit{
     }
   }
 
+  /**
+   * Removes the selected drink from the user's consumed drinks.
+   * @param drink The drink to be deleted.
+   */
   async deleteDrinkFromFirestore(drink: any): Promise<void> {
     const userId = await this.userService.getCurrentUserId();
     const formattedDate = `${this.selectedDate.getFullYear()}-${(this.selectedDate.getMonth() + 1).toString().padStart(2, '0')}-${this.selectedDate.getDate().toString().padStart(2, '0')}`;

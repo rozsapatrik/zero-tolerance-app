@@ -1,21 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { NotyfService } from '../../services/notyf/notyf.service';
 import { UserService } from 'src/app/services/user/user.service';
 
+/**
+ * Contains a form that is needed for the admin add or modify a drink in the database.
+ */
 @Component({
   selector: 'app-admin-form',
   templateUrl: './admin-form.component.html',
   styleUrls: ['./admin-form.component.scss']
 })
 export class AdminFormComponent {
-
+  /**
+   * The from group for the drink.
+   */
   drinkForm: FormGroup;
+  /**
+   * ID of the currently edited drink.
+   */
   editingDrinkId: string | null = null;
+  /**
+   * Flag for checking for editing mode.
+   */
   isEditMode: boolean = false;
 
+  /**
+   * Initializes the form with drink data if it is passed through navigation.
+   * If drink data is present it fills the form for editing and sets edit mode.
+   * Otherwise initializes an empty form for creating a new drink.
+   * @param fb The form builder.
+   * @param afs Angular Firestore.
+   * @param router Router for routing.
+   * @param notyfService Service for displaying messages.
+   * @param userService Service for user data.
+   */
   constructor(
     private fb: FormBuilder,
     private afs: AngularFirestore,
@@ -23,7 +44,6 @@ export class AdminFormComponent {
     private notyfService: NotyfService,
     private userService: UserService
   ) {
-    // Retrieve passed drink data
     const navigation = this.router.getCurrentNavigation();
     const state = navigation?.extras?.state as { drink: any };
     if (state && state.drink) {
@@ -47,6 +67,9 @@ export class AdminFormComponent {
     }
   }
 
+  /**
+   * Initializes the form when the component is initialized.
+   */
   ngOnInit(): void {
     this.userService.getCurrentUserId();
     this.initializeForm();
@@ -58,6 +81,9 @@ export class AdminFormComponent {
     }
   }
 
+  /**
+   * Initializes the form with default values and validation rules.
+   */
   initializeForm(): void {
     this.drinkForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
@@ -68,24 +94,31 @@ export class AdminFormComponent {
     });
   }
 
+  /**
+   * Handles the form submission.
+   * If the form is valid:
+   * - Updates an existing drink if `editingDrinkId` is valid.
+   * - Adds a new drink if `editingDrinkId` is not valid.
+   * 
+   * On success navigates back to the admin page and shows a success notification.
+   * On error shows an error notification.
+   */
   async onSubmit(): Promise<void> {
     if (this.drinkForm.valid) {
       const drinkData = this.drinkForm.value;
 
       try {
         if (this.editingDrinkId) {
-          // Update existing drink
+          // Updates existing drink.
           await this.afs.collection('drink').doc(this.editingDrinkId).update(drinkData);
           this.notyfService.success('Drink updated');
-          console.log('Drink updated successfully:', drinkData);
         } else {
-          // Add new drink
+          // Adds new drink.
           await this.afs.collection('drink').add(drinkData);
           this.notyfService.success('Drink added');
-          console.log('Drink added successfully:', drinkData);
         }
 
-        // Navigate back to the admin page
+        // Navigates back to the admin page.
         this.router.navigate(['/admin']);
       } catch (error) {
         this.notyfService.error('Something went wrong');

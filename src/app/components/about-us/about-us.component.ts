@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 
+/**
+ * Displays the about us page.
+ */
 @Component({
   selector: 'app-about-us',
   templateUrl: './about-us.component.html',

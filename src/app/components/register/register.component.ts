@@ -5,7 +5,9 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { NotyfService } from '../../services/notyf/notyf.service';
 
-// Checks if the two passwords typed in the registerForm match
+/**
+ * Checks if the two passwords typed in the `registerForm` match
+ */
 export function passwordsMatchValidator(): ValidatorFn{
   return(AbsControl: AbstractControl): ValidationErrors | null => {
     const password = AbsControl.get('password')?.value;
@@ -22,6 +24,9 @@ export function passwordsMatchValidator(): ValidatorFn{
   }
 }
 
+/**
+ * Handles user registration.
+ */
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -29,6 +34,9 @@ export function passwordsMatchValidator(): ValidatorFn{
 })
 
 export class RegisterComponent implements OnInit{
+  /**
+   * Form for user registration.
+   */
   registerForm = new FormGroup({
     username: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.email, Validators.required]),
@@ -38,6 +46,13 @@ export class RegisterComponent implements OnInit{
     gender: new FormControl('male', Validators.required) // Gender must be selected
   }, { validators: passwordsMatchValidator() })
 
+  /**
+   * 
+   * @param authService Service for user authentication.
+   * @param router Router for routing.
+   * @param afs Angular Firestore.
+   * @param notyfService Service for displaying notifications.
+   */
   constructor(
     private authService: AuthenticationService,
     private router: Router,
@@ -47,13 +62,35 @@ export class RegisterComponent implements OnInit{
 
   ngOnInit(): void {}
 
-  // Get methods for the registerForm
+  /**
+   * Gets the input username.
+   */
   get username(){ return this.registerForm.get('username') }
+  /**
+   * Gets the input e-mail.
+   */
   get email(){ return this.registerForm.get('email') }
+  /**
+   * Gets the input password.
+   */
   get password(){ return this.registerForm.get('password') }
+  /**
+   * Gets the input confirmed password.
+   */
   get confirmPassword(){ return this.registerForm.get('confirmPassword') }
+  /**
+   * Gets the input weight.
+   */
   get weight() { return this.registerForm.get('weight'); }
+  /**
+   * Gets the input gender.
+   */
   get gender() { return this.registerForm.get('gender'); }
+
+  /**
+   * Submits the user's data for registration.
+   * @returns If the registration form's data is invalid then returns.
+   */
   registerSubmit(){
     if(!this.registerForm.valid){ 
       console.log("Invalid form");

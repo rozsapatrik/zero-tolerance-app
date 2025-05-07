@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { UserService } from 'src/app/services/user/user.service';
+import { Router } from '@angular/router';
 
+/**
+ * Displays the landing page.
+ */
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -12,19 +11,24 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class LandingPageComponent {
 
+  /**
+   * 
+   * @param router Router for routing.
+   */
   constructor(
-    private afs: AngularFirestore,
-    private authService: AuthenticationService,
-    private route: ActivatedRoute,
-    private auth: AngularFireAuth,
-    private userService: UserService,
     private router: Router
   ){}
 
+  /**
+   * Redirects to the register page.
+   */
   redirectToRegister(){
     this.router.navigate(['/register']);
   }
 
+  /**
+   * Redirects to the login page.
+   */
   redirectToLogin(){
     this.router.navigate(['/login']);
   }
