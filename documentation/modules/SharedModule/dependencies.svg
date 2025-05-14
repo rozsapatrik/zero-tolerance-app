@@ -24,13 +24,13 @@
 <title>cluster_SharedModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="86.5,-70 86.5,-268 409.5,-268 409.5,-70 86.5,-70"/>
 </g>
-<g id="clust6" class="cluster">
-<title>cluster_SharedModule_exports</title>
-<polygon fill="none" stroke="black" points="94.5,-208 94.5,-260 401.5,-260 401.5,-208 94.5,-208"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_SharedModule_declarations</title>
 <polygon fill="none" stroke="black" points="98.5,-78 98.5,-130 398.5,-130 398.5,-78 98.5,-78"/>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_SharedModule_exports</title>
+<polygon fill="none" stroke="black" points="94.5,-208 94.5,-260 401.5,-260 401.5,-208 94.5,-208"/>
 </g>
 <!-- NavigationComponent -->
 <g id="node1" class="node">

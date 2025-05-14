@@ -348,8 +348,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="89"
-                                    class="link-to-prism">src/app/core/services/user/user.service.ts:89</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/app/core/services/user/user.service.ts:88</a></div>
                         </td>
                     </tr>
 
@@ -670,7 +670,6 @@ export class UserService {
       const userDoc &#x3D; await userRef.get().toPromise();
       const currentEmail &#x3D; userDoc?.get(&#x27;email&#x27;) as string;
       this.currentUserEmail &#x3D; currentEmail;
-      console.log(&#x27;fetched email:&#x27;, this.currentUserEmail);
     }
   }
 

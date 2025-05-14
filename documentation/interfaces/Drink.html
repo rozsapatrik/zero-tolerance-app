@@ -368,7 +368,7 @@ import { NotyfService } from &#x27;src/app/core/services/notyf/notyf.service&#x2
 /**
  * Interface for a drink.
  */
-export interface Drink{
+export interface Drink {
   name: string;
   abv: number;
   caloriesPerServing: number;
@@ -409,11 +409,9 @@ interface FirestoreDocumentData {
 @Component({
   selector: &#x27;app-drink-list&#x27;,
   templateUrl: &#x27;./drink-list.component.html&#x27;,
-  styleUrls: [&#x27;./drink-list.component.scss&#x27;]
+  styleUrls: [&#x27;./drink-list.component.scss&#x27;],
 })
-
 export class DrinkListComponent {
-
   /**
    * List of the drinks from the database.
    */
@@ -433,37 +431,51 @@ export class DrinkListComponent {
   /**
    * A map of the user&#x27;s selected consumed drink.
    */
-  drinkAmounts: Map&lt;string, { drinkName: string, amount: number, calories: number, alcohol: number, time: string, date: string, category: string }&gt; &#x3D; new Map();
+  drinkAmounts: Map&lt;
+    string,
+    {
+      drinkName: string;
+      amount: number;
+      calories: number;
+      alcohol: number;
+      time: string;
+      date: string;
+      category: string;
+    }
+  &gt; &#x3D; new Map();
   /**
    * Temporary data for consumed drink.
    */
-  tempAmounts: { [key: string]: {ml: number, cps: number, time: string, date: string} } &#x3D; {};
+  tempAmounts: {
+    [key: string]: { ml: number; cps: number; time: string; date: string };
+  } &#x3D; {};
   /**
    * The selected date.
    */
   selectedDate: any;
-  
+
   /**
-   * 
+   *
    * @param afs Angular Firestore.
    * @param dateService Service for proper date usage.
    * @param userService Service for user data.
    * @param notyfService Service for displaying messages.
    */
-  constructor(private afs: AngularFirestore,
+  constructor(
+    private afs: AngularFirestore,
     private dateService: DateService,
     private userService: UserService,
     private notyfService: NotyfService
-  ){}
+  ) {}
 
   /**
    * Gets all the drinks on initialization
    */
-  ngOnInit(){
+  ngOnInit() {
     this.userService.getCurrentUserId();
     this.selectedDate &#x3D; this.dateService.getSelectedDate();
 
-    this.getDrinks().subscribe(drinks &#x3D;&gt; {
+    this.getDrinks().subscribe((drinks) &#x3D;&gt; {
       this.drinksList &#x3D; drinks;
       this.filteredDrinks &#x3D; drinks;
     });
@@ -478,19 +490,23 @@ export class DrinkListComponent {
       this.tempAmounts[drinkName] &#x3D; { ml: 0, time: &#x27;&#x27;, date: &#x27;&#x27;, cps: 0 };
     }
   }
-  
-  
+
   /**
    * Gets all the drinks from the database
    * @returns The given drink
    */
-  getDrinks(): Observable&lt;Drink[]&gt;{
-    return this.afs.collection(&#x27;drink&#x27;).snapshotChanges().pipe(
-      map(actions &#x3D;&gt; actions.map(a &#x3D;&gt; {
-        const data &#x3D; a.payload.doc.data() as Drink;
-        return data;
-      }))
-    );
+  getDrinks(): Observable&lt;Drink[]&gt; {
+    return this.afs
+      .collection(&#x27;drink&#x27;)
+      .snapshotChanges()
+      .pipe(
+        map((actions) &#x3D;&gt;
+          actions.map((a) &#x3D;&gt; {
+            const data &#x3D; a.payload.doc.data() as Drink;
+            return data;
+          })
+        )
+      );
   }
 
   /**
@@ -507,42 +523,51 @@ export class DrinkListComponent {
    */
   filterDrinks(): void {
     const terms &#x3D; this.searchTerm.trim().toLowerCase().split(&#x27; &#x27;);
-    this.filteredDrinks &#x3D; this.drinksList.filter(drink &#x3D;&gt; terms.every(term &#x3D;&gt;
-      drink.name.toLowerCase().includes(term))
+    this.filteredDrinks &#x3D; this.drinksList.filter((drink) &#x3D;&gt;
+      terms.every((term) &#x3D;&gt; drink.name.toLowerCase().includes(term))
     );
   }
-  
+
   /**
    * Stores the newly tracked drink in Firestore
    * @param drink The drink tracking to be uploaded
    */
   async addDrinkAmount(drink: Drink): Promise&lt;void&gt; {
     const drinkData &#x3D; this.tempAmounts[drink.name];
-    const formattedDate &#x3D; &#x60;${this.selectedDate.getFullYear()}-${(this.selectedDate.getMonth() + 1).toString().padStart(2, &#x27;0&#x27;)}-${this.selectedDate.getDate().toString().padStart(2, &#x27;0&#x27;)}&#x60;;
-      
+    const formattedDate &#x3D; &#x60;${this.selectedDate.getFullYear()}-${(
+      this.selectedDate.getMonth() + 1
+    )
+      .toString()
+      .padStart(2, &#x27;0&#x27;)}-${this.selectedDate
+      .getDate()
+      .toString()
+      .padStart(2, &#x27;0&#x27;)}&#x60;;
+
     if (drinkData &amp;&amp; drinkData.ml &gt; 0 &amp;&amp; drinkData.time &amp;&amp; this.selectedDate) {
-      const formattedTime &#x3D; new Date(&#x60;1970-01-01T${drinkData.time}:00&#x60;).toLocaleTimeString(&#x27;en-GB&#x27;, {
+      const formattedTime &#x3D; new Date(
+        &#x60;1970-01-01T${drinkData.time}:00&#x60;
+      ).toLocaleTimeString(&#x27;en-GB&#x27;, {
         hour: &#x27;2-digit&#x27;,
-        minute: &#x27;2-digit&#x27;
+        minute: &#x27;2-digit&#x27;,
       });
 
       const userEmail &#x3D; await this.userService.getCurrentUserEmailString();
       const userID &#x3D; await this.userService.getCurrentUserId();
-    
+
       // Creates a unique document ID based on the user and the date
       const docId &#x3D; &#x60;${userID}-${formattedDate}&#x60;;
       const docRef &#x3D; this.afs.collection(&#x27;drankDrinks&#x27;).doc(docId);
       const docSnapshot &#x3D; await docRef.get().toPromise();
 
       let updatedDrinkAmounts: DrinkAmountsMap &#x3D; {};
-    
+
       if (docSnapshot &amp;&amp; docSnapshot.exists) {
         const existingData &#x3D; docSnapshot.data() as FirestoreDocumentData;
         updatedDrinkAmounts &#x3D; existingData ? existingData.drinkAmounts : {};
       }
 
       const calories &#x3D; drink.caloriesPerServing * (drinkData.ml / 100);
-      const alcohol &#x3D; ((drink.abv/100) * drinkData.ml) * 0.789;
+      const alcohol &#x3D; (drink.abv / 100) * drinkData.ml * 0.789;
 
       // Generates a unique entryId for the drink
       const entryId &#x3D; &#x60;${new Date().getTime()}-${Math.random()}&#x60;;
@@ -556,32 +581,34 @@ export class DrinkListComponent {
           calories: calories,
           alcohol: alcohol,
           time: formattedTime,
-          category: drink.category
+          category: drink.category,
         });
       } else {
         // If the drink doesn&#x27;t exist, creates a new array and add the first entry.
-        updatedDrinkAmounts[drink.name] &#x3D; [{
-          id: entryId,
-          amount: drinkData.ml,
-          calories: calories,
-          alcohol: alcohol,
-          time: formattedTime,
-          category: drink.category
-        }];
+        updatedDrinkAmounts[drink.name] &#x3D; [
+          {
+            id: entryId,
+            amount: drinkData.ml,
+            calories: calories,
+            alcohol: alcohol,
+            time: formattedTime,
+            category: drink.category,
+          },
+        ];
       }
-    
+
       // Stores the drink data in Firestore.
       const drinkAmountData &#x3D; {
         email: userEmail,
         date: formattedDate,
-        drinkAmounts: updatedDrinkAmounts
+        drinkAmounts: updatedDrinkAmounts,
       };
-    
+
       try {
         // Stores the updated data to Firestore, merging with existing document.
         await docRef.set(drinkAmountData, { merge: true });
         this.notyfService.success(&#x27;Drink added&#x27;);
-          
+
         // Clears the temporary data.
         this.tempAmounts[drink.name] &#x3D; { ml: 0, time: &#x27;&#x27;, date: &#x27;&#x27;, cps: 0 };
       } catch (error) {
@@ -589,10 +616,9 @@ export class DrinkListComponent {
         console.error(&#x27;Error adding drink to Firestore: &#x27;, error);
       }
     } else {
-      console.log(&#x27;Invalid data&#x27;);
+      console.error(&#x27;Invalid data&#x27;);
     }
   }
-
 }
 </code></pre>
     </div>

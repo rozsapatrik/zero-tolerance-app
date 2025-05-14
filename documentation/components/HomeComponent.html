@@ -475,8 +475,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="277"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:277</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="264"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:264</a></div>
                         </td>
                     </tr>
 
@@ -516,8 +516,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="335"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:335</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="322"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:322</a></div>
                         </td>
                     </tr>
 
@@ -672,8 +672,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="300"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:300</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="287"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:287</a></div>
                         </td>
                     </tr>
 
@@ -788,8 +788,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="289"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:289</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="276"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:276</a></div>
                         </td>
                     </tr>
 
@@ -862,8 +862,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="322"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:322</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="309"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:309</a></div>
                         </td>
                     </tr>
 
@@ -936,8 +936,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="307"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:307</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="294"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:294</a></div>
                         </td>
                     </tr>
 
@@ -975,8 +975,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="314"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:314</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="301"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:301</a></div>
                         </td>
                     </tr>
 
@@ -1495,8 +1495,6 @@ export class HomeComponent implements OnInit {
       return;
     }
 
-    console.log(&#x27;UDATA: &#x27;, this.userData);
-
     const { weight, gender } &#x3D; this.userData;
     const bodyWaterConstant &#x3D; gender &#x3D;&#x3D;&#x3D; &#x27;male&#x27; ? 0.58 : 0.49;
     const metabolismRate &#x3D; 0.015; // Average alcohol elimination rate per hour
@@ -1509,7 +1507,6 @@ export class HomeComponent implements OnInit {
       drinkDate.setHours(hours, minutes, 0, 0); // Set hours and minutes to the drink&#x27;s time
       return { ...drink, drinkDate };
     });
-    console.log(&#x27;Drink times:&#x27;, drinkTimes);
 
     // Separate past and future drinks
     const pastDrinks &#x3D; drinkTimes.filter(
@@ -1518,8 +1515,6 @@ export class HomeComponent implements OnInit {
     const futureDrinks &#x3D; drinkTimes.filter(
       (drink) &#x3D;&gt; drink.drinkDate &gt; currentTime
     );
-    console.log(&#x27;Past Drinks:&#x27;, pastDrinks);
-    console.log(&#x27;Future Drinks:&#x27;, futureDrinks);
 
     // Calculate BAC based on past drinks
     const totalPastAlcoholGrams &#x3D; pastDrinks.reduce(
@@ -1535,14 +1530,10 @@ export class HomeComponent implements OnInit {
         (currentTime.getTime() - lastDrinkTime.getTime()) / (1000 * 60 * 60)
       );
 
-      console.log(&#x27;Last past drink time:&#x27;, lastDrinkTime);
-      console.log(&#x27;Time elapsed since last drink (hours):&#x27;, timeElapsedHours);
-
       this.bac &#x3D;
         (totalPastAlcoholGrams / (weightInGrams * bodyWaterConstant)) * 100 -
         metabolismRate * timeElapsedHours;
       this.bac &#x3D; Math.max(this.bac, 0); // Ensure BAC does not go negative
-      console.log(&#x27;Current BAC:&#x27;, this.bac);
     } else {
       this.bac &#x3D; 0; // No past drinks, no BAC
     }
@@ -1555,9 +1546,6 @@ export class HomeComponent implements OnInit {
     const soberHours &#x3D;
       allAlcoholGrams / (metabolismRate * weightInGrams * bodyWaterConstant);
 
-    console.log(&#x27;Total alcohol grams (past + future):&#x27;, allAlcoholGrams);
-    console.log(&#x27;Estimated hours to sober:&#x27;, soberHours * 100);
-
     const earliestAllDrinkTime &#x3D; new Date(
       Math.min(...drinkTimes.map((drink) &#x3D;&gt; drink.drinkDate.getTime()))
     );
@@ -1567,7 +1555,6 @@ export class HomeComponent implements OnInit {
     );
 
     this.soberTime &#x3D; estimatedSoberTime;
-    console.log(&#x27;Estimated time to be sober:&#x27;, this.soberTime);
   }
 
   /**
@@ -1642,8 +1629,6 @@ export class HomeComponent implements OnInit {
       .toString()
       .padStart(2, &#x27;0&#x27;)}&#x60;;
     const docId &#x3D; &#x60;${userId}-${formattedDate}&#x60;;
-    console.log(&#x27;UID: &#x27;, userId);
-    console.log(&#x27;DATE: &#x27;, formattedDate);
 
     const docRef &#x3D; this.afs.collection(&#x27;drankDrinks&#x27;).doc(docId);
 
@@ -1651,7 +1636,6 @@ export class HomeComponent implements OnInit {
       const docSnapshot &#x3D; await docRef.get().toPromise();
       if (docSnapshot &amp;&amp; docSnapshot.exists) {
         const drinkData &#x3D; docSnapshot.data() as DrinkData;
-        console.log(&#x27;drinkData: &#x27;, drinkData);
         if (drinkData &amp;&amp; drinkData.drinkAmounts) {
           const drinkAmounts &#x3D; drinkData.drinkAmounts;
 
@@ -1674,16 +1658,12 @@ export class HomeComponent implements OnInit {
           // Update the document with the remaining drink amounts
           await docRef.set({ ...drinkData, drinkAmounts }, { merge: true });
           this.notyfService.success(&#x27;Drink deleted&#x27;);
-          console.log(
-            &#x60;Deleted drink ${drink.name} at ${drink.time} from Firestore&#x60;
-          );
 
           // Reload the drinks for the day after deletion
           this.fetchDrinksForTheDay();
         }
       } else {
         this.notyfService.error(&#x27;No document found&#x27;);
-        console.log(&#x27;No document found to delete&#x27;);
       }
     } catch (error) {
       this.notyfService.error(&#x27;Something went wrong&#x27;);

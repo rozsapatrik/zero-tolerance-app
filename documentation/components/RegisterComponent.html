@@ -807,7 +807,7 @@ export class RegisterComponent implements OnInit {
    */
   registerSubmit() {
     if (!this.registerForm.valid) {
-      console.log(&#x27;Invalid form&#x27;);
+      console.error(&#x27;Invalid form&#x27;);
       return;
     }
 
