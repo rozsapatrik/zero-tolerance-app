@@ -79,7 +79,6 @@ export class UserService {
       const userDoc = await userRef.get().toPromise();
       const currentEmail = userDoc?.get('email') as string;
       this.currentUserEmail = currentEmail;
-      console.log('fetched email:', this.currentUserEmail);
     }
   }
 

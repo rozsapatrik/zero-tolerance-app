@@ -71,7 +71,6 @@ export class ProfileComponent {
           .then((result: string | undefined) => {
             const tempString: string = result || '';
             this.currentUserID = tempString;
-            console.log(this.currentUserID);
 
             this.getUsername();
             this.getRegisterDate();

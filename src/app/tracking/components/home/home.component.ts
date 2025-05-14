@@ -196,8 +196,6 @@ export class HomeComponent implements OnInit {
       return;
     }
 
-    console.log('UDATA: ', this.userData);
-
     const { weight, gender } = this.userData;
     const bodyWaterConstant = gender === 'male' ? 0.58 : 0.49;
     const metabolismRate = 0.015; // Average alcohol elimination rate per hour
@@ -210,7 +208,6 @@ export class HomeComponent implements OnInit {
       drinkDate.setHours(hours, minutes, 0, 0); // Set hours and minutes to the drink's time
       return { ...drink, drinkDate };
     });
-    console.log('Drink times:', drinkTimes);
 
     // Separate past and future drinks
     const pastDrinks = drinkTimes.filter(
@@ -219,8 +216,6 @@ export class HomeComponent implements OnInit {
     const futureDrinks = drinkTimes.filter(
       (drink) => drink.drinkDate > currentTime
     );
-    console.log('Past Drinks:', pastDrinks);
-    console.log('Future Drinks:', futureDrinks);
 
     // Calculate BAC based on past drinks
     const totalPastAlcoholGrams = pastDrinks.reduce(
@@ -236,14 +231,10 @@ export class HomeComponent implements OnInit {
         (currentTime.getTime() - lastDrinkTime.getTime()) / (1000 * 60 * 60)
       );
 
-      console.log('Last past drink time:', lastDrinkTime);
-      console.log('Time elapsed since last drink (hours):', timeElapsedHours);
-
       this.bac =
         (totalPastAlcoholGrams / (weightInGrams * bodyWaterConstant)) * 100 -
         metabolismRate * timeElapsedHours;
       this.bac = Math.max(this.bac, 0); // Ensure BAC does not go negative
-      console.log('Current BAC:', this.bac);
     } else {
       this.bac = 0; // No past drinks, no BAC
     }
@@ -256,9 +247,6 @@ export class HomeComponent implements OnInit {
     const soberHours =
       allAlcoholGrams / (metabolismRate * weightInGrams * bodyWaterConstant);
 
-    console.log('Total alcohol grams (past + future):', allAlcoholGrams);
-    console.log('Estimated hours to sober:', soberHours * 100);
-
     const earliestAllDrinkTime = new Date(
       Math.min(...drinkTimes.map((drink) => drink.drinkDate.getTime()))
     );
@@ -268,7 +256,6 @@ export class HomeComponent implements OnInit {
     );
 
     this.soberTime = estimatedSoberTime;
-    console.log('Estimated time to be sober:', this.soberTime);
   }
 
   /**
@@ -343,8 +330,6 @@ export class HomeComponent implements OnInit {
       .toString()
       .padStart(2, '0')}`;
     const docId = `${userId}-${formattedDate}`;
-    console.log('UID: ', userId);
-    console.log('DATE: ', formattedDate);
 
     const docRef = this.afs.collection('drankDrinks').doc(docId);
 
@@ -352,7 +337,6 @@ export class HomeComponent implements OnInit {
       const docSnapshot = await docRef.get().toPromise();
       if (docSnapshot && docSnapshot.exists) {
         const drinkData = docSnapshot.data() as DrinkData;
-        console.log('drinkData: ', drinkData);
         if (drinkData && drinkData.drinkAmounts) {
           const drinkAmounts = drinkData.drinkAmounts;
 
@@ -375,16 +359,12 @@ export class HomeComponent implements OnInit {
           // Update the document with the remaining drink amounts
           await docRef.set({ ...drinkData, drinkAmounts }, { merge: true });
           this.notyfService.success('Drink deleted');
-          console.log(
-            `Deleted drink ${drink.name} at ${drink.time} from Firestore`
-          );
 
           // Reload the drinks for the day after deletion
           this.fetchDrinksForTheDay();
         }
       } else {
         this.notyfService.error('No document found');
-        console.log('No document found to delete');
       }
     } catch (error) {
       this.notyfService.error('Something went wrong');

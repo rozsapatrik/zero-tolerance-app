@@ -8,7 +8,7 @@ import { NotyfService } from 'src/app/core/services/notyf/notyf.service';
 /**
  * Interface for a drink.
  */
-export interface Drink{
+export interface Drink {
   name: string;
   abv: number;
   caloriesPerServing: number;
@@ -49,11 +49,9 @@ interface FirestoreDocumentData {
 @Component({
   selector: 'app-drink-list',
   templateUrl: './drink-list.component.html',
-  styleUrls: ['./drink-list.component.scss']
+  styleUrls: ['./drink-list.component.scss'],
 })
-
 export class DrinkListComponent {
-
   /**
    * List of the drinks from the database.
    */
@@ -73,37 +71,51 @@ export class DrinkListComponent {
   /**
    * A map of the user's selected consumed drink.
    */
-  drinkAmounts: Map<string, { drinkName: string, amount: number, calories: number, alcohol: number, time: string, date: string, category: string }> = new Map();
+  drinkAmounts: Map<
+    string,
+    {
+      drinkName: string;
+      amount: number;
+      calories: number;
+      alcohol: number;
+      time: string;
+      date: string;
+      category: string;
+    }
+  > = new Map();
   /**
    * Temporary data for consumed drink.
    */
-  tempAmounts: { [key: string]: {ml: number, cps: number, time: string, date: string} } = {};
+  tempAmounts: {
+    [key: string]: { ml: number; cps: number; time: string; date: string };
+  } = {};
   /**
    * The selected date.
    */
   selectedDate: any;
-  
+
   /**
-   * 
+   *
    * @param afs Angular Firestore.
    * @param dateService Service for proper date usage.
    * @param userService Service for user data.
    * @param notyfService Service for displaying messages.
    */
-  constructor(private afs: AngularFirestore,
+  constructor(
+    private afs: AngularFirestore,
     private dateService: DateService,
     private userService: UserService,
     private notyfService: NotyfService
-  ){}
+  ) {}
 
   /**
    * Gets all the drinks on initialization
    */
-  ngOnInit(){
+  ngOnInit() {
     this.userService.getCurrentUserId();
     this.selectedDate = this.dateService.getSelectedDate();
 
-    this.getDrinks().subscribe(drinks => {
+    this.getDrinks().subscribe((drinks) => {
       this.drinksList = drinks;
       this.filteredDrinks = drinks;
     });
@@ -118,19 +130,23 @@ export class DrinkListComponent {
       this.tempAmounts[drinkName] = { ml: 0, time: '', date: '', cps: 0 };
     }
   }
-  
-  
+
   /**
    * Gets all the drinks from the database
    * @returns The given drink
    */
-  getDrinks(): Observable<Drink[]>{
-    return this.afs.collection('drink').snapshotChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as Drink;
-        return data;
-      }))
-    );
+  getDrinks(): Observable<Drink[]> {
+    return this.afs
+      .collection('drink')
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((a) => {
+            const data = a.payload.doc.data() as Drink;
+            return data;
+          })
+        )
+      );
   }
 
   /**
@@ -147,42 +163,51 @@ export class DrinkListComponent {
    */
   filterDrinks(): void {
     const terms = this.searchTerm.trim().toLowerCase().split(' ');
-    this.filteredDrinks = this.drinksList.filter(drink => terms.every(term =>
-      drink.name.toLowerCase().includes(term))
+    this.filteredDrinks = this.drinksList.filter((drink) =>
+      terms.every((term) => drink.name.toLowerCase().includes(term))
     );
   }
-  
+
   /**
    * Stores the newly tracked drink in Firestore
    * @param drink The drink tracking to be uploaded
    */
   async addDrinkAmount(drink: Drink): Promise<void> {
     const drinkData = this.tempAmounts[drink.name];
-    const formattedDate = `${this.selectedDate.getFullYear()}-${(this.selectedDate.getMonth() + 1).toString().padStart(2, '0')}-${this.selectedDate.getDate().toString().padStart(2, '0')}`;
-      
+    const formattedDate = `${this.selectedDate.getFullYear()}-${(
+      this.selectedDate.getMonth() + 1
+    )
+      .toString()
+      .padStart(2, '0')}-${this.selectedDate
+      .getDate()
+      .toString()
+      .padStart(2, '0')}`;
+
     if (drinkData && drinkData.ml > 0 && drinkData.time && this.selectedDate) {
-      const formattedTime = new Date(`1970-01-01T${drinkData.time}:00`).toLocaleTimeString('en-GB', {
+      const formattedTime = new Date(
+        `1970-01-01T${drinkData.time}:00`
+      ).toLocaleTimeString('en-GB', {
         hour: '2-digit',
-        minute: '2-digit'
+        minute: '2-digit',
       });
 
       const userEmail = await this.userService.getCurrentUserEmailString();
       const userID = await this.userService.getCurrentUserId();
-    
+
       // Creates a unique document ID based on the user and the date
       const docId = `${userID}-${formattedDate}`;
       const docRef = this.afs.collection('drankDrinks').doc(docId);
       const docSnapshot = await docRef.get().toPromise();
 
       let updatedDrinkAmounts: DrinkAmountsMap = {};
-    
+
       if (docSnapshot && docSnapshot.exists) {
         const existingData = docSnapshot.data() as FirestoreDocumentData;
         updatedDrinkAmounts = existingData ? existingData.drinkAmounts : {};
       }
 
       const calories = drink.caloriesPerServing * (drinkData.ml / 100);
-      const alcohol = ((drink.abv/100) * drinkData.ml) * 0.789;
+      const alcohol = (drink.abv / 100) * drinkData.ml * 0.789;
 
       // Generates a unique entryId for the drink
       const entryId = `${new Date().getTime()}-${Math.random()}`;
@@ -196,32 +221,34 @@ export class DrinkListComponent {
           calories: calories,
           alcohol: alcohol,
           time: formattedTime,
-          category: drink.category
+          category: drink.category,
         });
       } else {
         // If the drink doesn't exist, creates a new array and add the first entry.
-        updatedDrinkAmounts[drink.name] = [{
-          id: entryId,
-          amount: drinkData.ml,
-          calories: calories,
-          alcohol: alcohol,
-          time: formattedTime,
-          category: drink.category
-        }];
+        updatedDrinkAmounts[drink.name] = [
+          {
+            id: entryId,
+            amount: drinkData.ml,
+            calories: calories,
+            alcohol: alcohol,
+            time: formattedTime,
+            category: drink.category,
+          },
+        ];
       }
-    
+
       // Stores the drink data in Firestore.
       const drinkAmountData = {
         email: userEmail,
         date: formattedDate,
-        drinkAmounts: updatedDrinkAmounts
+        drinkAmounts: updatedDrinkAmounts,
       };
-    
+
       try {
         // Stores the updated data to Firestore, merging with existing document.
         await docRef.set(drinkAmountData, { merge: true });
         this.notyfService.success('Drink added');
-          
+
         // Clears the temporary data.
         this.tempAmounts[drink.name] = { ml: 0, time: '', date: '', cps: 0 };
       } catch (error) {
@@ -229,8 +256,7 @@ export class DrinkListComponent {
         console.error('Error adding drink to Firestore: ', error);
       }
     } else {
-      console.log('Invalid data');
+      console.error('Invalid data');
     }
   }
-
 }
