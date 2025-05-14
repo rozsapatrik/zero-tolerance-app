@@ -1,41 +1,37 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { HomeComponent } from './components/home/home.component';
-import { AdminPageComponent } from './components/admin-page/admin-page.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { StatsComponent } from './components/stats/stats.component';
-import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
-import { AdminGuard } from './guards/admin.guard';
-import { UserGuard } from './guards/user.guard';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { DrinkListComponent } from './components/drink-list/drink-list.component';
-import { AdminFormComponent } from './components/admin-form/admin-form.component';
-import { AboutUsComponent } from './components/about-us/about-us.component';
+import { LandingPageComponent } from './pages/components/landing-page/landing-page.component';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: '/landing'},
-  {path: 'landing', component: LandingPageComponent},
-  {path: 'home', component: HomeComponent, canActivate: [UserGuard]},
-  {path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard]},
-  {path: 'adminform', component: AdminFormComponent, canActivate: [AdminGuard]},
-  {path: 'profile', component: ProfileComponent, canActivate: [UserGuard]},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'personalstats', component: StatsComponent, canActivate: [UserGuard]},
-  {path: 'updateprofile', component: UpdateProfileComponent, canActivate: [UserGuard]},
-  {path: 'drinklist', component: DrinkListComponent, canActivate: [UserGuard]},
-  {path: 'aboutus', component: AboutUsComponent, canActivate: [UserGuard]},
-  {path: '**', component: PageNotFoundComponent}
+  { path: '', component: LandingPageComponent },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: 'pages',
+    loadChildren: () =>
+      import('./pages/pages.module').then((m) => m.PagesModule),
+  },
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('./profile/profile.module').then((m) => m.ProfileModule),
+  },
+  {
+    path: 'tracking',
+    loadChildren: () =>
+      import('./tracking/tracking.module').then((m) => m.TrackingModule),
+  },
 ];
 
 @NgModule({
-  imports: [CommonModule, BrowserModule, RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -120,7 +120,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/components/admin-form/admin-form.component.ts</code>
+    <code>src/app/admin/components/admin-form/admin-form.component.ts</code>
 </p>
 
 
@@ -247,7 +247,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/admin-form/admin-form.component.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/admin/components/admin-form/admin-form.component.ts:28</a></div>
                             </td>
                         </tr>
 
@@ -387,8 +387,8 @@ Otherwise initializes an empty form for creating a new drink.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="87"
-                                    class="link-to-prism">src/app/components/admin-form/admin-form.component.ts:87</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/admin/components/admin-form/admin-form.component.ts:93</a></div>
                         </td>
                     </tr>
 
@@ -426,8 +426,8 @@ Otherwise initializes an empty form for creating a new drink.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="73"
-                                    class="link-to-prism">src/app/components/admin-form/admin-form.component.ts:73</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="79"
+                                    class="link-to-prism">src/app/admin/components/admin-form/admin-form.component.ts:79</a></div>
                         </td>
                     </tr>
 
@@ -467,8 +467,8 @@ Otherwise initializes an empty form for creating a new drink.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="106"
-                                    class="link-to-prism">src/app/components/admin-form/admin-form.component.ts:106</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="115"
+                                    class="link-to-prism">src/app/admin/components/admin-form/admin-form.component.ts:115</a></div>
                         </td>
                     </tr>
 
@@ -518,7 +518,7 @@ On error shows an error notification.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/admin-form/admin-form.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/admin/components/admin-form/admin-form.component.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -555,7 +555,7 @@ On error shows an error notification.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/admin-form/admin-form.component.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/admin/components/admin-form/admin-form.component.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -592,7 +592,7 @@ On error shows an error notification.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/admin-form/admin-form.component.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/admin/components/admin-form/admin-form.component.ts:28</a></div>
                         </td>
                     </tr>
 
@@ -615,8 +615,8 @@ On error shows an error notification.</p>
 import { AngularFirestore } from &#x27;@angular/fire/compat/firestore&#x27;;
 import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
-import { NotyfService } from &#x27;../../services/notyf/notyf.service&#x27;;
-import { UserService } from &#x27;src/app/services/user/user.service&#x27;;
+import { NotyfService } from &#x27;src/app/core/services/notyf/notyf.service&#x27;;
+import { UserService } from &#x27;src/app/core/services/user/user.service&#x27;;
 
 /**
  * Contains a form that is needed for the admin add or modify a drink in the database.
@@ -624,7 +624,7 @@ import { UserService } from &#x27;src/app/services/user/user.service&#x27;;
 @Component({
   selector: &#x27;app-admin-form&#x27;,
   templateUrl: &#x27;./admin-form.component.html&#x27;,
-  styleUrls: [&#x27;./admin-form.component.scss&#x27;]
+  styleUrls: [&#x27;./admin-form.component.scss&#x27;],
 })
 export class AdminFormComponent {
   /**
@@ -666,7 +666,10 @@ export class AdminFormComponent {
         name: [name, Validators.required],
         ml: [ml, [Validators.required, Validators.pattern(&#x27;^[0-9]+$&#x27;)]],
         category: [category, Validators.required],
-        caloriesPerServing: [caloriesPerServing, [Validators.required, Validators.pattern(&#x27;^[0-9]+$&#x27;)]],
+        caloriesPerServing: [
+          caloriesPerServing,
+          [Validators.required, Validators.pattern(&#x27;^[0-9]+$&#x27;)],
+        ],
         abv: [abv, [Validators.required, Validators.pattern(&#x27;^[0-9]+$&#x27;)]],
       });
     } else {
@@ -674,7 +677,10 @@ export class AdminFormComponent {
         name: [&#x27;&#x27;, Validators.required],
         ml: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;^[0-9]+$&#x27;)]],
         category: [&#x27;&#x27;, Validators.required],
-        caloriesPerServing: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;^[0-9]+$&#x27;)]],
+        caloriesPerServing: [
+          &#x27;&#x27;,
+          [Validators.required, Validators.pattern(&#x27;^[0-9]+$&#x27;)],
+        ],
         abv: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;^[0-9]+$&#x27;)]],
       });
     }
@@ -700,10 +706,13 @@ export class AdminFormComponent {
   initializeForm(): void {
     this.drinkForm &#x3D; this.fb.group({
       name: [&#x27;&#x27;, [Validators.required, Validators.minLength(3)]],
-      abv: [null, [Validators.required, Validators.min(0), Validators.max(100)]],
+      abv: [
+        null,
+        [Validators.required, Validators.min(0), Validators.max(100)],
+      ],
       caloriesPerServing: [null, [Validators.required, Validators.min(0)]],
       ml: [null, [Validators.required, Validators.min(1)]],
-      category: [&#x27;&#x27;, Validators.required]
+      category: [&#x27;&#x27;, Validators.required],
     });
   }
 
@@ -712,7 +721,7 @@ export class AdminFormComponent {
    * If the form is valid:
    * - Updates an existing drink if &#x60;editingDrinkId&#x60; is valid.
    * - Adds a new drink if &#x60;editingDrinkId&#x60; is not valid.
-   * 
+   *
    * On success navigates back to the admin page and shows a success notification.
    * On error shows an error notification.
    */
@@ -723,7 +732,10 @@ export class AdminFormComponent {
       try {
         if (this.editingDrinkId) {
           // Updates existing drink.
-          await this.afs.collection(&#x27;drink&#x27;).doc(this.editingDrinkId).update(drinkData);
+          await this.afs
+            .collection(&#x27;drink&#x27;)
+            .doc(this.editingDrinkId)
+            .update(drinkData);
           this.notyfService.success(&#x27;Drink updated&#x27;);
         } else {
           // Adds new drink.
@@ -732,14 +744,13 @@ export class AdminFormComponent {
         }
 
         // Navigates back to the admin page.
-        this.router.navigate([&#x27;/admin&#x27;]);
+        this.router.navigate([&#x27;/admin/admin&#x27;]);
       } catch (error) {
         this.notyfService.error(&#x27;Something went wrong&#x27;);
         console.error(&#x27;Error adding drink to Firestore:&#x27;, error);
       }
     }
   }
-
 }
 </code></pre>
     </div>

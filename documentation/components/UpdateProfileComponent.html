@@ -120,7 +120,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/components/update-profile/update-profile.component.ts</code>
+    <code>src/app/profile/components/update-profile/update-profile.component.ts</code>
 </p>
 
 
@@ -297,7 +297,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:68</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:79</a></div>
                             </td>
                         </tr>
 
@@ -435,8 +435,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="139"
-                                    class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:139</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="168"
+                                    class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:168</a></div>
                         </td>
                     </tr>
 
@@ -476,8 +476,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="128"
-                                    class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:128</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="151"
+                                    class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:151</a></div>
                         </td>
                     </tr>
 
@@ -517,8 +517,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="119"
-                                    class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:119</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="140"
+                                    class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:140</a></div>
                         </td>
                     </tr>
 
@@ -556,8 +556,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="89"
-                                    class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:89</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:100</a></div>
                         </td>
                     </tr>
 
@@ -597,8 +597,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="155"
-                                    class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:155</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="186"
+                                    class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:186</a></div>
                         </td>
                     </tr>
 
@@ -645,7 +645,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:53</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:61</a></div>
                         </td>
                     </tr>
 
@@ -677,7 +677,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:45</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:53</a></div>
                         </td>
                     </tr>
 
@@ -714,7 +714,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:57</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:65</a></div>
                         </td>
                     </tr>
 
@@ -740,18 +740,21 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>new FormGroup({
-    password: new FormControl(&#x27;&#x27;, [Validators.minLength(8)]),
-    confirmPassword: new FormControl(&#x27;&#x27;),
-    profilePicUrl: new FormControl(&#x27;&#x27;),
-    weight: new FormControl(&#x27;&#x27;, [Validators.required, Validators.min(30)]),
-    gender: new FormControl(&#x27;&#x27;, Validators.required)
-  }, { validators: passwordsMatchValidator() })</code>
+                        <i>Default value : </i><code>new FormGroup(
+    {
+      password: new FormControl(&#x27;&#x27;, [Validators.minLength(8)]),
+      confirmPassword: new FormControl(&#x27;&#x27;),
+      profilePicUrl: new FormControl(&#x27;&#x27;),
+      weight: new FormControl(&#x27;&#x27;, [Validators.required, Validators.min(30)]),
+      gender: new FormControl(&#x27;&#x27;, Validators.required),
+    },
+    { validators: passwordsMatchValidator() }
+  )</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:62</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:70</a></div>
                         </td>
                     </tr>
 
@@ -783,7 +786,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:41</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:49</a></div>
                         </td>
                     </tr>
 
@@ -815,7 +818,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:49</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:57</a></div>
                         </td>
                     </tr>
 
@@ -850,7 +853,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:98</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:109</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -879,7 +882,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:102</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:115</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -908,7 +911,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:106</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:121</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -937,7 +940,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:110</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:127</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -966,7 +969,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/app/components/update-profile/update-profile.component.ts:114</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/app/profile/components/update-profile/update-profile.component.ts:133</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -986,30 +989,38 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { AngularFirestore } from &#x27;@angular/fire/compat/firestore&#x27;;
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from &#x27;@angular/forms&#x27;;
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from &#x27;@angular/forms&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
-import { UserService } from &#x27;src/app/services/user/user.service&#x27;;
+import { UserService } from &#x27;src/app/core/services/user/user.service&#x27;;
 import { AngularFireAuth } from &#x27;@angular/fire/compat/auth&#x27;;
-import { NotyfService } from &#x27;../../services/notyf/notyf.service&#x27;;
+import { NotyfService } from &#x27;src/app/core/services/notyf/notyf.service&#x27;;
 
 /**
  * Checks if the input passwords match.
  * @returns True flag if passwords match
  */
-export function passwordsMatchValidator(): ValidatorFn{
-  return(AbsControl: AbstractControl): ValidationErrors | null &#x3D;&gt; {
+export function passwordsMatchValidator(): ValidatorFn {
+  return (AbsControl: AbstractControl): ValidationErrors | null &#x3D;&gt; {
     const password &#x3D; AbsControl.get(&#x27;password&#x27;)?.value;
     const confirmPassword &#x3D; AbsControl.get(&#x27;confirmPassword&#x27;)?.value;
-    
-    if(password &amp;&amp; (password !&#x3D;&#x3D; confirmPassword)){
-      return{ passwordsDontMatch: true }
-    }
-    else if(password !&#x3D; &quot;&quot; &amp;&amp; (password.length &lt; 8 || confirmPassword.length &lt; 8)){
-      return{ passwordLengthMin: true }
 
+    if (password &amp;&amp; password !&#x3D;&#x3D; confirmPassword) {
+      return { passwordsDontMatch: true };
+    } else if (
+      password !&#x3D; &#x27;&#x27; &amp;&amp;
+      (password.length &lt; 8 || confirmPassword.length &lt; 8)
+    ) {
+      return { passwordLengthMin: true };
     }
     return null;
-  }
+  };
 }
 
 /**
@@ -1018,9 +1029,9 @@ export function passwordsMatchValidator(): ValidatorFn{
 @Component({
   selector: &#x27;app-update-profile&#x27;,
   templateUrl: &#x27;./update-profile.component.html&#x27;,
-  styleUrls: [&#x27;./update-profile.component.scss&#x27;]
+  styleUrls: [&#x27;./update-profile.component.scss&#x27;],
 })
-export class UpdateProfileComponent implements OnInit{
+export class UpdateProfileComponent implements OnInit {
   /**
    * User&#x27;s username from the database.
    */
@@ -1041,20 +1052,23 @@ export class UpdateProfileComponent implements OnInit{
    * Flag for checking if password match.
    */
   pwCheck: boolean &#x3D; true;
-  
+
   /**
    * Form group for profile update data.
    */
-  updateProfileForm &#x3D; new FormGroup({
-    password: new FormControl(&#x27;&#x27;, [Validators.minLength(8)]),
-    confirmPassword: new FormControl(&#x27;&#x27;),
-    profilePicUrl: new FormControl(&#x27;&#x27;),
-    weight: new FormControl(&#x27;&#x27;, [Validators.required, Validators.min(30)]),
-    gender: new FormControl(&#x27;&#x27;, Validators.required)
-  }, { validators: passwordsMatchValidator() });
+  updateProfileForm &#x3D; new FormGroup(
+    {
+      password: new FormControl(&#x27;&#x27;, [Validators.minLength(8)]),
+      confirmPassword: new FormControl(&#x27;&#x27;),
+      profilePicUrl: new FormControl(&#x27;&#x27;),
+      weight: new FormControl(&#x27;&#x27;, [Validators.required, Validators.min(30)]),
+      gender: new FormControl(&#x27;&#x27;, Validators.required),
+    },
+    { validators: passwordsMatchValidator() }
+  );
 
   /**
-   * 
+   *
    * @param router Router for routing.
    * @param afs Angular Firestore.
    * @param userService Service for user data.
@@ -1067,7 +1081,7 @@ export class UpdateProfileComponent implements OnInit{
     private userService: UserService,
     private afAuth: AngularFireAuth,
     private notyfService: NotyfService
-  ){}
+  ) {}
 
   /**
    * Gets user&#x27;s data on initialization.
@@ -1081,29 +1095,41 @@ export class UpdateProfileComponent implements OnInit{
   /**
    * Gets user&#x27;s input profile picture.
    */
-  get profilePicUrl(){ return this.updateProfileForm.get(&#x27;profilePicUrl&#x27;) }
+  get profilePicUrl() {
+    return this.updateProfileForm.get(&#x27;profilePicUrl&#x27;);
+  }
   /**
    * Gets user&#x27;s input password.
    */
-  get password(){ return this.updateProfileForm.get(&#x27;password&#x27;) }
+  get password() {
+    return this.updateProfileForm.get(&#x27;password&#x27;);
+  }
   /**
    * Gets user&#x27; input password confirmation.
    */
-  get confirmPassword(){ return this.updateProfileForm.get(&#x27;confirmPassword&#x27;) }
+  get confirmPassword() {
+    return this.updateProfileForm.get(&#x27;confirmPassword&#x27;);
+  }
   /**
    * Gets user&#x27;s input weight.
    */
-  get weight() { return this.updateProfileForm.get(&#x27;weight&#x27;); }
+  get weight() {
+    return this.updateProfileForm.get(&#x27;weight&#x27;);
+  }
   /**
    * Gets user&#x27;s input gender.
    */
-  get gender() { return this.updateProfileForm.get(&#x27;gender&#x27;); }
+  get gender() {
+    return this.updateProfileForm.get(&#x27;gender&#x27;);
+  }
 
   /**
    * Get&#x27;s currently logged in user&#x27;s username.
    */
   async getUsername() {
-    const userDocRef &#x3D; this.afs.collection(&quot;user&quot;).doc(await this.userService.getUserId());
+    const userDocRef &#x3D; this.afs
+      .collection(&#x27;user&#x27;)
+      .doc(await this.userService.getUserId());
     const userDoc &#x3D; await userDocRef.get().toPromise();
     this.usernameFromDB &#x3D; userDoc?.get(&#x27;username&#x27;);
   }
@@ -1112,25 +1138,33 @@ export class UpdateProfileComponent implements OnInit{
    * Get&#x27;s currently logged in user&#x27;s profile picture.
    */
   async getProfilePicUrl() {
-    const userDocRef &#x3D; this.afs.collection(&quot;user&quot;).doc(await this.userService.getUserId());
+    const userDocRef &#x3D; this.afs
+      .collection(&#x27;user&#x27;)
+      .doc(await this.userService.getUserId());
     const userDoc &#x3D; await userDocRef.get().toPromise();
     this.profilePicUrlFromDB &#x3D; userDoc?.get(&#x27;profilePicUrl&#x27;);
-    const profilePicHtml &#x3D; document.getElementById(&quot;profilePic&quot;) as HTMLImageElement;
-    profilePicHtml.src &#x3D; this.profilePicUrlFromDB ? this.profilePicUrlFromDB : &quot;https://cdn.discordapp.com/attachments/905132673356410932/1295650761803567144/c0749b7cc401421662ae901ec8f9f660.jpg?ex&#x3D;670f6c4d&amp;is&#x3D;670e1acd&amp;hm&#x3D;c475e7139b4d6fea1067d23489cbf043e59050b17f9f5cab50cc39cf9c7cee11&amp;&quot;
+    const profilePicHtml &#x3D; document.getElementById(
+      &#x27;profilePic&#x27;
+    ) as HTMLImageElement;
+    profilePicHtml.src &#x3D; this.profilePicUrlFromDB
+      ? this.profilePicUrlFromDB
+      : &#x27;https://cdn.discordapp.com/attachments/905132673356410932/1295650761803567144/c0749b7cc401421662ae901ec8f9f660.jpg?ex&#x3D;670f6c4d&amp;is&#x3D;670e1acd&amp;hm&#x3D;c475e7139b4d6fea1067d23489cbf043e59050b17f9f5cab50cc39cf9c7cee11&amp;&#x27;;
   }
 
   /**
    * Get&#x27;s currently logged in user&#x27;s gender and weight.
    */
-  async getGenderAndWeight(){
-    const userDocRef &#x3D; this.afs.collection(&quot;user&quot;).doc(await this.userService.getUserId());
+  async getGenderAndWeight() {
+    const userDocRef &#x3D; this.afs
+      .collection(&#x27;user&#x27;)
+      .doc(await this.userService.getUserId());
     const userDoc &#x3D; await userDocRef.get().toPromise();
     this.weightFromDB &#x3D; userDoc?.get(&#x27;weight&#x27;);
     this.genderFromDB &#x3D; userDoc?.get(&#x27;gender&#x27;);
 
     this.updateProfileForm.patchValue({
       weight: this.weightFromDB.toString(),
-      gender: this.genderFromDB
+      gender: this.genderFromDB,
     });
   }
 
@@ -1138,7 +1172,7 @@ export class UpdateProfileComponent implements OnInit{
    * Submits data for profile update.
    * @returns If userID is invalid returns.
    */
-  async updateProfileSubmit(){
+  async updateProfileSubmit() {
     const user &#x3D; this.userService.getCurrentUserId();
     if (!user) {
       console.error(&#x27;User not logged in&#x27;);
@@ -1146,16 +1180,22 @@ export class UpdateProfileComponent implements OnInit{
       return;
     }
 
-    if(this.updateProfileForm.invalid) return;
-    
+    if (this.updateProfileForm.invalid) return;
+
     const updates: any &#x3D; {};
     const userId &#x3D; await this.userService.getUserId();
     const userDocRef &#x3D; this.afs.collection(&#x27;user&#x27;).doc(userId).ref;
 
-    const newProfilePicUrl &#x3D; (document.getElementById(&#x27;profilePicInput&#x27;) as HTMLInputElement).value;
-    if (newProfilePicUrl !&#x3D;&#x3D; this.profilePicUrlFromDB &amp;&amp; newProfilePicUrl !&#x3D; &quot;&quot;) {
+    const newProfilePicUrl &#x3D; (
+      document.getElementById(&#x27;profilePicInput&#x27;) as HTMLInputElement
+    ).value;
+    if (
+      newProfilePicUrl !&#x3D;&#x3D; this.profilePicUrlFromDB &amp;&amp;
+      newProfilePicUrl !&#x3D; &#x27;&#x27;
+    ) {
       this.profilePicUrlFromDB &#x3D; newProfilePicUrl;
-      userDocRef.update({ profilePicUrl: newProfilePicUrl })
+      userDocRef
+        .update({ profilePicUrl: newProfilePicUrl })
         .then(() &#x3D;&gt; this.notyfService.success(&#x27;URL updated&#x27;))
         .catch((error) &#x3D;&gt; this.notyfService.error(&#x27;Something went wrong&#x27;));
     }
@@ -1171,26 +1211,30 @@ export class UpdateProfileComponent implements OnInit{
     }
 
     if (Object.keys(updates).length &gt; 0) {
-      userDocRef.update(updates).then(() &#x3D;&gt; this.notyfService.success(&#x27;Profile updated&#x27;));
+      userDocRef
+        .update(updates)
+        .then(() &#x3D;&gt; this.notyfService.success(&#x27;Profile updated&#x27;));
     }
 
     const newPassword &#x3D; this.password?.value;
-    if(newPassword){
-      try{
+    if (newPassword) {
+      try {
         const currentUser &#x3D; await this.afAuth.currentUser;
-        if(currentUser){
+        if (currentUser) {
           await currentUser.updatePassword(newPassword);
           this.pwCheck &#x3D; true;
           this.notyfService.success(&#x27;Password updated&#x27;);
         }
-      } catch (error){
+      } catch (error) {
         console.error(&#x27;Error updating password: &#x27;, error);
         this.pwCheck &#x3D; false;
         this.notyfService.error(&#x27;Something went wrong&#x27;);
       }
     }
 
-    if(this.pwCheck){ this.router.navigate([&#x27;/profile&#x27;]); }
+    if (this.pwCheck) {
+      this.router.navigate([&#x27;/profile/profile&#x27;]);
+    }
   }
 }
 </code></pre>

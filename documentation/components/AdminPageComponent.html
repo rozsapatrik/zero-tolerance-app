@@ -120,7 +120,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/components/admin-page/admin-page.component.ts</code>
+    <code>src/app/admin/components/admin-page/admin-page.component.ts</code>
 </p>
 
 
@@ -253,7 +253,7 @@ It allows the admin to:</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/components/admin-page/admin-page.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/admin/components/admin-page/admin-page.component.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -373,8 +373,8 @@ It allows the admin to:</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="82"
-                                    class="link-to-prism">src/app/components/admin-page/admin-page.component.ts:82</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/admin/components/admin-page/admin-page.component.ts:84</a></div>
                         </td>
                     </tr>
 
@@ -447,8 +447,8 @@ It allows the admin to:</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="74"
-                                    class="link-to-prism">src/app/components/admin-page/admin-page.component.ts:74</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="76"
+                                    class="link-to-prism">src/app/admin/components/admin-page/admin-page.component.ts:76</a></div>
                         </td>
                     </tr>
 
@@ -521,8 +521,8 @@ It allows the admin to:</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="52"
-                                    class="link-to-prism">src/app/components/admin-page/admin-page.component.ts:52</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/admin/components/admin-page/admin-page.component.ts:51</a></div>
                         </td>
                     </tr>
 
@@ -560,8 +560,8 @@ It allows the admin to:</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="44"
-                                    class="link-to-prism">src/app/components/admin-page/admin-page.component.ts:44</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="43"
+                                    class="link-to-prism">src/app/admin/components/admin-page/admin-page.component.ts:43</a></div>
                         </td>
                     </tr>
 
@@ -599,8 +599,8 @@ It allows the admin to:</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="66"
-                                    class="link-to-prism">src/app/components/admin-page/admin-page.component.ts:66</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="68"
+                                    class="link-to-prism">src/app/admin/components/admin-page/admin-page.component.ts:68</a></div>
                         </td>
                     </tr>
 
@@ -648,7 +648,7 @@ It allows the admin to:</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/components/admin-page/admin-page.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/admin/components/admin-page/admin-page.component.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -670,8 +670,8 @@ It allows the admin to:</p>
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { AngularFirestore } from &#x27;@angular/fire/compat/firestore&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
-import { NotyfService } from &#x27;../../services/notyf/notyf.service&#x27;;
-import { UserService } from &#x27;src/app/services/user/user.service&#x27;;
+import { NotyfService } from &#x27;src/app/core/services/notyf/notyf.service&#x27;;
+import { UserService } from &#x27;src/app/core/services/user/user.service&#x27;;
 
 /**
  * Serves as the admin interface for managing drinks in the Firestore database.
@@ -684,17 +684,16 @@ import { UserService } from &#x27;src/app/services/user/user.service&#x27;;
 @Component({
   selector: &#x27;app-admin-page&#x27;,
   templateUrl: &#x27;./admin-page.component.html&#x27;,
-  styleUrls: [&#x27;./admin-page.component.scss&#x27;]
+  styleUrls: [&#x27;./admin-page.component.scss&#x27;],
 })
 export class AdminPageComponent {
-
   /**
    * Array for the drinks.
    */
   drinks: any[] &#x3D; [];
 
   /**
-   * 
+   *
    * @param afs Angular Firestore.
    * @param router Router for routing.
    * @param notyfService Service for displaying messages.
@@ -710,7 +709,7 @@ export class AdminPageComponent {
   /**
    * Initializes with current user ID and drinks
    */
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.userService.getCurrentUserId();
     this.fetchAllDrinks();
   }
@@ -719,21 +718,24 @@ export class AdminPageComponent {
    * Fetches all the drinks from the database
    */
   fetchAllDrinks(): void {
-    this.afs.collection(&quot;drink&quot;).valueChanges({idField: &#x27;id&#x27;}).subscribe(
-      (drinks) &#x3D;&gt; {
-        this.drinks &#x3D; drinks;
-      },
-      (error) &#x3D;&gt; {
-        console.error(&#x27;Error fetching drinks&#x27;, error);
-      }
-    )
+    this.afs
+      .collection(&#x27;drink&#x27;)
+      .valueChanges({ idField: &#x27;id&#x27; })
+      .subscribe(
+        (drinks) &#x3D;&gt; {
+          this.drinks &#x3D; drinks;
+        },
+        (error) &#x3D;&gt; {
+          console.error(&#x27;Error fetching drinks&#x27;, error);
+        }
+      );
   }
 
   /**
    * Redirects to the admin form
    */
   redirectToAdminFormAddDrink(): void {
-    this.router.navigate([&#x27;/adminform&#x27;]);
+    this.router.navigate([&#x27;/admin/adminform&#x27;]);
   }
 
   /**
@@ -741,7 +743,7 @@ export class AdminPageComponent {
    * @param drink The drink that we want to edit
    */
   editDrink(drink: any): void {
-    this.router.navigate([&#x27;/adminform&#x27;], { state: { drink } });
+    this.router.navigate([&#x27;/admin/adminform&#x27;], { state: { drink } });
   }
 
   /**
@@ -764,7 +766,6 @@ export class AdminPageComponent {
         });
     }
   }
-
 }
 </code></pre>
     </div>

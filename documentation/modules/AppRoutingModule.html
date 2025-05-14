@@ -131,45 +131,41 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { RouterModule, Routes } from &#x27;@angular/router&#x27;;
-import { CommonModule } from &#x27;@angular/common&#x27;;
-import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
-
-import { HomeComponent } from &#x27;./components/home/home.component&#x27;;
-import { AdminPageComponent } from &#x27;./components/admin-page/admin-page.component&#x27;;
-import { LoginComponent } from &#x27;./components/login/login.component&#x27;;
-import { RegisterComponent } from &#x27;./components/register/register.component&#x27;;
-import { ProfileComponent } from &#x27;./components/profile/profile.component&#x27;;
-import { PageNotFoundComponent } from &#x27;./components/page-not-found/page-not-found.component&#x27;;
-import { StatsComponent } from &#x27;./components/stats/stats.component&#x27;;
-import { UpdateProfileComponent } from &#x27;./components/update-profile/update-profile.component&#x27;;
-import { AdminGuard } from &#x27;./guards/admin.guard&#x27;;
-import { UserGuard } from &#x27;./guards/user.guard&#x27;;
-import { LandingPageComponent } from &#x27;./components/landing-page/landing-page.component&#x27;;
-import { DrinkListComponent } from &#x27;./components/drink-list/drink-list.component&#x27;;
-import { AdminFormComponent } from &#x27;./components/admin-form/admin-form.component&#x27;;
-import { AboutUsComponent } from &#x27;./components/about-us/about-us.component&#x27;;
+import { LandingPageComponent } from &#x27;./pages/components/landing-page/landing-page.component&#x27;;
 
 const routes: Routes &#x3D; [
-  {path: &#x27;&#x27;, pathMatch: &#x27;full&#x27;, redirectTo: &#x27;/landing&#x27;},
-  {path: &#x27;landing&#x27;, component: LandingPageComponent},
-  {path: &#x27;home&#x27;, component: HomeComponent, canActivate: [UserGuard]},
-  {path: &#x27;admin&#x27;, component: AdminPageComponent, canActivate: [AdminGuard]},
-  {path: &#x27;adminform&#x27;, component: AdminFormComponent, canActivate: [AdminGuard]},
-  {path: &#x27;profile&#x27;, component: ProfileComponent, canActivate: [UserGuard]},
-  {path: &#x27;login&#x27;, component: LoginComponent},
-  {path: &#x27;register&#x27;, component: RegisterComponent},
-  {path: &#x27;personalstats&#x27;, component: StatsComponent, canActivate: [UserGuard]},
-  {path: &#x27;updateprofile&#x27;, component: UpdateProfileComponent, canActivate: [UserGuard]},
-  {path: &#x27;drinklist&#x27;, component: DrinkListComponent, canActivate: [UserGuard]},
-  {path: &#x27;aboutus&#x27;, component: AboutUsComponent, canActivate: [UserGuard]},
-  {path: &#x27;**&#x27;, component: PageNotFoundComponent}
+  { path: &#x27;&#x27;, component: LandingPageComponent },
+  {
+    path: &#x27;admin&#x27;,
+    loadChildren: () &#x3D;&gt;
+      &quot;import(&#x27;./admin/admin.module&#x27;).then((m) &#x3D;&gt; m.AdminModule)&quot;,
+  },
+  {
+    path: &#x27;auth&#x27;,
+    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./auth/auth.module&#x27;).then((m) &#x3D;&gt; m.AuthModule)&quot;,
+  },
+  {
+    path: &#x27;pages&#x27;,
+    loadChildren: () &#x3D;&gt;
+      &quot;import(&#x27;./pages/pages.module&#x27;).then((m) &#x3D;&gt; m.PagesModule)&quot;,
+  },
+  {
+    path: &#x27;profile&#x27;,
+    loadChildren: () &#x3D;&gt;
+      &quot;import(&#x27;./profile/profile.module&#x27;).then((m) &#x3D;&gt; m.ProfileModule)&quot;,
+  },
+  {
+    path: &#x27;tracking&#x27;,
+    loadChildren: () &#x3D;&gt;
+      &quot;import(&#x27;./tracking/tracking.module&#x27;).then((m) &#x3D;&gt; m.TrackingModule)&quot;,
+  },
 ];
 
 @NgModule({
-  imports: [CommonModule, BrowserModule, RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
 </code></pre>
     </div>
 </div>

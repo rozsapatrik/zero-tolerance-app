@@ -122,7 +122,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/components/home/home.component.ts</code>
+            <code>src/app/tracking/components/home/home.component.ts</code>
         </p>
 
 
@@ -205,15 +205,23 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
 import { AngularFirestore } from &#x27;@angular/fire/compat/firestore&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
-import { DateService } from &#x27;src/app/services/date.service&#x27;;
-import { UserService } from &#x27;src/app/services/user/user.service&#x27;;
-import { NotyfService } from &#x27;../../services/notyf/notyf.service&#x27;;
+import { DateService } from &#x27;src/app/core/services/date.service&#x27;;
+import { UserService } from &#x27;src/app/core/services/user/user.service&#x27;;
+import { NotyfService } from &#x27;src/app/core/services/notyf/notyf.service&#x27;;
 
 /**
  * Interface for the consumed drink data.
  */
 interface DrinkData {
-  drinkAmounts: { [key: string]: { id: string, amount: number; calories: number, alcohol: number, time: string }[] };
+  drinkAmounts: {
+    [key: string]: {
+      id: string;
+      amount: number;
+      calories: number;
+      alcohol: number;
+      time: string;
+    }[];
+  };
 }
 
 /**
@@ -230,10 +238,9 @@ interface UserData {
 @Component({
   selector: &#x27;app-home&#x27;,
   templateUrl: &#x27;./home.component.html&#x27;,
-  styleUrls: [&#x27;./home.component.scss&#x27;]
+  styleUrls: [&#x27;./home.component.scss&#x27;],
 })
-export class HomeComponent implements OnInit{
-  
+export class HomeComponent implements OnInit {
   /**
    * The selected date.
    */
@@ -262,9 +269,9 @@ export class HomeComponent implements OnInit{
    * The user&#x27;s personal data.
    */
   userData: UserData;
-  
+
   /**
-   * 
+   *
    * @param afs Angular Firestore.
    * @param userService Service for user data.
    * @param dateService Service for proper date usage.
@@ -277,7 +284,7 @@ export class HomeComponent implements OnInit{
     private dateService: DateService,
     private router: Router,
     private notyfService: NotyfService
-  ){}
+  ) {}
 
   /**
    * Reference to the &#x60;dateInput&#x60; element.
@@ -298,11 +305,11 @@ export class HomeComponent implements OnInit{
      * Fetches drinks data for the selected date.
      */
     this.fetchDrinksForTheDay();
-    
+
     /**
      * Watches for date changes and loads drinks.
      */
-    await this.dateService.selectedDate$.subscribe(date &#x3D;&gt; {
+    await this.dateService.selectedDate$.subscribe((date) &#x3D;&gt; {
       this.selectedDate &#x3D; date;
       this.fetchDrinksForTheDay();
     });
@@ -314,7 +321,11 @@ export class HomeComponent implements OnInit{
   async fetchUserData(): Promise&lt;void&gt; {
     const currentUserID &#x3D; await this.userService.getCurrentUserId();
     if (currentUserID) {
-      const userDoc &#x3D; await this.afs.collection(&#x27;user&#x27;).doc(currentUserID).get().toPromise();
+      const userDoc &#x3D; await this.afs
+        .collection(&#x27;user&#x27;)
+        .doc(currentUserID)
+        .get()
+        .toPromise();
       if (userDoc &amp;&amp; userDoc.exists) {
         this.userData &#x3D; userDoc.data() as UserData;
       }
@@ -328,35 +339,56 @@ export class HomeComponent implements OnInit{
     // Clears previous data
     this.drinksForTheDay &#x3D; [];
     const currentUserID &#x3D; await this.userService.getCurrentUserId();
-    
+
     if (currentUserID &amp;&amp; this.selectedDate) {
-      const formattedDate &#x3D; &#x60;${this.selectedDate.getFullYear()}-${(this.selectedDate.getMonth() + 1).toString().padStart(2, &#x27;0&#x27;)}-${this.selectedDate.getDate().toString().padStart(2, &#x27;0&#x27;)}&#x60;;
+      const formattedDate &#x3D; &#x60;${this.selectedDate.getFullYear()}-${(
+        this.selectedDate.getMonth() + 1
+      )
+        .toString()
+        .padStart(2, &#x27;0&#x27;)}-${this.selectedDate
+        .getDate()
+        .toString()
+        .padStart(2, &#x27;0&#x27;)}&#x60;;
       const docId &#x3D; &#x60;${currentUserID}-${formattedDate}&#x60;; // Create document ID based on user and date
 
       const docRef &#x3D; this.afs.collection(&#x27;drankDrinks&#x27;).doc(docId);
       const docSnapshot &#x3D; await docRef.get().toPromise();
 
       if (docSnapshot &amp;&amp; docSnapshot.exists) {
-        const drinkData &#x3D; docSnapshot.data() as { drinkAmounts?: Record&lt;string, {id: string, amount: number, time: string, calories: number, alcohol: number }[]&gt; };
+        const drinkData &#x3D; docSnapshot.data() as {
+          drinkAmounts?: Record&lt;
+            string,
+            {
+              id: string;
+              amount: number;
+              time: string;
+              calories: number;
+              alcohol: number;
+            }[]
+          &gt;;
+        };
 
         this.drinksForTheDay &#x3D; drinkData?.drinkAmounts
-          ? Object.entries(drinkData.drinkAmounts).map(([name, detailsArray]) &#x3D;&gt; {
-            return detailsArray.map(detail &#x3D;&gt; ({
-              name,
-              id: detail.id,
-              amount: detail.amount,
-              calories: detail.calories,
-              alcohol: detail.alcohol,
-              time: detail.time
-          }));
-        }).flat() : [];
+          ? Object.entries(drinkData.drinkAmounts)
+              .map(([name, detailsArray]) &#x3D;&gt; {
+                return detailsArray.map((detail) &#x3D;&gt; ({
+                  name,
+                  id: detail.id,
+                  amount: detail.amount,
+                  calories: detail.calories,
+                  alcohol: detail.alcohol,
+                  time: detail.time,
+                }));
+              })
+              .flat()
+          : [];
 
         this.calculateTotals();
         this.calculateBAC();
       }
     }
   }
-  
+
   /**
    * Calculates approximate blood alcohol content for given day.
    * @returns If user data is not present then returns.
@@ -376,56 +408,81 @@ export class HomeComponent implements OnInit{
     const weightInGrams &#x3D; weight * 1000;
     const currentTime &#x3D; new Date();
     // Construct full date objects for drink times
-      const drinkTimes &#x3D; this.drinksForTheDay.map((drink) &#x3D;&gt; {
-        const [hours, minutes] &#x3D; drink.time.split(&#x27;:&#x27;).map(Number);
-        const drinkDate &#x3D; new Date(this.selectedDate);
-        drinkDate.setHours(hours, minutes, 0, 0); // Set hours and minutes to the drink&#x27;s time
-        return { ...drink, drinkDate };
-      });
-      console.log(&#x27;Drink times:&#x27;, drinkTimes);
+    const drinkTimes &#x3D; this.drinksForTheDay.map((drink) &#x3D;&gt; {
+      const [hours, minutes] &#x3D; drink.time.split(&#x27;:&#x27;).map(Number);
+      const drinkDate &#x3D; new Date(this.selectedDate);
+      drinkDate.setHours(hours, minutes, 0, 0); // Set hours and minutes to the drink&#x27;s time
+      return { ...drink, drinkDate };
+    });
+    console.log(&#x27;Drink times:&#x27;, drinkTimes);
 
-      // Separate past and future drinks
-      const pastDrinks &#x3D; drinkTimes.filter((drink) &#x3D;&gt; drink.drinkDate &lt;&#x3D; currentTime);
-      const futureDrinks &#x3D; drinkTimes.filter((drink) &#x3D;&gt; drink.drinkDate &gt; currentTime);
-      console.log(&#x27;Past Drinks:&#x27;, pastDrinks);
-      console.log(&#x27;Future Drinks:&#x27;, futureDrinks);
+    // Separate past and future drinks
+    const pastDrinks &#x3D; drinkTimes.filter(
+      (drink) &#x3D;&gt; drink.drinkDate &lt;&#x3D; currentTime
+    );
+    const futureDrinks &#x3D; drinkTimes.filter(
+      (drink) &#x3D;&gt; drink.drinkDate &gt; currentTime
+    );
+    console.log(&#x27;Past Drinks:&#x27;, pastDrinks);
+    console.log(&#x27;Future Drinks:&#x27;, futureDrinks);
 
     // Calculate BAC based on past drinks
-      const totalPastAlcoholGrams &#x3D; pastDrinks.reduce((sum, drink) &#x3D;&gt; sum + (drink.alcohol || 0), 0);
-      if (pastDrinks.length &gt; 0) {
-        const lastDrinkTime &#x3D; new Date(Math.max(...pastDrinks.map((drink) &#x3D;&gt; drink.drinkDate.getTime())));
-        const timeElapsedHours &#x3D; Math.max(0, (currentTime.getTime() - lastDrinkTime.getTime()) / (1000 * 60 * 60));
+    const totalPastAlcoholGrams &#x3D; pastDrinks.reduce(
+      (sum, drink) &#x3D;&gt; sum + (drink.alcohol || 0),
+      0
+    );
+    if (pastDrinks.length &gt; 0) {
+      const lastDrinkTime &#x3D; new Date(
+        Math.max(...pastDrinks.map((drink) &#x3D;&gt; drink.drinkDate.getTime()))
+      );
+      const timeElapsedHours &#x3D; Math.max(
+        0,
+        (currentTime.getTime() - lastDrinkTime.getTime()) / (1000 * 60 * 60)
+      );
 
-        console.log(&#x27;Last past drink time:&#x27;, lastDrinkTime);
-        console.log(&#x27;Time elapsed since last drink (hours):&#x27;, timeElapsedHours);
+      console.log(&#x27;Last past drink time:&#x27;, lastDrinkTime);
+      console.log(&#x27;Time elapsed since last drink (hours):&#x27;, timeElapsedHours);
 
-        this.bac &#x3D;
-            ((totalPastAlcoholGrams) / (weightInGrams * bodyWaterConstant)) * 100 - metabolismRate * timeElapsedHours;
-        this.bac &#x3D; Math.max(this.bac, 0); // Ensure BAC does not go negative
-        console.log(&#x27;Current BAC:&#x27;, this.bac);
-      } else {
-        this.bac &#x3D; 0; // No past drinks, no BAC
-      }
-      
-      // Calculate sober time (including future drinks)
-      const allAlcoholGrams &#x3D; drinkTimes.reduce((sum, drink) &#x3D;&gt; sum + (drink.alcohol || 0), 0);
-      const soberHours &#x3D; allAlcoholGrams / (metabolismRate * weightInGrams * bodyWaterConstant);
+      this.bac &#x3D;
+        (totalPastAlcoholGrams / (weightInGrams * bodyWaterConstant)) * 100 -
+        metabolismRate * timeElapsedHours;
+      this.bac &#x3D; Math.max(this.bac, 0); // Ensure BAC does not go negative
+      console.log(&#x27;Current BAC:&#x27;, this.bac);
+    } else {
+      this.bac &#x3D; 0; // No past drinks, no BAC
+    }
 
-      console.log(&#x27;Total alcohol grams (past + future):&#x27;, allAlcoholGrams);
-      console.log(&#x27;Estimated hours to sober:&#x27;, soberHours*100);
+    // Calculate sober time (including future drinks)
+    const allAlcoholGrams &#x3D; drinkTimes.reduce(
+      (sum, drink) &#x3D;&gt; sum + (drink.alcohol || 0),
+      0
+    );
+    const soberHours &#x3D;
+      allAlcoholGrams / (metabolismRate * weightInGrams * bodyWaterConstant);
 
-      const earliestAllDrinkTime &#x3D; new Date(Math.min(...drinkTimes.map((drink) &#x3D;&gt; drink.drinkDate.getTime())));
-      const estimatedSoberTime &#x3D; new Date(Math.max(earliestAllDrinkTime.getTime()) + (soberHours*100) * 60 * 60 * 1000);
+    console.log(&#x27;Total alcohol grams (past + future):&#x27;, allAlcoholGrams);
+    console.log(&#x27;Estimated hours to sober:&#x27;, soberHours * 100);
 
-      this.soberTime &#x3D; estimatedSoberTime;
-      console.log(&#x27;Estimated time to be sober:&#x27;, this.soberTime);  
+    const earliestAllDrinkTime &#x3D; new Date(
+      Math.min(...drinkTimes.map((drink) &#x3D;&gt; drink.drinkDate.getTime()))
+    );
+    const estimatedSoberTime &#x3D; new Date(
+      Math.max(earliestAllDrinkTime.getTime()) +
+        soberHours * 100 * 60 * 60 * 1000
+    );
+
+    this.soberTime &#x3D; estimatedSoberTime;
+    console.log(&#x27;Estimated time to be sober:&#x27;, this.soberTime);
   }
 
   /**
    * Calculates total calories and drinks for the day.
    */
   calculateTotals(): void {
-    this.totalCalories &#x3D; this.drinksForTheDay.reduce((sum, drink) &#x3D;&gt; sum + (drink.calories || 0), 0);
+    this.totalCalories &#x3D; this.drinksForTheDay.reduce(
+      (sum, drink) &#x3D;&gt; sum + (drink.calories || 0),
+      0
+    );
     this.totalDrinks &#x3D; this.drinksForTheDay.length;
   }
 
@@ -458,14 +515,18 @@ export class HomeComponent implements OnInit{
   /**
    * Redirects to drink list page.
    */
-  redirectToDrinks(){ this.router.navigate([&#x27;/drinklist&#x27;]); }
+  redirectToDrinks() {
+    this.router.navigate([&#x27;/tracking/drinklist&#x27;]);
+  }
 
   /**
    * Shows alert for drink deletion.
    * @param drink The currently clicked drink.
    */
   onDrinkClick(drink: any): void {
-    const confirmDelete &#x3D; window.confirm(&#x60;Are you sure you want to delete the drink ${drink.name}?&#x60;);
+    const confirmDelete &#x3D; window.confirm(
+      &#x60;Are you sure you want to delete the drink ${drink.name}?&#x60;
+    );
     if (confirmDelete) {
       this.deleteDrinkFromFirestore(drink);
     }
@@ -477,40 +538,51 @@ export class HomeComponent implements OnInit{
    */
   async deleteDrinkFromFirestore(drink: any): Promise&lt;void&gt; {
     const userId &#x3D; await this.userService.getCurrentUserId();
-    const formattedDate &#x3D; &#x60;${this.selectedDate.getFullYear()}-${(this.selectedDate.getMonth() + 1).toString().padStart(2, &#x27;0&#x27;)}-${this.selectedDate.getDate().toString().padStart(2, &#x27;0&#x27;)}&#x60;;
+    const formattedDate &#x3D; &#x60;${this.selectedDate.getFullYear()}-${(
+      this.selectedDate.getMonth() + 1
+    )
+      .toString()
+      .padStart(2, &#x27;0&#x27;)}-${this.selectedDate
+      .getDate()
+      .toString()
+      .padStart(2, &#x27;0&#x27;)}&#x60;;
     const docId &#x3D; &#x60;${userId}-${formattedDate}&#x60;;
     console.log(&#x27;UID: &#x27;, userId);
     console.log(&#x27;DATE: &#x27;, formattedDate);
 
     const docRef &#x3D; this.afs.collection(&#x27;drankDrinks&#x27;).doc(docId);
-    
+
     try {
       const docSnapshot &#x3D; await docRef.get().toPromise();
       if (docSnapshot &amp;&amp; docSnapshot.exists) {
         const drinkData &#x3D; docSnapshot.data() as DrinkData;
-        console.log(&quot;drinkData: &quot;, drinkData);
+        console.log(&#x27;drinkData: &#x27;, drinkData);
         if (drinkData &amp;&amp; drinkData.drinkAmounts) {
           const drinkAmounts &#x3D; drinkData.drinkAmounts;
-  
+
           // Iterate through the drink amounts and find the drink to delete by name and id
           for (const drinkName in drinkAmounts) {
             const entries &#x3D; drinkAmounts[drinkName];
-            
+
             // Find the specific entry by name and id
-            const entryIndex &#x3D; entries.findIndex((entry: any) &#x3D;&gt; entry.id &#x3D;&#x3D;&#x3D; drink.id);
-  
+            const entryIndex &#x3D; entries.findIndex(
+              (entry: any) &#x3D;&gt; entry.id &#x3D;&#x3D;&#x3D; drink.id
+            );
+
             if (entryIndex !&#x3D;&#x3D; -1) {
               // Delete the specific entry by its id
               entries.splice(entryIndex, 1);
               break; // Exit loop once the drink is deleted
             }
           }
-  
+
           // Update the document with the remaining drink amounts
           await docRef.set({ ...drinkData, drinkAmounts }, { merge: true });
           this.notyfService.success(&#x27;Drink deleted&#x27;);
-          console.log(&#x60;Deleted drink ${drink.name} at ${drink.time} from Firestore&#x60;);
-  
+          console.log(
+            &#x60;Deleted drink ${drink.name} at ${drink.time} from Firestore&#x60;
+          );
+
           // Reload the drinks for the day after deletion
           this.fetchDrinksForTheDay();
         }

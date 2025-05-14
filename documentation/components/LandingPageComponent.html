@@ -120,7 +120,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/components/landing-page/landing-page.component.ts</code>
+    <code>src/app/pages/components/landing-page/landing-page.component.ts</code>
 </p>
 
 
@@ -223,7 +223,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/components/landing-page/landing-page.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/pages/components/landing-page/landing-page.component.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -295,8 +295,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="32"
-                                    class="link-to-prism">src/app/components/landing-page/landing-page.component.ts:32</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="29"
+                                    class="link-to-prism">src/app/pages/components/landing-page/landing-page.component.ts:29</a></div>
                         </td>
                     </tr>
 
@@ -334,8 +334,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="25"
-                                    class="link-to-prism">src/app/components/landing-page/landing-page.component.ts:25</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="22"
+                                    class="link-to-prism">src/app/pages/components/landing-page/landing-page.component.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -368,32 +368,28 @@ import { Router } from &#x27;@angular/router&#x27;;
 @Component({
   selector: &#x27;app-landing-page&#x27;,
   templateUrl: &#x27;./landing-page.component.html&#x27;,
-  styleUrls: [&#x27;./landing-page.component.scss&#x27;]
+  styleUrls: [&#x27;./landing-page.component.scss&#x27;],
 })
 export class LandingPageComponent {
-
   /**
-   * 
+   *
    * @param router Router for routing.
    */
-  constructor(
-    private router: Router
-  ){}
+  constructor(private router: Router) {}
 
   /**
    * Redirects to the register page.
    */
-  redirectToRegister(){
-    this.router.navigate([&#x27;/register&#x27;]);
+  redirectToRegister() {
+    this.router.navigate([&#x27;/auth/register&#x27;]);
   }
 
   /**
    * Redirects to the login page.
    */
-  redirectToLogin(){
-    this.router.navigate([&#x27;/login&#x27;]);
+  redirectToLogin() {
+    this.router.navigate([&#x27;/auth/login&#x27;]);
   }
-
 }
 </code></pre>
     </div>

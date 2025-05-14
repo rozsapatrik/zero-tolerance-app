@@ -120,7 +120,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/components/navigation/navigation.component.ts</code>
+    <code>src/app/shared/navigation/navigation.component.ts</code>
 </p>
 
 
@@ -258,7 +258,7 @@
                     <tr>
                         <td class="col-md-4">
                             <div class="io-line">Defined in <a href="" data-line="21"
-                                    class="link-to-prism">src/app/components/navigation/navigation.component.ts:21</a></div>
+                                    class="link-to-prism">src/app/shared/navigation/navigation.component.ts:21</a></div>
                         </td>
                     </tr>
 
@@ -300,7 +300,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/navigation/navigation.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/shared/navigation/navigation.component.ts:16</a></div>
                         </td>
                     </tr>
 
@@ -348,20 +348,25 @@ export class NavigationComponent {
 
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;hamburger-menu-container&quot; [class.open]&#x3D;&quot;isOpen&quot;&gt;
-   &lt;div class&#x3D;&quot;menu-content&quot;&gt;
-     &lt;ul&gt;
-      &lt;a href&#x3D;&quot;/home&quot;&gt;&lt;li&gt;Home&lt;/li&gt;&lt;/a&gt;
-       &lt;a href&#x3D;&quot;/aboutus&quot;&gt;&lt;li&gt;About Us&lt;/li&gt;&lt;/a&gt;
-       &lt;a href&#x3D;&quot;/profile&quot;&gt;&lt;li&gt;Profile&lt;/li&gt;&lt;/a&gt;
-     &lt;/ul&gt;
-   &lt;/div&gt;
- &lt;/div&gt;
- &lt;div class&#x3D;&quot;menu-overlay&quot; (click)&#x3D;&quot;toggleMenu()&quot; *ngIf&#x3D;&quot;isOpen&quot;&gt;&lt;/div&gt;
+  &lt;div class&#x3D;&quot;menu-content&quot;&gt;
+    &lt;ul&gt;
+      &lt;a href&#x3D;&quot;/tracking/home&quot;&gt;
+        &lt;li&gt;Home&lt;/li&gt;
+      &lt;/a&gt;
+      &lt;a href&#x3D;&quot;/pages/aboutus&quot;&gt;
+        &lt;li&gt;About Us&lt;/li&gt;
+      &lt;/a&gt;
+      &lt;a href&#x3D;&quot;/profile/profile&quot;&gt;
+        &lt;li&gt;Profile&lt;/li&gt;
+      &lt;/a&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;menu-overlay&quot; (click)&#x3D;&quot;toggleMenu()&quot; *ngIf&#x3D;&quot;isOpen&quot;&gt;&lt;/div&gt;
 
- &lt;button class&#x3D;&quot;hamburger-icon&quot; (click)&#x3D;&quot;toggleMenu()&quot;&gt;
-   &lt;i class&#x3D;&quot;bi bi-list&quot;&gt;&lt;/i&gt;
- &lt;/button&gt;
-</code></pre>
+&lt;button class&#x3D;&quot;hamburger-icon&quot; (click)&#x3D;&quot;toggleMenu()&quot;&gt;
+  &lt;i class&#x3D;&quot;bi bi-list&quot;&gt;&lt;/i&gt;
+&lt;/button&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="styleData">
@@ -476,7 +481,7 @@ a &gt; span {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="hamburger-menu-container" [class.open]="isOpen">   <div class="menu-content">     <ul>      <a href="/home"><li>Home</li></a>       <a href="/aboutus"><li>About Us</li></a>       <a href="/profile"><li>Profile</li></a>     </ul>   </div> </div> <div class="menu-overlay" (click)="toggleMenu()" *ngIf="isOpen"></div> <button class="hamburger-icon" (click)="toggleMenu()">   <i class="bi bi-list"></i> </button></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="hamburger-menu-container" [class.open]="isOpen">  <div class="menu-content">    <ul>      <a href="/tracking/home">        <li>Home</li>      </a>      <a href="/pages/aboutus">        <li>About Us</li>      </a>      <a href="/profile/profile">        <li>Profile</li>      </a>    </ul>  </div></div><div class="menu-overlay" (click)="toggleMenu()" *ngIf="isOpen"></div><button class="hamburger-icon" (click)="toggleMenu()">  <i class="bi bi-list"></i></button></div>'
     var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'NavigationComponent'};

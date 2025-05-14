@@ -120,7 +120,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/components/login/login.component.ts</code>
+    <code>src/app/auth/components/login/login.component.ts</code>
 </p>
 
 
@@ -260,7 +260,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/login/login.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/auth/components/login/login.component.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -381,7 +381,7 @@
                     <tr>
                         <td class="col-md-4">
                             <div class="io-line">Defined in <a href="" data-line="39"
-                                    class="link-to-prism">src/app/components/login/login.component.ts:39</a></div>
+                                    class="link-to-prism">src/app/auth/components/login/login.component.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -417,8 +417,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/app/components/login/login.component.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/app/auth/components/login/login.component.ts:58</a></div>
                         </td>
                     </tr>
 
@@ -461,13 +461,13 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>new FormGroup({
     email: new FormControl(&#x27;&#x27;, [Validators.required, Validators.email]),
-    password: new FormControl(&#x27;&#x27;, [Validators.required])
+    password: new FormControl(&#x27;&#x27;, [Validators.required]),
   })</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/login/login.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/auth/components/login/login.component.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -502,7 +502,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/login/login.component.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/auth/components/login/login.component.ts:44</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -531,7 +531,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/components/login/login.component.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/auth/components/login/login.component.ts:50</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -550,11 +550,11 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AngularFireAuth } from &#x27;@angular/fire/compat/auth&#x27;;
-import { AuthenticationService } from &#x27;../../services/authentication.service&#x27;;
+import { AuthenticationService } from &#x27;src/app/core/services/authentication.service&#x27;;
 import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { FormControl, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
-import { NotyfService } from &#x27;../../services/notyf/notyf.service&#x27;;
+import { NotyfService } from &#x27;src/app/core/services/notyf/notyf.service&#x27;;
 
 /**
  * Handles the logging in of the user.
@@ -562,19 +562,19 @@ import { NotyfService } from &#x27;../../services/notyf/notyf.service&#x27;;
 @Component({
   selector: &#x27;app-login&#x27;,
   templateUrl: &#x27;./login.component.html&#x27;,
-  styleUrls: [&#x27;./login.component.scss&#x27;]
+  styleUrls: [&#x27;./login.component.scss&#x27;],
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   /**
    * The login form group.
    */
   loginForm &#x3D; new FormGroup({
     email: new FormControl(&#x27;&#x27;, [Validators.required, Validators.email]),
-    password: new FormControl(&#x27;&#x27;, [Validators.required])
-  })
+    password: new FormControl(&#x27;&#x27;, [Validators.required]),
+  });
 
   /**
-   * 
+   *
    * @param authService Service for user authentication.
    * @param router Router for routing.
    * @param auth Angular Firebase Authentication.
@@ -585,41 +585,47 @@ export class LoginComponent implements OnInit{
     private router: Router,
     private auth: AngularFireAuth,
     private notyfService: NotyfService
-  ){}
+  ) {}
 
   ngOnInit(): void {}
 
   /**
    * Gets the e-mail input.
    */
-  get email(){ return this.loginForm.get(&#x27;email&#x27;); }
+  get email() {
+    return this.loginForm.get(&#x27;email&#x27;);
+  }
   /**
    * Gets the password input.
    */
-  get password(){ return this.loginForm.get(&#x27;password&#x27;); }
+  get password() {
+    return this.loginForm.get(&#x27;password&#x27;);
+  }
 
   /**
    * Submits the typed in data for log in.
    * @returns The user&#x27;s credentials.
    */
-  submit(){
-    if(!this.loginForm.valid){ return; }
+  submit() {
+    if (!this.loginForm.valid) {
+      return;
+    }
 
     const { email, password } &#x3D; this.loginForm.value;
 
     this.authService.login(email as string, password as string).subscribe({
       next: () &#x3D;&gt; {
         this.notyfService.success(&#x27;Logged in&#x27;);
-        this.auth.user.subscribe(async user &#x3D;&gt; {
-          if(user){
-            this.router.navigate([&#x27;/home&#x27;])
-          } 
+        this.auth.user.subscribe(async (user) &#x3D;&gt; {
+          if (user) {
+            this.router.navigate([&#x27;/tracking/home&#x27;]);
+          }
         });
       },
       error: (error) &#x3D;&gt; {
         this.notyfService.error(&#x27;Something went wrong&#x27;);
-      }
-    })
+      },
+    });
   }
 }
 </code></pre>
