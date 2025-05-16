@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 /**
  * Handles the navigation menu.
@@ -10,6 +11,12 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class NavigationComponent {
+  /**
+   *
+   * @param router Router for routing.
+   */
+  constructor(private router: Router) {}
+
   /**
    * State variable for menu state.
    */
@@ -27,5 +34,14 @@ export class NavigationComponent {
         this.menuState = 'closed';
       }, 300);
     }
+  }
+
+  navigateWithMenuClose(path: String) {
+    this.menuState = 'closing';
+
+    setTimeout(() => {
+      this.menuState = 'closed';
+      this.router.navigate([path]);
+    }, 300);
   }
 }

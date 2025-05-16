@@ -5,13 +5,22 @@
 >
   <div class="menu-content">
     <ul>
-      <a href="/tracking/home" (click)="toggleMenu()">
+      <a
+        (click)="navigateWithMenuClose('/tracking/home')"
+        (click)="toggleMenu()"
+      >
         <li>Home</li>
       </a>
-      <a href="/pages/aboutus" (click)="toggleMenu()">
+      <a
+        (click)="navigateWithMenuClose('/pages/aboutus')"
+        (click)="toggleMenu()"
+      >
         <li>About Us</li>
       </a>
-      <a href="/profile/profile" (click)="toggleMenu()">
+      <a
+        (click)="navigateWithMenuClose('/profile/profile')"
+        (click)="toggleMenu()"
+      >
         <li>Profile</li>
       </a>
     </ul>
