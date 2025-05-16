@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "~material-design-icons-iconfont/dist/material-design-icons.css";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
 @font-face {
@@ -58,6 +59,11 @@ body {
   justify-content: center;
   align-items: flex-start;
   background-color: #0f0f0f;
+  font-family: MT_Regular;
+
+  .material-icons {
+    font-size: 2rem;
+  }
 }
 
 /* Center app-wrapper */
@@ -67,7 +73,6 @@ body {
   align-items: flex-start; // use center if you want vertical centering too
   min-height: 100svh;
   overflow: hidden;
-  font-family: MT_Regular;
 }
 
 app-root {

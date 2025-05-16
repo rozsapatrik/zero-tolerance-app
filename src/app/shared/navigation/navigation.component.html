@@ -20,7 +20,18 @@
 
 <div class="hamburger-icon-container">
   <button class="hamburger-icon" (click)="toggleMenu()">
-    <i class="bi bi-list"></i>
+    <i
+      class="material-icons"
+      [class.icon-visible]="menuState === 'closed' || menuState === 'closing'"
+      [class.icon-hidden]="menuState === 'open'"
+      >menu</i
+    >
+    <i
+      class="material-icons"
+      [class.icon-visible]="menuState === 'open'"
+      [class.icon-hidden]="menuState === 'closed'"
+      >menu_open</i
+    >
   </button>
 </div>
 

@@ -30,6 +30,7 @@
     "d3-selection": "^3.0.0",
     "d3-shape": "^3.2.0",
     "firebase-tools": "^11.30.0",
+    "material-design-icons-iconfont": "^6.7.0",
     "notyf": "^3.10.0",
     "remixicon": "^4.6.0",
     "rxfire": "^6.0.3",
