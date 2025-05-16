@@ -1,6 +1,15 @@
 <div class="app-wrapper">
-    <app-navigation></app-navigation>
-    <div class="app-content">
-        <router-outlet></router-outlet>
-    </div>
+  <app-navigation></app-navigation>
+  <ngx-spinner
+    class="custom-spinner"
+    bdColor="rgba(0, 0, 0, 1)"
+    size="medium"
+    color="#fff"
+    type="line-spin-clockwise-fade-rotating"
+    [fullScreen]="false"
+  >
+  </ngx-spinner>
+  <div class="app-content">
+    <router-outlet></router-outlet>
+  </div>
 </div>
