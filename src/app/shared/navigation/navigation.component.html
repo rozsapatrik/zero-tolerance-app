@@ -1,20 +1,32 @@
-<div class="hamburger-menu-container" [class.open]="isOpen">
+<div
+  class="hamburger-menu-container"
+  [ngClass]="{ open: menuState === 'open', closing: menuState === 'closing' }"
+  (click)="toggleMenu()"
+>
   <div class="menu-content">
     <ul>
-      <a href="/tracking/home">
+      <a href="/tracking/home" (click)="toggleMenu()">
         <li>Home</li>
       </a>
-      <a href="/pages/aboutus">
+      <a href="/pages/aboutus" (click)="toggleMenu()">
         <li>About Us</li>
       </a>
-      <a href="/profile/profile">
+      <a href="/profile/profile" (click)="toggleMenu()">
         <li>Profile</li>
       </a>
     </ul>
   </div>
 </div>
-<div class="menu-overlay" (click)="toggleMenu()" *ngIf="isOpen"></div>
 
-<button class="hamburger-icon" (click)="toggleMenu()">
-  <i class="bi bi-list"></i>
-</button>
+<div class="hamburger-icon-container">
+  <button class="hamburger-icon" (click)="toggleMenu()">
+    <i class="bi bi-list"></i>
+  </button>
+</div>
+
+<div
+  class="backdrop"
+  [ngClass]="{ closing: menuState === 'closing' }"
+  *ngIf="menuState !== 'closed'"
+  (click)="toggleMenu()"
+></div>

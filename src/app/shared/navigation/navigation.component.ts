@@ -7,18 +7,25 @@ import { Component, ViewEncapsulation } from '@angular/core';
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class NavigationComponent {
   /**
-   * Flag to check if menu is open.
+   * State variable for menu state.
    */
-  isOpen = false;
+  menuState: 'closed' | 'open' | 'closing' = 'closed';
 
   /**
-   * Toggles navigation menu.
+   * Toggles the navigation menu
    */
   toggleMenu() {
-    this.isOpen = !this.isOpen;
+    if (this.menuState === 'closed') {
+      this.menuState = 'open';
+    } else if (this.menuState === 'open') {
+      this.menuState = 'closing';
+      setTimeout(() => {
+        this.menuState = 'closed';
+      }, 300);
+    }
   }
 }

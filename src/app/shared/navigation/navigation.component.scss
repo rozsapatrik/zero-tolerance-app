@@ -1,38 +1,56 @@
-.hamburger-icon {
-  position: fixed;
-  top: 5px;
-  left: 5px;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
-  z-index: 1000;
+.hamburger-icon-container {
+  padding-left: 0.25rem;
+  .hamburger-icon {
+    position: fixed;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1000;
+  }
 }
 
 .hamburger-menu-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
+  position: absolute;
+  height: 100%;
   background: rgb(20, 0, 40);
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
   z-index: 997;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+
+  &.open {
+    transform: translateX(0);
+    transition: transform 0.3s ease-out;
+    pointer-events: auto;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &.closing {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in;
+    pointer-events: auto;
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
-.hamburger-menu-container.open {
-  transform: translateX(0);
-}
-
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+.backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 100;
+  z-index: 996;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+
+  &.closing {
+    opacity: 0;
+  }
 }
 
 .menu-content {
@@ -62,7 +80,11 @@
   padding-bottom: 2vh;
   border-radius: 15px;
   cursor: pointer;
-  background-image: linear-gradient(135deg, rgba(132, 0, 255, 0.5) 0%, rgba(72, 0, 155, 0.5) 100%);
+  background-image: linear-gradient(
+    135deg,
+    rgba(132, 0, 255, 0.5) 0%,
+    rgba(72, 0, 155, 0.5) 100%
+  );
   width: 100%;
 }
 
