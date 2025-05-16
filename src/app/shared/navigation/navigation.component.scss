@@ -50,7 +50,7 @@
 
   &.closing {
     transform: translateX(-100%);
-    transition: transform 0.3s ease-in;
+    transition: transform 0.5s ease-in;
     pointer-events: auto;
     visibility: visible;
     opacity: 1;

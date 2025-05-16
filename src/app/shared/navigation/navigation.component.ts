@@ -43,7 +43,7 @@ export class NavigationComponent {
       this.menuState = 'closing';
       setTimeout(() => {
         this.menuState = 'closed';
-      }, 300);
+      }, 500);
     }
   }
 
