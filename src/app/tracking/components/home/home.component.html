@@ -1,20 +1,13 @@
 <div class="home-container">
   <div class="date-picker-container">
-    <!--<div class="date-display-box" (click)="picker.open()">
-      {{ selectedDate | date: 'yyyy-MM-dd' }}
-    </div>-->
 
     <div class="date-display-box" (click)="openDatePicker()">
       {{ selectedDate | date: 'yyyy-MM-dd' }}
     </div>
 
-    <!--<mat-form-field class="date-picker-field">
-      <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event)" hidden />
-      <mat-datepicker #picker panelClass="customDatePicker"></mat-datepicker>
-    </mat-form-field>-->
-
     <div class="date-picker-field">
-      <input type="date" [value]="getFormattedDate(selectedDate)" (change)="onDateChange($event)" #dateInput class="hidden-date-input"/>
+      <input type="date" [value]="getFormattedDate(selectedDate)" (change)="onDateChange($event)" #dateInput
+        class="hidden-date-input" />
     </div>
   </div>
 
@@ -25,7 +18,6 @@
         <span (click)="onDrinkClick(drink)" class="bi bi-x-lg remove-drink" style="cursor: pointer;"></span>
         <br> {{ drink.amount }} ml - {{ drink.time }} - {{ drink.calories |
         trimDecimals:2 }} kcal
-        <!--  - {{drink.alcohol | trimDecimals:2 }} alcohol-->
       </li>
     </ul>
   </div>
@@ -35,14 +27,12 @@
 
   <div class="info-container" *ngIf="totalDrinks != 0">
     <div class="calorie-total">
-      <!--<h3>Total calories for {{ selectedDate | date:'yyyy-MM-dd' }}: {{ totalCalories | trimDecimals:2 }}</h3>-->
       <p>Total calories:<span class="info-container-right">{{ totalCalories | trimDecimals:2 }} kcal</span></p>
     </div>
     <div class="drinks-total">
-      <!--<h3>Number of drinks for {{ selectedDate | date:'yyyy-MM-dd' }}: {{ totalDrinks }}</h3>-->
       <p>Number of drinks:<span class="info-container-right">{{ totalDrinks }}</span></p>
     </div>
-    <!-- New Section for BAC -->
+
     <div class="bac-display">
       <h3>Estimated BAC:<span class="info-container-right">{{ bac | number: '1.2-2' }}%</span></h3>
       <p *ngIf="soberTime">Sober:<span class="info-container-right">~ {{ soberTime | date: 'EEE MMM dd yyyy HH:mm:ss'
