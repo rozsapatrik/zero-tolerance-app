@@ -1,6 +1,10 @@
 <div
   class="hamburger-menu-container"
-  [ngClass]="{ open: menuState === 'open', closing: menuState === 'closing' }"
+  [ngClass]="{
+    open: menuState === 'open',
+    closing: menuState === 'closing',
+    closingSoft: menuState === 'closingSoft'
+  }"
   (click)="toggleMenu()"
 >
   <div class="menu-content">
@@ -31,14 +35,22 @@
   <button class="hamburger-icon" (click)="toggleMenu()">
     <i
       class="material-icons"
-      [class.icon-visible]="menuState === 'closed' || menuState === 'closing'"
+      [class.icon-visible]="
+        menuState === 'closed' ||
+        menuState === 'closing' ||
+        menuState === 'closingSoft'
+      "
       [class.icon-hidden]="menuState === 'open'"
       >menu</i
     >
     <i
       class="material-icons"
       [class.icon-visible]="menuState === 'open'"
-      [class.icon-hidden]="menuState === 'closed'"
+      [class.icon-hidden]="
+        menuState === 'closed' ||
+        menuState === 'closing' ||
+        menuState === 'closingSoft'
+      "
       >menu_open</i
     >
   </button>
@@ -46,7 +58,9 @@
 
 <div
   class="backdrop"
-  [ngClass]="{ closing: menuState === 'closing' }"
+  [ngClass]="{
+    closing: menuState === 'closing' || menuState === 'closingSoft'
+  }"
   *ngIf="menuState !== 'closed'"
   (click)="toggleMenu()"
 ></div>

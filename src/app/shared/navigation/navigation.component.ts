@@ -31,7 +31,7 @@ export class NavigationComponent {
   /**
    * State variable for menu state.
    */
-  menuState: 'closed' | 'open' | 'closing' = 'closed';
+  menuState: 'closed' | 'open' | 'closing' | 'closingSoft' = 'closed';
 
   /**
    * Toggles the navigation menu
@@ -53,7 +53,7 @@ export class NavigationComponent {
    */
   navigateWithMenuClose(path: String) {
     this.spinner.show();
-    this.menuState = 'closing';
+    this.menuState = 'closingSoft';
 
     setTimeout(() => {
       this.menuState = 'closed';
