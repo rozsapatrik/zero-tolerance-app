@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
  * Service for date selector.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DateService {
   /**

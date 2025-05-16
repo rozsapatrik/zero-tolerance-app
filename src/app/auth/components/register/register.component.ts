@@ -13,26 +13,6 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
 import { NotyfService } from 'src/app/core/services/notyf/notyf.service';
 
 /**
- * Checks if the two passwords typed in the `registerForm` match
- */
-export function passwordsMatchValidator(): ValidatorFn {
-  return (AbsControl: AbstractControl): ValidationErrors | null => {
-    const password = AbsControl.get('password')?.value;
-    const confirmPassword = AbsControl.get('confirmPassword')?.value;
-
-    if (password && password !== confirmPassword) {
-      return { passwordsDontMatch: true };
-    } else if (
-      password != '' &&
-      (password.length < 8 || confirmPassword.length < 8)
-    ) {
-      return { passwordLengthMin: true };
-    }
-    return null;
-  };
-}
-
-/**
  * Handles user registration.
  */
 @Component({
@@ -56,7 +36,7 @@ export class RegisterComponent implements OnInit {
       weight: new FormControl('', [Validators.required, Validators.min(30)]), // Minimum weight validation
       gender: new FormControl('male', Validators.required), // Gender must be selected
     },
-    { validators: passwordsMatchValidator() }
+    { validators: this.passwordsMatchValidator() }
   );
 
   /**
@@ -110,6 +90,26 @@ export class RegisterComponent implements OnInit {
    */
   get gender() {
     return this.registerForm.get('gender');
+  }
+
+  /**
+   * Checks if the two passwords typed in the `registerForm` match
+   */
+  passwordsMatchValidator(): ValidatorFn {
+    return (AbsControl: AbstractControl): ValidationErrors | null => {
+      const password = AbsControl.get('password')?.value;
+      const confirmPassword = AbsControl.get('confirmPassword')?.value;
+
+      if (password && password !== confirmPassword) {
+        return { passwordsDontMatch: true };
+      } else if (
+        password != '' &&
+        (password.length < 8 || confirmPassword.length < 8)
+      ) {
+        return { passwordLengthMin: true };
+      }
+      return null;
+    };
   }
 
   /**

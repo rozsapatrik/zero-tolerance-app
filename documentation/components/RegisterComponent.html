@@ -218,6 +218,9 @@
                                 <a href="#ngOnInit" >ngOnInit</a>
                             </li>
                             <li>
+                                <a href="#passwordsMatchValidator" >passwordsMatchValidator</a>
+                            </li>
+                            <li>
                                 <a href="#registerSubmit" >registerSubmit</a>
                             </li>
                         </ul>
@@ -272,7 +275,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/auth/components/register/register.component.ts:60</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/auth/components/register/register.component.ts:40</a></div>
                             </td>
                         </tr>
 
@@ -392,8 +395,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="76"
-                                    class="link-to-prism">src/app/auth/components/register/register.component.ts:76</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/auth/components/register/register.component.ts:56</a></div>
                         </td>
                     </tr>
 
@@ -403,6 +406,45 @@
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="passwordsMatchValidator"></a>
+                    <span class="name">
+                        <span ><b>passwordsMatchValidator</b></span>
+                        <a href="#passwordsMatchValidator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>passwordsMatchValidator()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">src/app/auth/components/register/register.component.ts:98</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Checks if the two passwords typed in the <code>registerForm</code> match</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>ValidatorFn</code>
 
                         </div>
                 </td>
@@ -483,13 +525,13 @@
       weight: new FormControl(&#x27;&#x27;, [Validators.required, Validators.min(30)]), // Minimum weight validation
       gender: new FormControl(&#x27;male&#x27;, Validators.required), // Gender must be selected
     },
-    { validators: passwordsMatchValidator() }
+    { validators: this.passwordsMatchValidator() }
   )</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/auth/components/register/register.component.ts:47</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/auth/components/register/register.component.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -524,7 +566,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/auth/components/register/register.component.ts:81</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/auth/components/register/register.component.ts:61</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -553,7 +595,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/app/auth/components/register/register.component.ts:87</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/auth/components/register/register.component.ts:67</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -582,7 +624,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/app/auth/components/register/register.component.ts:93</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/auth/components/register/register.component.ts:73</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -611,7 +653,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/app/auth/components/register/register.component.ts:99</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/auth/components/register/register.component.ts:79</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -640,7 +682,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/app/auth/components/register/register.component.ts:105</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/auth/components/register/register.component.ts:85</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -669,7 +711,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/app/auth/components/register/register.component.ts:111</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/app/auth/components/register/register.component.ts:91</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -702,26 +744,6 @@ import { AuthenticationService } from &#x27;src/app/core/services/authentication
 import { NotyfService } from &#x27;src/app/core/services/notyf/notyf.service&#x27;;
 
 /**
- * Checks if the two passwords typed in the &#x60;registerForm&#x60; match
- */
-export function passwordsMatchValidator(): ValidatorFn {
-  return (AbsControl: AbstractControl): ValidationErrors | null &#x3D;&gt; {
-    const password &#x3D; AbsControl.get(&#x27;password&#x27;)?.value;
-    const confirmPassword &#x3D; AbsControl.get(&#x27;confirmPassword&#x27;)?.value;
-
-    if (password &amp;&amp; password !&#x3D;&#x3D; confirmPassword) {
-      return { passwordsDontMatch: true };
-    } else if (
-      password !&#x3D; &#x27;&#x27; &amp;&amp;
-      (password.length &lt; 8 || confirmPassword.length &lt; 8)
-    ) {
-      return { passwordLengthMin: true };
-    }
-    return null;
-  };
-}
-
-/**
  * Handles user registration.
  */
 @Component({
@@ -745,7 +767,7 @@ export class RegisterComponent implements OnInit {
       weight: new FormControl(&#x27;&#x27;, [Validators.required, Validators.min(30)]), // Minimum weight validation
       gender: new FormControl(&#x27;male&#x27;, Validators.required), // Gender must be selected
     },
-    { validators: passwordsMatchValidator() }
+    { validators: this.passwordsMatchValidator() }
   );
 
   /**
@@ -802,6 +824,26 @@ export class RegisterComponent implements OnInit {
   }
 
   /**
+   * Checks if the two passwords typed in the &#x60;registerForm&#x60; match
+   */
+  passwordsMatchValidator(): ValidatorFn {
+    return (AbsControl: AbstractControl): ValidationErrors | null &#x3D;&gt; {
+      const password &#x3D; AbsControl.get(&#x27;password&#x27;)?.value;
+      const confirmPassword &#x3D; AbsControl.get(&#x27;confirmPassword&#x27;)?.value;
+
+      if (password &amp;&amp; password !&#x3D;&#x3D; confirmPassword) {
+        return { passwordsDontMatch: true };
+      } else if (
+        password !&#x3D; &#x27;&#x27; &amp;&amp;
+        (password.length &lt; 8 || confirmPassword.length &lt; 8)
+      ) {
+        return { passwordLengthMin: true };
+      }
+      return null;
+    };
+  }
+
+  /**
    * Submits the user&#x27;s data for registration.
    * @returns If the registration form&#x27;s data is invalid then returns.
    */
@@ -846,11 +888,13 @@ export class RegisterComponent implements OnInit {
   &lt;br /&gt;
   &lt;form [formGroup]&#x3D;&quot;registerForm&quot; (ngSubmit)&#x3D;&quot;registerSubmit()&quot; class&#x3D;&quot;registerForm&quot;&gt;
     &lt;mat-form-field class&#x3D;&quot;username-mat-form-field matFormRegister&quot;&gt;
-      &lt;input class&#x3D;&quot;username-input&quot; placeholder&#x3D;&quot;Username&quot; formControlName&#x3D;&quot;username&quot; matInput class&#x3D;&quot;inputFieldZT&quot; type&#x3D;&quot;text&quot;/&gt;
+      &lt;input class&#x3D;&quot;username-input&quot; placeholder&#x3D;&quot;Username&quot; formControlName&#x3D;&quot;username&quot; matInput class&#x3D;&quot;inputFieldZT&quot;
+        type&#x3D;&quot;text&quot; /&gt;
       &lt;mat-error *ngIf&#x3D;&quot;username?.errors?.[&#x27;required&#x27;]&quot;&gt;Please enter a username!&lt;/mat-error&gt; &lt;/mat-form-field&gt;&lt;br /&gt;
 
     &lt;mat-form-field class&#x3D;&quot;email-mat-form-field matFormRegister&quot;&gt;
-      &lt;input class&#x3D;&quot;email-input&quot; placeholder&#x3D;&quot;E-mail&quot; formControlName&#x3D;&quot;email&quot; matInput class&#x3D;&quot;inputFieldZT&quot; type&#x3D;&quot;text&quot;/&gt;
+      &lt;input class&#x3D;&quot;email-input&quot; placeholder&#x3D;&quot;E-mail&quot; formControlName&#x3D;&quot;email&quot; matInput class&#x3D;&quot;inputFieldZT&quot;
+        type&#x3D;&quot;text&quot; /&gt;
       &lt;mat-error *ngIf&#x3D;&quot;email?.errors?.[&#x27;required&#x27;]&quot;&gt;Please enter an e-mail!&lt;/mat-error&gt;
       &lt;mat-error *ngIf&#x3D;&quot;email?.errors?.[&#x27;emailFormat&#x27;]&quot;&gt;Please enter a valid e-mail address!&lt;/mat-error&gt;
     &lt;/mat-form-field&gt;&lt;br /&gt;
@@ -869,14 +913,12 @@ export class RegisterComponent implements OnInit {
     &lt;mat-error *ngIf&#x3D;&quot;registerForm.errors?.[&#x27;passwordsDontMatch&#x27;]&quot;&gt;The passwords do not match&lt;/mat-error&gt;
     &lt;mat-error *ngIf&#x3D;&quot;registerForm.errors?.[&#x27;passwordLengthMin&#x27;]&quot;&gt;Password must be at least 8 characters!&lt;/mat-error&gt;
 
-    &lt;!-- Weight Input --&gt;
     &lt;mat-form-field class&#x3D;&quot;weight-mat-form-field matFormRegister&quot;&gt;
       &lt;input class&#x3D;&quot;weight-input&quot; type&#x3D;&quot;number&quot; placeholder&#x3D;&quot;Weight (kg)&quot; formControlName&#x3D;&quot;weight&quot; matInput
         class&#x3D;&quot;inputFieldZT&quot; /&gt;
       &lt;mat-error *ngIf&#x3D;&quot;weight?.errors?.[&#x27;required&#x27;]&quot;&gt;Please enter your weight!&lt;/mat-error&gt;
       &lt;mat-error *ngIf&#x3D;&quot;weight?.errors?.[&#x27;min&#x27;]&quot;&gt;Weight must be at least 30kg!&lt;/mat-error&gt; &lt;/mat-form-field&gt;&lt;br /&gt;
 
-    &lt;!-- Gender Selection --&gt;
     &lt;div class&#x3D;&quot;genderSelection&quot;&gt;
       &lt;div&gt;
         &lt;label&gt;
@@ -1049,7 +1091,7 @@ label span {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="formContainer">  <h1>Sign Up</h1>  <br />  <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" class="registerForm">    <mat-form-field class="username-mat-form-field matFormRegister">      <input class="username-input" placeholder="Username" formControlName="username" matInput class="inputFieldZT" type="text"/>      <mat-error *ngIf="username?.errors?.[\'required\']">Please enter a username!</mat-error> </mat-form-field><br />    <mat-form-field class="email-mat-form-field matFormRegister">      <input class="email-input" placeholder="E-mail" formControlName="email" matInput class="inputFieldZT" type="text"/>      <mat-error *ngIf="email?.errors?.[\'required\']">Please enter an e-mail!</mat-error>      <mat-error *ngIf="email?.errors?.[\'emailFormat\']">Please enter a valid e-mail address!</mat-error>    </mat-form-field><br />    <mat-form-field class="password-mat-form-field matFormRegister">      <input class="password-input" placeholder="Password" formControlName="password" type="password" matInput        class="inputFieldZT" />      <mat-error *ngIf="password?.errors?.[\'required\']">Please type in a password!</mat-error> </mat-form-field><br />    <mat-form-field class="confirm-password-mat-form-field matFormRegister">      <input class="confirm-password-input" placeholder="Confirm Password" formControlName="confirmPassword"        type="password" matInput class="inputFieldZT" />      <mat-error *ngIf="confirmPassword?.errors?.[\'required\']">Please confirm your password!</mat-error>    </mat-form-field><br />    <mat-error *ngIf="registerForm.errors?.[\'passwordsDontMatch\']">The passwords do not match</mat-error>    <mat-error *ngIf="registerForm.errors?.[\'passwordLengthMin\']">Password must be at least 8 characters!</mat-error>    <!-- Weight Input -->    <mat-form-field class="weight-mat-form-field matFormRegister">      <input class="weight-input" type="number" placeholder="Weight (kg)" formControlName="weight" matInput        class="inputFieldZT" />      <mat-error *ngIf="weight?.errors?.[\'required\']">Please enter your weight!</mat-error>      <mat-error *ngIf="weight?.errors?.[\'min\']">Weight must be at least 30kg!</mat-error> </mat-form-field><br />    <!-- Gender Selection -->    <div class="genderSelection">      <div>        <label>          <input type="radio" formControlName="gender" value="male" />          <span>&nbsp; Male &nbsp;</span>        </label>        <label>          <input type="radio" formControlName="gender" value="female" />          <span>Female</span>        </label>        <mat-error *ngIf="gender?.errors?.[\'required\']">Please select your gender!</mat-error>      </div>    </div>    <br />    <div class="registerButtonDiv">      <button type="submit" mat-flat-button class="registerButton">        Sign Up      </button>    </div>  </form></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="formContainer">  <h1>Sign Up</h1>  <br />  <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" class="registerForm">    <mat-form-field class="username-mat-form-field matFormRegister">      <input class="username-input" placeholder="Username" formControlName="username" matInput class="inputFieldZT"        type="text" />      <mat-error *ngIf="username?.errors?.[\'required\']">Please enter a username!</mat-error> </mat-form-field><br />    <mat-form-field class="email-mat-form-field matFormRegister">      <input class="email-input" placeholder="E-mail" formControlName="email" matInput class="inputFieldZT"        type="text" />      <mat-error *ngIf="email?.errors?.[\'required\']">Please enter an e-mail!</mat-error>      <mat-error *ngIf="email?.errors?.[\'emailFormat\']">Please enter a valid e-mail address!</mat-error>    </mat-form-field><br />    <mat-form-field class="password-mat-form-field matFormRegister">      <input class="password-input" placeholder="Password" formControlName="password" type="password" matInput        class="inputFieldZT" />      <mat-error *ngIf="password?.errors?.[\'required\']">Please type in a password!</mat-error> </mat-form-field><br />    <mat-form-field class="confirm-password-mat-form-field matFormRegister">      <input class="confirm-password-input" placeholder="Confirm Password" formControlName="confirmPassword"        type="password" matInput class="inputFieldZT" />      <mat-error *ngIf="confirmPassword?.errors?.[\'required\']">Please confirm your password!</mat-error>    </mat-form-field><br />    <mat-error *ngIf="registerForm.errors?.[\'passwordsDontMatch\']">The passwords do not match</mat-error>    <mat-error *ngIf="registerForm.errors?.[\'passwordLengthMin\']">Password must be at least 8 characters!</mat-error>    <mat-form-field class="weight-mat-form-field matFormRegister">      <input class="weight-input" type="number" placeholder="Weight (kg)" formControlName="weight" matInput        class="inputFieldZT" />      <mat-error *ngIf="weight?.errors?.[\'required\']">Please enter your weight!</mat-error>      <mat-error *ngIf="weight?.errors?.[\'min\']">Weight must be at least 30kg!</mat-error> </mat-form-field><br />    <div class="genderSelection">      <div>        <label>          <input type="radio" formControlName="gender" value="male" />          <span>&nbsp; Male &nbsp;</span>        </label>        <label>          <input type="radio" formControlName="gender" value="female" />          <span>Female</span>        </label>        <mat-error *ngIf="gender?.errors?.[\'required\']">Please select your gender!</mat-error>      </div>    </div>    <br />    <div class="registerButtonDiv">      <button type="submit" mat-flat-button class="registerButton">        Sign Up      </button>    </div>  </form></div></div>'
     var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'RegisterComponent'};

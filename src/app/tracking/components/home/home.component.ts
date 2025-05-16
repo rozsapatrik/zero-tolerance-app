@@ -198,18 +198,17 @@ export class HomeComponent implements OnInit {
 
     const { weight, gender } = this.userData;
     const bodyWaterConstant = gender === 'male' ? 0.58 : 0.49;
-    const metabolismRate = 0.015; // Average alcohol elimination rate per hour
+    const metabolismRate = 0.015;
     const weightInGrams = weight * 1000;
     const currentTime = new Date();
     // Construct full date objects for drink times
     const drinkTimes = this.drinksForTheDay.map((drink) => {
       const [hours, minutes] = drink.time.split(':').map(Number);
       const drinkDate = new Date(this.selectedDate);
-      drinkDate.setHours(hours, minutes, 0, 0); // Set hours and minutes to the drink's time
+      drinkDate.setHours(hours, minutes, 0, 0);
       return { ...drink, drinkDate };
     });
 
-    // Separate past and future drinks
     const pastDrinks = drinkTimes.filter(
       (drink) => drink.drinkDate <= currentTime
     );
@@ -217,11 +216,11 @@ export class HomeComponent implements OnInit {
       (drink) => drink.drinkDate > currentTime
     );
 
-    // Calculate BAC based on past drinks
     const totalPastAlcoholGrams = pastDrinks.reduce(
       (sum, drink) => sum + (drink.alcohol || 0),
       0
     );
+
     if (pastDrinks.length > 0) {
       const lastDrinkTime = new Date(
         Math.max(...pastDrinks.map((drink) => drink.drinkDate.getTime()))
@@ -236,7 +235,7 @@ export class HomeComponent implements OnInit {
         metabolismRate * timeElapsedHours;
       this.bac = Math.max(this.bac, 0); // Ensure BAC does not go negative
     } else {
-      this.bac = 0; // No past drinks, no BAC
+      this.bac = 0;
     }
 
     // Calculate sober time (including future drinks)
@@ -340,7 +339,6 @@ export class HomeComponent implements OnInit {
         if (drinkData && drinkData.drinkAmounts) {
           const drinkAmounts = drinkData.drinkAmounts;
 
-          // Iterate through the drink amounts and find the drink to delete by name and id
           for (const drinkName in drinkAmounts) {
             const entries = drinkAmounts[drinkName];
 
@@ -352,15 +350,13 @@ export class HomeComponent implements OnInit {
             if (entryIndex !== -1) {
               // Delete the specific entry by its id
               entries.splice(entryIndex, 1);
-              break; // Exit loop once the drink is deleted
+              break;
             }
           }
 
-          // Update the document with the remaining drink amounts
           await docRef.set({ ...drinkData, drinkAmounts }, { merge: true });
           this.notyfService.success('Drink deleted');
 
-          // Reload the drinks for the day after deletion
           this.fetchDrinksForTheDay();
         }
       } else {

@@ -1027,42 +1027,22 @@ export class StatsComponent implements OnInit {
 
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;stats-container&quot;&gt;
-    &lt;!-- Bar Chart --&gt;
-    &lt;div class&#x3D;&quot;chart-section&quot;&gt;
-      &lt;ngx-charts-bar-vertical
-      [view]&#x3D;&quot;barChartView&quot;
-      [results]&#x3D;&quot;graphData&quot;
-      [gradient]&#x3D;&quot;false&quot;
-      [xAxis]&#x3D;&quot;true&quot;
-      [yAxis]&#x3D;&quot;true&quot;
-      [legend]&#x3D;&quot;false&quot;
-      [showXAxisLabel]&#x3D;&quot;true&quot;
-      [showYAxisLabel]&#x3D;&quot;false&quot;
-      [xAxisLabel]&#x3D;&quot;&#x27;Drinking Frequency (drinks/day)&#x27;&quot;
-      [animations]&#x3D;&quot;false&quot;
-      &gt;
-      &lt;/ngx-charts-bar-vertical&gt;
-    &lt;/div&gt;
-  
-    &lt;!-- Pie Chart --&gt;
-    &lt;div class&#x3D;&quot;chart-section&quot;&gt;
-      &lt;ngx-charts-pie-chart
-      [view]&#x3D;&quot;pieChartView&quot;
-      [results]&#x3D;&quot;pieChartData&quot;
-      [legend]&#x3D;&quot;false&quot;
-      [labels]&#x3D;&quot;false&quot;
-      [doughnut]&#x3D;&quot;false&quot;
-      [explodeSlices]&#x3D;&quot;false&quot;
-      [gradient]&#x3D;&quot;false&quot;
-      [animations]&#x3D;&quot;false&quot;
-      [legendPosition]&#x3D;&quot;legendPosPie&quot;
-      &gt;
-      &lt;/ngx-charts-pie-chart&gt;
-    &lt;/div&gt;
-    &lt;p class&#x3D;&quot;chart-label&quot; style&#x3D;&quot;text-align: center;&quot;&gt;Distribution of Drinks (by category)&lt;/p&gt;
+
+  &lt;div class&#x3D;&quot;chart-section&quot;&gt;
+    &lt;ngx-charts-bar-vertical [view]&#x3D;&quot;barChartView&quot; [results]&#x3D;&quot;graphData&quot; [gradient]&#x3D;&quot;false&quot; [xAxis]&#x3D;&quot;true&quot;
+      [yAxis]&#x3D;&quot;true&quot; [legend]&#x3D;&quot;false&quot; [showXAxisLabel]&#x3D;&quot;true&quot; [showYAxisLabel]&#x3D;&quot;false&quot;
+      [xAxisLabel]&#x3D;&quot;&#x27;Drinking Frequency (drinks/day)&#x27;&quot; [animations]&#x3D;&quot;false&quot;&gt;
+    &lt;/ngx-charts-bar-vertical&gt;
   &lt;/div&gt;
-  
-</code></pre>
+
+  &lt;div class&#x3D;&quot;chart-section&quot;&gt;
+    &lt;ngx-charts-pie-chart [view]&#x3D;&quot;pieChartView&quot; [results]&#x3D;&quot;pieChartData&quot; [legend]&#x3D;&quot;false&quot; [labels]&#x3D;&quot;false&quot;
+      [doughnut]&#x3D;&quot;false&quot; [explodeSlices]&#x3D;&quot;false&quot; [gradient]&#x3D;&quot;false&quot; [animations]&#x3D;&quot;false&quot;
+      [legendPosition]&#x3D;&quot;legendPosPie&quot;&gt;
+    &lt;/ngx-charts-pie-chart&gt;
+  &lt;/div&gt;
+  &lt;p class&#x3D;&quot;chart-label&quot; style&#x3D;&quot;text-align: center;&quot;&gt;Distribution of Drinks (by category)&lt;/p&gt;
+&lt;/div&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="styleData">
@@ -1136,7 +1116,7 @@ export class StatsComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="stats-container">    <!-- Bar Chart -->    <div class="chart-section">      <ngx-charts-bar-vertical      [view]="barChartView"      [results]="graphData"      [gradient]="false"      [xAxis]="true"      [yAxis]="true"      [legend]="false"      [showXAxisLabel]="true"      [showYAxisLabel]="false"      [xAxisLabel]="\'Drinking Frequency (drinks/day)\'"      [animations]="false"      >      </ngx-charts-bar-vertical>    </div>      <!-- Pie Chart -->    <div class="chart-section">      <ngx-charts-pie-chart      [view]="pieChartView"      [results]="pieChartData"      [legend]="false"      [labels]="false"      [doughnut]="false"      [explodeSlices]="false"      [gradient]="false"      [animations]="false"      [legendPosition]="legendPosPie"      >      </ngx-charts-pie-chart>    </div>    <p class="chart-label" style="text-align: center;">Distribution of Drinks (by category)</p>  </div>  </div>'
+        var COMPONENT_TEMPLATE = '<div><div class="stats-container">  <div class="chart-section">    <ngx-charts-bar-vertical [view]="barChartView" [results]="graphData" [gradient]="false" [xAxis]="true"      [yAxis]="true" [legend]="false" [showXAxisLabel]="true" [showYAxisLabel]="false"      [xAxisLabel]="\'Drinking Frequency (drinks/day)\'" [animations]="false">    </ngx-charts-bar-vertical>  </div>  <div class="chart-section">    <ngx-charts-pie-chart [view]="pieChartView" [results]="pieChartData" [legend]="false" [labels]="false"      [doughnut]="false" [explodeSlices]="false" [gradient]="false" [animations]="false"      [legendPosition]="legendPosPie">    </ngx-charts-pie-chart>  </div>  <p class="chart-label" style="text-align: center;">Distribution of Drinks (by category)</p></div></div>'
     var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'StatsComponent'};

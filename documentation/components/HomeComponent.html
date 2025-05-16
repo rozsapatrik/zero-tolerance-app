@@ -475,8 +475,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="264"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:264</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="263"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:263</a></div>
                         </td>
                     </tr>
 
@@ -516,8 +516,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="322"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:322</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="321"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:321</a></div>
                         </td>
                     </tr>
 
@@ -672,8 +672,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="287"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:287</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="286"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:286</a></div>
                         </td>
                     </tr>
 
@@ -788,8 +788,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="276"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:276</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="275"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:275</a></div>
                         </td>
                     </tr>
 
@@ -862,8 +862,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="309"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:309</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="308"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:308</a></div>
                         </td>
                     </tr>
 
@@ -936,8 +936,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="294"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:294</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="293"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:293</a></div>
                         </td>
                     </tr>
 
@@ -975,8 +975,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="301"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:301</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="300"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:300</a></div>
                         </td>
                     </tr>
 
@@ -1497,18 +1497,17 @@ export class HomeComponent implements OnInit {
 
     const { weight, gender } &#x3D; this.userData;
     const bodyWaterConstant &#x3D; gender &#x3D;&#x3D;&#x3D; &#x27;male&#x27; ? 0.58 : 0.49;
-    const metabolismRate &#x3D; 0.015; // Average alcohol elimination rate per hour
+    const metabolismRate &#x3D; 0.015;
     const weightInGrams &#x3D; weight * 1000;
     const currentTime &#x3D; new Date();
     // Construct full date objects for drink times
     const drinkTimes &#x3D; this.drinksForTheDay.map((drink) &#x3D;&gt; {
       const [hours, minutes] &#x3D; drink.time.split(&#x27;:&#x27;).map(Number);
       const drinkDate &#x3D; new Date(this.selectedDate);
-      drinkDate.setHours(hours, minutes, 0, 0); // Set hours and minutes to the drink&#x27;s time
+      drinkDate.setHours(hours, minutes, 0, 0);
       return { ...drink, drinkDate };
     });
 
-    // Separate past and future drinks
     const pastDrinks &#x3D; drinkTimes.filter(
       (drink) &#x3D;&gt; drink.drinkDate &lt;&#x3D; currentTime
     );
@@ -1516,11 +1515,11 @@ export class HomeComponent implements OnInit {
       (drink) &#x3D;&gt; drink.drinkDate &gt; currentTime
     );
 
-    // Calculate BAC based on past drinks
     const totalPastAlcoholGrams &#x3D; pastDrinks.reduce(
       (sum, drink) &#x3D;&gt; sum + (drink.alcohol || 0),
       0
     );
+
     if (pastDrinks.length &gt; 0) {
       const lastDrinkTime &#x3D; new Date(
         Math.max(...pastDrinks.map((drink) &#x3D;&gt; drink.drinkDate.getTime()))
@@ -1535,7 +1534,7 @@ export class HomeComponent implements OnInit {
         metabolismRate * timeElapsedHours;
       this.bac &#x3D; Math.max(this.bac, 0); // Ensure BAC does not go negative
     } else {
-      this.bac &#x3D; 0; // No past drinks, no BAC
+      this.bac &#x3D; 0;
     }
 
     // Calculate sober time (including future drinks)
@@ -1639,7 +1638,6 @@ export class HomeComponent implements OnInit {
         if (drinkData &amp;&amp; drinkData.drinkAmounts) {
           const drinkAmounts &#x3D; drinkData.drinkAmounts;
 
-          // Iterate through the drink amounts and find the drink to delete by name and id
           for (const drinkName in drinkAmounts) {
             const entries &#x3D; drinkAmounts[drinkName];
 
@@ -1651,15 +1649,13 @@ export class HomeComponent implements OnInit {
             if (entryIndex !&#x3D;&#x3D; -1) {
               // Delete the specific entry by its id
               entries.splice(entryIndex, 1);
-              break; // Exit loop once the drink is deleted
+              break;
             }
           }
 
-          // Update the document with the remaining drink amounts
           await docRef.set({ ...drinkData, drinkAmounts }, { merge: true });
           this.notyfService.success(&#x27;Drink deleted&#x27;);
 
-          // Reload the drinks for the day after deletion
           this.fetchDrinksForTheDay();
         }
       } else {
@@ -1677,21 +1673,14 @@ export class HomeComponent implements OnInit {
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;home-container&quot;&gt;
   &lt;div class&#x3D;&quot;date-picker-container&quot;&gt;
-    &lt;!--&lt;div class&#x3D;&quot;date-display-box&quot; (click)&#x3D;&quot;picker.open()&quot;&gt;
-      {{ selectedDate | date: &#x27;yyyy-MM-dd&#x27; }}
-    &lt;/div&gt;--&gt;
 
     &lt;div class&#x3D;&quot;date-display-box&quot; (click)&#x3D;&quot;openDatePicker()&quot;&gt;
       {{ selectedDate | date: &#x27;yyyy-MM-dd&#x27; }}
     &lt;/div&gt;
 
-    &lt;!--&lt;mat-form-field class&#x3D;&quot;date-picker-field&quot;&gt;
-      &lt;input matInput [matDatepicker]&#x3D;&quot;picker&quot; (dateChange)&#x3D;&quot;onDateChange($event)&quot; hidden /&gt;
-      &lt;mat-datepicker #picker panelClass&#x3D;&quot;customDatePicker&quot;&gt;&lt;/mat-datepicker&gt;
-    &lt;/mat-form-field&gt;--&gt;
-
     &lt;div class&#x3D;&quot;date-picker-field&quot;&gt;
-      &lt;input type&#x3D;&quot;date&quot; [value]&#x3D;&quot;getFormattedDate(selectedDate)&quot; (change)&#x3D;&quot;onDateChange($event)&quot; #dateInput class&#x3D;&quot;hidden-date-input&quot;/&gt;
+      &lt;input type&#x3D;&quot;date&quot; [value]&#x3D;&quot;getFormattedDate(selectedDate)&quot; (change)&#x3D;&quot;onDateChange($event)&quot; #dateInput
+        class&#x3D;&quot;hidden-date-input&quot; /&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 
@@ -1702,7 +1691,6 @@ export class HomeComponent implements OnInit {
         &lt;span (click)&#x3D;&quot;onDrinkClick(drink)&quot; class&#x3D;&quot;bi bi-x-lg remove-drink&quot; style&#x3D;&quot;cursor: pointer;&quot;&gt;&lt;/span&gt;
         &lt;br&gt; {{ drink.amount }} ml - {{ drink.time }} - {{ drink.calories |
         trimDecimals:2 }} kcal
-        &lt;!--  - {{drink.alcohol | trimDecimals:2 }} alcohol--&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
@@ -1712,14 +1700,12 @@ export class HomeComponent implements OnInit {
 
   &lt;div class&#x3D;&quot;info-container&quot; *ngIf&#x3D;&quot;totalDrinks !&#x3D; 0&quot;&gt;
     &lt;div class&#x3D;&quot;calorie-total&quot;&gt;
-      &lt;!--&lt;h3&gt;Total calories for {{ selectedDate | date:&#x27;yyyy-MM-dd&#x27; }}: {{ totalCalories | trimDecimals:2 }}&lt;/h3&gt;--&gt;
       &lt;p&gt;Total calories:&lt;span class&#x3D;&quot;info-container-right&quot;&gt;{{ totalCalories | trimDecimals:2 }} kcal&lt;/span&gt;&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class&#x3D;&quot;drinks-total&quot;&gt;
-      &lt;!--&lt;h3&gt;Number of drinks for {{ selectedDate | date:&#x27;yyyy-MM-dd&#x27; }}: {{ totalDrinks }}&lt;/h3&gt;--&gt;
       &lt;p&gt;Number of drinks:&lt;span class&#x3D;&quot;info-container-right&quot;&gt;{{ totalDrinks }}&lt;/span&gt;&lt;/p&gt;
     &lt;/div&gt;
-    &lt;!-- New Section for BAC --&gt;
+
     &lt;div class&#x3D;&quot;bac-display&quot;&gt;
       &lt;h3&gt;Estimated BAC:&lt;span class&#x3D;&quot;info-container-right&quot;&gt;{{ bac | number: &#x27;1.2-2&#x27; }}%&lt;/span&gt;&lt;/h3&gt;
       &lt;p *ngIf&#x3D;&quot;soberTime&quot;&gt;Sober:&lt;span class&#x3D;&quot;info-container-right&quot;&gt;~ {{ soberTime | date: &#x27;EEE MMM dd yyyy HH:mm:ss&#x27;
@@ -1861,7 +1847,7 @@ ul li:not(:last-child) {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="home-container">  <div class="date-picker-container">    <!--<div class="date-display-box" (click)="picker.open()">      {{ selectedDate | date: \'yyyy-MM-dd\' }}    </div>-->    <div class="date-display-box" (click)="openDatePicker()">      {{ selectedDate | date: \'yyyy-MM-dd\' }}    </div>    <!--<mat-form-field class="date-picker-field">      <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event)" hidden />      <mat-datepicker #picker panelClass="customDatePicker"></mat-datepicker>    </mat-form-field>-->    <div class="date-picker-field">      <input type="date" [value]="getFormattedDate(selectedDate)" (change)="onDateChange($event)" #dateInput class="hidden-date-input"/>    </div>  </div>  <div *ngIf="drinksForTheDay.length > 0">    <ul>      <li *ngFor="let drink of drinksForTheDay">        <span class="drink-name">{{ drink.name }}</span>        <span (click)="onDrinkClick(drink)" class="bi bi-x-lg remove-drink" style="cursor: pointer;"></span>        <br> {{ drink.amount }} ml - {{ drink.time }} - {{ drink.calories |        trimDecimals:2 }} kcal        <!--  - {{drink.alcohol | trimDecimals:2 }} alcohol-->      </li>    </ul>  </div>  <div *ngIf="drinksForTheDay.length === 0" class="no-drinks">    <p>No drinks recorded for this day</p>  </div>  <div class="info-container" *ngIf="totalDrinks != 0">    <div class="calorie-total">      <!--<h3>Total calories for {{ selectedDate | date:\'yyyy-MM-dd\' }}: {{ totalCalories | trimDecimals:2 }}</h3>-->      <p>Total calories:<span class="info-container-right">{{ totalCalories | trimDecimals:2 }} kcal</span></p>    </div>    <div class="drinks-total">      <!--<h3>Number of drinks for {{ selectedDate | date:\'yyyy-MM-dd\' }}: {{ totalDrinks }}</h3>-->      <p>Number of drinks:<span class="info-container-right">{{ totalDrinks }}</span></p>    </div>    <!-- New Section for BAC -->    <div class="bac-display">      <h3>Estimated BAC:<span class="info-container-right">{{ bac | number: \'1.2-2\' }}%</span></h3>      <p *ngIf="soberTime">Sober:<span class="info-container-right">~ {{ soberTime | date: \'EEE MMM dd yyyy HH:mm:ss\'          }}</span></p>    </div>  </div>  <div class="add-drink-container">    <button mat-flat-button (click)="redirectToDrinks()" class="add-drink-button">Add Drink</button>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="home-container">  <div class="date-picker-container">    <div class="date-display-box" (click)="openDatePicker()">      {{ selectedDate | date: \'yyyy-MM-dd\' }}    </div>    <div class="date-picker-field">      <input type="date" [value]="getFormattedDate(selectedDate)" (change)="onDateChange($event)" #dateInput        class="hidden-date-input" />    </div>  </div>  <div *ngIf="drinksForTheDay.length > 0">    <ul>      <li *ngFor="let drink of drinksForTheDay">        <span class="drink-name">{{ drink.name }}</span>        <span (click)="onDrinkClick(drink)" class="bi bi-x-lg remove-drink" style="cursor: pointer;"></span>        <br> {{ drink.amount }} ml - {{ drink.time }} - {{ drink.calories |        trimDecimals:2 }} kcal      </li>    </ul>  </div>  <div *ngIf="drinksForTheDay.length === 0" class="no-drinks">    <p>No drinks recorded for this day</p>  </div>  <div class="info-container" *ngIf="totalDrinks != 0">    <div class="calorie-total">      <p>Total calories:<span class="info-container-right">{{ totalCalories | trimDecimals:2 }} kcal</span></p>    </div>    <div class="drinks-total">      <p>Number of drinks:<span class="info-container-right">{{ totalDrinks }}</span></p>    </div>    <div class="bac-display">      <h3>Estimated BAC:<span class="info-container-right">{{ bac | number: \'1.2-2\' }}%</span></h3>      <p *ngIf="soberTime">Sober:<span class="info-container-right">~ {{ soberTime | date: \'EEE MMM dd yyyy HH:mm:ss\'          }}</span></p>    </div>  </div>  <div class="add-drink-container">    <button mat-flat-button (click)="redirectToDrinks()" class="add-drink-button">Add Drink</button>  </div></div></div>'
     var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HomeComponent'};

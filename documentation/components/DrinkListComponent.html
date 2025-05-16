@@ -1176,7 +1176,6 @@ export class DrinkListComponent {
       const userEmail &#x3D; await this.userService.getCurrentUserEmailString();
       const userID &#x3D; await this.userService.getCurrentUserId();
 
-      // Creates a unique document ID based on the user and the date
       const docId &#x3D; &#x60;${userID}-${formattedDate}&#x60;;
       const docRef &#x3D; this.afs.collection(&#x27;drankDrinks&#x27;).doc(docId);
       const docSnapshot &#x3D; await docRef.get().toPromise();
@@ -1194,9 +1193,7 @@ export class DrinkListComponent {
       // Generates a unique entryId for the drink
       const entryId &#x3D; &#x60;${new Date().getTime()}-${Math.random()}&#x60;;
 
-      // Checks if the drink already exists in the map for that day.
       if (updatedDrinkAmounts[drink.name]) {
-        // If the drink exists, appends the new entry to the array for that drink
         updatedDrinkAmounts[drink.name].push({
           id: entryId,
           amount: drinkData.ml,
@@ -1206,7 +1203,6 @@ export class DrinkListComponent {
           category: drink.category,
         });
       } else {
-        // If the drink doesn&#x27;t exist, creates a new array and add the first entry.
         updatedDrinkAmounts[drink.name] &#x3D; [
           {
             id: entryId,
@@ -1219,7 +1215,6 @@ export class DrinkListComponent {
         ];
       }
 
-      // Stores the drink data in Firestore.
       const drinkAmountData &#x3D; {
         email: userEmail,
         date: formattedDate,

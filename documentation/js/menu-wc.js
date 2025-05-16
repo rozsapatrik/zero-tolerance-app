@@ -180,13 +180,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SharedModule.html" data-type="entity-link" >SharedModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-SharedModule-bce407e638f8ec142cafbdb032f62aa6107f416e58a383ed7fb12253754bff25275c9bb6a286b16ecb38cb3c301a6abed9d35110533ba2d1c5c35d73956f28b2"' : 'data-bs-target="#xs-components-links-module-SharedModule-bce407e638f8ec142cafbdb032f62aa6107f416e58a383ed7fb12253754bff25275c9bb6a286b16ecb38cb3c301a6abed9d35110533ba2d1c5c35d73956f28b2"' }>
+                                            'data-bs-target="#components-links-module-SharedModule-883214ff68a1ce2f89c95f357748f5e047d856f23b8851efa1d54df42747d1d3a4305ff14c48aa5878bc1a12cd985046dff2deb9afcadd169934a938a86117c4"' : 'data-bs-target="#xs-components-links-module-SharedModule-883214ff68a1ce2f89c95f357748f5e047d856f23b8851efa1d54df42747d1d3a4305ff14c48aa5878bc1a12cd985046dff2deb9afcadd169934a938a86117c4"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SharedModule-bce407e638f8ec142cafbdb032f62aa6107f416e58a383ed7fb12253754bff25275c9bb6a286b16ecb38cb3c301a6abed9d35110533ba2d1c5c35d73956f28b2"' :
-                                            'id="xs-components-links-module-SharedModule-bce407e638f8ec142cafbdb032f62aa6107f416e58a383ed7fb12253754bff25275c9bb6a286b16ecb38cb3c301a6abed9d35110533ba2d1c5c35d73956f28b2"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SharedModule-883214ff68a1ce2f89c95f357748f5e047d856f23b8851efa1d54df42747d1d3a4305ff14c48aa5878bc1a12cd985046dff2deb9afcadd169934a938a86117c4"' :
+                                            'id="xs-components-links-module-SharedModule-883214ff68a1ce2f89c95f357748f5e047d856f23b8851efa1d54df42747d1d3a4305ff14c48aa5878bc1a12cd985046dff2deb9afcadd169934a938a86117c4"' }>
                                             <li class="link">
                                                 <a href="components/NavigationComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >NavigationComponent</a>
                                             </li>
@@ -194,13 +194,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#pipes-links-module-SharedModule-bce407e638f8ec142cafbdb032f62aa6107f416e58a383ed7fb12253754bff25275c9bb6a286b16ecb38cb3c301a6abed9d35110533ba2d1c5c35d73956f28b2"' : 'data-bs-target="#xs-pipes-links-module-SharedModule-bce407e638f8ec142cafbdb032f62aa6107f416e58a383ed7fb12253754bff25275c9bb6a286b16ecb38cb3c301a6abed9d35110533ba2d1c5c35d73956f28b2"' }>
+                                            'data-bs-target="#pipes-links-module-SharedModule-883214ff68a1ce2f89c95f357748f5e047d856f23b8851efa1d54df42747d1d3a4305ff14c48aa5878bc1a12cd985046dff2deb9afcadd169934a938a86117c4"' : 'data-bs-target="#xs-pipes-links-module-SharedModule-883214ff68a1ce2f89c95f357748f5e047d856f23b8851efa1d54df42747d1d3a4305ff14c48aa5878bc1a12cd985046dff2deb9afcadd169934a938a86117c4"' }>
                                             <span class="icon ion-md-add"></span>
                                             <span>Pipes</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-SharedModule-bce407e638f8ec142cafbdb032f62aa6107f416e58a383ed7fb12253754bff25275c9bb6a286b16ecb38cb3c301a6abed9d35110533ba2d1c5c35d73956f28b2"' :
-                                            'id="xs-pipes-links-module-SharedModule-bce407e638f8ec142cafbdb032f62aa6107f416e58a383ed7fb12253754bff25275c9bb6a286b16ecb38cb3c301a6abed9d35110533ba2d1c5c35d73956f28b2"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-SharedModule-883214ff68a1ce2f89c95f357748f5e047d856f23b8851efa1d54df42747d1d3a4305ff14c48aa5878bc1a12cd985046dff2deb9afcadd169934a938a86117c4"' :
+                                            'id="xs-pipes-links-module-SharedModule-883214ff68a1ce2f89c95f357748f5e047d856f23b8851efa1d54df42747d1d3a4305ff14c48aa5878bc1a12cd985046dff2deb9afcadd169934a938a86117c4"' }>
                                             <li class="link">
                                                 <a href="pipes/TrimDecimalsPipe.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >TrimDecimalsPipe</a>
                                             </li>
@@ -319,9 +319,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
-                            <li class="link">
-                                <a href="miscellaneous/functions.html" data-type="entity-link">Functions</a>
-                            </li>
                             <li class="link">
                                 <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
                             </li>

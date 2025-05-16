@@ -760,37 +760,32 @@ export class AdminFormComponent {
   &lt;h1&gt;{{ isEditMode ? &#x27;Update drink&#x27; : &#x27;Add a new drink&#x27; }}&lt;/h1&gt;
 
   &lt;form [formGroup]&#x3D;&quot;drinkForm&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot; class&#x3D;&quot;drink-form&quot;&gt;
-    &lt;!-- Name Input --&gt;
+
     &lt;div class&#x3D;&quot;form-group&quot;&gt;
       &lt;label for&#x3D;&quot;name&quot;&gt;Name&lt;/label&gt;
       &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;name&quot; formControlName&#x3D;&quot;name&quot; placeholder&#x3D;&quot;Enter drink name&quot; /&gt;
     &lt;/div&gt;
 
-    &lt;!-- ABV Input --&gt;
     &lt;div class&#x3D;&quot;form-group&quot;&gt;
       &lt;label for&#x3D;&quot;abv&quot;&gt;Alcohol by Volume (ABV %)&lt;/label&gt;
       &lt;input type&#x3D;&quot;number&quot; id&#x3D;&quot;abv&quot; formControlName&#x3D;&quot;abv&quot; placeholder&#x3D;&quot;Enter ABV&quot; min&#x3D;&quot;0&quot; max&#x3D;&quot;100&quot; /&gt;
     &lt;/div&gt;
 
-    &lt;!-- Calories Input --&gt;
     &lt;div class&#x3D;&quot;form-group&quot;&gt;
       &lt;label for&#x3D;&quot;calories&quot;&gt;Calories per Serving&lt;/label&gt;
       &lt;input type&#x3D;&quot;number&quot; id&#x3D;&quot;calories&quot; formControlName&#x3D;&quot;caloriesPerServing&quot; placeholder&#x3D;&quot;Enter calories&quot; min&#x3D;&quot;0&quot; /&gt;
     &lt;/div&gt;
 
-    &lt;!-- Volume Input --&gt;
     &lt;div class&#x3D;&quot;form-group&quot;&gt;
       &lt;label for&#x3D;&quot;volume&quot;&gt;Volume (ml)&lt;/label&gt;
       &lt;input type&#x3D;&quot;number&quot; id&#x3D;&quot;volume&quot; formControlName&#x3D;&quot;ml&quot; placeholder&#x3D;&quot;Enter volume&quot; min&#x3D;&quot;1&quot; /&gt;
     &lt;/div&gt;
 
-    &lt;!-- Category Select --&gt;
     &lt;div class&#x3D;&quot;form-group&quot;&gt;
       &lt;label for&#x3D;&quot;category&quot;&gt;Category&lt;/label&gt;
       &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;category&quot; formControlName&#x3D;&quot;category&quot; placeholder&#x3D;&quot;Enter drink category&quot; /&gt;
     &lt;/div&gt;
 
-    &lt;!-- Submit Button --&gt;
     &lt;div class&#x3D;&quot;admin-form-button-div&quot;&gt;
       &lt;button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;!drinkForm.valid&quot; class&#x3D;&quot;admin-form-button&quot;&gt;Submit&lt;/button&gt;
     &lt;/div&gt;
@@ -888,7 +883,7 @@ export class AdminFormComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="admin-form-container">  <h1>{{ isEditMode ? \'Update drink\' : \'Add a new drink\' }}</h1>  <form [formGroup]="drinkForm" (ngSubmit)="onSubmit()" class="drink-form">    <!-- Name Input -->    <div class="form-group">      <label for="name">Name</label>      <input type="text" id="name" formControlName="name" placeholder="Enter drink name" />    </div>    <!-- ABV Input -->    <div class="form-group">      <label for="abv">Alcohol by Volume (ABV %)</label>      <input type="number" id="abv" formControlName="abv" placeholder="Enter ABV" min="0" max="100" />    </div>    <!-- Calories Input -->    <div class="form-group">      <label for="calories">Calories per Serving</label>      <input type="number" id="calories" formControlName="caloriesPerServing" placeholder="Enter calories" min="0" />    </div>    <!-- Volume Input -->    <div class="form-group">      <label for="volume">Volume (ml)</label>      <input type="number" id="volume" formControlName="ml" placeholder="Enter volume" min="1" />    </div>    <!-- Category Select -->    <div class="form-group">      <label for="category">Category</label>      <input type="text" id="category" formControlName="category" placeholder="Enter drink category" />    </div>    <!-- Submit Button -->    <div class="admin-form-button-div">      <button type="submit" [disabled]="!drinkForm.valid" class="admin-form-button">Submit</button>    </div>  </form></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="admin-form-container">  <h1>{{ isEditMode ? \'Update drink\' : \'Add a new drink\' }}</h1>  <form [formGroup]="drinkForm" (ngSubmit)="onSubmit()" class="drink-form">    <div class="form-group">      <label for="name">Name</label>      <input type="text" id="name" formControlName="name" placeholder="Enter drink name" />    </div>    <div class="form-group">      <label for="abv">Alcohol by Volume (ABV %)</label>      <input type="number" id="abv" formControlName="abv" placeholder="Enter ABV" min="0" max="100" />    </div>    <div class="form-group">      <label for="calories">Calories per Serving</label>      <input type="number" id="calories" formControlName="caloriesPerServing" placeholder="Enter calories" min="0" />    </div>    <div class="form-group">      <label for="volume">Volume (ml)</label>      <input type="number" id="volume" formControlName="ml" placeholder="Enter volume" min="1" />    </div>    <div class="form-group">      <label for="category">Category</label>      <input type="text" id="category" formControlName="category" placeholder="Enter drink category" />    </div>    <div class="admin-form-button-div">      <button type="submit" [disabled]="!drinkForm.valid" class="admin-form-button">Submit</button>    </div>  </form></div></div>'
     var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AdminFormComponent'};

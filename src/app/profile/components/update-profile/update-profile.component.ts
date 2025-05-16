@@ -14,27 +14,6 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NotyfService } from 'src/app/core/services/notyf/notyf.service';
 
 /**
- * Checks if the input passwords match.
- * @returns True flag if passwords match
- */
-export function passwordsMatchValidator(): ValidatorFn {
-  return (AbsControl: AbstractControl): ValidationErrors | null => {
-    const password = AbsControl.get('password')?.value;
-    const confirmPassword = AbsControl.get('confirmPassword')?.value;
-
-    if (password && password !== confirmPassword) {
-      return { passwordsDontMatch: true };
-    } else if (
-      password != '' &&
-      (password.length < 8 || confirmPassword.length < 8)
-    ) {
-      return { passwordLengthMin: true };
-    }
-    return null;
-  };
-}
-
-/**
  * Handles user profile update.
  */
 @Component({
@@ -75,7 +54,7 @@ export class UpdateProfileComponent implements OnInit {
       weight: new FormControl('', [Validators.required, Validators.min(30)]),
       gender: new FormControl('', Validators.required),
     },
-    { validators: passwordsMatchValidator() }
+    { validators: this.passwordsMatchValidator() }
   );
 
   /**
@@ -132,6 +111,27 @@ export class UpdateProfileComponent implements OnInit {
    */
   get gender() {
     return this.updateProfileForm.get('gender');
+  }
+
+  /**
+   * Checks if the input passwords match.
+   * @returns True flag if passwords match
+   */
+  passwordsMatchValidator(): ValidatorFn {
+    return (AbsControl: AbstractControl): ValidationErrors | null => {
+      const password = AbsControl.get('password')?.value;
+      const confirmPassword = AbsControl.get('confirmPassword')?.value;
+
+      if (password && password !== confirmPassword) {
+        return { passwordsDontMatch: true };
+      } else if (
+        password != '' &&
+        (password.length < 8 || confirmPassword.length < 8)
+      ) {
+        return { passwordLengthMin: true };
+      }
+      return null;
+    };
   }
 
   /**

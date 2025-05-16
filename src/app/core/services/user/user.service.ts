@@ -41,7 +41,6 @@ export class UserService {
    * Gets the current user's ID from the databse.
    */
   async getCurrentUserId(): Promise<string | undefined> {
-    // const user = await this.auth.currentUser;
     const user = await firstValueFrom(this.auth.authState);
     if (user) {
       const userDocs = await this.afs

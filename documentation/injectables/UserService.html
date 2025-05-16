@@ -307,8 +307,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="75"
-                                    class="link-to-prism">src/app/core/services/user/user.service.ts:75</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="74"
+                                    class="link-to-prism">src/app/core/services/user/user.service.ts:74</a></div>
                         </td>
                     </tr>
 
@@ -348,8 +348,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="88"
-                                    class="link-to-prism">src/app/core/services/user/user.service.ts:88</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="87"
+                                    class="link-to-prism">src/app/core/services/user/user.service.ts:87</a></div>
                         </td>
                     </tr>
 
@@ -430,8 +430,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="62"
-                                    class="link-to-prism">src/app/core/services/user/user.service.ts:62</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="61"
+                                    class="link-to-prism">src/app/core/services/user/user.service.ts:61</a></div>
                         </td>
                     </tr>
 
@@ -632,7 +632,6 @@ export class UserService {
    * Gets the current user&#x27;s ID from the databse.
    */
   async getCurrentUserId(): Promise&lt;string | undefined&gt; {
-    // const user &#x3D; await this.auth.currentUser;
     const user &#x3D; await firstValueFrom(this.auth.authState);
     if (user) {
       const userDocs &#x3D; await this.afs
