@@ -129,23 +129,12 @@
 
   <input type="number" placeholder="Weight (kg)" class="zt-input" />
 
-  <div class="genderSelection">
-    <div>
-      <label>
-        <input type="radio" formControlName="gender" value="male" />
-        <span>&nbsp; Male &nbsp;</span>
-      </label>
-      <label>
-        <input type="radio" formControlName="gender" value="female" />
-        <span>Female</span>
-      </label>
-    </div>
-  </div>
-  <br />
+  <input type="checkbox" id="gender-toggle" />
+  <label for="gender-toggle" class="gender-toggle-label">
+    <span class="knob"></span>
+  </label>
 
-  <div class="registerButtonDiv">
-    <button type="submit" mat-flat-button class="registerButton">
-      Sign Up
-    </button>
+  <div class="zt-button-div">
+    <button type="submit" class="zt-button blue">Sign Up</button>
   </div>
 </form>

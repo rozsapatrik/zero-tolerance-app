@@ -67,6 +67,7 @@ app-root {
   flex: 1;
 }
 
+/* The app wrapper that contains everything */
 .app-wrapper {
   width: 100%;
   min-height: 100svh;
@@ -90,6 +91,7 @@ app-root {
   display: flex;
   flex-direction: column;
 
+  /* Loading spinner */
   ngx-spinner {
     @media (max-width: 500px), (max-aspect-ratio: 4/3) {
       position: fixed !important;
@@ -107,6 +109,7 @@ app-root {
   }
 }
 
+/* This doesn't contain the navigation and spinner */
 .app-content {
   padding: 1rem;
   height: 100%;
@@ -127,9 +130,10 @@ app-root {
     }
 
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
     }
 
+    /* Global button styles */
     .zt-button-div {
       display: flex;
       flex-direction: column;
@@ -168,10 +172,12 @@ app-root {
       }
     }
 
+    /* Global form styles */
     form {
       display: flex;
       flex-direction: column;
-      row-gap: 0.125rem;
+      row-gap: 0.5rem;
+      align-items: center;
 
       input.zt-input {
         height: 3.125rem;
@@ -179,16 +185,7 @@ app-root {
         background-color: rgba($color: $ztGray, $alpha: 1);
         color: white;
         text-align: center;
-
-        &:first-of-type {
-          border-top-right-radius: 3.125rem;
-          border-top-left-radius: 3.125rem;
-        }
-
-        &:last-of-type {
-          border-bottom-right-radius: 3.125rem;
-          border-bottom-left-radius: 3.125rem;
-        }
+        border-radius: 3.125rem;
 
         &:focus {
           outline: none;
