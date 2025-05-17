@@ -8,7 +8,6 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 const routes: Routes = [
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'landing', component: LandingPageComponent },
-  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

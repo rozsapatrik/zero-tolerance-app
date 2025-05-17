@@ -39,9 +39,10 @@ import { MatTreeModule } from '@angular/material/tree';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { TrimDecimalsPipe } from './pipes/trim-decimals.pipe';
 import { NavigationComponent } from './navigation/navigation.component';
+import { RedirectComponent } from './redirect/redirect/redirect.component';
 
 @NgModule({
-  declarations: [TrimDecimalsPipe, NavigationComponent],
+  declarations: [TrimDecimalsPipe, NavigationComponent, RedirectComponent],
   imports: [
     CommonModule,
     MatAutocompleteModule,

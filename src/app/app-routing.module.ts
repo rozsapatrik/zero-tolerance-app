@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LandingPageComponent } from './pages/components/landing-page/landing-page.component';
+import { PageNotFoundComponent } from './pages/components/page-not-found/page-not-found.component';
+import { RedirectComponent } from './shared/redirect/redirect/redirect.component';
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent },
+  {
+    path: '',
+    pathMatch: 'full',
+    component: RedirectComponent,
+  },
   {
     path: 'admin',
     loadChildren: () =>
@@ -28,6 +33,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./tracking/tracking.module').then((m) => m.TrackingModule),
   },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
