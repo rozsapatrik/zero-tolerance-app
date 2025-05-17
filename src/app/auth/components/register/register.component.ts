@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { NavigationService } from 'src/app/core/services/navigation.service';
 import { NotyfService } from 'src/app/core/services/notyf/notyf.service';
 
 /**
@@ -50,7 +51,8 @@ export class RegisterComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router,
     private afs: AngularFirestore,
-    private notyfService: NotyfService
+    private notyfService: NotyfService,
+    private navigationService: NavigationService
   ) {}
 
   ngOnInit(): void {}
@@ -119,6 +121,7 @@ export class RegisterComponent implements OnInit {
   registerSubmit() {
     if (!this.registerForm.valid) {
       console.error('Invalid form');
+      this.notyfService.error('Please provide valid data');
       return;
     }
 
@@ -128,7 +131,7 @@ export class RegisterComponent implements OnInit {
       profilePicUrl: '',
       registerDate: new Date().toLocaleDateString(),
       weight: this.registerForm.value.weight,
-      gender: this.registerForm.value.gender,
+      gender: !!this.registerForm.value.gender ? 'female' : 'male',
     };
 
     this.afs.collection('user').add(userData);

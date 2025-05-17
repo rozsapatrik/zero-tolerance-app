@@ -117,19 +117,44 @@
 <form
   [formGroup]="registerForm"
   (ngSubmit)="registerSubmit()"
-  class="registerForm"
+  class="register-form"
 >
-  <input placeholder="Username" class="zt-input" type="text" />
+  <input
+    placeholder="Username"
+    class="zt-input"
+    type="text"
+    formControlName="username"
+  />
 
-  <input placeholder="E-mail" class="zt-input" type="text" />
+  <input
+    placeholder="E-mail"
+    class="zt-input"
+    type="text"
+    formControlName="email"
+  />
 
-  <input placeholder="Password" type="password" class="zt-input" />
+  <input
+    placeholder="Password"
+    type="password"
+    class="zt-input"
+    formControlName="password"
+  />
 
-  <input placeholder="Confirm Password" type="password" class="zt-input" />
+  <input
+    placeholder="Confirm Password"
+    type="password"
+    class="zt-input"
+    formControlName="confirmPassword"
+  />
 
-  <input type="number" placeholder="Weight (kg)" class="zt-input" />
+  <input
+    type="number"
+    placeholder="Weight (kg)"
+    class="zt-input"
+    formControlName="weight"
+  />
 
-  <input type="checkbox" id="gender-toggle" />
+  <input type="checkbox" id="gender-toggle" formControlName="gender" />
   <label for="gender-toggle" class="gender-toggle-label">
     <span class="knob"></span>
   </label>
