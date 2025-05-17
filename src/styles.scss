@@ -93,7 +93,7 @@ app-root {
     max-width: 28em;
     height: 100svh;
     min-height: 40em;
-    margin: 1rem auto;
+    margin: 1rem auto 1rem auto;
     border-radius: 1rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   }
@@ -106,7 +106,6 @@ app-root {
 
 .app-content {
   padding: 1rem;
-  background-color: darkblue;
   height: 100%;
   width: 100%;
 
@@ -114,7 +113,6 @@ app-root {
     padding-top: 5rem;
     padding-bottom: 2rem;
     height: 100%;
-    background-color: red;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -122,6 +120,35 @@ app-root {
 
     @media (min-width: 500px), (min-aspect-ratio: 4/3) {
       height: 40em;
+    }
+
+    .zt-button-div {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+      padding-top: 1rem;
+    }
+
+    .zt-button {
+      color: #ffffff;
+      border-radius: 3.125rem;
+      height: 3rem;
+
+      &.purple {
+        background-color: #8400ff;
+      }
+
+      &.pink {
+        background-color: #ff00ff;
+      }
+
+      &.blue {
+        background: #002fff;
+      }
+
+      &.lightblue {
+        background-color: #0099ff;
+      }
     }
   }
 }
