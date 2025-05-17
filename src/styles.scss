@@ -1,6 +1,4 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import "~material-design-icons-iconfont/dist/material-design-icons.css";
@@ -58,8 +56,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  // background-color: #0f0f0f;
-
   background-color: #0f0f0f;
   opacity: 1;
   background-image: radial-gradient(#000000 0.5px, #0f0f0f 0.5px);
@@ -93,7 +89,7 @@ app-root {
   position: relative;
   overflow: hidden;
 
-  @media (min-width: 500px) {
+  @media (min-width: 500px), (min-aspect-ratio: 4/3) {
     width: 100%;
     max-width: 28em;
     height: 100svh;
@@ -107,8 +103,28 @@ app-root {
   color: #ffffff;
   display: flex;
   flex-direction: column;
+}
 
-  .app-content {
-    padding: 1rem;
+.app-content {
+  padding: 1rem;
+  background-color: darkblue;
+  height: 100%;
+  width: 100%;
+
+  .main-content {
+    // margin-top: 3rem;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+    //height: 40em;
+    height: 100%;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    @media (min-width: 500px), (min-aspect-ratio: 4/3) {
+      height: 40em;
+    }
   }
 }
