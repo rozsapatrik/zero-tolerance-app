@@ -194,6 +194,7 @@ app-root {
         }
       }
 
+      /* Hide default number spinner */
       /* Chrome, Safari, Edge, Opera */
       input[type="number"]::-webkit-inner-spin-button,
       input[type="number"]::-webkit-outer-spin-button {
@@ -208,6 +209,17 @@ app-root {
 
       .input-error {
         border: 1px solid red;
+      }
+
+      /* Hide default password toggler */
+      input.zt-input[type="password"]::-webkit-password-toggle-button {
+        display: none !important;
+      }
+
+      /* For Edge and IE */
+      input.zt-input[type="password"]::-ms-reveal,
+      input.zt-input[type="password"]::-ms-clear {
+        display: none !important;
       }
 
       .hint {
