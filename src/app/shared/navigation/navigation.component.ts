@@ -57,9 +57,14 @@ export class NavigationComponent {
    * @param path The path of the destination page.
    */
   navigateWithMenuClose(path: string) {
-    this.navigationService.navigate(path, () => {
-      this.menuState = 'closingSoft';
-      setTimeout(() => (this.menuState = 'closed'), 500);
-    });
+    this.navigationService.navigate(
+      path,
+      () => {
+        this.menuState = 'closingSoft';
+        setTimeout(() => (this.menuState = 'closed'), 500);
+      },
+      300,
+      500
+    );
   }
 }
