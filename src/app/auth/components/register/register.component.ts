@@ -9,6 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { NavigationService } from 'src/app/core/services/navigation.service';
 import { NotyfService } from 'src/app/core/services/notyf/notyf.service';
@@ -35,7 +36,7 @@ export class RegisterComponent implements OnInit {
       ]),
       confirmPassword: new FormControl('', Validators.required),
       weight: new FormControl('', [Validators.required, Validators.min(30)]), // Minimum weight validation
-      gender: new FormControl('male', Validators.required), // Gender must be selected
+      gender: new FormControl(false, Validators.required), // Gender must be selected
     },
     { validators: this.passwordsMatchValidator() }
   );
@@ -43,16 +44,17 @@ export class RegisterComponent implements OnInit {
   /**
    *
    * @param authService Service for user authentication.
-   * @param router Router for routing.
    * @param afs Angular Firestore.
    * @param notyfService Service for displaying notifications.
+   * @param navigationService Service for loading spinner navigation.
+   * @param spinnerService Service for spinner.
    */
   constructor(
     private authService: AuthenticationService,
-    private router: Router,
     private afs: AngularFirestore,
     private notyfService: NotyfService,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private spinnerService: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {}
@@ -121,9 +123,11 @@ export class RegisterComponent implements OnInit {
   registerSubmit() {
     if (!this.registerForm.valid) {
       console.error('Invalid form');
-      this.notyfService.error('Please provide valid data');
+      this.notyfService.error('Please provide valid data!');
       return;
     }
+
+    this.spinnerService.show();
 
     let userData = {
       username: this.registerForm.value.username,
@@ -143,9 +147,10 @@ export class RegisterComponent implements OnInit {
         next: () => {
           this.notyfService.success('Registered successfully');
           this.authService.logoutUser();
-          this.router.navigate(['/auth/login']);
+          this.navigationService.navigate('auth/login', undefined, 500, 300);
         },
         error: (error) => {
+          this.spinnerService.hide();
           this.notyfService.error('Something went wrong');
         },
       });

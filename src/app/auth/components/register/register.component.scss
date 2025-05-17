@@ -140,6 +140,16 @@
     border-radius: 3.125rem;
     background-color: $ztBlue;
     transition: 0.3s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      &.material-icons {
+        font-size: 2.25rem;
+      }
+    }
   }
 }
 
