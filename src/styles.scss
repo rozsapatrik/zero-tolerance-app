@@ -1,3 +1,5 @@
+@use "styles/variables" as *;
+
 @tailwind base;
 
 @import "~bootstrap-icons/font/bootstrap-icons.css";
@@ -5,34 +7,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
 @font-face {
-  font-family: MT_Regular;
+  font-family: RobotoMedium;
   src: url(assets/fonts/Roboto-Medium.ttf);
 }
 
-.mdc-line-ripple {
-  display: none !important;
-}
-
-.mat-mdc-form-field-error {
-  text-align: center;
-  color: red;
-}
-
-:root {
-  --ztPurple: #6f00ff;
-  --ztPink: #ff00dd;
-  --ztBlue: #0004ff;
-  --ztLightBlue: #0099ff;
-}
-
 ::placeholder {
-  color: white;
+  color: $ztWhite;
   opacity: 1; /* Firefox */
 }
 
 ::-ms-input-placeholder {
   /* Edge 12 -18 */
-  color: white;
+  color: $ztWhite;
 }
 
 /* REDESIGN */
@@ -61,7 +47,7 @@ body {
   opacity: 1;
   background-image: radial-gradient(#000000 0.5px, #0f0f0f 0.5px);
   background-size: 10px 10px;
-  font-family: MT_Regular;
+  font-family: RobotoMedium;
 
   .material-icons {
     font-size: 2rem;
@@ -99,7 +85,7 @@ app-root {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   }
 
-  background-color: #000000;
+  background-color: $ztBlack;
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -140,6 +126,10 @@ app-root {
       height: 40em;
     }
 
+    h1 {
+      font-size: 1.5rem;
+    }
+
     .zt-button-div {
       display: flex;
       flex-direction: column;
@@ -150,7 +140,7 @@ app-root {
     }
 
     .zt-button {
-      color: #ffffff;
+      color: $ztWhite;
       border-radius: 3.125rem;
       height: 3rem;
       width: 14rem;
@@ -158,23 +148,65 @@ app-root {
       position: relative;
 
       &.purple {
-        background-color: var(--ztPurple);
+        background-color: $ztPurple;
       }
 
       &.pink {
-        background-color: var(--ztPink);
+        background-color: $ztPink;
       }
 
       &.blue {
-        background: var(--ztBlue);
+        background: $ztBlue;
       }
 
       &.lightblue {
-        background-color: var(--ztLightBlue);
+        background-color: $ztLightBlue;
       }
 
       &:active {
         top: 2px;
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.125rem;
+
+      input.zt-input {
+        height: 3.125rem;
+        width: 20rem;
+        background-color: rgba($color: $ztGray, $alpha: 1);
+        color: white;
+        text-align: center;
+
+        &:first-of-type {
+          border-top-right-radius: 3.125rem;
+          border-top-left-radius: 3.125rem;
+        }
+
+        &:last-of-type {
+          border-bottom-right-radius: 3.125rem;
+          border-bottom-left-radius: 3.125rem;
+        }
+
+        &:focus {
+          outline: none;
+          box-shadow: none;
+          border-color: inherit;
+        }
+      }
+
+      /* Chrome, Safari, Edge, Opera */
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
       }
     }
   }

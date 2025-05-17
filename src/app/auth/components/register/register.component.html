@@ -1,58 +1,151 @@
-<div class="formContainer">
-  <h1>Sign Up</h1>
+<!-- <h1>Sign Up</h1>
+<br />
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="registerSubmit()"
+  class="registerForm"
+>
+  <mat-form-field class="username-mat-form-field matFormRegister">
+    <input
+      class="username-input"
+      placeholder="Username"
+      formControlName="username"
+      matInput
+      class="inputFieldZT"
+      type="text"
+    />
+    <mat-error *ngIf="username?.errors?.['required']"
+      >Please enter a username!</mat-error
+    > </mat-form-field
+  ><br />
+
+  <mat-form-field class="email-mat-form-field matFormRegister">
+    <input
+      class="email-input"
+      placeholder="E-mail"
+      formControlName="email"
+      matInput
+      class="inputFieldZT"
+      type="text"
+    />
+    <mat-error *ngIf="email?.errors?.['required']"
+      >Please enter an e-mail!</mat-error
+    >
+    <mat-error *ngIf="email?.errors?.['emailFormat']"
+      >Please enter a valid e-mail address!</mat-error
+    > </mat-form-field
+  ><br />
+
+  <mat-form-field class="password-mat-form-field matFormRegister">
+    <input
+      class="password-input"
+      placeholder="Password"
+      formControlName="password"
+      type="password"
+      matInput
+      class="inputFieldZT"
+    />
+    <mat-error *ngIf="password?.errors?.['required']"
+      >Please type in a password!</mat-error
+    > </mat-form-field
+  ><br />
+
+  <mat-form-field class="confirm-password-mat-form-field matFormRegister">
+    <input
+      class="confirm-password-input"
+      placeholder="Confirm Password"
+      formControlName="confirmPassword"
+      type="password"
+      matInput
+      class="inputFieldZT"
+    />
+    <mat-error *ngIf="confirmPassword?.errors?.['required']"
+      >Please confirm your password!</mat-error
+    > </mat-form-field
+  ><br />
+
+  <mat-error *ngIf="registerForm.errors?.['passwordsDontMatch']"
+    >The passwords do not match</mat-error
+  >
+  <mat-error *ngIf="registerForm.errors?.['passwordLengthMin']"
+    >Password must be at least 8 characters!</mat-error
+  >
+
+  <mat-form-field class="weight-mat-form-field matFormRegister">
+    <input
+      class="weight-input"
+      type="number"
+      placeholder="Weight (kg)"
+      formControlName="weight"
+      matInput
+      class="inputFieldZT"
+    />
+    <mat-error *ngIf="weight?.errors?.['required']"
+      >Please enter your weight!</mat-error
+    >
+    <mat-error *ngIf="weight?.errors?.['min']"
+      >Weight must be at least 30kg!</mat-error
+    > </mat-form-field
+  ><br />
+
+  <div class="genderSelection">
+    <div>
+      <label>
+        <input type="radio" formControlName="gender" value="male" />
+        <span>&nbsp; Male &nbsp;</span>
+      </label>
+      <label>
+        <input type="radio" formControlName="gender" value="female" />
+        <span>Female</span>
+      </label>
+      <mat-error *ngIf="gender?.errors?.['required']"
+        >Please select your gender!</mat-error
+      >
+    </div>
+  </div>
   <br />
-  <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" class="registerForm">
-    <mat-form-field class="username-mat-form-field matFormRegister">
-      <input class="username-input" placeholder="Username" formControlName="username" matInput class="inputFieldZT"
-        type="text" />
-      <mat-error *ngIf="username?.errors?.['required']">Please enter a username!</mat-error> </mat-form-field><br />
 
-    <mat-form-field class="email-mat-form-field matFormRegister">
-      <input class="email-input" placeholder="E-mail" formControlName="email" matInput class="inputFieldZT"
-        type="text" />
-      <mat-error *ngIf="email?.errors?.['required']">Please enter an e-mail!</mat-error>
-      <mat-error *ngIf="email?.errors?.['emailFormat']">Please enter a valid e-mail address!</mat-error>
-    </mat-form-field><br />
+  <div class="registerButtonDiv">
+    <button type="submit" mat-flat-button class="registerButton">
+      Sign Up
+    </button>
+  </div>
+</form> -->
 
-    <mat-form-field class="password-mat-form-field matFormRegister">
-      <input class="password-input" placeholder="Password" formControlName="password" type="password" matInput
-        class="inputFieldZT" />
-      <mat-error *ngIf="password?.errors?.['required']">Please type in a password!</mat-error> </mat-form-field><br />
+<h1>Sign Up</h1>
+<br />
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="registerSubmit()"
+  class="registerForm"
+>
+  <input placeholder="Username" class="zt-input" type="text" />
 
-    <mat-form-field class="confirm-password-mat-form-field matFormRegister">
-      <input class="confirm-password-input" placeholder="Confirm Password" formControlName="confirmPassword"
-        type="password" matInput class="inputFieldZT" />
-      <mat-error *ngIf="confirmPassword?.errors?.['required']">Please confirm your password!</mat-error>
-    </mat-form-field><br />
+  <input placeholder="E-mail" class="zt-input" type="text" />
 
-    <mat-error *ngIf="registerForm.errors?.['passwordsDontMatch']">The passwords do not match</mat-error>
-    <mat-error *ngIf="registerForm.errors?.['passwordLengthMin']">Password must be at least 8 characters!</mat-error>
+  <input placeholder="Password" type="password" class="zt-input" />
 
-    <mat-form-field class="weight-mat-form-field matFormRegister">
-      <input class="weight-input" type="number" placeholder="Weight (kg)" formControlName="weight" matInput
-        class="inputFieldZT" />
-      <mat-error *ngIf="weight?.errors?.['required']">Please enter your weight!</mat-error>
-      <mat-error *ngIf="weight?.errors?.['min']">Weight must be at least 30kg!</mat-error> </mat-form-field><br />
+  <input placeholder="Confirm Password" type="password" class="zt-input" />
 
-    <div class="genderSelection">
-      <div>
-        <label>
-          <input type="radio" formControlName="gender" value="male" />
-          <span>&nbsp; Male &nbsp;</span>
-        </label>
-        <label>
-          <input type="radio" formControlName="gender" value="female" />
-          <span>Female</span>
-        </label>
-        <mat-error *ngIf="gender?.errors?.['required']">Please select your gender!</mat-error>
-      </div>
+  <input type="number" placeholder="Weight (kg)" class="zt-input" />
+
+  <div class="genderSelection">
+    <div>
+      <label>
+        <input type="radio" formControlName="gender" value="male" />
+        <span>&nbsp; Male &nbsp;</span>
+      </label>
+      <label>
+        <input type="radio" formControlName="gender" value="female" />
+        <span>Female</span>
+      </label>
     </div>
-    <br />
+  </div>
+  <br />
 
-    <div class="registerButtonDiv">
-      <button type="submit" mat-flat-button class="registerButton">
-        Sign Up
-      </button>
-    </div>
-  </form>
-</div>
+  <div class="registerButtonDiv">
+    <button type="submit" mat-flat-button class="registerButton">
+      Sign Up
+    </button>
+  </div>
+</form>

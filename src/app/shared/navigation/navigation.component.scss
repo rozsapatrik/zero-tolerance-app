@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 .hamburger-icon-container {
   padding-top: 0rem;
 
@@ -5,7 +7,7 @@
     position: fixed;
     background: none;
     border: none;
-    color: white;
+    color: $ztWhite;
     cursor: pointer;
     z-index: 1000;
     padding-top: 0.375rem;
@@ -36,7 +38,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 1);
+  background: rgba($color: $ztBlack, $alpha: 1);
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   z-index: 997;
@@ -73,7 +75,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba($color: $ztBlack, $alpha: 0.5);
   z-index: 996;
   transition: opacity 0.3s ease-in-out;
   opacity: 1;
@@ -84,7 +86,7 @@
 }
 
 .menu-content {
-  color: white;
+  color: $ztWhite;
   z-index: 999;
 
   ul {
@@ -108,7 +110,7 @@
   }
 
   a {
-    color: white;
+    color: $ztWhite;
     text-decoration: none;
     width: 100%;
     display: inline-block;
