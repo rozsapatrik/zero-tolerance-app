@@ -104,16 +104,18 @@ app-root {
   flex-direction: column;
 
   ngx-spinner {
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    width: 100vw !important;
-    height: 100vh !important;
-    z-index: 9999 !important;
-    pointer-events: none;
+    @media (max-width: 500px), (max-aspect-ratio: 4/3) {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: 9999 !important;
+      pointer-events: none;
 
-    &.show {
-      pointer-events: auto;
+      &.show {
+        pointer-events: auto;
+      }
     }
   }
 }
