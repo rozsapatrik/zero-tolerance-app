@@ -34,7 +34,7 @@
   color: white;
 }
 
-/* Global reset */
+/* REDESIGN */
 * {
   margin: 0;
   padding: 0;
@@ -67,11 +67,10 @@ body {
   }
 }
 
-/* Center app-wrapper */
 body {
   display: flex;
   justify-content: center;
-  align-items: flex-start; // use center if you want vertical centering too
+  align-items: flex-start;
   min-height: 100svh;
   overflow: hidden;
 }

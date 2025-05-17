@@ -6,10 +6,19 @@ import { NgxSpinnerService } from 'ngx-spinner';
   providedIn: 'root',
 })
 export class NavigationService {
+  /**
+   *
+   * @param router Router for routing.
+   * @param spinner Loading spinner service.
+   */
   constructor(private router: Router, private spinner: NgxSpinnerService) {}
 
   /**
-   * Navigates with spinner, optionally delay, and a callback (e.g., to close menu)
+   * Navigates to the desired path smoothly.
+   * @param path The destination path.
+   * @param beforeNavigate Optional method to be ran before navigation.
+   * @param delay Delay time in ms.
+   * @param spinnerHideDelay Delay time in ms for the spinner.
    */
   navigate(
     path: string,

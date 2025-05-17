@@ -24,7 +24,6 @@ export class LandingPageComponent {
    * Redirects to the register page.
    */
   redirectToRegister() {
-    // this.router.navigate(['/auth/register']);
     this.navigationService.navigate('/auth/register');
   }
 
@@ -32,7 +31,6 @@ export class LandingPageComponent {
    * Redirects to the login page.
    */
   redirectToLogin() {
-    // this.router.navigate(['/auth/login']);
     this.navigationService.navigate('/auth/login');
   }
 }

@@ -57,14 +57,6 @@ export class NavigationComponent {
    * @param path The path of the destination page.
    */
   navigateWithMenuClose(path: string) {
-    // this.spinner.show();
-    // this.menuState = 'closingSoft';
-
-    // setTimeout(() => {
-    //   this.menuState = 'closed';
-    //   this.router.navigate([path]);
-    // }, 500);
-
     this.navigationService.navigate(path, () => {
       this.menuState = 'closingSoft';
       setTimeout(() => (this.menuState = 'closed'), 500);
