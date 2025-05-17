@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { delay, filter } from 'rxjs/operators';
+import { NavigationService } from 'src/app/core/services/navigation.service';
 
 /**
  * Handles the navigation menu.
@@ -17,7 +18,11 @@ export class NavigationComponent {
    * Hides the loading spinner when the navigation has ended.
    * @param router Router for routing.
    */
-  constructor(private router: Router, private spinner: NgxSpinnerService) {
+  constructor(
+    private router: Router,
+    private spinner: NgxSpinnerService,
+    private navigationService: NavigationService
+  ) {
     this.router.events
       .pipe(
         filter((event) => event instanceof NavigationEnd),
@@ -51,13 +56,18 @@ export class NavigationComponent {
    * Navigates to destination after navigation menu.
    * @param path The path of the destination page.
    */
-  navigateWithMenuClose(path: String) {
-    this.spinner.show();
-    this.menuState = 'closingSoft';
+  navigateWithMenuClose(path: string) {
+    // this.spinner.show();
+    // this.menuState = 'closingSoft';
 
-    setTimeout(() => {
-      this.menuState = 'closed';
-      this.router.navigate([path]);
-    }, 500);
+    // setTimeout(() => {
+    //   this.menuState = 'closed';
+    //   this.router.navigate([path]);
+    // }, 500);
+
+    this.navigationService.navigate(path, () => {
+      this.menuState = 'closingSoft';
+      setTimeout(() => (this.menuState = 'closed'), 500);
+    });
   }
 }

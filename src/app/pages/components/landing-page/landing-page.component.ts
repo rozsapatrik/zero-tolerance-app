@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavigationService } from 'src/app/core/services/navigation.service';
 
 /**
  * Displays the landing page.
@@ -14,19 +15,24 @@ export class LandingPageComponent {
    *
    * @param router Router for routing.
    */
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private navigationService: NavigationService
+  ) {}
 
   /**
    * Redirects to the register page.
    */
   redirectToRegister() {
-    this.router.navigate(['/auth/register']);
+    // this.router.navigate(['/auth/register']);
+    this.navigationService.navigate('/auth/register');
   }
 
   /**
    * Redirects to the login page.
    */
   redirectToLogin() {
-    this.router.navigate(['/auth/login']);
+    // this.router.navigate(['/auth/login']);
+    this.navigationService.navigate('/auth/login');
   }
 }
