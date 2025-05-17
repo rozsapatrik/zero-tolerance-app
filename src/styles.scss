@@ -58,7 +58,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  // background-color: #0f0f0f;
+
   background-color: #0f0f0f;
+  opacity: 1;
+  background-image: radial-gradient(#000000 0.5px, #0f0f0f 0.5px);
+  background-size: 10px 10px;
   font-family: MT_Regular;
 
   .material-icons {
