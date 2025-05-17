@@ -125,7 +125,9 @@ app-root {
     .zt-button-div {
       display: flex;
       flex-direction: column;
-      row-gap: 1rem;
+      align-items: center;
+      text-align: center;
+      row-gap: 0.75rem;
       padding-top: 1rem;
     }
 
@@ -133,6 +135,15 @@ app-root {
       color: #ffffff;
       border-radius: 3.125rem;
       height: 3rem;
+      width: 14rem;
+      text-align: center;
+
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      border: none;
+
+      transition: color 0.3s ease;
 
       &.purple {
         background-color: #8400ff;
@@ -148,6 +159,10 @@ app-root {
 
       &.lightblue {
         background-color: #0099ff;
+      }
+
+      &:active {
+        top: 2px;
       }
     }
   }
