@@ -102,6 +102,20 @@ app-root {
   color: #ffffff;
   display: flex;
   flex-direction: column;
+
+  ngx-spinner {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999 !important;
+    pointer-events: none;
+
+    &.show {
+      pointer-events: auto;
+    }
+  }
 }
 
 .app-content {
@@ -137,13 +151,7 @@ app-root {
       height: 3rem;
       width: 14rem;
       text-align: center;
-
       position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      border: none;
-
-      transition: color 0.3s ease;
 
       &.purple {
         background-color: #8400ff;
