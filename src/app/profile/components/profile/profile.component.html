@@ -1,18 +1,22 @@
-<div class="profileContainer">
-    <div class="headerContainer">
-        <img id="profilePic" src="" style="width: 100px;">
-        <h1 class="usernameText">{{username}}</h1>
-    </div>
-    <div class="infoContainer">
-        <span>{{registerDate}}</span><br>
-        <span>{{gender}} - </span>
-        <span>{{weight}} kg</span><br>
-    </div>
-    <div class="profileButtonDiv">
-        <button mat-flat-button (click)="redirectToAdminPage()" class="profileAdminBtn"
-            *ngIf="this.username === 'admin'">Admin Page</button><br>
-        <button mat-flat-button (click)="redirectToPersonalStats()" class="profileStatsBtn">Personal Stats</button><br>
-        <button mat-flat-button (click)="redirectToUpdateProfile()" class="profileUpdateBtn">Update Profile</button><br>
-        <button mat-flat-button (click)="logoutUser()" class="profileLogoutBtn">Logout</button>
-    </div>
+<div class="info-div">
+  <img id="profile-picture" src="" />
+  <h1>{{ username }}</h1>
+  <span>{{ registerDate }}</span>
+  <span>{{ gender }} - {{ weight }} kg</span>
+</div>
+<div class="zt-button-div">
+  <button
+    (click)="redirectToAdminPage()"
+    class="zt-button lightblue"
+    *ngIf="this.username === 'admin'"
+  >
+    Admin Page
+  </button>
+  <button (click)="redirectToPersonalStats()" class="zt-button blue">
+    Personal Stats
+  </button>
+  <button (click)="redirectToUpdateProfile()" class="zt-button purple">
+    Update Profile
+  </button>
+  <button (click)="logoutUser()" class="zt-button pink">Logout</button>
 </div>

@@ -6,6 +6,8 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
 import { UserService } from 'src/app/core/services/user/user.service';
 import { Router } from '@angular/router';
 import { NotyfService } from 'src/app/core/services/notyf/notyf.service';
+import { NavigationService } from 'src/app/core/services/navigation.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 /**
  * Handles user profile display and it's actions.
@@ -49,6 +51,8 @@ export class ProfileComponent {
    * @param userService Service for user data.
    * @param router Router for routing.
    * @param notyfService Service for displaying notifications.
+   * @param navigationService Service for spinner loading navigation.
+   * @param spinnerService Service for the spinner loading.
    */
   constructor(
     private afs: AngularFirestore,
@@ -56,7 +60,9 @@ export class ProfileComponent {
     private route: ActivatedRoute,
     private userService: UserService,
     private router: Router,
-    private notyfService: NotyfService
+    private notyfService: NotyfService,
+    private navigationService: NavigationService,
+    private spinnerService: NgxSpinnerService
   ) {}
 
   /**
@@ -86,10 +92,20 @@ export class ProfileComponent {
    * Logs out the user.
    */
   logoutUser() {
-    this.authService.logoutUser().subscribe(() => {
-      this.notyfService.success('Logged out');
-      this.router.navigate(['']);
-    });
+    this.spinnerService.show();
+
+    setTimeout(() => {
+      this.authService.logoutUser().subscribe({
+        next: () => {
+          this.navigationService.navigate(
+            '/pages/landing',
+            () => this.notyfService.success('Logged out successfully'),
+            500,
+            300
+          );
+        },
+      });
+    }, 300);
   }
 
   /**
@@ -118,7 +134,7 @@ export class ProfileComponent {
     const userDoc = await userDocRef.get().toPromise();
     const picUrl = userDoc?.get('profilePicUrl');
     const profilePicHtml = document.getElementById(
-      'profilePic'
+      'profile-picture'
     ) as HTMLImageElement;
     profilePicHtml.src = picUrl
       ? picUrl
@@ -148,20 +164,20 @@ export class ProfileComponent {
    * Redirects to currently logged in user's personal statistics page.
    */
   redirectToPersonalStats() {
-    this.router.navigate(['/profile/personalstats']);
+    this.navigationService.navigate('/profile/personalstats');
   }
 
   /**
    * Redirects to update profile page.
    */
   redirectToUpdateProfile() {
-    this.router.navigate(['/profile/updateprofile']);
+    this.navigationService.navigate('/profile/updateprofile');
   }
 
   /**
    * Redirects to admin page.
    */
   redirectToAdminPage() {
-    this.router.navigate(['/admin/admin']);
+    this.navigationService.navigate('/admin/admin');
   }
 }
