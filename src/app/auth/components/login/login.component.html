@@ -6,15 +6,20 @@
     formControlName="email"
     class="zt-input"
     type="text"
+    [ngClass]="{'input-error': (email?.touched && email?.errors?.['required']) || (email?.touched && email?.errors?.['email'])}"
   />
   <input
     placeholder="Password"
     formControlName="password"
     type="password"
     class="zt-input"
+    [ngClass]="{'input-error': password?.touched && password?.errors?.['required']}"
   />
 
   <div class="zt-button-div">
     <button class="zt-button purple" type="submit">Sign In</button>
+  </div>
+  <div class="hint">
+    <i class="material-icons" (click)="showHint()">help_outline</i>
   </div>
 </form>

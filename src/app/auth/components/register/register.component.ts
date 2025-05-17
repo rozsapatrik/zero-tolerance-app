@@ -97,6 +97,15 @@ export class RegisterComponent implements OnInit {
   }
 
   /**
+   * Displays hint message.
+   */
+  showHint() {
+    this.notyfService.info(
+      'E-mail: valid format<br>Password: min. 8 characters<br>Weight: min. 30 kilograms'
+    );
+  }
+
+  /**
    * Checks if the two passwords typed in the `registerForm` match
    */
   passwordsMatchValidator(): ValidatorFn {

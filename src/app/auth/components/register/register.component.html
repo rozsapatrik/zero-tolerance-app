@@ -10,6 +10,7 @@
     class="zt-input"
     type="text"
     formControlName="username"
+    [ngClass]="{'input-error': username?.touched && username?.errors?.['required']}"
   />
 
   <input
@@ -17,6 +18,7 @@
     class="zt-input"
     type="text"
     formControlName="email"
+    [ngClass]="{'input-error': (email?.touched && email?.errors?.['required']) || (email?.touched && email?.errors?.['email'])}"
   />
 
   <input
@@ -24,6 +26,7 @@
     type="password"
     class="zt-input"
     formControlName="password"
+    [ngClass]="{'input-error': (password?.touched && password?.errors?.['required']) || (password?.touched && registerForm.errors?.['passwordsDontMatch']) || (password?.touched && registerForm.errors?.['passwordLengthMin']) }"
   />
 
   <input
@@ -31,6 +34,7 @@
     type="password"
     class="zt-input"
     formControlName="confirmPassword"
+    [ngClass]="{'input-error': (confirmPassword?.touched && confirmPassword?.errors?.['required']) || (confirmPassword?.touched && registerForm.errors?.['passwordsDontMatch']) || (confirmPassword?.touched && registerForm.errors?.['passwordLengthMin']) }"
   />
 
   <input
@@ -38,6 +42,7 @@
     placeholder="Weight (kg)"
     class="zt-input"
     formControlName="weight"
+    [ngClass]="{'input-error': (weight?.touched && weight?.errors?.['required']) || (weight?.touched && weight?.errors?.['min'])}"
   />
 
   <input type="checkbox" id="gender-toggle" formControlName="gender" />
@@ -51,5 +56,8 @@
 
   <div class="zt-button-div">
     <button type="submit" class="zt-button blue">Sign Up</button>
+  </div>
+  <div class="hint">
+    <i class="material-icons" (click)="showHint()">help_outline</i>
   </div>
 </form>

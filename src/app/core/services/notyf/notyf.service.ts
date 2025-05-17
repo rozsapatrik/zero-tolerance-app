@@ -5,11 +5,11 @@ import { Notyf } from 'notyf';
  * Service for displaying messages.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NotyfService {
-  constructor() { }
-  
+  constructor() {}
+
   /**
    * Notyf object.
    */
@@ -24,12 +24,17 @@ export class NotyfService {
       {
         type: 'success',
         background: '#4CAF50',
-        dismissible: true
+        dismissible: true,
       },
       {
         type: 'error',
         background: '#F44336',
-        dismissible: true
+        dismissible: true,
+      },
+      {
+        type: 'info',
+        background: '#368FF4',
+        dismissible: true,
       },
     ],
   });
@@ -48,5 +53,12 @@ export class NotyfService {
    */
   error(message: string): void {
     this.notyf.error(message);
+  }
+
+  info(message: string): void {
+    this.notyf.open({
+      type: 'info',
+      message,
+    });
   }
 }

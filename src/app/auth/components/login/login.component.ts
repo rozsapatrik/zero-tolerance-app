@@ -56,6 +56,15 @@ export class LoginComponent implements OnInit {
   }
 
   /**
+   * Displays hint message.
+   */
+  showHint() {
+    this.notyfService.info(
+      'E-mail: valid forrmat<br>Password: min. 8 characters'
+    );
+  }
+
+  /**
    * Submits the typed in data for log in.
    * @returns The user's credentials.
    */

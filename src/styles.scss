@@ -205,6 +205,18 @@ app-root {
       input[type="number"] {
         -moz-appearance: textfield;
       }
+
+      .input-error {
+        border: 1px solid red;
+      }
+
+      .hint {
+        padding-top: 1rem;
+        .material-icons {
+          font-size: 1.5rem;
+          cursor: pointer;
+        }
+      }
     }
   }
 }
