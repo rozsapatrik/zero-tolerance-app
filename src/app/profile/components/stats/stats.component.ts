@@ -9,7 +9,7 @@ import { UserService } from 'src/app/core/services/user/user.service';
 @Component({
   selector: 'app-stats',
   templateUrl: './stats.component.html',
-  styleUrls: ['./stats.component.scss']
+  styleUrls: ['./stats.component.scss'],
 })
 export class StatsComponent implements OnInit {
   /**
@@ -19,12 +19,12 @@ export class StatsComponent implements OnInit {
   /**
    * Default for pie chart.
    */
-  pieChartView: [number, number] = [400, 400];
+  pieChartView: [number, number] = [200, 200];
   /**
    * Position of the legend for graph.
    */
   legendPosPie: LegendPosition = LegendPosition.Below;
-  
+
   /**
    * Data of the bar graph.
    */
@@ -35,11 +35,14 @@ export class StatsComponent implements OnInit {
   pieChartData: { name: string; value: number }[] = [];
 
   /**
-   * 
+   *
    * @param afs Angular Firestore.
    * @param userService Service for user data.
    */
-  constructor(private afs: AngularFirestore, private userService: UserService) {}
+  constructor(
+    private afs: AngularFirestore,
+    private userService: UserService
+  ) {}
 
   /**
    * Listens for event to re-arrange charts if needed.
@@ -99,11 +102,16 @@ export class StatsComponent implements OnInit {
       const docRef = this.afs.collection('drankDrinks').doc(docId);
       const docSnapshot = await docRef.get().toPromise();
 
-      const drinkData = docSnapshot?.data() as {drinkAmounts?: Record<string, any[]>};
+      const drinkData = docSnapshot?.data() as {
+        drinkAmounts?: Record<string, any[]>;
+      };
       const drinksForTheDay = drinkData?.drinkAmounts ?? {};
       const drinkCount = Object.values(drinksForTheDay).flat().length;
 
-      return { name: `${day.date.getMonth() + 1}.${day.date.getDate()}`, value: drinkCount };
+      return {
+        name: `${day.date.getMonth() + 1}.${day.date.getDate()}`,
+        value: drinkCount,
+      };
     });
 
     this.graphData = await Promise.all(promises);
@@ -119,11 +127,13 @@ export class StatsComponent implements OnInit {
       .where('__name__', '>=', `${currentUserID}-`)
       .where('__name__', '<=', `${currentUserID}~`)
       .get();
-  
+
     const categoryCounts: { [key: string]: number } = {};
-  
+
     querySnapshot.forEach((doc) => {
-      const docData = doc.data() as { drinkAmounts?: Record<string, { category?: string }> };
+      const docData = doc.data() as {
+        drinkAmounts?: Record<string, { category?: string }>;
+      };
       const drinkAmounts = docData?.drinkAmounts || {};
       Object.values(drinkAmounts).forEach((drinkEntries: any) => {
         // Check if drinkEntries is an array or an object
@@ -135,9 +145,11 @@ export class StatsComponent implements OnInit {
         }
       });
     });
-    this.pieChartData = Object.entries(categoryCounts).map(([category, count]) => ({
-      name: category,
-      value: count,
-    }));
+    this.pieChartData = Object.entries(categoryCounts).map(
+      ([category, count]) => ({
+        name: category,
+        value: count,
+      })
+    );
   }
 }

@@ -1,17 +1,31 @@
-<div class="stats-container">
+<div class="charts-container">
+  <ngx-charts-bar-vertical
+    [view]="[350, 200]"
+    [results]="graphData"
+    [gradient]="false"
+    [xAxis]="true"
+    [yAxis]="true"
+    [legend]="false"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="false"
+    [xAxisLabel]="'Drinking Frequency (drinks/day)'"
+    [animations]="false"
+  >
+  </ngx-charts-bar-vertical>
 
-  <div class="chart-section">
-    <ngx-charts-bar-vertical [view]="barChartView" [results]="graphData" [gradient]="false" [xAxis]="true"
-      [yAxis]="true" [legend]="false" [showXAxisLabel]="true" [showYAxisLabel]="false"
-      [xAxisLabel]="'Drinking Frequency (drinks/day)'" [animations]="false">
-    </ngx-charts-bar-vertical>
-  </div>
-
-  <div class="chart-section">
-    <ngx-charts-pie-chart [view]="pieChartView" [results]="pieChartData" [legend]="false" [labels]="false"
-      [doughnut]="false" [explodeSlices]="false" [gradient]="false" [animations]="false"
-      [legendPosition]="legendPosPie">
-    </ngx-charts-pie-chart>
-  </div>
-  <p class="chart-label" style="text-align: center;">Distribution of Drinks (by category)</p>
+  <ngx-charts-pie-chart
+    [view]="[300, 300]"
+    [results]="pieChartData"
+    [legend]="false"
+    [labels]="false"
+    [doughnut]="false"
+    [explodeSlices]="false"
+    [gradient]="false"
+    [animations]="false"
+    [legendPosition]="legendPosPie"
+  >
+  </ngx-charts-pie-chart>
+  <p class="chart-label" style="text-align: center">
+    Distribution of Drinks (by category)
+  </p>
 </div>
