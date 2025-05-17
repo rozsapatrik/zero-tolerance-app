@@ -1,23 +1,20 @@
-<div class="formContainer">
-  <h1>Sign In</h1><br>
-  <form [formGroup]="loginForm" (ngSubmit)="submit()" class="loginForm">
+<h1>Sign In</h1>
+<br />
+<form [formGroup]="loginForm" (ngSubmit)="submit()" class="login-form">
+  <input
+    placeholder="E-mail"
+    formControlName="email"
+    class="zt-input"
+    type="text"
+  />
+  <input
+    placeholder="Password"
+    formControlName="password"
+    type="password"
+    class="zt-input"
+  />
 
-    <mat-form-field class="matFormLogin">
-      <input placeholder="E-mail" formControlName="email" class="inputFieldZT" matInput type="text"/>
-      <mat-error *ngIf="email?.errors?.['required']" class="matError">Type in an e-mail address</mat-error>
-      <mat-error *ngIf="email?.errors?.['email']" class="matError">Invalid e-mail address</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field class="matFormLogin">
-      <input placeholder="Password" formControlName="password" type="password" class="inputFieldZT" matInput/>
-      <mat-error *ngIf="password?.errors?.['required']" class="matError">Type in your password
-      </mat-error>
-    </mat-form-field>
-    <br>
-
-    <div class="loginButtonDiv">
-      <button mat-flat-button class="loginButton" type="submit">Sign In</button>
-    </div>
-
-  </form>
-</div>
+  <div class="zt-button-div">
+    <button class="zt-button purple" type="submit">Sign In</button>
+  </div>
+</form>

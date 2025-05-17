@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotyfService } from 'src/app/core/services/notyf/notyf.service';
+import { NavigationService } from 'src/app/core/services/navigation.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 /**
  * Handles the logging in of the user.
@@ -33,7 +35,9 @@ export class LoginComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router,
     private auth: AngularFireAuth,
-    private notyfService: NotyfService
+    private notyfService: NotyfService,
+    private navigationService: NavigationService,
+    private spinnerService: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {}
@@ -57,17 +61,25 @@ export class LoginComponent implements OnInit {
    */
   submit() {
     if (!this.loginForm.valid) {
+      this.notyfService.error('Please provide valid data');
       return;
     }
+
+    this.spinnerService.show();
 
     const { email, password } = this.loginForm.value;
 
     this.authService.login(email as string, password as string).subscribe({
       next: () => {
-        this.notyfService.success('Logged in');
         this.auth.user.subscribe(async (user) => {
           if (user) {
-            this.router.navigate(['/tracking/home']);
+            this.navigationService.navigate(
+              'tracking/home',
+              undefined,
+              500,
+              300
+            );
+            this.notyfService.success('Logged in successfully');
           }
         });
       },
