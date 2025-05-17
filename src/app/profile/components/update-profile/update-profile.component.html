@@ -1,53 +1,57 @@
-<div class="formContainer">
-  <h1>Update Profile</h1>
+<h1>Update Profile</h1>
 
-  <form [formGroup]="updateProfileForm" (ngSubmit)="updateProfileSubmit()" class="updateForm">
-    <mat-form-field class="profilepicurl-mat-form-field matFormFieldUpdate">
-      <input class="profilePic-input inputFieldZT" id="profilePicInput" [value]="profilePicUrlFromDB"
-        placeholder="Picture URL" formControlName="profilePicUrl" type="text" matInput />
-    </mat-form-field>
+<form
+  [formGroup]="updateProfileForm"
+  (ngSubmit)="updateProfileSubmit()"
+  class="updateForm"
+>
+  <input
+    class="zt-input"
+    id="profile-picture-input"
+    [value]="profilePicUrlFromDB"
+    placeholder="Picture URL"
+    formControlName="profilePicUrl"
+    type="text"
+  />
 
-    <mat-form-field class="password-mat-form-field matFormFieldUpdate">
-      <input class="password-input inputFieldZT" placeholder="Password" formControlName="password" type="password"
-        matInput />
-    </mat-form-field>
+  <input
+    class="zt-input"
+    placeholder="Password"
+    formControlName="password"
+    type="password"
+    [ngClass]="{'input-error': (password?.touched && updateProfileForm.errors?.['passwordsDontMatch']) || (password?.touched && updateProfileForm.errors?.['passwordLengthMin'])}"
+  />
 
-    <mat-form-field class="confirm-password-mat-form-field matFormFieldUpdate">
-      <input class="confirm-password-input inputFieldZT" placeholder="Confirm Password"
-        formControlName="confirmPassword" type="password" matInput />
-    </mat-form-field>
+  <input
+    class="zt-input"
+    placeholder="Confirm Password"
+    formControlName="confirmPassword"
+    type="password"
+    [ngClass]="{'input-error': (confirmPassword?.touched && updateProfileForm.errors?.['passwordsDontMatch']) || (confirmPassword?.touched && updateProfileForm.errors?.['passwordLengthMin'])}"
+  />
 
-    <mat-error *ngIf="updateProfileForm.errors?.['passwordsDontMatch']">The passwords do not match</mat-error>
-    <mat-error *ngIf="updateProfileForm.errors?.['passwordLengthMin']">Password must be at least 8
-      characters!</mat-error>
+  <input
+    type="number"
+    placeholder="Weight (kg)"
+    formControlName="weight"
+    id="weightInput"
+    class="zt-input"
+    [ngClass]="{'input-error': (weight?.touched && weight?.errors?.['required']) || (weight?.touched && weight?.errors?.['min'])}"
+  />
 
-    <!-- Weight Input -->
-    <mat-form-field class="weight-mat-form-field matFormFieldUpdate">
-      <input type="number" placeholder="Weight (kg)" formControlName="weight" matInput id="weightInput"
-        class="inputFieldZT" />
-      <mat-error *ngIf="weight?.errors?.['required']">Please enter your weight!</mat-error>
-      <mat-error *ngIf="weight?.errors?.['min']">Weight must be at least 30kg!</mat-error>
-    </mat-form-field>
+  <input type="checkbox" id="gender-toggle" formControlName="gender" />
+  <label for="gender-toggle" class="gender-toggle-label">
+    <span class="knob">
+      <i class="material-icons">
+        {{ !!updateProfileForm.value.gender ? "female" : "male" }}
+      </i>
+    </span>
+  </label>
 
-    <!-- Gender Selection -->
-    <div class="genderSelection">
-      <div>
-        <label>
-          <input type="radio" formControlName="gender" value="male" />
-          <span>&nbsp; Male &nbsp;</span>
-        </label>
-        <label>
-          <input type="radio" formControlName="gender" value="female" />
-          <span>Female</span>
-        </label>
-        <mat-error *ngIf="gender?.errors?.['required']">Please select your gender!</mat-error>
-      </div>
-    </div>
-
-    <div class="updateButtonDiv">
-      <button type="submit" mat-flat-button color="primary" class="updateButton">
-        Update Profile
-      </button>
-    </div>
-  </form>
-</div>
+  <div class="zt-button-div">
+    <button type="submit" class="zt-button blue">Update Profile</button>
+  </div>
+  <div class="hint">
+    <i class="material-icons" (click)="showHint()">help_outline</i>
+  </div>
+</form>

@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NotyfService } from 'src/app/core/services/notyf/notyf.service';
+import { NavigationService } from 'src/app/core/services/navigation.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 /**
  * Handles user profile update.
@@ -38,10 +40,6 @@ export class UpdateProfileComponent implements OnInit {
    * User's gender from the database.
    */
   genderFromDB: string;
-  /**
-   * Flag for checking if password match.
-   */
-  pwCheck: boolean = true;
 
   /**
    * Form group for profile update data.
@@ -49,10 +47,10 @@ export class UpdateProfileComponent implements OnInit {
   updateProfileForm = new FormGroup(
     {
       password: new FormControl('', [Validators.minLength(8)]),
-      confirmPassword: new FormControl(''),
+      confirmPassword: new FormControl('', [Validators.minLength(8)]),
       profilePicUrl: new FormControl(''),
       weight: new FormControl('', [Validators.required, Validators.min(30)]),
-      gender: new FormControl('', Validators.required),
+      gender: new FormControl(false, Validators.required),
     },
     { validators: this.passwordsMatchValidator() }
   );
@@ -64,13 +62,17 @@ export class UpdateProfileComponent implements OnInit {
    * @param userService Service for user data.
    * @param afAuth Angular Firebase Authentication.
    * @param notyfService Service for displaying messages.
+   * @param navigationService Service for spinner loaidng navigation.
+   * @param spinnerService Service for loading spinner.
    */
   constructor(
     private router: Router,
     private afs: AngularFirestore,
     private userService: UserService,
     private afAuth: AngularFireAuth,
-    private notyfService: NotyfService
+    private notyfService: NotyfService,
+    private navigationService: NavigationService,
+    private spinnerService: NgxSpinnerService
   ) {}
 
   /**
@@ -155,7 +157,7 @@ export class UpdateProfileComponent implements OnInit {
     const userDoc = await userDocRef.get().toPromise();
     this.profilePicUrlFromDB = userDoc?.get('profilePicUrl');
     const profilePicHtml = document.getElementById(
-      'profilePic'
+      'profile-picture-input'
     ) as HTMLImageElement;
     profilePicHtml.src = this.profilePicUrlFromDB
       ? this.profilePicUrlFromDB
@@ -175,8 +177,17 @@ export class UpdateProfileComponent implements OnInit {
 
     this.updateProfileForm.patchValue({
       weight: this.weightFromDB.toString(),
-      gender: this.genderFromDB,
+      gender: this.genderFromDB == 'male' ? false : true,
     });
+  }
+
+  /**
+   * Displays hint message.
+   */
+  showHint() {
+    this.notyfService.info(
+      'Only input a value if you wish to update it <br><br>Password: min. 8 characters<br>Weight: min. 30 kilograms'
+    );
   }
 
   /**
@@ -191,14 +202,19 @@ export class UpdateProfileComponent implements OnInit {
       return;
     }
 
-    if (this.updateProfileForm.invalid) return;
+    if (this.updateProfileForm.invalid) {
+      this.notyfService.error('Please provide valid data');
+      return;
+    }
+
+    this.spinnerService.show();
 
     const updates: any = {};
     const userId = await this.userService.getUserId();
     const userDocRef = this.afs.collection('user').doc(userId).ref;
 
     const newProfilePicUrl = (
-      document.getElementById('profilePicInput') as HTMLInputElement
+      document.getElementById('profile-picture-input') as HTMLInputElement
     ).value;
     if (
       newProfilePicUrl !== this.profilePicUrlFromDB &&
@@ -207,7 +223,7 @@ export class UpdateProfileComponent implements OnInit {
       this.profilePicUrlFromDB = newProfilePicUrl;
       userDocRef
         .update({ profilePicUrl: newProfilePicUrl })
-        .then(() => this.notyfService.success('URL updated'))
+        .then(() => this.notyfService.success('Profile updated successfully'))
         .catch((error) => this.notyfService.error('Something went wrong'));
     }
 
@@ -216,7 +232,7 @@ export class UpdateProfileComponent implements OnInit {
       updates.weight = newWeight;
     }
 
-    const newGender = this.gender?.value;
+    const newGender = !!this.gender?.value ? 'female' : 'male';
     if (newGender !== this.genderFromDB) {
       updates.gender = newGender;
     }
@@ -224,7 +240,7 @@ export class UpdateProfileComponent implements OnInit {
     if (Object.keys(updates).length > 0) {
       userDocRef
         .update(updates)
-        .then(() => this.notyfService.success('Profile updated'));
+        .then(() => this.notyfService.success('Profile updated successfully'));
     }
 
     const newPassword = this.password?.value;
@@ -233,18 +249,15 @@ export class UpdateProfileComponent implements OnInit {
         const currentUser = await this.afAuth.currentUser;
         if (currentUser) {
           await currentUser.updatePassword(newPassword);
-          this.pwCheck = true;
-          this.notyfService.success('Password updated');
+          this.notyfService.success('Profile updated successfully');
         }
       } catch (error) {
         console.error('Error updating password: ', error);
-        this.pwCheck = false;
         this.notyfService.error('Something went wrong');
+        // this.spinnerService.hide();
       }
     }
 
-    if (this.pwCheck) {
-      this.router.navigate(['/profile/profile']);
-    }
+    this.navigationService.navigate('profile/profile', undefined, 500, 300);
   }
 }
