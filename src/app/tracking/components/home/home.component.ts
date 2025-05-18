@@ -1,9 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
 import { DateService } from 'src/app/core/services/date.service';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { NotyfService } from 'src/app/core/services/notyf/notyf.service';
+import { NavigationService } from 'src/app/core/services/navigation.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 /**
  * Interface for the consumed drink data.
@@ -73,13 +74,16 @@ export class HomeComponent implements OnInit {
    * @param dateService Service for proper date usage.
    * @param router Router for routing.
    * @param notyfService Service for displaying messages.
+   * @param navigationService Service for spinner loading navigation.
+   * @param spinnerService Service for spinner loading.
    */
   constructor(
     private afs: AngularFirestore,
     private userService: UserService,
     private dateService: DateService,
-    private router: Router,
-    private notyfService: NotyfService
+    private notyfService: NotyfService,
+    private navigationService: NavigationService,
+    private spinnerService: NgxSpinnerService
   ) {}
 
   /**
@@ -298,7 +302,7 @@ export class HomeComponent implements OnInit {
    * Redirects to drink list page.
    */
   redirectToDrinks() {
-    this.router.navigate(['/tracking/drinklist']);
+    this.navigationService.navigate('/tracking/drinklist');
   }
 
   /**
