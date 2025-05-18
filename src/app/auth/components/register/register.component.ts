@@ -8,7 +8,6 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { NavigationService } from 'src/app/core/services/navigation.service';

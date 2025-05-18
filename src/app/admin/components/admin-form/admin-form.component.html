@@ -7,6 +7,7 @@
     class="zt-input"
     formControlName="name"
     placeholder="Drink name"
+    [ngClass]="{'input-error': name?.touched && name?.errors?.['required']}"
   />
 
   <input
@@ -17,6 +18,7 @@
     placeholder="Alcohol %"
     min="0"
     max="100"
+    [ngClass]="{'input-error': (abv?.touched && abv?.errors?.['required']) || (abv?.touched && abv?.errors?.['min']) || (abv?.touched && abv?.errors?.['max'])}"
   />
 
   <input
@@ -26,6 +28,7 @@
     formControlName="caloriesPerServing"
     placeholder="Calories per serving"
     min="0"
+    [ngClass]="{'input-error': (caloriesPerServing?.touched && caloriesPerServing?.errors?.['required']) || (caloriesPerServing?.touched && caloriesPerServing?.errors?.['min'])}"
   />
 
   <input
@@ -35,6 +38,7 @@
     formControlName="ml"
     placeholder="Volume (ml)"
     min="1"
+    [ngClass]="{'input-error': (ml?.touched && ml?.errors?.['required']) || (ml?.touched && ml?.errors?.['min'])}"
   />
 
   <input
@@ -43,6 +47,7 @@
     class="zt-input"
     formControlName="category"
     placeholder="Category"
+    [ngClass]="{'input-error': category?.touched && category?.errors?.['required']}"
   />
 
   <div class="zt-button-div">

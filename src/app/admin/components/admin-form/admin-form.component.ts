@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {
   FormBuilder,
@@ -20,7 +20,7 @@ import { UserService } from 'src/app/core/services/user/user.service';
   templateUrl: './admin-form.component.html',
   styleUrls: ['./admin-form.component.scss'],
 })
-export class AdminFormComponent {
+export class AdminFormComponent implements OnInit {
   /**
    * The from group for the drink.
    */
@@ -71,6 +71,7 @@ export class AdminFormComponent {
   ) {
     const navigation = this.router.getCurrentNavigation();
     const state = navigation?.extras?.state as { drink: any };
+
     if (state && state.drink) {
       const { id, name, ml, category, caloriesPerServing, abv } = state.drink;
       this.editingDrinkId = id;
@@ -92,7 +93,6 @@ export class AdminFormComponent {
    */
   ngOnInit(): void {
     this.userService.getCurrentUserId();
-    // this.initializeForm();
     const drinkToEdit = history.state.drink;
     if (drinkToEdit) {
       this.isEditMode = true;
@@ -102,21 +102,43 @@ export class AdminFormComponent {
   }
 
   /**
-   * Initializes the form with default values and validation rules.
+   * Gets the input drink name.
    */
-  initializeForm(): void {
-    this.drinkForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      abv: [
-        null,
-        [Validators.required, Validators.min(0), Validators.max(100)],
-      ],
-      caloriesPerServing: [null, [Validators.required, Validators.min(0)]],
-      ml: [null, [Validators.required, Validators.min(1)]],
-      category: ['', Validators.required],
-    });
+  get name() {
+    return this.drinkForm.get('name');
   }
 
+  /**
+   * Gets the input alcohol %.
+   */
+  get abv() {
+    return this.drinkForm.get('abv');
+  }
+
+  /**
+   * Gets the input calories per serving.
+   */
+  get caloriesPerServing() {
+    return this.drinkForm.get('caloriesPerServing');
+  }
+
+  /**
+   * Gets the input volume.
+   */
+  get ml() {
+    return this.drinkForm.get('ml');
+  }
+
+  /**
+   * Gets the input category.
+   */
+  get category() {
+    return this.drinkForm.get('category');
+  }
+
+  /**
+   * Shows hints for filling out the form.
+   */
   showHint() {
     this.notyfService.info(
       "Drink name: min. 3 characters<br>Number fields can't be negative"
