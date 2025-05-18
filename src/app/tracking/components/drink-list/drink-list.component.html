@@ -15,7 +15,7 @@
     role="button"
   >
     <span>{{ drink.name }}</span>
-    <div *ngIf="selectedDrink === drink" class="drink-details">
+    <div *ngIf="selectedDrink === drink" class="drink-details" @scale>
       <i class="material-icons close-button" (click)="onCloseClick($event)"
         >close</i
       >

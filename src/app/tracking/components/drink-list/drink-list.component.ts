@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { trigger, transition, style, animate } from '@angular/animations';
 import { map, Observable } from 'rxjs';
 import { DateService } from 'src/app/core/services/date.service';
 import { UserService } from 'src/app/core/services/user/user.service';
@@ -48,11 +49,26 @@ interface FirestoreDocumentData {
 /**
  * Lists out all the drinks in the database.
  * If the user clicks on a specific drink they can add it to their tracking after providing the necessary data.
+ * Animation for drink list form.
  */
 @Component({
   selector: 'app-drink-list',
   templateUrl: './drink-list.component.html',
   styleUrls: ['./drink-list.component.scss'],
+  animations: [
+    trigger('scale', [
+      transition(':enter', [
+        style({ transform: 'scale(0.8)', opacity: 0 }),
+        animate('200ms ease-out', style({ transform: 'scale(1)', opacity: 1 })),
+      ]),
+      transition(':leave', [
+        animate(
+          '200ms ease-in',
+          style({ transform: 'scale(0.8)', opacity: 0 })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class DrinkListComponent {
   /**
