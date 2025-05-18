@@ -1,0 +1,15 @@
+@use "variables" as *;
+
+.drink-form > div {
+  display: flex;
+  flex-direction: row-reverse;
+  .unit {
+    position: absolute;
+    width: 100%;
+    transform: translateY(55%);
+    padding-right: 0.75rem;
+    pointer-events: none;
+    text-align: right;
+    color: rgba($color: grey, $alpha: 0.5);
+  }
+}

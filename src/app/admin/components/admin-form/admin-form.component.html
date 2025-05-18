@@ -10,36 +10,45 @@
     [ngClass]="{'input-error': name?.touched && name?.errors?.['required']}"
   />
 
-  <input
-    type="number"
-    id="abv"
-    class="zt-input"
-    formControlName="abv"
-    placeholder="Alcohol %"
-    min="0"
-    max="100"
-    [ngClass]="{'input-error': (abv?.touched && abv?.errors?.['required']) || (abv?.touched && abv?.errors?.['min']) || (abv?.touched && abv?.errors?.['max'])}"
-  />
+  <div>
+    <input
+      type="number"
+      id="abv"
+      class="zt-input"
+      formControlName="abv"
+      placeholder="Alcohol %"
+      min="0"
+      max="100"
+      [ngClass]="{'input-error': (abv?.touched && abv?.errors?.['required']) || (abv?.touched && abv?.errors?.['min']) || (abv?.touched && abv?.errors?.['max'])}"
+    />
+    <span class="unit" *ngIf="abv?.value !== null">%</span>
+  </div>
 
-  <input
-    type="number"
-    id="calories"
-    class="zt-input"
-    formControlName="caloriesPerServing"
-    placeholder="Calories per serving"
-    min="0"
-    [ngClass]="{'input-error': (caloriesPerServing?.touched && caloriesPerServing?.errors?.['required']) || (caloriesPerServing?.touched && caloriesPerServing?.errors?.['min'])}"
-  />
+  <div>
+    <input
+      type="number"
+      id="calories"
+      class="zt-input"
+      formControlName="caloriesPerServing"
+      placeholder="Calories per serving"
+      min="0"
+      [ngClass]="{'input-error': (caloriesPerServing?.touched && caloriesPerServing?.errors?.['required']) || (caloriesPerServing?.touched && caloriesPerServing?.errors?.['min'])}"
+    />
+    <span class="unit" *ngIf="caloriesPerServing?.value !== null">kcal</span>
+  </div>
 
-  <input
-    type="number"
-    id="volume"
-    class="zt-input"
-    formControlName="ml"
-    placeholder="Volume (ml)"
-    min="1"
-    [ngClass]="{'input-error': (ml?.touched && ml?.errors?.['required']) || (ml?.touched && ml?.errors?.['min'])}"
-  />
+  <div>
+    <input
+      type="number"
+      id="volume"
+      class="zt-input"
+      formControlName="ml"
+      placeholder="Volume (ml)"
+      min="1"
+      [ngClass]="{'input-error': (ml?.touched && ml?.errors?.['required']) || (ml?.touched && ml?.errors?.['min'])}"
+    />
+    <span class="unit" *ngIf="ml?.value !== null">ml</span>
+  </div>
 
   <input
     type="text"

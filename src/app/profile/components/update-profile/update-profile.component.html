@@ -3,7 +3,7 @@
 <form
   [formGroup]="updateProfileForm"
   (ngSubmit)="updateProfileSubmit()"
-  class="updateForm"
+  class="update-form"
 >
   <input
     class="zt-input"
@@ -30,14 +30,17 @@
     [ngClass]="{'input-error': (confirmPassword?.touched && updateProfileForm.errors?.['passwordsDontMatch']) || (confirmPassword?.touched && updateProfileForm.errors?.['passwordLengthMin'])}"
   />
 
-  <input
-    type="number"
-    placeholder="Weight (kg)"
-    formControlName="weight"
-    id="weightInput"
-    class="zt-input"
-    [ngClass]="{'input-error': (weight?.touched && weight?.errors?.['required']) || (weight?.touched && weight?.errors?.['min'])}"
-  />
+  <div>
+    <input
+      type="number"
+      placeholder="Weight (kg)"
+      formControlName="weight"
+      id="weightInput"
+      class="zt-input"
+      [ngClass]="{'input-error': (weight?.touched && weight?.errors?.['required']) || (weight?.touched && weight?.errors?.['min'])}"
+    />
+    <span class="unit" *ngIf="weight?.value !== null">kg</span>
+  </div>
 
   <input type="checkbox" id="gender-toggle" formControlName="gender" />
   <label for="gender-toggle" class="gender-toggle-label">
