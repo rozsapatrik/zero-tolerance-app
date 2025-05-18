@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NavigationService } from 'src/app/core/services/navigation.service';
@@ -19,7 +24,21 @@ export class AdminFormComponent {
   /**
    * The from group for the drink.
    */
-  drinkForm: FormGroup;
+  drinkForm = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    abv: new FormControl(null, [
+      Validators.required,
+      Validators.min(0),
+      Validators.max(100),
+    ]),
+    caloriesPerServing: new FormControl(null, [
+      Validators.required,
+      Validators.min(0),
+    ]),
+    ml: new FormControl(null, [Validators.required, Validators.min(1)]),
+    category: new FormControl('', Validators.required),
+  });
+
   /**
    * ID of the currently edited drink.
    */
@@ -65,17 +84,6 @@ export class AdminFormComponent {
         ],
         abv: [abv, [Validators.required, Validators.pattern('^[0-9]+$')]],
       });
-    } else {
-      this.drinkForm = this.fb.group({
-        name: ['', Validators.required],
-        ml: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-        category: ['', Validators.required],
-        caloriesPerServing: [
-          '',
-          [Validators.required, Validators.pattern('^[0-9]+$')],
-        ],
-        abv: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-      });
     }
   }
 
@@ -84,7 +92,7 @@ export class AdminFormComponent {
    */
   ngOnInit(): void {
     this.userService.getCurrentUserId();
-    this.initializeForm();
+    // this.initializeForm();
     const drinkToEdit = history.state.drink;
     if (drinkToEdit) {
       this.isEditMode = true;
@@ -145,8 +153,7 @@ export class AdminFormComponent {
         }
 
         // Navigates back to the admin page.
-        // this.router.navigate(['/admin/admin']);
-        this.navigationService.navigate('/admin/admin');
+        this.navigationService.navigate('/profile/profile');
       } catch (error) {
         this.notyfService.error('Something went wrong');
         console.error('Error adding drink to Firestore:', error);

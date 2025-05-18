@@ -57,13 +57,20 @@ export class NavigationComponent {
    * @param path The path of the destination page.
    */
   navigateWithMenuClose(path: string) {
+    let hideDelay = 300;
+
+    // Increased delay so we don't see the profile picture loading in.
+    if (path === '/profile/profile') {
+      hideDelay = 700;
+    }
+
     this.navigationService.navigate(
       path,
       () => {
         this.menuState = 'closingSoft';
         setTimeout(() => (this.menuState = 'closed'), 500);
       },
-      300,
+      hideDelay,
       500
     );
   }

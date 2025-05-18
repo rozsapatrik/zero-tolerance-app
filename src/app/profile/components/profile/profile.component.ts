@@ -164,7 +164,12 @@ export class ProfileComponent {
    * Redirects to currently logged in user's personal statistics page.
    */
   redirectToPersonalStats() {
-    this.navigationService.navigate('/profile/personalstats');
+    this.navigationService.navigate(
+      '/profile/personalstats',
+      undefined,
+      1000,
+      500
+    );
   }
 
   /**
