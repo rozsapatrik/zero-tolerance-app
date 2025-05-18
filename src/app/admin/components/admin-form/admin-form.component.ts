@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { NavigationService } from 'src/app/core/services/navigation.service';
 import { NotyfService } from 'src/app/core/services/notyf/notyf.service';
 import { UserService } from 'src/app/core/services/user/user.service';
 
@@ -36,13 +38,17 @@ export class AdminFormComponent {
    * @param router Router for routing.
    * @param notyfService Service for displaying messages.
    * @param userService Service for user data.
+   * @param navigationService Service for spinner loading navigation.
+   * @param spinnerService Service for spinner loading.
    */
   constructor(
     private fb: FormBuilder,
     private afs: AngularFirestore,
     private router: Router,
     private notyfService: NotyfService,
-    private userService: UserService
+    private userService: UserService,
+    private navigationService: NavigationService,
+    private spinnerService: NgxSpinnerService
   ) {
     const navigation = this.router.getCurrentNavigation();
     const state = navigation?.extras?.state as { drink: any };
@@ -103,6 +109,12 @@ export class AdminFormComponent {
     });
   }
 
+  showHint() {
+    this.notyfService.info(
+      "Drink name: min. 3 characters<br>Number fields can't be negative"
+    );
+  }
+
   /**
    * Handles the form submission.
    * If the form is valid:
@@ -115,6 +127,8 @@ export class AdminFormComponent {
   async onSubmit(): Promise<void> {
     if (this.drinkForm.valid) {
       const drinkData = this.drinkForm.value;
+
+      this.spinnerService.show();
 
       try {
         if (this.editingDrinkId) {
@@ -131,11 +145,15 @@ export class AdminFormComponent {
         }
 
         // Navigates back to the admin page.
-        this.router.navigate(['/admin/admin']);
+        // this.router.navigate(['/admin/admin']);
+        this.navigationService.navigate('/admin/admin');
       } catch (error) {
         this.notyfService.error('Something went wrong');
         console.error('Error adding drink to Firestore:', error);
+        this.spinnerService.hide();
       }
+    } else {
+      this.notyfService.error('Please provide valid data');
     }
   }
 }

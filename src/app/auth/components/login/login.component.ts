@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { NotyfService } from 'src/app/core/services/notyf/notyf.service';
 import { NavigationService } from 'src/app/core/services/navigation.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { take } from 'rxjs';
 
 /**
  * Handles the logging in of the user.
@@ -79,21 +80,25 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.loginForm.value;
 
     this.authService.login(email as string, password as string).subscribe({
-      next: () => {
-        this.auth.user.subscribe(async (user) => {
-          if (user) {
-            this.navigationService.navigate(
-              'tracking/home',
-              undefined,
-              500,
-              300
-            );
-            this.notyfService.success('Logged in successfully');
-          }
-        });
+      next: async () => {
+        const user = await this.auth.user.pipe(take(1)).toPromise();
+        if (user) {
+          this.navigationService.navigate('tracking/home', undefined, 500, 300);
+          this.notyfService.success('Logged in successfully');
+        } else {
+          this.notyfService.error('User not found');
+          this.spinnerService.hide();
+        }
       },
       error: (error) => {
-        this.notyfService.error('Something went wrong');
+        this.spinnerService.hide();
+        console.log(error);
+        if (error.code === 'auth/invalid-login-credentials') {
+          this.notyfService.error('Invalid e-mail or password');
+        } else {
+          this.notyfService.error('Something went wrong');
+          console.error(error);
+        }
       },
     });
   }

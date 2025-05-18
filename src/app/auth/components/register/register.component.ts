@@ -28,7 +28,10 @@ export class RegisterComponent implements OnInit {
    */
   registerForm = new FormGroup(
     {
-      username: new FormControl('', Validators.required),
+      username: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', [
         Validators.required,
@@ -101,7 +104,7 @@ export class RegisterComponent implements OnInit {
    */
   showHint() {
     this.notyfService.info(
-      'E-mail: valid format<br>Password: min. 8 characters<br>Weight: min. 30 kilograms'
+      'Username: min. 3 characters<br>E-mail: valid format<br>Password: min. 8 characters<br>Weight: min. 30 kilograms'
     );
   }
 

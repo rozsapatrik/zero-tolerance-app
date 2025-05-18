@@ -1,35 +1,54 @@
-<div class="admin-form-container">
-  <h1>{{ isEditMode ? 'Update drink' : 'Add a new drink' }}</h1>
+<h1>{{ isEditMode ? "Update drink" : "Add drink" }}</h1>
 
-  <form [formGroup]="drinkForm" (ngSubmit)="onSubmit()" class="drink-form">
+<form [formGroup]="drinkForm" (ngSubmit)="onSubmit()" class="drink-form">
+  <input
+    type="text"
+    id="name"
+    class="zt-input"
+    formControlName="name"
+    placeholder="Drink name"
+  />
 
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" id="name" formControlName="name" placeholder="Enter drink name" />
-    </div>
+  <input
+    type="number"
+    id="abv"
+    class="zt-input"
+    formControlName="abv"
+    placeholder="Alcohol %"
+    min="0"
+    max="100"
+  />
 
-    <div class="form-group">
-      <label for="abv">Alcohol by Volume (ABV %)</label>
-      <input type="number" id="abv" formControlName="abv" placeholder="Enter ABV" min="0" max="100" />
-    </div>
+  <input
+    type="number"
+    id="calories"
+    class="zt-input"
+    formControlName="caloriesPerServing"
+    placeholder="Calories per serving"
+    min="0"
+  />
 
-    <div class="form-group">
-      <label for="calories">Calories per Serving</label>
-      <input type="number" id="calories" formControlName="caloriesPerServing" placeholder="Enter calories" min="0" />
-    </div>
+  <input
+    type="number"
+    id="volume"
+    class="zt-input"
+    formControlName="ml"
+    placeholder="Volume (ml)"
+    min="1"
+  />
 
-    <div class="form-group">
-      <label for="volume">Volume (ml)</label>
-      <input type="number" id="volume" formControlName="ml" placeholder="Enter volume" min="1" />
-    </div>
+  <input
+    type="text"
+    id="category"
+    class="zt-input"
+    formControlName="category"
+    placeholder="Category"
+  />
 
-    <div class="form-group">
-      <label for="category">Category</label>
-      <input type="text" id="category" formControlName="category" placeholder="Enter drink category" />
-    </div>
-
-    <div class="admin-form-button-div">
-      <button type="submit" [disabled]="!drinkForm.valid" class="admin-form-button">Submit</button>
-    </div>
-  </form>
-</div>
+  <div class="zt-button-div">
+    <button type="submit" class="zt-button purple">Submit</button>
+  </div>
+  <div class="hint">
+    <i class="material-icons" (click)="showHint()">help_outline</i>
+  </div>
+</form>
