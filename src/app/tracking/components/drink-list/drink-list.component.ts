@@ -57,17 +57,13 @@ export class DrinkListComponent {
    * The from group for the drink.
    */
   drankForm = new FormGroup({
-    amount: new FormControl(0, [
-      Validators.required,
-      Validators.min(1),
-      Validators.nullValidator,
-    ]),
-    hour: new FormControl(0, [
+    amount: new FormControl(null, [Validators.required, Validators.min(1)]),
+    hour: new FormControl(null, [
       Validators.required,
       Validators.min(0),
       Validators.max(23),
     ]),
-    minute: new FormControl(0, [
+    minute: new FormControl(null, [
       Validators.required,
       Validators.min(0),
       Validators.max(59),
@@ -210,11 +206,10 @@ export class DrinkListComponent {
     );
   }
 
-  onSubmit() {}
-
   /**
    * Stores the newly tracked drink in Firestore
-   * @param drink The drink tracking to be uploaded
+   * @param drink The currently selected drink.
+   * @returns If the data submitted is not valid.
    */
   async addDrinkAmount(drink: Drink): Promise<void> {
     if (!this.drankForm.valid) {
@@ -222,19 +217,14 @@ export class DrinkListComponent {
       return;
     }
 
-    const drinkData = this.drankForm.value;
-
-    if (drinkData.amount == null) {
-      drinkData.amount = 0;
-    }
-
-    if (drinkData.hour == null) {
-      drinkData.hour = 0;
-    }
-
-    if (drinkData.minute == null) {
-      drinkData.minute = 0;
-    }
+    // This is needed so the form can be empty with strings then converted into numbers for checks.
+    const drinkData = {
+      amount:
+        this.drankForm.value.amount == null ? 0 : this.drankForm.value.amount,
+      hour: this.drankForm.value.hour == null ? 0 : this.drankForm.value.hour,
+      minute:
+        this.drankForm.value.minute == null ? 0 : this.drankForm.value.minute,
+    };
 
     const formattedDate = `${this.selectedDate.getFullYear()}-${(
       this.selectedDate.getMonth() + 1
@@ -257,6 +247,7 @@ export class DrinkListComponent {
       drinkData.minute >= 0 &&
       this.selectedDate
     ) {
+      // After the checks we turn the numbers into properly formatted time strings.
       const preparedHour =
         drinkData.hour < 10
           ? '0' + drinkData.hour.toString()

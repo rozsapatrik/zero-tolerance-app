@@ -36,6 +36,7 @@
           (click)="$event.stopPropagation()"
           class="zt-input"
           placeholder="Amount (ml)"
+          [ngClass]="{'input-error': (amount?.touched && amount?.errors?.['required']) || (amount?.touched && amount?.errors?.['min'])}"
         />
         <div class="time-div">
           <input
@@ -44,6 +45,7 @@
             (click)="$event.stopPropagation()"
             class="zt-input"
             placeholder="Hour"
+            [ngClass]="{'input-error': (hour?.touched && hour?.errors?.['required']) || (hour?.touched && hour?.errors?.['min']) || (hour?.touched && hour?.errors?.['max'])}"
           />
           <input
             type="number"
@@ -51,6 +53,7 @@
             (click)="$event.stopPropagation()"
             class="zt-input"
             placeholder="Minute"
+            [ngClass]="{'input-error': (minute?.touched && minute?.errors?.['required']) || (minute?.touched && minute?.errors?.['min']) || (minute?.touched && minute?.errors?.['max'])}"
           />
         </div>
         <div class="zt-button-div">
