@@ -1,6 +1,6 @@
 @use "variables" as *;
 
-ul {
+ul.drink-list {
   list-style: none;
   overflow-y: auto;
   max-height: 20rem;

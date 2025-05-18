@@ -150,6 +150,26 @@ export class DrinkListComponent {
   }
 
   /**
+   * Stops mouse events on the drink when overlay is open.
+   * @param event The event for clicling on a drink.
+   * @param drink The clicked drink.
+   * @returns When a drink is selected
+   */
+  onDrinkClick(event: MouseEvent, drink: Drink): void {
+    if (this.selectedDrink === drink) {
+      event.stopPropagation();
+      return;
+    }
+
+    this.selectDrink(drink);
+  }
+
+  onCloseClick(event: MouseEvent): void {
+    event.stopPropagation();
+    this.selectedDrink = null;
+  }
+
+  /**
    * Sets the selected drink
    * @param drink The selected drink
    */
