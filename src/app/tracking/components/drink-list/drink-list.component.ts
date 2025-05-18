@@ -4,6 +4,7 @@ import { map, Observable } from 'rxjs';
 import { DateService } from 'src/app/core/services/date.service';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { NotyfService } from 'src/app/core/services/notyf/notyf.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 /**
  * Interface for a drink.
@@ -53,6 +54,27 @@ interface FirestoreDocumentData {
 })
 export class DrinkListComponent {
   /**
+   * The from group for the drink.
+   */
+  drankForm = new FormGroup({
+    amount: new FormControl(0, [
+      Validators.required,
+      Validators.min(1),
+      Validators.nullValidator,
+    ]),
+    hour: new FormControl(0, [
+      Validators.required,
+      Validators.min(0),
+      Validators.max(23),
+    ]),
+    minute: new FormControl(0, [
+      Validators.required,
+      Validators.min(0),
+      Validators.max(59),
+    ]),
+  });
+
+  /**
    * List of the drinks from the database.
    */
   drinksList: Drink[] = [];
@@ -83,12 +105,7 @@ export class DrinkListComponent {
       category: string;
     }
   > = new Map();
-  /**
-   * Temporary data for consumed drink.
-   */
-  tempAmounts: {
-    [key: string]: { ml: number; cps: number; time: string; date: string };
-  } = {};
+
   /**
    * The selected date.
    */
@@ -121,14 +138,16 @@ export class DrinkListComponent {
     });
   }
 
-  /**
-   * Initializes a temporary value to store drink data later
-   * @param drinkName The name of the given drink
-   */
-  initializeDrinkData(drinkName: string): void {
-    if (!this.tempAmounts[drinkName]) {
-      this.tempAmounts[drinkName] = { ml: 0, time: '', date: '', cps: 0 };
-    }
+  get amount() {
+    return this.drankForm.get('amount');
+  }
+
+  get hour() {
+    return this.drankForm.get('hour');
+  }
+
+  get minute() {
+    return this.drankForm.get('minute');
   }
 
   /**
@@ -164,6 +183,10 @@ export class DrinkListComponent {
     this.selectDrink(drink);
   }
 
+  /**
+   * Adds back the ability to click on the X.
+   * @param event The event for clicking the X.
+   */
   onCloseClick(event: MouseEvent): void {
     event.stopPropagation();
     this.selectedDrink = null;
@@ -174,7 +197,6 @@ export class DrinkListComponent {
    * @param drink The selected drink
    */
   selectDrink(drink: Drink): void {
-    this.initializeDrinkData(drink.name);
     this.selectedDrink = this.selectedDrink === drink ? null : drink;
   }
 
@@ -188,12 +210,32 @@ export class DrinkListComponent {
     );
   }
 
+  onSubmit() {}
+
   /**
    * Stores the newly tracked drink in Firestore
    * @param drink The drink tracking to be uploaded
    */
   async addDrinkAmount(drink: Drink): Promise<void> {
-    const drinkData = this.tempAmounts[drink.name];
+    if (!this.drankForm.valid) {
+      this.notyfService.error('Please provde valid data');
+      return;
+    }
+
+    const drinkData = this.drankForm.value;
+
+    if (drinkData.amount == null) {
+      drinkData.amount = 0;
+    }
+
+    if (drinkData.hour == null) {
+      drinkData.hour = 0;
+    }
+
+    if (drinkData.minute == null) {
+      drinkData.minute = 0;
+    }
+
     const formattedDate = `${this.selectedDate.getFullYear()}-${(
       this.selectedDate.getMonth() + 1
     )
@@ -203,9 +245,29 @@ export class DrinkListComponent {
       .toString()
       .padStart(2, '0')}`;
 
-    if (drinkData && drinkData.ml > 0 && drinkData.time && this.selectedDate) {
+    console.log(drinkData.hour);
+    console.log(this.selectedDate);
+
+    console.log(Boolean(drinkData.hour));
+
+    if (
+      drinkData &&
+      drinkData.amount > 0 &&
+      drinkData.hour >= 0 &&
+      drinkData.minute >= 0 &&
+      this.selectedDate
+    ) {
+      const preparedHour =
+        drinkData.hour < 10
+          ? '0' + drinkData.hour.toString()
+          : drinkData.hour.toString();
+      const preparedMinute =
+        drinkData.minute < 10
+          ? '0' + drinkData.minute.toString()
+          : drinkData.minute.toString();
+
       const formattedTime = new Date(
-        `1970-01-01T${drinkData.time}:00`
+        `1970-01-01T${preparedHour}:${preparedMinute}:00`
       ).toLocaleTimeString('en-GB', {
         hour: '2-digit',
         minute: '2-digit',
@@ -225,8 +287,8 @@ export class DrinkListComponent {
         updatedDrinkAmounts = existingData ? existingData.drinkAmounts : {};
       }
 
-      const calories = drink.caloriesPerServing * (drinkData.ml / 100);
-      const alcohol = (drink.abv / 100) * drinkData.ml * 0.789;
+      const calories = drink.caloriesPerServing * (drinkData.amount / 100);
+      const alcohol = (drink.abv / 100) * drinkData.amount * 0.789;
 
       // Generates a unique entryId for the drink
       const entryId = `${new Date().getTime()}-${Math.random()}`;
@@ -234,7 +296,7 @@ export class DrinkListComponent {
       if (updatedDrinkAmounts[drink.name]) {
         updatedDrinkAmounts[drink.name].push({
           id: entryId,
-          amount: drinkData.ml,
+          amount: drinkData.amount,
           calories: calories,
           alcohol: alcohol,
           time: formattedTime,
@@ -244,7 +306,7 @@ export class DrinkListComponent {
         updatedDrinkAmounts[drink.name] = [
           {
             id: entryId,
-            amount: drinkData.ml,
+            amount: drinkData.amount,
             calories: calories,
             alcohol: alcohol,
             time: formattedTime,
@@ -265,12 +327,12 @@ export class DrinkListComponent {
         this.notyfService.success('Drink added');
 
         // Clears the temporary data.
-        this.tempAmounts[drink.name] = { ml: 0, time: '', date: '', cps: 0 };
       } catch (error) {
         this.notyfService.error('Something went wrong');
         console.error('Error adding drink to Firestore: ', error);
       }
     } else {
+      this.notyfService.error('Please provide valid data');
       console.error('Invalid data');
     }
   }

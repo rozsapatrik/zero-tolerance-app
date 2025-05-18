@@ -20,30 +20,43 @@
         >close</i
       >
       <p class="drink-name">{{ drink.name }}</p>
-      <p>ABV: {{ drink.abv }}</p>
-      <p>Kcal/Serving: {{ drink.caloriesPerServing }}</p>
-      <p>Category: {{ drink.category }}</p>
-      <p>Size: {{ drink.ml }} ml</p>
-      <div>
-        <p>Amount (ml)</p>
+      <p>{{ drink.caloriesPerServing }} kcal/100 ml</p>
+      <p>{{ drink.abv }} %</p>
+      <p>{{ drink.ml }} ml</p>
+      <p>{{ drink.category }}</p>
+      <form
+        [formGroup]="drankForm"
+        (ngSubmit)="addDrinkAmount(drink)"
+        class="drink-form"
+      >
         <input
           type="number"
-          [(ngModel)]="tempAmounts[drink.name].ml"
+          formControlName="amount"
           min="0"
           (click)="$event.stopPropagation()"
-          class="drinkMlInput"
+          class="zt-input"
+          placeholder="Amount (ml)"
         />
-        <p>Time</p>
-        <input
-          type="time"
-          [(ngModel)]="tempAmounts[drink.name].time"
-          (click)="$event.stopPropagation()"
-          class="drinkTimeInput"
-        />
-        <button (click)="addDrinkAmount(drink)" class="zt-button blue">
-          Add
-        </button>
-      </div>
+        <div class="time-div">
+          <input
+            type="number"
+            formControlName="hour"
+            (click)="$event.stopPropagation()"
+            class="zt-input"
+            placeholder="Hour"
+          />
+          <input
+            type="number"
+            formControlName="minute"
+            (click)="$event.stopPropagation()"
+            class="zt-input"
+            placeholder="Minute"
+          />
+        </div>
+        <div class="zt-button-div">
+          <button type="submit" class="zt-button blue">Add</button>
+        </div>
+      </form>
     </div>
   </li>
 </ul>

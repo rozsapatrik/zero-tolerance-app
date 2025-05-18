@@ -196,29 +196,29 @@ app-root {
       }
     }
 
+    /* Hide default number spinner */
+    /* Chrome, Safari, Edge, Opera */
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    .input-error {
+      border: 1px solid red;
+    }
+
     /* Global form styles */
     form {
       display: flex;
       flex-direction: column;
       row-gap: 0.5rem;
       align-items: center;
-
-      /* Hide default number spinner */
-      /* Chrome, Safari, Edge, Opera */
-      input[type="number"]::-webkit-inner-spin-button,
-      input[type="number"]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      /* Firefox */
-      input[type="number"] {
-        -moz-appearance: textfield;
-      }
-
-      .input-error {
-        border: 1px solid red;
-      }
 
       /* Hide default password toggler */
       input.zt-input[type="password"]::-webkit-password-toggle-button {

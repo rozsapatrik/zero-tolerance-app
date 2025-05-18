@@ -1,108 +1,3 @@
-// .drink-list {
-//   width: 35vh;
-//   position: relative;
-//   overflow-y: auto;
-//   height: 85vh;
-//   margin-top: -10%;
-// }
-
-// .drink-list ul {
-//   position: relative;
-//   list-style: none;
-//   padding: 0;
-//   margin-top: 5vh;
-//   background-color: #21212180;
-//   border-radius: 20px 20px 20px 20px;
-//   border: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
-//   max-height: 30vh;
-//   overflow-y: auto;
-// }
-
-// .drink-list > h1 {
-//   text-align: center;
-//   font-size: 5vh;
-//   margin-bottom: 5vh;
-//   // margin-top: 5vh;
-// }
-
-// .drink-list li {
-//   position: relative;
-//   cursor: pointer;
-//   text-align: center;
-//   padding: 20px;
-// }
-
-// ul li:not(:last-child) {
-//   border-bottom: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
-// }
-
-// .drink-details {
-//   padding: 1vh;
-//   position: fixed;
-//   top: 0;
-//   margin-top: 28vh;
-//   margin-left: -5vh;
-//   width: 40vh;
-//   color: rgb(201, 201, 201);
-
-//   z-index: 10;
-//   background-color: #212121;
-//   border-radius: 20px 20px 20px 20px;
-//   border: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
-//   text-align: center;
-// }
-
-// .drink-name {
-//   margin-bottom: 2vh;
-//   color: white;
-// }
-
-// div.drink-details div:last-of-type {
-//   margin-top: 5vh;
-// }
-
-// .search-bar {
-//   background-color: #212121;
-//   color: white;
-//   border-radius: 50px 50px 50px 50px;
-//   width: 100%;
-//   text-align: center;
-//   min-height: 6vh;
-//   padding-bottom: 0%;
-// }
-
-// .drinkMlInput,
-// .drinkTimeInput {
-//   background-color: #212121;
-//   color: white;
-//   border-radius: 50px 50px 50px 50px;
-//   width: 100%;
-//   text-align: center;
-//   min-height: 6vh;
-//   padding-bottom: 0%;
-//   border: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
-// }
-
-// .drinkMlInput {
-//   margin-bottom: 1vh;
-// }
-
-// .add-drink-button {
-//   margin-top: 20%;
-//   width: 60%;
-//   height: 3.5rem;
-//   border-radius: 50px 50px 50px 50px;
-//   font-size: large;
-//   color: white;
-//   background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
-// }
-
-// .close-drink-detail {
-//   color: rgb(255, 0, 0);
-//   margin-left: 40%;
-//   position: absolute;
-// }
-
 @use "variables" as *;
 
 input.search {
@@ -145,15 +40,48 @@ ul.drink-list {
       flex-direction: column;
       background-color: $ztGray;
       position: absolute;
-      z-index: 10;
+      z-index: 20;
       top: 8rem;
       width: 20rem;
-      height: 24rem;
       border-radius: 1rem;
       cursor: default;
+      padding-left: 1rem;
+      padding-right: 1rem;
+
+      .zt-input {
+        background-color: rgba($color: #fff, $alpha: 0.1);
+        width: 18rem;
+        width: 100%;
+      }
 
       .close-button {
+        position: absolute;
+        right: 0;
+        color: red;
+        font-size: 2rem;
+        display: flex;
         cursor: pointer;
+        padding-top: 0.125rem;
+        padding-right: 0.125rem;
+      }
+
+      .drink-name {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+
+      .drink-form {
+        padding-top: 1rem;
+      }
+
+      .time-div {
+        display: flex;
+        flex-direction: row;
+        column-gap: 0.5rem;
+      }
+
+      .zt-button-div {
+        padding-bottom: 1rem;
       }
     }
   }
