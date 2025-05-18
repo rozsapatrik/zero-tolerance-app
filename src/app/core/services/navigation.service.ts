@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable({
@@ -21,7 +21,8 @@ export class NavigationService {
    * @param spinnerHideDelay Delay time in ms for the spinner.
    */
   navigate(
-    path: string,
+    path: string | any[],
+    extras?: any,
     beforeNavigate?: () => void,
     delay: number = 300,
     spinnerHideDelay: number = 200
@@ -33,9 +34,11 @@ export class NavigationService {
     }
 
     setTimeout(() => {
-      this.router.navigate([path]).finally(() => {
-        setTimeout(() => this.spinner.hide(), spinnerHideDelay);
-      });
+      this.router
+        .navigate(typeof path === 'string' ? [path] : path, extras)
+        .finally(() => {
+          setTimeout(() => this.spinner.hide(), spinnerHideDelay);
+        });
     }, delay);
   }
 }

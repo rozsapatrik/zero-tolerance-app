@@ -173,6 +173,14 @@ app-root {
       }
     }
 
+    .hint {
+      padding-top: 1rem;
+      .material-icons {
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+    }
+
     /* Global form styles */
     form {
       display: flex;
@@ -221,14 +229,6 @@ app-root {
       input.zt-input[type="password"]::-ms-reveal,
       input.zt-input[type="password"]::-ms-clear {
         display: none !important;
-      }
-
-      .hint {
-        padding-top: 1rem;
-        .material-icons {
-          font-size: 1.5rem;
-          cursor: pointer;
-        }
       }
     }
   }

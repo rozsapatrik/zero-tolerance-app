@@ -83,7 +83,13 @@ export class LoginComponent implements OnInit {
       next: async () => {
         const user = await this.auth.user.pipe(take(1)).toPromise();
         if (user) {
-          this.navigationService.navigate('tracking/home', undefined, 500, 300);
+          this.navigationService.navigate(
+            'tracking/home',
+            undefined,
+            undefined,
+            500,
+            300
+          );
           this.notyfService.success('Logged in successfully');
         } else {
           this.notyfService.error('User not found');

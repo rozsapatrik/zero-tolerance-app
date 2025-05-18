@@ -99,6 +99,7 @@ export class ProfileComponent {
         next: () => {
           this.navigationService.navigate(
             '/pages/landing',
+            undefined,
             () => this.notyfService.success('Logged out successfully'),
             500,
             300
@@ -166,6 +167,7 @@ export class ProfileComponent {
   redirectToPersonalStats() {
     this.navigationService.navigate(
       '/profile/personalstats',
+      undefined,
       undefined,
       1000,
       500

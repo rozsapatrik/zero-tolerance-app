@@ -66,6 +66,7 @@ export class NavigationComponent {
 
     this.navigationService.navigate(
       path,
+      undefined,
       () => {
         this.menuState = 'closingSoft';
         setTimeout(() => (this.menuState = 'closed'), 500);

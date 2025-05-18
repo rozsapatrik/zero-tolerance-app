@@ -1,15 +1,19 @@
-<div class="admin-container">
-  <h1>All Drinks</h1>
-  <ul>
-    <li *ngFor="let drink of drinks">
-      <span class="drink-name">{{ drink.name }}</span>
-      <div class="buttons-div">
-        <button mat-button (click)="deleteDrink(drink.id)">Delete &nbsp;&nbsp;&nbsp;</button>
-        <button (click)="editDrink(drink)">&nbsp;&nbsp;&nbsp; Edit</button>
-      </div>
-    </li>
-  </ul>
-  <div class="add-drink-button-div">
-    <button class="add-drink-button" (click)="redirectToAdminFormAddDrink()">Add New Drink</button>
-  </div>
+<h1>All Drinks</h1>
+<ul>
+  <li *ngFor="let drink of drinks">
+    <span class="drink-name" role="button" (click)="editDrink(drink)">{{
+      drink.name
+    }}</span>
+    <button (click)="deleteDrink(drink.id)">
+      <i class="material-icons">highlight_remove</i>
+    </button>
+  </li>
+</ul>
+<div class="zt-button-div">
+  <button class="zt-button purple" (click)="redirectToAdminFormAddDrink()">
+    Add New Drink
+  </button>
+</div>
+<div class="hint">
+  <i class="material-icons" (click)="showHint()">help_outline</i>
 </div>

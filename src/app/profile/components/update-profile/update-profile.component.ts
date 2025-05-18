@@ -258,6 +258,12 @@ export class UpdateProfileComponent implements OnInit {
       }
     }
 
-    this.navigationService.navigate('profile/profile', undefined, 500, 300);
+    this.navigationService.navigate(
+      'profile/profile',
+      undefined,
+      undefined,
+      500,
+      300
+    );
   }
 }

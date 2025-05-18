@@ -158,7 +158,13 @@ export class RegisterComponent implements OnInit {
         next: () => {
           this.notyfService.success('Registered successfully');
           this.authService.logoutUser();
-          this.navigationService.navigate('auth/login', undefined, 500, 300);
+          this.navigationService.navigate(
+            'auth/login',
+            undefined,
+            undefined,
+            500,
+            300
+          );
         },
         error: (error) => {
           this.spinnerService.hide();

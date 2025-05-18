@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { NavigationService } from 'src/app/core/services/navigation.service';
 import { NotyfService } from 'src/app/core/services/notyf/notyf.service';
 import { UserService } from 'src/app/core/services/user/user.service';
 
@@ -29,12 +31,16 @@ export class AdminPageComponent {
    * @param router Router for routing.
    * @param notyfService Service for displaying messages.
    * @param userService Service for user data.
+   * @param navigationService: Service for loading spinner navigation.
+   * @param spinnerService: Service for loading spinner.
    */
   constructor(
     private afs: AngularFirestore,
     private router: Router,
     private notyfService: NotyfService,
-    private userService: UserService
+    private userService: UserService,
+    private navigationService: NavigationService,
+    private spinnerService: NgxSpinnerService
   ) {}
 
   /**
@@ -43,6 +49,15 @@ export class AdminPageComponent {
   ngOnInit(): void {
     this.userService.getCurrentUserId();
     this.fetchAllDrinks();
+  }
+
+  /**
+   * Shows hints for filling out the form.
+   */
+  showHint() {
+    this.notyfService.info(
+      'Tap a drink to edit it<br>Delete with the remove icon'
+    );
   }
 
   /**
@@ -66,7 +81,7 @@ export class AdminPageComponent {
    * Redirects to the admin form
    */
   redirectToAdminFormAddDrink(): void {
-    this.router.navigate(['/admin/adminform']);
+    this.navigationService.navigate('/admin/adminform');
   }
 
   /**
@@ -74,7 +89,7 @@ export class AdminPageComponent {
    * @param drink The drink that we want to edit
    */
   editDrink(drink: any): void {
-    this.router.navigate(['/admin/adminform'], { state: { drink } });
+    this.navigationService.navigate(['/admin/adminform'], { state: { drink } });
   }
 
   /**
@@ -83,6 +98,7 @@ export class AdminPageComponent {
    */
   deleteDrink(drinkId: string): void {
     if (confirm('Are you sure you want to delete this drink?')) {
+      this.spinnerService.show();
       this.afs
         .collection('drink')
         .doc(drinkId)
@@ -90,6 +106,7 @@ export class AdminPageComponent {
         .then(() => {
           this.notyfService.success('Drink deleted');
           this.fetchAllDrinks();
+          setTimeout(() => this.spinnerService.hide(), 500);
         })
         .catch((error) => {
           this.notyfService.error('Something went wrong');
