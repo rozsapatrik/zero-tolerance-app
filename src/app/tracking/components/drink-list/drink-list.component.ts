@@ -5,6 +5,8 @@ import { DateService } from 'src/app/core/services/date.service';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { NotyfService } from 'src/app/core/services/notyf/notyf.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NavigationService } from 'src/app/core/services/navigation.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 /**
  * Interface for a drink.
@@ -113,12 +115,16 @@ export class DrinkListComponent {
    * @param dateService Service for proper date usage.
    * @param userService Service for user data.
    * @param notyfService Service for displaying messages.
+   * @param navigationService Service for spinner loading navigation.
+   * @param spinnerService Service for spinner loading.
    */
   constructor(
     private afs: AngularFirestore,
     private dateService: DateService,
     private userService: UserService,
-    private notyfService: NotyfService
+    private notyfService: NotyfService,
+    private navigationService: NavigationService,
+    private spinnerService: NgxSpinnerService
   ) {}
 
   /**
@@ -216,6 +222,8 @@ export class DrinkListComponent {
       this.notyfService.error('Please provde valid data');
       return;
     }
+
+    this.spinnerService.show();
 
     // This is needed so the form can be empty with strings then converted into numbers for checks.
     const drinkData = {
@@ -315,14 +323,23 @@ export class DrinkListComponent {
       try {
         // Stores the updated data to Firestore, merging with existing document.
         await docRef.set(drinkAmountData, { merge: true });
+        this.navigationService.navigate(
+          '/tracking/home',
+          undefined,
+          undefined,
+          1000,
+          1000
+        );
         this.notyfService.success('Drink added');
 
         // Clears the temporary data.
       } catch (error) {
         this.notyfService.error('Something went wrong');
+        this.spinnerService.hide();
         console.error('Error adding drink to Firestore: ', error);
       }
     } else {
+      this.spinnerService.hide();
       this.notyfService.error('Please provide valid data');
       console.error('Invalid data');
     }
