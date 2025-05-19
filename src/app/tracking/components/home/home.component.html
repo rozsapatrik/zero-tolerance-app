@@ -1,71 +1,74 @@
-<div class="home-container">
-  <div class="date-picker-container">
-    <div class="date-display-box" (click)="openDatePicker()">
-      {{ selectedDate | date : "yyyy-MM-dd" }}
-    </div>
+<div class="zt-input date-picker">
+  <i role="button" (click)="onDateChange('back')" class="material-icons"
+    >arrow_circle_down</i
+  >
+  <span id="date">{{ getFormattedDate(selectedDate) }}</span>
+  <i role="button" (click)="onDateChange('forward')" class="material-icons"
+    >arrow_circle_up</i
+  >
+</div>
 
-    <div class="date-picker-field">
-      <input
-        type="date"
-        [value]="getFormattedDate(selectedDate)"
-        (change)="onDateChange($event)"
-        #dateInput
-        class="hidden-date-input"
-      />
-    </div>
-  </div>
-
-  <div *ngIf="drinksForTheDay.length > 0">
-    <ul>
-      <li *ngFor="let drink of drinksForTheDay">
-        <span class="drink-name">{{ drink.name }}</span>
+<div *ngIf="drinksForTheDay.length > 0">
+  <ul class="drink-list">
+    <li *ngFor="let drink of drinksForTheDay">
+      <span class="drink-name">{{ drink.name }}</span>
+      <div class="drink-li-data">
+        <span>{{ drink.time }}</span>
         <span
-          (click)="onDrinkClick(drink)"
-          class="bi bi-x-lg remove-drink"
-          style="cursor: pointer"
-        ></span>
-        <br />
-        {{ drink.amount }} ml - {{ drink.time }} -
-        {{ drink.calories | trimDecimals : 2 }} kcal
-      </li>
-    </ul>
+          >{{ drink.calories | trimDecimals : 2 }} kcal -
+          {{ drink.amount }} ml</span
+        >
+      </div>
+      <i
+        role="button"
+        (click)="onDrinkClick(drink)"
+        class="material-icons close-button"
+        >highlight_remove</i
+      >
+    </li>
+  </ul>
+</div>
+<div *ngIf="drinksForTheDay.length === 0" class="no-drinks">
+  <p>No drinks recorded for this day</p>
+</div>
+
+<div class="info-container" *ngIf="totalDrinks != 0">
+  <div class="calorie-total">
+    <p>
+      Total calories:<span class="info-container-right"
+        >{{ totalCalories | trimDecimals : 2 }} kcal</span
+      >
+    </p>
   </div>
-  <div *ngIf="drinksForTheDay.length === 0" class="no-drinks">
-    <p>No drinks recorded for this day</p>
+  <div class="drinks-total">
+    <p>
+      Number of drinks:<span class="info-container-right">{{
+        totalDrinks
+      }}</span>
+    </p>
   </div>
 
-  <div class="info-container" *ngIf="totalDrinks != 0">
-    <div class="calorie-total">
-      <p>
-        Total calories:<span class="info-container-right"
-          >{{ totalCalories | trimDecimals : 2 }} kcal</span
-        >
-      </p>
-    </div>
-    <div class="drinks-total">
-      <p>
-        Number of drinks:<span class="info-container-right">{{
-          totalDrinks
-        }}</span>
-      </p>
-    </div>
-
-    <div class="bac-display">
-      <h3>
-        Estimated BAC:<span class="info-container-right"
-          >{{ bac | number : "1.2-2" }}%</span
-        >
-      </h3>
-      <p *ngIf="soberTime">
-        Sober:<span class="info-container-right"
-          >~ {{ soberTime | date : "EEE MMM dd yyyy HH:mm:ss" }}</span
-        >
-      </p>
-    </div>
+  <div class="bac-display">
+    <h3>
+      Estimated BAC:<span class="info-container-right"
+        >{{ bac | number : "1.2-2" }}%</span
+      >
+    </h3>
+    <p *ngIf="soberTime">
+      Sober:<span class="info-container-right"
+        >~ {{ soberTime | date : "EEE MMM dd yyyy HH:mm:ss" }}</span
+      >
+    </p>
   </div>
-  <div class="zt-button-div">
-    <button (click)="redirectToDrinks()" class="zt-button blue">
-      Add Drink
-    </button>
-  </div>
+</div>
+<div class="zt-button-div">
+  <button (click)="redirectToDrinks()" class="zt-button blue">Add Drink</button>
+  <button
+    (click)="redirectToDrinks()"
+    class="zt-button purple"
+    [ngClass]="drinksForTheDay.length == 0 ? 'disabled-button' : ''"
+    [disabled]="drinksForTheDay.length == 0"
+  >
+    Totals
+  </button>
 </div>

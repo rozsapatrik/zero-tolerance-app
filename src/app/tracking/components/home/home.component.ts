@@ -276,8 +276,19 @@ export class HomeComponent implements OnInit {
    * Sets proper data on date change.
    * @param event The event that triggers this method.
    */
-  onDateChange(event: any) {
-    this.selectedDate = new Date(event.target.value);
+  onDateChange(direction: string) {
+    const originalDate = new Date(document.getElementById('date')!.innerHTML);
+
+    if (direction === 'back') {
+      const prevDay = originalDate;
+      prevDay.setDate(originalDate.getDate() - 1);
+      this.dateService.setSelectedDate(prevDay);
+    } else if (direction === 'forward') {
+      const nextDay = originalDate;
+      nextDay.setDate(originalDate.getDate() + 1);
+      this.dateService.setSelectedDate(nextDay);
+    }
+
     this.dateService.setSelectedDate(this.selectedDate);
     this.fetchDrinksForTheDay();
   }

@@ -1,97 +1,101 @@
-.home-container {
-  width: 40vh;
-  overflow-y: auto;
-  height: 85vh;
-  margin-top: -10%;
-}
+@use "variables" as *;
 
-.date-picker-container {
+.date-picker {
   display: flex;
-  flex-direction: column;
   align-items: center;
-}
+  justify-content: center;
+  column-gap: 4.5rem;
 
-.date-display-box {
-  background-color: #212121;
-  color: white;
-  border-radius: 50px 50px 50px 50px;
-  width: 100%;
-  text-align: center;
-  min-height: 6vh;
-  padding: 20px;
-  cursor: pointer;
-}
+  i {
+    &:first-of-type {
+      position: relative;
+      transform: rotate(90deg);
 
-.info-container {
-  padding-top: 5%;
-}
+      &:active {
+        top: 2px;
+      }
+    }
 
-.info-container-right {
-  float: right;
-}
+    &:last-of-type {
+      position: relative;
+      transform: rotate(90deg);
 
-ul > li {
-  text-align: center;
-}
-
-.add-drink-container {
-  text-align: center;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2vh;
-}
-
-.add-drink-button {
-  margin-top: 5%;
-  width: 65%;
-  height: 3.5rem;
-  border-radius: 50px 50px 50px 50px;
-  font-size: large;
-  color: white;
-  background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
+      &:active {
+        top: 2px;
+      }
+    }
+  }
 }
 
 .no-drinks {
-  text-align: center;
+  display: flex;
+  height: 6rem;
+  padding-top: 1rem;
+  justify-content: center;
+  align-items: center;
 }
 
-.home-container ul {
-  position: relative;
+.disabled-button {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+input.search {
+  margin-bottom: 1rem;
+}
+
+ul.drink-list {
   list-style: none;
-  padding: 0;
-  background-color: #21212180;
-  border-radius: 20px 20px 20px 20px;
-  border: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
-  max-height: 30vh;
   overflow-y: auto;
-}
+  max-height: 20rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background-color: $ztGray;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 
-ul li:not(:last-child) {
-  border-bottom: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
-}
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
+  li {
+    display: flex;
+    align-items: center;
+    width: 20rem;
+    height: 3rem;
 
-.home-container li {
-  position: relative;
-  cursor: pointer;
-  padding: 20px;
-}
+    &:not(:last-child) {
+      border-bottom: 1px solid black;
+    }
 
-.remove-drink {
-  color: red;
-  float: right;
-  margin-right: -1vh;
-  margin-top: -1.5vh;
-}
+    .drink-name {
+      padding-left: 1rem;
+    }
 
-.hidden-date-input {
-  position: absolute;
-  width: 0;
-  height: 0;
-  opacity: 0;
-}
+    .drink-li-data {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-right: 6.5rem;
+      right: 0;
 
-.date-picker-field {
-  padding-bottom: 10%;
+      span:last-of-type {
+        font-size: 0.7rem;
+        color: gray;
+      }
+    }
+
+    .close-button {
+      position: absolute;
+      right: 0;
+      color: red;
+      font-size: 2rem;
+      display: flex;
+      cursor: pointer;
+      padding-top: 0.125rem;
+      padding-right: 4.125rem;
+    }
+  }
 }
