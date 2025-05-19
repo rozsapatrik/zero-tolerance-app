@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { DateService } from 'src/app/core/services/date.service';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { NotyfService } from 'src/app/core/services/notyf/notyf.service';
@@ -36,8 +37,26 @@ interface UserData {
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger('scale', [
+      transition(':enter', [
+        style({ transform: 'scale(0.8)', opacity: 0 }),
+        animate('200ms ease-out', style({ transform: 'scale(1)', opacity: 1 })),
+      ]),
+      transition(':leave', [
+        animate(
+          '200ms ease-in',
+          style({ transform: 'scale(0.8)', opacity: 0 })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class HomeComponent implements OnInit {
+  /**
+   * Boolean for showing totals.
+   */
+  isTotalsShown: Boolean = false;
   /**
    * The selected date.
    */
@@ -113,6 +132,20 @@ export class HomeComponent implements OnInit {
       this.selectedDate = date;
       this.fetchDrinksForTheDay();
     });
+  }
+
+  /**
+   * Shows the totals panel.
+   */
+  showTotals() {
+    this.isTotalsShown = true;
+  }
+
+  /**
+   * Hides the totals panel.
+   */
+  hideTotals() {
+    this.isTotalsShown = false;
   }
 
   /**

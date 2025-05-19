@@ -32,39 +32,33 @@
   <p>No drinks recorded for this day</p>
 </div>
 
-<div class="info-container" *ngIf="totalDrinks != 0">
-  <div class="calorie-total">
-    <p>
-      Total calories:<span class="info-container-right"
-        >{{ totalCalories | trimDecimals : 2 }} kcal</span
-      >
-    </p>
-  </div>
-  <div class="drinks-total">
-    <p>
-      Number of drinks:<span class="info-container-right">{{
-        totalDrinks
-      }}</span>
-    </p>
-  </div>
-
-  <div class="bac-display">
-    <h3>
-      Estimated BAC:<span class="info-container-right"
-        >{{ bac | number : "1.2-2" }}%</span
-      >
-    </h3>
-    <p *ngIf="soberTime">
-      Sober:<span class="info-container-right"
-        >~ {{ soberTime | date : "EEE MMM dd yyyy HH:mm:ss" }}</span
-      >
-    </p>
+<div class="info-container" *ngIf="totalDrinks != 0 && isTotalsShown" @scale>
+  <i class="material-icons hide-button" role="button" (click)="hideTotals()"
+    >close</i
+  >
+  <div class="info-div">
+    <div class="total-calories">
+      <span>Total calories</span>
+      <span>{{ totalCalories | trimDecimals : 2 }} kcal</span>
+    </div>
+    <div class="number-of-drinks">
+      <span>Number of drinks</span>
+      <span>{{ totalDrinks }}</span>
+    </div>
+    <div class="estimated-bac">
+      <span>Estimated BAC</span>
+      <span>{{ bac | number : "1.2-2" }}%</span>
+    </div>
+    <div class="estimated-sober-time">
+      <span>Estimated sober time</span>
+      <span>{{ soberTime | date : "MMM dd EEE HH:mm:ss" }}</span>
+    </div>
   </div>
 </div>
 <div class="zt-button-div">
   <button (click)="redirectToDrinks()" class="zt-button blue">Add Drink</button>
   <button
-    (click)="redirectToDrinks()"
+    (click)="showTotals()"
     class="zt-button purple"
     [ngClass]="drinksForTheDay.length == 0 ? 'disabled-button' : ''"
     [disabled]="drinksForTheDay.length == 0"
