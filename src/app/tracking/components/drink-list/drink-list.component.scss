@@ -55,11 +55,12 @@ ul.drink-list {
       }
 
       .close-button {
-        position: absolute;
+        position: relative;
         right: 0;
         color: red;
         font-size: 2rem;
         display: flex;
+        justify-content: flex-end;
         cursor: pointer;
         padding-top: 0.125rem;
         padding-right: 0.125rem;
