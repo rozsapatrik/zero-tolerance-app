@@ -2,7 +2,9 @@
   <i role="button" (click)="onDateChange('back')" class="material-icons"
     >arrow_circle_down</i
   >
-  <span id="date">{{ getFormattedDate(selectedDate) }}</span>
+  <span id="date" [@fadeDate]="dateAnimationKey">{{
+    getFormattedDate(selectedDate)
+  }}</span>
   <i role="button" (click)="onDateChange('forward')" class="material-icons"
     >arrow_circle_up</i
   >

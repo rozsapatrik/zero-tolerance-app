@@ -65,6 +65,12 @@ interface UserData {
         ),
       ]),
     ]),
+    trigger('fadeDate', [
+      transition('* => *', [
+        style({ opacity: 0, transform: 'scale(0.9)' }),
+        animate('200ms ease-out', style({ opacity: 1, transform: 'scale(1)' })),
+      ]),
+    ]),
   ],
 })
 export class HomeComponent implements OnInit {
@@ -72,6 +78,10 @@ export class HomeComponent implements OnInit {
    * Boolean for showing totals.
    */
   isTotalsShown: Boolean = false;
+  /**
+   * Variable to help date change animation.
+   */
+  dateAnimationKey = '';
   /**
    * The selected date.
    */
@@ -326,6 +336,7 @@ export class HomeComponent implements OnInit {
    */
   onDateChange(direction: string) {
     const originalDate = new Date(document.getElementById('date')!.innerHTML);
+    let newDate = new Date(originalDate);
 
     if (direction === 'back') {
       const prevDay = originalDate;
@@ -336,6 +347,9 @@ export class HomeComponent implements OnInit {
       nextDay.setDate(originalDate.getDate() + 1);
       this.dateService.setSelectedDate(nextDay);
     }
+    // Since angular animations only trigger when the bound element's state changes
+    // we need this key to always change
+    this.dateAnimationKey = `${newDate.getTime()}`;
   }
 
   /**
