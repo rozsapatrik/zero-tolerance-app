@@ -10,7 +10,7 @@
 
 <div *ngIf="drinksForTheDay.length > 0">
   <ul class="drink-list">
-    <li *ngFor="let drink of drinksForTheDay">
+    <li *ngFor="let drink of drinksForTheDay" @slide>
       <span class="drink-name">{{ drink.name }}</span>
       <div class="drink-li-data">
         <span>{{ drink.time }}</span>
