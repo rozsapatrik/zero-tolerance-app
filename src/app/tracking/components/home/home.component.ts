@@ -71,6 +71,35 @@ interface UserData {
         animate('200ms ease-out', style({ opacity: 1, transform: 'scale(1)' })),
       ]),
     ]),
+    trigger('slideGrow', [
+      transition(':enter', [
+        style({
+          opacity: 0,
+          transform: 'translateY(-10px)',
+          maxHeight: '0',
+          overflow: 'hidden',
+        }),
+        animate(
+          '300ms ease-out',
+          style({
+            opacity: 1,
+            transform: 'translateY(0)',
+            maxHeight: '1000px',
+          })
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '200ms ease-in',
+          style({
+            opacity: 0,
+            transform: 'translateY(-10px)',
+            maxHeight: '0',
+            overflow: 'hidden',
+          })
+        ),
+      ]),
+    ]),
   ],
 })
 export class HomeComponent implements OnInit {
