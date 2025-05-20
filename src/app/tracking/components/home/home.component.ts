@@ -81,7 +81,7 @@ export class HomeComponent implements OnInit {
   /**
    * Variable to help date change animation.
    */
-  dateAnimationKey = '';
+  dateAnimationKey = 0;
   /**
    * The selected date.
    */
@@ -336,7 +336,6 @@ export class HomeComponent implements OnInit {
    */
   onDateChange(direction: string) {
     const originalDate = new Date(document.getElementById('date')!.innerHTML);
-    let newDate = new Date(originalDate);
 
     if (direction === 'back') {
       const prevDay = originalDate;
@@ -349,7 +348,7 @@ export class HomeComponent implements OnInit {
     }
     // Since angular animations only trigger when the bound element's state changes
     // we need this key to always change
-    this.dateAnimationKey = `${newDate.getTime()}`;
+    this.dateAnimationKey++;
   }
 
   /**
