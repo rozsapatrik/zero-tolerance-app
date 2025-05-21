@@ -280,10 +280,82 @@ export class HomeComponent implements OnInit {
    * Calculates approximate blood alcohol content for given day.
    * @returns If user data is not present then returns.
    */
+  // calculateBAC(): void {
+  //   if (!this.userData) {
+  //     console.error('User data not available for BAC calculation');
+  //     this.bac = 0;
+  //     return;
+  //   }
+
+  //   const { weight, gender } = this.userData;
+  //   const bodyWaterConstant = gender === 'male' ? 0.58 : 0.49;
+  //   const metabolismRate = 0.015;
+  //   const weightInGrams = weight * 1000;
+  //   const currentTime = new Date();
+  //   // Construct full date objects for drink times
+  //   const drinkTimes = this.drinksForTheDay.map((drink) => {
+  //     const [hours, minutes] = drink.time.split(':').map(Number);
+  //     const drinkDate = new Date(this.selectedDate);
+  //     drinkDate.setHours(hours, minutes, 0, 0);
+  //     return { ...drink, drinkDate };
+  //   });
+
+  //   const pastDrinks = drinkTimes.filter(
+  //     (drink) => drink.drinkDate <= currentTime
+  //   );
+  //   const futureDrinks = drinkTimes.filter(
+  //     (drink) => drink.drinkDate > currentTime
+  //   );
+
+  //   const totalPastAlcoholGrams = pastDrinks.reduce(
+  //     (sum, drink) => sum + (drink.alcohol || 0),
+  //     0
+  //   );
+
+  //   if (pastDrinks.length > 0) {
+  //     const lastDrinkTime = new Date(
+  //       Math.max(...pastDrinks.map((drink) => drink.drinkDate.getTime()))
+  //     );
+  //     const timeElapsedHours = Math.max(
+  //       0,
+  //       (currentTime.getTime() - lastDrinkTime.getTime()) / (1000 * 60 * 60)
+  //     );
+
+  //     this.bac =
+  //       (totalPastAlcoholGrams / (weightInGrams * bodyWaterConstant)) * 100 -
+  //       metabolismRate * timeElapsedHours;
+  //     this.bac = Math.max(this.bac, 0); // Ensure BAC does not go negative
+  //   } else {
+  //     this.bac = 0;
+  //   }
+
+  //   // Calculate sober time (including future drinks)
+  //   const allAlcoholGrams = drinkTimes.reduce(
+  //     (sum, drink) => sum + (drink.alcohol || 0),
+  //     0
+  //   );
+  //   const soberHours =
+  //     allAlcoholGrams / (metabolismRate * weightInGrams * bodyWaterConstant);
+
+  //   const earliestAllDrinkTime = new Date(
+  //     Math.min(...drinkTimes.map((drink) => drink.drinkDate.getTime()))
+  //   );
+  //   const estimatedSoberTime = new Date(
+  //     Math.max(earliestAllDrinkTime.getTime()) +
+  //       soberHours * 100 * 60 * 60 * 1000
+  //   );
+
+  //   this.soberTime = estimatedSoberTime;
+  // }
   calculateBAC(): void {
-    if (!this.userData) {
-      console.error('User data not available for BAC calculation');
+    if (
+      !this.userData ||
+      typeof this.userData.weight !== 'number' ||
+      !this.userData.gender
+    ) {
+      console.error('User data not available or invalid for BAC calculation.');
       this.bac = 0;
+      this.soberTime = null;
       return;
     }
 
@@ -292,60 +364,163 @@ export class HomeComponent implements OnInit {
     const metabolismRate = 0.015;
     const weightInGrams = weight * 1000;
     const currentTime = new Date();
-    // Construct full date objects for drink times
-    const drinkTimes = this.drinksForTheDay.map((drink) => {
-      const [hours, minutes] = drink.time.split(':').map(Number);
-      const drinkDate = new Date(this.selectedDate);
-      drinkDate.setHours(hours, minutes, 0, 0);
-      return { ...drink, drinkDate };
-    });
 
-    const pastDrinks = drinkTimes.filter(
-      (drink) => drink.drinkDate <= currentTime
-    );
-    const futureDrinks = drinkTimes.filter(
-      (drink) => drink.drinkDate > currentTime
-    );
-
-    const totalPastAlcoholGrams = pastDrinks.reduce(
-      (sum, drink) => sum + (drink.alcohol || 0),
-      0
-    );
-
-    if (pastDrinks.length > 0) {
-      const lastDrinkTime = new Date(
-        Math.max(...pastDrinks.map((drink) => drink.drinkDate.getTime()))
-      );
-      const timeElapsedHours = Math.max(
-        0,
-        (currentTime.getTime() - lastDrinkTime.getTime()) / (1000 * 60 * 60)
-      );
-
-      this.bac =
-        (totalPastAlcoholGrams / (weightInGrams * bodyWaterConstant)) * 100 -
-        metabolismRate * timeElapsedHours;
-      this.bac = Math.max(this.bac, 0); // Ensure BAC does not go negative
+    // Ensure selectedDate is a valid Date object
+    let selectedDateObj: Date;
+    if (
+      this.selectedDate instanceof Date &&
+      !isNaN(this.selectedDate.getTime())
+    ) {
+      selectedDateObj = this.selectedDate;
+    } else if (
+      typeof this.selectedDate === 'string' ||
+      typeof this.selectedDate === 'number'
+    ) {
+      selectedDateObj = new Date(this.selectedDate);
+      if (isNaN(selectedDateObj.getTime())) {
+        console.error('Invalid selectedDate for BAC calculation.');
+        this.bac = 0;
+        this.soberTime = null;
+        return;
+      }
     } else {
+      console.error('selectedDate is not a valid type for BAC calculation.');
       this.bac = 0;
+      this.soberTime = null;
+      return;
     }
 
-    // Calculate sober time (including future drinks)
-    const allAlcoholGrams = drinkTimes.reduce(
-      (sum, drink) => sum + (drink.alcohol || 0),
-      0
-    );
-    const soberHours =
-      allAlcoholGrams / (metabolismRate * weightInGrams * bodyWaterConstant);
+    const allDrinksToday = (this.drinksForTheDay || []) // Handle if drinksForTheDay is null/undefined
+      .map((drink) => {
+        if (
+          !drink ||
+          typeof drink.time !== 'string' ||
+          !drink.time.includes(':')
+        ) {
+          console.warn(
+            'Skipping drink due to invalid format or missing time:',
+            drink
+          );
+          return null;
+        }
+        const [hours, minutes] = drink.time.split(':').map(Number);
+        if (isNaN(hours) || isNaN(minutes)) {
+          console.warn(
+            'Skipping drink due to invalid time parsing:',
+            drink.time
+          );
+          return null;
+        }
+        const drinkDate = new Date(selectedDateObj);
+        drinkDate.setHours(hours, minutes, 0, 0);
+        return { ...drink, drinkDate, alcohol: Number(drink.alcohol) || 0 };
+      })
+      .filter((drink) => drink !== null) as {
+      alcohol: number;
+      drinkDate: Date;
+      [key: string]: any;
+    }[]; // Type assertion after filter
 
-    const earliestAllDrinkTime = new Date(
-      Math.min(...drinkTimes.map((drink) => drink.drinkDate.getTime()))
-    );
-    const estimatedSoberTime = new Date(
-      Math.max(earliestAllDrinkTime.getTime()) +
-        soberHours * 100 * 60 * 60 * 1000
+    allDrinksToday.sort(
+      (a, b) => a.drinkDate.getTime() - b.drinkDate.getTime()
     );
 
-    this.soberTime = estimatedSoberTime;
+    // --- Calculate Current BAC ---
+    let currentBacInternal = 0;
+    let lastProcessedDrinkTimeForBac: Date | null = null;
+
+    const pastAndCurrentDrinks = allDrinksToday.filter(
+      (drink) => drink.drinkDate <= currentTime
+    );
+
+    if (pastAndCurrentDrinks.length > 0) {
+      // Initialize with the time of the first relevant drink
+      lastProcessedDrinkTimeForBac = new Date(
+        pastAndCurrentDrinks[0].drinkDate.getTime()
+      );
+
+      for (const drink of pastAndCurrentDrinks) {
+        // 1. Metabolize BAC from lastProcessedDrinkTimeForBac up to current drink's time
+        if (
+          currentBacInternal > 0 &&
+          drink.drinkDate > lastProcessedDrinkTimeForBac
+        ) {
+          const hoursElapsed =
+            (drink.drinkDate.getTime() -
+              lastProcessedDrinkTimeForBac.getTime()) /
+            (1000 * 60 * 60);
+          currentBacInternal -= metabolismRate * hoursElapsed;
+          currentBacInternal = Math.max(0, currentBacInternal);
+        }
+
+        // Update lastProcessedDrinkTimeForBac to current drink's time
+        lastProcessedDrinkTimeForBac = new Date(drink.drinkDate.getTime());
+
+        // 2. Add BAC from the current drink
+        // Widmark formula: BAC (g/100mL or %) = (Alcohol in grams / (Body weight in grams * r)) * 100
+        currentBacInternal +=
+          (drink.alcohol / (weightInGrams * bodyWaterConstant)) * 100;
+      }
+
+      // 3. After processing all past drinks, metabolize from the time of the *last consumed past drink* up to current time
+      if (
+        currentBacInternal > 0 &&
+        lastProcessedDrinkTimeForBac &&
+        currentTime > lastProcessedDrinkTimeForBac
+      ) {
+        const hoursElapsedSinceLastDrink =
+          (currentTime.getTime() - lastProcessedDrinkTimeForBac.getTime()) /
+          (1000 * 60 * 60);
+        currentBacInternal -= metabolismRate * hoursElapsedSinceLastDrink;
+      }
+    }
+    this.bac = Math.max(0, currentBacInternal); // Ensure BAC is not negative
+
+    // --- Estimate Sober Time (using all drinks for the day) ---
+    let simulatedBac = 0;
+    let currentSimTime: Date | null = null;
+
+    if (allDrinksToday.length === 0) {
+      this.soberTime = null; // No drinks, no sober time to project based on them.
+    } else {
+      // Start simulation from the time of the first drink
+      currentSimTime = new Date(allDrinksToday[0].drinkDate.getTime());
+      // simulatedBac is already 0
+
+      for (const drink of allDrinksToday) {
+        // 1. Metabolize existing BAC from currentSimTime up to this drink's time
+        if (simulatedBac > 0 && drink.drinkDate > currentSimTime) {
+          const hoursToDrink =
+            (drink.drinkDate.getTime() - currentSimTime.getTime()) /
+            (1000 * 60 * 60);
+          simulatedBac -= metabolismRate * hoursToDrink;
+          simulatedBac = Math.max(0, simulatedBac);
+        }
+
+        // 2. Advance simulation time to the current drink's time (handles drinks at same time correctly)
+        currentSimTime = new Date(
+          Math.max(currentSimTime.getTime(), drink.drinkDate.getTime())
+        );
+
+        // 3. Add BAC from this drink
+        simulatedBac +=
+          (drink.alcohol / (weightInGrams * bodyWaterConstant)) * 100;
+      }
+
+      // 4. After all drinks, if BAC > 0, calculate time to zero from currentSimTime (time of last drink's effect)
+      if (simulatedBac > 0 && currentSimTime) {
+        const hoursToSober = simulatedBac / metabolismRate;
+        this.soberTime = new Date(
+          currentSimTime.getTime() + hoursToSober * 60 * 60 * 1000
+        );
+      } else if (currentSimTime) {
+        // Already sober by the time of (or after processing) the last drink
+        this.soberTime = new Date(currentSimTime.getTime());
+      } else {
+        // Should not happen if allDrinksToday has items, but as a fallback:
+        this.soberTime = null;
+      }
+    }
   }
 
   /**
