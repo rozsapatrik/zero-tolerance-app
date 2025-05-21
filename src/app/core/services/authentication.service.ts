@@ -7,7 +7,8 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from '@angular/fire/auth';
-import { from, map, Observable, switchMap } from 'rxjs';
+import { firstValueFrom, from, map, Observable, switchMap } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 /**
  * Service for user authentication.
@@ -26,7 +27,11 @@ export class AuthenticationService {
    * @param auth Authentication.
    * @param fireAuth Angular Firebase Authentication.
    */
-  constructor(private auth: Auth, private fireAuth: AngularFireAuth) {}
+  constructor(
+    private auth: Auth,
+    private fireAuth: AngularFireAuth,
+    private afs: AngularFirestore
+  ) {}
 
   /**
    * Logs in user.
@@ -76,6 +81,34 @@ export class AuthenticationService {
     ).pipe(
       switchMap(({ user }) => updateProfile(user, { displayName: username }))
     );
+  }
+
+  /**
+   * Checks if username already exists in database.
+   * @param username The input username.
+   * @returns Returns true if there is a match found.
+   */
+  async checkUsernameExists(username: string): Promise<boolean> {
+    const snapshot = await firstValueFrom(
+      this.afs
+        .collection('user', (ref) => ref.where('username', '==', username))
+        .get()
+    );
+    return !snapshot.empty;
+  }
+
+  /**
+   * Checks if e-mail already exists in database.
+   * @param email The input e-mail.
+   * @returns Returns if there is a match found.
+   */
+  async checkEmailExists(email: string): Promise<boolean> {
+    const snapshot = await firstValueFrom(
+      this.afs
+        .collection('user', (ref) => ref.where('email', '==', email))
+        .get()
+    );
+    return !snapshot.empty;
   }
 
   /**

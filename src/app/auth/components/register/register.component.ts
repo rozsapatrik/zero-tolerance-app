@@ -131,14 +131,12 @@ export class RegisterComponent implements OnInit {
    * Submits the user's data for registration.
    * @returns If the registration form's data is invalid then returns.
    */
-  registerSubmit() {
+  async registerSubmit() {
     if (!this.registerForm.valid) {
       console.error('Invalid form');
       this.notyfService.error('Please provide valid data!');
       return;
     }
-
-    this.spinnerService.show();
 
     let userData = {
       username: this.registerForm.value.username,
@@ -148,6 +146,26 @@ export class RegisterComponent implements OnInit {
       weight: this.registerForm.value.weight,
       gender: !!this.registerForm.value.gender ? 'female' : 'male',
     };
+
+    const usernameExists = await this.authService.checkUsernameExists(
+      userData.username as string
+    );
+    if (usernameExists) {
+      this.spinnerService.hide();
+      this.notyfService.error('Username is already registered.');
+      return;
+    }
+
+    const emailExists = await this.authService.checkEmailExists(
+      userData.email as string
+    );
+    if (emailExists) {
+      this.spinnerService.hide();
+      this.notyfService.error('E-mail is already registered.');
+      return;
+    }
+
+    this.spinnerService.show();
 
     this.afs.collection('user').add(userData);
 
