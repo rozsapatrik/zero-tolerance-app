@@ -26,7 +26,7 @@
     type="password"
     class="zt-input"
     formControlName="password"
-    [ngClass]="{'input-error': (password?.touched && password?.errors?.['required']) || (password?.touched && registerForm.errors?.['passwordsDontMatch']) || (password?.touched && registerForm.errors?.['passwordLengthMin']) }"
+    [ngClass]="{'input-error': (password?.touched && password?.errors?.['required']) || (password?.touched && registerForm.errors?.['passwordLengthMin']) }"
   />
 
   <input
