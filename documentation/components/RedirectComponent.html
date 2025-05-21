@@ -89,7 +89,7 @@
   <li class="breadcrumb-item">Components</li>
   <li class="breadcrumb-item"
   >
-  PageNotFoundComponent</li>
+  RedirectComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -120,17 +120,10 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/pages/components/page-not-found/page-not-found.component.ts</code>
+    <code>src/app/shared/redirect/redirect/redirect.component.ts</code>
 </p>
 
 
-    <p class="comment">
-        <h3>Description</h3>
-    </p>
-    <p class="comment">
-        <p>Displays message for page not found.</p>
-
-    </p>
 
 
 
@@ -153,21 +146,21 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-page-not-found</code></td>
+                <td class="col-md-9"><code>app-redirect</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./page-not-found.component.scss</code></td>
+                <td class="col-md-9"><code>./redirect.component.scss</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./page-not-found.component.html</code></td>
+                <td class="col-md-9"><code>./redirect.component.html</code></td>
             </tr>
 
 
@@ -181,43 +174,187 @@
     </table>
 </section>
 
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
 
 
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(authService: <a href="../injectables/AuthenticationService.html" target="_self">AuthenticationService</a>, navigationService: <a href="../injectables/NavigationService.html" target="_self">NavigationService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/shared/redirect/redirect/redirect.component.ts:12</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>navigationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NavigationService.html" target="_self" >NavigationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
 
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="18"
+                                    class="link-to-prism">src/app/shared/redirect/redirect/redirect.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { take } from &#x27;rxjs&#x27;;
+import { AuthenticationService } from &#x27;src/app/core/services/authentication.service&#x27;;
+import { NavigationService } from &#x27;src/app/core/services/navigation.service&#x27;;
 
-/**
- * Displays message for page not found.
- */
 @Component({
-  selector: &#x27;app-page-not-found&#x27;,
-  templateUrl: &#x27;./page-not-found.component.html&#x27;,
-  styleUrls: [&#x27;./page-not-found.component.scss&#x27;]
+  selector: &#x27;app-redirect&#x27;,
+  templateUrl: &#x27;./redirect.component.html&#x27;,
+  styleUrls: [&#x27;./redirect.component.scss&#x27;],
 })
-export class PageNotFoundComponent {
+export class RedirectComponent {
+  constructor(
+    private authService: AuthenticationService,
+    private navigationService: NavigationService
+  ) {}
 
+  ngOnInit() {
+    this.authService
+      .isUser()
+      .pipe(take(1))
+      .subscribe((user) &#x3D;&gt; {
+        if (user) {
+          this.navigationService.navigate(&#x27;/tracking/home&#x27;);
+        } else {
+          this.navigationService.navigate(&#x27;/pages/landing&#x27;);
+        }
+      });
+  }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;h1&gt;404&lt;/h1&gt;
-&lt;p&gt;Page not found!&lt;/p&gt;
-</code></pre>
+        <pre class="line-numbers"><code class="language-html"></code></pre>
     </div>
 
     <div class="tab-pane fade " id="styleData">
                 <p class="comment">
-                    <code>./page-not-found.component.scss</code>
+                    <code>./redirect.component.scss</code>
                 </p>
                 <pre class="line-numbers"><code class="language-scss"></code></pre>
     </div>
@@ -247,10 +384,10 @@ export class PageNotFoundComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><h1>404</h1><p>Page not found!</p></div>'
+        var COMPONENT_TEMPLATE = '<div></div>'
     var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RedirectComponent', 'selector': 'app-redirect'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
     var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'PageNotFoundComponent'};
+    var ACTUAL_COMPONENT = {'name': 'RedirectComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -296,7 +433,7 @@ export class PageNotFoundComponent {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'PageNotFoundComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'RedirectComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

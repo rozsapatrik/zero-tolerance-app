@@ -131,10 +131,15 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { RouterModule, Routes } from &#x27;@angular/router&#x27;;
-import { LandingPageComponent } from &#x27;./pages/components/landing-page/landing-page.component&#x27;;
+import { PageNotFoundComponent } from &#x27;./pages/components/page-not-found/page-not-found.component&#x27;;
+import { RedirectComponent } from &#x27;./shared/redirect/redirect/redirect.component&#x27;;
 
 const routes: Routes &#x3D; [
-  { path: &#x27;&#x27;, component: LandingPageComponent },
+  {
+    path: &#x27;&#x27;,
+    pathMatch: &#x27;full&#x27;,
+    component: RedirectComponent,
+  },
   {
     path: &#x27;admin&#x27;,
     loadChildren: () &#x3D;&gt;
@@ -159,6 +164,7 @@ const routes: Routes &#x3D; [
     loadChildren: () &#x3D;&gt;
       &quot;import(&#x27;./tracking/tracking.module&#x27;).then((m) &#x3D;&gt; m.TrackingModule)&quot;,
   },
+  { path: &#x27;**&#x27;, component: PageNotFoundComponent },
 ];
 
 @NgModule({

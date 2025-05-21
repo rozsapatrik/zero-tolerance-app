@@ -204,10 +204,14 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { AngularFirestore } from &#x27;@angular/fire/compat/firestore&#x27;;
+import { trigger, transition, style, animate } from &#x27;@angular/animations&#x27;;
 import { map, Observable } from &#x27;rxjs&#x27;;
 import { DateService } from &#x27;src/app/core/services/date.service&#x27;;
 import { UserService } from &#x27;src/app/core/services/user/user.service&#x27;;
 import { NotyfService } from &#x27;src/app/core/services/notyf/notyf.service&#x27;;
+import { FormControl, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { NavigationService } from &#x27;src/app/core/services/navigation.service&#x27;;
+import { NgxSpinnerService } from &#x27;ngx-spinner&#x27;;
 
 /**
  * Interface for a drink.
@@ -249,13 +253,45 @@ interface FirestoreDocumentData {
 /**
  * Lists out all the drinks in the database.
  * If the user clicks on a specific drink they can add it to their tracking after providing the necessary data.
+ * Animation for drink list form.
  */
 @Component({
   selector: &#x27;app-drink-list&#x27;,
   templateUrl: &#x27;./drink-list.component.html&#x27;,
   styleUrls: [&#x27;./drink-list.component.scss&#x27;],
+  animations: [
+    trigger(&#x27;scale&#x27;, [
+      transition(&#x27;:enter&#x27;, [
+        style({ transform: &#x27;scale(0.8)&#x27;, opacity: 0 }),
+        animate(&#x27;200ms ease-out&#x27;, style({ transform: &#x27;scale(1)&#x27;, opacity: 1 })),
+      ]),
+      transition(&#x27;:leave&#x27;, [
+        animate(
+          &#x27;200ms ease-in&#x27;,
+          style({ transform: &#x27;scale(0.8)&#x27;, opacity: 0 })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class DrinkListComponent {
+  /**
+   * The from group for the drink.
+   */
+  drankForm &#x3D; new FormGroup({
+    amount: new FormControl(null, [Validators.required, Validators.min(1)]),
+    hour: new FormControl(null, [
+      Validators.required,
+      Validators.min(0),
+      Validators.max(23),
+    ]),
+    minute: new FormControl(null, [
+      Validators.required,
+      Validators.min(0),
+      Validators.max(59),
+    ]),
+  });
+
   /**
    * List of the drinks from the database.
    */
@@ -287,12 +323,7 @@ export class DrinkListComponent {
       category: string;
     }
   &gt; &#x3D; new Map();
-  /**
-   * Temporary data for consumed drink.
-   */
-  tempAmounts: {
-    [key: string]: { ml: number; cps: number; time: string; date: string };
-  } &#x3D; {};
+
   /**
    * The selected date.
    */
@@ -304,12 +335,16 @@ export class DrinkListComponent {
    * @param dateService Service for proper date usage.
    * @param userService Service for user data.
    * @param notyfService Service for displaying messages.
+   * @param navigationService Service for spinner loading navigation.
+   * @param spinnerService Service for spinner loading.
    */
   constructor(
     private afs: AngularFirestore,
     private dateService: DateService,
     private userService: UserService,
-    private notyfService: NotyfService
+    private notyfService: NotyfService,
+    private navigationService: NavigationService,
+    private spinnerService: NgxSpinnerService
   ) {}
 
   /**
@@ -325,14 +360,16 @@ export class DrinkListComponent {
     });
   }
 
-  /**
-   * Initializes a temporary value to store drink data later
-   * @param drinkName The name of the given drink
-   */
-  initializeDrinkData(drinkName: string): void {
-    if (!this.tempAmounts[drinkName]) {
-      this.tempAmounts[drinkName] &#x3D; { ml: 0, time: &#x27;&#x27;, date: &#x27;&#x27;, cps: 0 };
-    }
+  get amount() {
+    return this.drankForm.get(&#x27;amount&#x27;);
+  }
+
+  get hour() {
+    return this.drankForm.get(&#x27;hour&#x27;);
+  }
+
+  get minute() {
+    return this.drankForm.get(&#x27;minute&#x27;);
   }
 
   /**
@@ -354,11 +391,34 @@ export class DrinkListComponent {
   }
 
   /**
+   * Stops mouse events on the drink when overlay is open.
+   * @param event The event for clicling on a drink.
+   * @param drink The clicked drink.
+   * @returns When a drink is selected
+   */
+  onDrinkClick(event: MouseEvent, drink: Drink): void {
+    if (this.selectedDrink &#x3D;&#x3D;&#x3D; drink) {
+      event.stopPropagation();
+      return;
+    }
+
+    this.selectDrink(drink);
+  }
+
+  /**
+   * Adds back the ability to click on the X.
+   * @param event The event for clicking the X.
+   */
+  onCloseClick(event: MouseEvent): void {
+    event.stopPropagation();
+    this.selectedDrink &#x3D; null;
+  }
+
+  /**
    * Sets the selected drink
    * @param drink The selected drink
    */
   selectDrink(drink: Drink): void {
-    this.initializeDrinkData(drink.name);
     this.selectedDrink &#x3D; this.selectedDrink &#x3D;&#x3D;&#x3D; drink ? null : drink;
   }
 
@@ -374,10 +434,26 @@ export class DrinkListComponent {
 
   /**
    * Stores the newly tracked drink in Firestore
-   * @param drink The drink tracking to be uploaded
+   * @param drink The currently selected drink.
+   * @returns If the data submitted is not valid.
    */
   async addDrinkAmount(drink: Drink): Promise&lt;void&gt; {
-    const drinkData &#x3D; this.tempAmounts[drink.name];
+    if (!this.drankForm.valid) {
+      this.notyfService.error(&#x27;Please provde valid data&#x27;);
+      return;
+    }
+
+    this.spinnerService.show();
+
+    // This is needed so the form can be empty with strings then converted into numbers for checks.
+    const drinkData &#x3D; {
+      amount:
+        this.drankForm.value.amount &#x3D;&#x3D; null ? 0 : this.drankForm.value.amount,
+      hour: this.drankForm.value.hour &#x3D;&#x3D; null ? 0 : this.drankForm.value.hour,
+      minute:
+        this.drankForm.value.minute &#x3D;&#x3D; null ? 0 : this.drankForm.value.minute,
+    };
+
     const formattedDate &#x3D; &#x60;${this.selectedDate.getFullYear()}-${(
       this.selectedDate.getMonth() + 1
     )
@@ -387,9 +463,30 @@ export class DrinkListComponent {
       .toString()
       .padStart(2, &#x27;0&#x27;)}&#x60;;
 
-    if (drinkData &amp;&amp; drinkData.ml &gt; 0 &amp;&amp; drinkData.time &amp;&amp; this.selectedDate) {
+    console.log(drinkData.hour);
+    console.log(this.selectedDate);
+
+    console.log(Boolean(drinkData.hour));
+
+    if (
+      drinkData &amp;&amp;
+      drinkData.amount &gt; 0 &amp;&amp;
+      drinkData.hour &gt;&#x3D; 0 &amp;&amp;
+      drinkData.minute &gt;&#x3D; 0 &amp;&amp;
+      this.selectedDate
+    ) {
+      // After the checks we turn the numbers into properly formatted time strings.
+      const preparedHour &#x3D;
+        drinkData.hour &lt; 10
+          ? &#x27;0&#x27; + drinkData.hour.toString()
+          : drinkData.hour.toString();
+      const preparedMinute &#x3D;
+        drinkData.minute &lt; 10
+          ? &#x27;0&#x27; + drinkData.minute.toString()
+          : drinkData.minute.toString();
+
       const formattedTime &#x3D; new Date(
-        &#x60;1970-01-01T${drinkData.time}:00&#x60;
+        &#x60;1970-01-01T${preparedHour}:${preparedMinute}:00&#x60;
       ).toLocaleTimeString(&#x27;en-GB&#x27;, {
         hour: &#x27;2-digit&#x27;,
         minute: &#x27;2-digit&#x27;,
@@ -409,8 +506,8 @@ export class DrinkListComponent {
         updatedDrinkAmounts &#x3D; existingData ? existingData.drinkAmounts : {};
       }
 
-      const calories &#x3D; drink.caloriesPerServing * (drinkData.ml / 100);
-      const alcohol &#x3D; (drink.abv / 100) * drinkData.ml * 0.789;
+      const calories &#x3D; drink.caloriesPerServing * (drinkData.amount / 100);
+      const alcohol &#x3D; (drink.abv / 100) * drinkData.amount * 0.789;
 
       // Generates a unique entryId for the drink
       const entryId &#x3D; &#x60;${new Date().getTime()}-${Math.random()}&#x60;;
@@ -418,7 +515,7 @@ export class DrinkListComponent {
       if (updatedDrinkAmounts[drink.name]) {
         updatedDrinkAmounts[drink.name].push({
           id: entryId,
-          amount: drinkData.ml,
+          amount: drinkData.amount,
           calories: calories,
           alcohol: alcohol,
           time: formattedTime,
@@ -428,7 +525,7 @@ export class DrinkListComponent {
         updatedDrinkAmounts[drink.name] &#x3D; [
           {
             id: entryId,
-            amount: drinkData.ml,
+            amount: drinkData.amount,
             calories: calories,
             alcohol: alcohol,
             time: formattedTime,
@@ -446,15 +543,24 @@ export class DrinkListComponent {
       try {
         // Stores the updated data to Firestore, merging with existing document.
         await docRef.set(drinkAmountData, { merge: true });
+        this.navigationService.navigate(
+          &#x27;/tracking/home&#x27;,
+          undefined,
+          undefined,
+          1000,
+          1000
+        );
         this.notyfService.success(&#x27;Drink added&#x27;);
 
         // Clears the temporary data.
-        this.tempAmounts[drink.name] &#x3D; { ml: 0, time: &#x27;&#x27;, date: &#x27;&#x27;, cps: 0 };
       } catch (error) {
         this.notyfService.error(&#x27;Something went wrong&#x27;);
+        this.spinnerService.hide();
         console.error(&#x27;Error adding drink to Firestore: &#x27;, error);
       }
     } else {
+      this.spinnerService.hide();
+      this.notyfService.error(&#x27;Please provide valid data&#x27;);
       console.error(&#x27;Invalid data&#x27;);
     }
   }

@@ -91,7 +91,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Injectables</li>
-  <li class="breadcrumb-item" >NotyfService</li>
+  <li class="breadcrumb-item" >NavigationService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -115,17 +115,10 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/core/services/notyf/notyf.service.ts</code>
+            <code>src/app/core/services/navigation.service.ts</code>
         </p>
 
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>Service for displaying messages.</p>
-
-            </p>
 
 
 
@@ -133,21 +126,6 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#notyf" >notyf</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -158,13 +136,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#error" >error</a>
-                            </li>
-                            <li>
-                                <a href="#info" >info</a>
-                            </li>
-                            <li>
-                                <a href="#success" >success</a>
+                                <a href="#navigate" >navigate</a>
                             </li>
                         </ul>
                     </td>
@@ -184,15 +156,66 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor()</code>
+<code>constructor(router: Router, spinner: NgxSpinnerService)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/core/services/notyf/notyf.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/core/services/navigation.service.ts:8</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Router for routing.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>spinner</td>
+                                                  
+                                                        <td>
+                                                                    <code>NgxSpinnerService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Loading spinner service.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -206,31 +229,31 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="error"></a>
+                    <a name="navigate"></a>
                     <span class="name">
-                        <span ><b>error</b></span>
-                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>navigate</b></span>
+                        <a href="#navigate"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>error(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>navigate(path: string | any[], extras?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, beforeNavigate?: () => void, delay: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, spinnerHideDelay: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/app/core/services/notyf/notyf.service.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="23"
+                                    class="link-to-prism">src/app/core/services/navigation.service.ts:23</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Sets the type of the message to error.</p>
+                        <div class="io-description"><p>Navigates to the desired path smoothly.</p>
 </div>
 
                             <div class="io-description">
@@ -242,23 +265,98 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Default value</td>
                                                 <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>message</td>
+                                                <td>path</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        <code>string | any[]</code>
                                             </td>
 
                                             <td>
                                                     No
                                             </td>
 
+                                            <td>
+                                            </td>
 
                                             <td>
-                                                    <p>The message to be displayed.</p>
+                                                    <p>The destination path.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>extras</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>beforeNavigate</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                            <td>
+                                                    <p>Optional method to be ran before navigation.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>delay</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>300</code>
+                                            </td>
+
+                                            <td>
+                                                    <p>Delay time in ms.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>spinnerHideDelay</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>200</code>
+                                            </td>
+
+                                            <td>
+                                                    <p>Delay time in ms for the spinner.</p>
 
                                             </td>
                                         </tr>
@@ -274,209 +372,6 @@
                             </div>
                 </td>
             </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="info"></a>
-                    <span class="name">
-                        <span ><b>info</b></span>
-                        <a href="#info"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>info(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="58"
-                                    class="link-to-prism">src/app/core/services/notyf/notyf.service.ts:58</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>message</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="success"></a>
-                    <span class="name">
-                        <span ><b>success</b></span>
-                        <a href="#success"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>success(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="46"
-                                    class="link-to-prism">src/app/core/services/notyf/notyf.service.ts:46</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>Sets the type of the message to success.</p>
-</div>
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                                <td>Description</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>message</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>The message to be displayed.</p>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-            <section data-compodoc="block-properties">
-    
-    <h3 id="inputs">
-        Properties
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="notyf"></a>
-                    <span class="name">
-                            <span class="modifier">Private</span>
-                        <span ><b>notyf</b></span>
-                        <a href="#notyf"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>new Notyf({
-    duration: 4000,
-    position: {
-      x: &#x27;center&#x27;,
-      y: &#x27;top&#x27;,
-    },
-    ripple: false,
-    types: [
-      {
-        type: &#x27;success&#x27;,
-        background: &#x27;#4CAF50&#x27;,
-        dismissible: true,
-      },
-      {
-        type: &#x27;error&#x27;,
-        background: &#x27;#F44336&#x27;,
-        dismissible: true,
-      },
-      {
-        type: &#x27;info&#x27;,
-        background: &#x27;#368FF4&#x27;,
-        dismissible: true,
-      },
-    ],
-  })</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/core/services/notyf/notyf.service.ts:16</a></div>
-                        </td>
-                    </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Notyf object.</p>
-</div>
-                </td>
-            </tr>
-
         </tbody>
     </table>
 </section>
@@ -486,67 +381,47 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { Notyf } from &#x27;notyf&#x27;;
+import { NavigationExtras, Router } from &#x27;@angular/router&#x27;;
+import { NgxSpinnerService } from &#x27;ngx-spinner&#x27;;
 
-/**
- * Service for displaying messages.
- */
 @Injectable({
   providedIn: &#x27;root&#x27;,
 })
-export class NotyfService {
-  constructor() {}
+export class NavigationService {
+  /**
+   *
+   * @param router Router for routing.
+   * @param spinner Loading spinner service.
+   */
+  constructor(private router: Router, private spinner: NgxSpinnerService) {}
 
   /**
-   * Notyf object.
+   * Navigates to the desired path smoothly.
+   * @param path The destination path.
+   * @param beforeNavigate Optional method to be ran before navigation.
+   * @param delay Delay time in ms.
+   * @param spinnerHideDelay Delay time in ms for the spinner.
    */
-  private notyf &#x3D; new Notyf({
-    duration: 4000,
-    position: {
-      x: &#x27;center&#x27;,
-      y: &#x27;top&#x27;,
-    },
-    ripple: false,
-    types: [
-      {
-        type: &#x27;success&#x27;,
-        background: &#x27;#4CAF50&#x27;,
-        dismissible: true,
-      },
-      {
-        type: &#x27;error&#x27;,
-        background: &#x27;#F44336&#x27;,
-        dismissible: true,
-      },
-      {
-        type: &#x27;info&#x27;,
-        background: &#x27;#368FF4&#x27;,
-        dismissible: true,
-      },
-    ],
-  });
+  navigate(
+    path: string | any[],
+    extras?: any,
+    beforeNavigate?: () &#x3D;&gt; void,
+    delay: number &#x3D; 300,
+    spinnerHideDelay: number &#x3D; 200
+  ) {
+    this.spinner.show();
 
-  /**
-   * Sets the type of the message to success.
-   * @param message The message to be displayed.
-   */
-  success(message: string): void {
-    this.notyf.success(message);
-  }
+    if (beforeNavigate) {
+      beforeNavigate();
+    }
 
-  /**
-   * Sets the type of the message to error.
-   * @param message The message to be displayed.
-   */
-  error(message: string): void {
-    this.notyf.error(message);
-  }
-
-  info(message: string): void {
-    this.notyf.open({
-      type: &#x27;info&#x27;,
-      message,
-    });
+    setTimeout(() &#x3D;&gt; {
+      this.router
+        .navigate(typeof path &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ? [path] : path, extras)
+        .finally(() &#x3D;&gt; {
+          setTimeout(() &#x3D;&gt; this.spinner.hide(), spinnerHideDelay);
+        });
+    }, delay);
   }
 }
 </code></pre>
@@ -592,7 +467,7 @@ export class NotyfService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'NotyfService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'NavigationService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

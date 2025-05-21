@@ -203,11 +203,17 @@
                                 <a href="#bac" >bac</a>
                             </li>
                             <li>
+                                <a href="#dateAnimationKey" >dateAnimationKey</a>
+                            </li>
+                            <li>
                                     <span class="modifier"></span>
                                 <a href="#dateInput" >dateInput</a>
                             </li>
                             <li>
                                 <a href="#drinksForTheDay" >drinksForTheDay</a>
+                            </li>
+                            <li>
+                                <a href="#isTotalsShown" >isTotalsShown</a>
                             </li>
                             <li>
                                 <a href="#selectedDate" >selectedDate</a>
@@ -258,6 +264,9 @@
                                 <a href="#getFormattedDate" >getFormattedDate</a>
                             </li>
                             <li>
+                                <a href="#hideTotals" >hideTotals</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Async</span>
                                 <a href="#ngOnInit" >ngOnInit</a>
                             </li>
@@ -265,13 +274,13 @@
                                 <a href="#onDateChange" >onDateChange</a>
                             </li>
                             <li>
-                                <a href="#onDrinkClick" >onDrinkClick</a>
-                            </li>
-                            <li>
                                 <a href="#openDatePicker" >openDatePicker</a>
                             </li>
                             <li>
                                 <a href="#redirectToDrinks" >redirectToDrinks</a>
+                            </li>
+                            <li>
+                                <a href="#showTotals" >showTotals</a>
                             </li>
                         </ul>
                     </td>
@@ -291,12 +300,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(afs: AngularFirestore, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, dateService: <a href="../injectables/DateService.html" target="_self">DateService</a>, router: Router, notyfService: <a href="../injectables/NotyfService.html" target="_self">NotyfService</a>)</code>
+<code>constructor(afs: AngularFirestore, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, dateService: <a href="../injectables/DateService.html" target="_self">DateService</a>, notyfService: <a href="../injectables/NotyfService.html" target="_self">NotyfService</a>, navigationService: <a href="../injectables/NavigationService.html" target="_self">NavigationService</a>, spinnerService: NgxSpinnerService)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/tracking/components/home/home.component.ts:67</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/app/tracking/components/home/home.component.ts:141</a></div>
                             </td>
                         </tr>
 
@@ -363,22 +372,6 @@
                                                         </td>
                                                 </tr>
                                                 <tr>
-                                                        <td>router</td>
-                                                  
-                                                        <td>
-                                                                    <code>Router</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <p>Router for routing.</p>
-
-                                                        </td>
-                                                </tr>
-                                                <tr>
                                                         <td>notyfService</td>
                                                   
                                                         <td>
@@ -391,6 +384,38 @@
                                                     
                                                         <td>
                                                                 <p>Service for displaying messages.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>navigationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NavigationService.html" target="_self" >NavigationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service for spinner loading navigation.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>spinnerService</td>
+                                                  
+                                                        <td>
+                                                                    <code>NgxSpinnerService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service for spinner loading.</p>
 
                                                         </td>
                                                 </tr>
@@ -432,8 +457,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="192"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:192</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="350"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:350</a></div>
                         </td>
                     </tr>
 
@@ -475,8 +500,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="263"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:263</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="529"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:529</a></div>
                         </td>
                     </tr>
 
@@ -516,8 +541,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="321"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:321</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="585"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:585</a></div>
                         </td>
                     </tr>
 
@@ -592,8 +617,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="134"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:134</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="225"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:225</a></div>
                         </td>
                     </tr>
 
@@ -633,8 +658,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="117"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:117</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="208"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:208</a></div>
                         </td>
                     </tr>
 
@@ -672,8 +697,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="286"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:286</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="563"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:563</a></div>
                         </td>
                     </tr>
 
@@ -731,6 +756,45 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="hideTotals"></a>
+                    <span class="name">
+                        <span ><b>hideTotals</b></span>
+                        <a href="#hideTotals"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hideTotals()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="201"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:201</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Hides the totals panel.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="ngOnInit"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
@@ -749,8 +813,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="93"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:93</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="170"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:170</a></div>
                         </td>
                     </tr>
 
@@ -781,15 +845,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>onDateChange(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+<code>onDateChange(direction: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="275"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:275</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="541"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:541</a></div>
                         </td>
                     </tr>
 
@@ -808,14 +872,13 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
-                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>event</td>
+                                                <td>direction</td>
                                             <td>
-                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -823,84 +886,6 @@
                                             </td>
 
 
-                                            <td>
-                                                    <p>The event that triggers this method.</p>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="onDrinkClick"></a>
-                    <span class="name">
-                        <span ><b>onDrinkClick</b></span>
-                        <a href="#onDrinkClick"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>onDrinkClick(drink: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="308"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:308</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>Shows alert for drink deletion.</p>
-</div>
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                                <td>Description</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>drink</td>
-                                            <td>
-                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>The currently clicked drink.</p>
-
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -936,8 +921,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="293"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:293</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="570"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:570</a></div>
                         </td>
                     </tr>
 
@@ -975,8 +960,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="300"
-                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:300</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="577"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:577</a></div>
                         </td>
                     </tr>
 
@@ -984,6 +969,45 @@
             <tr>
                 <td class="col-md-4">
                         <div class="io-description"><p>Redirects to drink list page.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showTotals"></a>
+                    <span class="name">
+                        <span ><b>showTotals</b></span>
+                        <a href="#showTotals"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showTotals()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="194"
+                                    class="link-to-prism">src/app/tracking/components/home/home.component.ts:194</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Shows the totals panel.</p>
 </div>
 
                         <div class="io-description">
@@ -1024,13 +1048,50 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/tracking/components/home/home.component.ts:59</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/app/tracking/components/home/home.component.ts:133</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Blood alcohol content for the day.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dateAnimationKey"></a>
+                    <span class="name">
+                        <span ><b>dateAnimationKey</b></span>
+                        <a href="#dateAnimationKey"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/app/tracking/components/home/home.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Variable to help date change animation.</p>
 </div>
                 </td>
             </tr>
@@ -1066,7 +1127,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/tracking/components/home/home.component.ts:88</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/app/tracking/components/home/home.component.ts:165</a></div>
                         </td>
                     </tr>
 
@@ -1103,13 +1164,50 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/tracking/components/home/home.component.ts:47</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/app/tracking/components/home/home.component.ts:121</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Drinks for the selected day.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isTotalsShown"></a>
+                    <span class="name">
+                        <span ><b>isTotalsShown</b></span>
+                        <a href="#isTotalsShown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank" >Boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/app/tracking/components/home/home.component.ts:109</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean for showing totals.</p>
 </div>
                 </td>
             </tr>
@@ -1135,7 +1233,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/tracking/components/home/home.component.ts:43</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">src/app/tracking/components/home/home.component.ts:117</a></div>
                         </td>
                     </tr>
 
@@ -1172,7 +1270,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/tracking/components/home/home.component.ts:63</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">src/app/tracking/components/home/home.component.ts:137</a></div>
                         </td>
                     </tr>
 
@@ -1209,7 +1307,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/tracking/components/home/home.component.ts:51</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/app/tracking/components/home/home.component.ts:125</a></div>
                         </td>
                     </tr>
 
@@ -1246,7 +1344,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/tracking/components/home/home.component.ts:55</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/app/tracking/components/home/home.component.ts:129</a></div>
                         </td>
                     </tr>
 
@@ -1278,7 +1376,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/tracking/components/home/home.component.ts:67</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/app/tracking/components/home/home.component.ts:141</a></div>
                         </td>
                     </tr>
 
@@ -1299,10 +1397,12 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
 import { AngularFirestore } from &#x27;@angular/fire/compat/firestore&#x27;;
-import { Router } from &#x27;@angular/router&#x27;;
+import { animate, style, transition, trigger } from &#x27;@angular/animations&#x27;;
 import { DateService } from &#x27;src/app/core/services/date.service&#x27;;
 import { UserService } from &#x27;src/app/core/services/user/user.service&#x27;;
 import { NotyfService } from &#x27;src/app/core/services/notyf/notyf.service&#x27;;
+import { NavigationService } from &#x27;src/app/core/services/navigation.service&#x27;;
+import { NgxSpinnerService } from &#x27;ngx-spinner&#x27;;
 
 /**
  * Interface for the consumed drink data.
@@ -1334,8 +1434,80 @@ interface UserData {
   selector: &#x27;app-home&#x27;,
   templateUrl: &#x27;./home.component.html&#x27;,
   styleUrls: [&#x27;./home.component.scss&#x27;],
+  animations: [
+    trigger(&#x27;scale&#x27;, [
+      transition(&#x27;:enter&#x27;, [
+        style({ transform: &#x27;scale(0.8)&#x27;, opacity: 0 }),
+        animate(&#x27;200ms ease-out&#x27;, style({ transform: &#x27;scale(1)&#x27;, opacity: 1 })),
+      ]),
+      transition(&#x27;:leave&#x27;, [
+        animate(
+          &#x27;200ms ease-in&#x27;,
+          style({ transform: &#x27;scale(0.8)&#x27;, opacity: 0 })
+        ),
+      ]),
+    ]),
+    trigger(&#x27;slide&#x27;, [
+      transition(&#x27;:enter&#x27;, [
+        style({ transform: &#x27;translateY(-20px)&#x27;, opacity: 0 }),
+        animate(
+          &#x27;300ms ease-out&#x27;,
+          style({ transform: &#x27;translateY(0)&#x27;, opacity: 1 })
+        ),
+      ]),
+      transition(&#x27;:leave&#x27;, [
+        animate(
+          &#x27;300ms ease-in&#x27;,
+          style({ transform: &#x27;translateY(-20px)&#x27;, opacity: 0 })
+        ),
+      ]),
+    ]),
+    trigger(&#x27;fadeDate&#x27;, [
+      transition(&#x27;* &#x3D;&gt; *&#x27;, [
+        style({ opacity: 0, transform: &#x27;scale(0.9)&#x27; }),
+        animate(&#x27;200ms ease-out&#x27;, style({ opacity: 1, transform: &#x27;scale(1)&#x27; })),
+      ]),
+    ]),
+    trigger(&#x27;slideGrow&#x27;, [
+      transition(&#x27;:enter&#x27;, [
+        style({
+          opacity: 0,
+          transform: &#x27;translateY(-10px)&#x27;,
+          maxHeight: &#x27;0&#x27;,
+          overflow: &#x27;hidden&#x27;,
+        }),
+        animate(
+          &#x27;300ms ease-out&#x27;,
+          style({
+            opacity: 1,
+            transform: &#x27;translateY(0)&#x27;,
+            maxHeight: &#x27;1000px&#x27;,
+          })
+        ),
+      ]),
+      transition(&#x27;:leave&#x27;, [
+        animate(
+          &#x27;200ms ease-in&#x27;,
+          style({
+            opacity: 0,
+            transform: &#x27;translateY(-10px)&#x27;,
+            maxHeight: &#x27;0&#x27;,
+            overflow: &#x27;hidden&#x27;,
+          })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class HomeComponent implements OnInit {
+  /**
+   * Boolean for showing totals.
+   */
+  isTotalsShown: Boolean &#x3D; false;
+  /**
+   * Variable to help date change animation.
+   */
+  dateAnimationKey &#x3D; 0;
   /**
    * The selected date.
    */
@@ -1372,13 +1544,16 @@ export class HomeComponent implements OnInit {
    * @param dateService Service for proper date usage.
    * @param router Router for routing.
    * @param notyfService Service for displaying messages.
+   * @param navigationService Service for spinner loading navigation.
+   * @param spinnerService Service for spinner loading.
    */
   constructor(
     private afs: AngularFirestore,
     private userService: UserService,
     private dateService: DateService,
-    private router: Router,
-    private notyfService: NotyfService
+    private notyfService: NotyfService,
+    private navigationService: NavigationService,
+    private spinnerService: NgxSpinnerService
   ) {}
 
   /**
@@ -1408,6 +1583,20 @@ export class HomeComponent implements OnInit {
       this.selectedDate &#x3D; date;
       this.fetchDrinksForTheDay();
     });
+  }
+
+  /**
+   * Shows the totals panel.
+   */
+  showTotals() {
+    this.isTotalsShown &#x3D; true;
+  }
+
+  /**
+   * Hides the totals panel.
+   */
+  hideTotals() {
+    this.isTotalsShown &#x3D; false;
   }
 
   /**
@@ -1488,10 +1677,82 @@ export class HomeComponent implements OnInit {
    * Calculates approximate blood alcohol content for given day.
    * @returns If user data is not present then returns.
    */
+  // calculateBAC(): void {
+  //   if (!this.userData) {
+  //     console.error(&#x27;User data not available for BAC calculation&#x27;);
+  //     this.bac &#x3D; 0;
+  //     return;
+  //   }
+
+  //   const { weight, gender } &#x3D; this.userData;
+  //   const bodyWaterConstant &#x3D; gender &#x3D;&#x3D;&#x3D; &#x27;male&#x27; ? 0.58 : 0.49;
+  //   const metabolismRate &#x3D; 0.015;
+  //   const weightInGrams &#x3D; weight * 1000;
+  //   const currentTime &#x3D; new Date();
+  //   // Construct full date objects for drink times
+  //   const drinkTimes &#x3D; this.drinksForTheDay.map((drink) &#x3D;&gt; {
+  //     const [hours, minutes] &#x3D; drink.time.split(&#x27;:&#x27;).map(Number);
+  //     const drinkDate &#x3D; new Date(this.selectedDate);
+  //     drinkDate.setHours(hours, minutes, 0, 0);
+  //     return { ...drink, drinkDate };
+  //   });
+
+  //   const pastDrinks &#x3D; drinkTimes.filter(
+  //     (drink) &#x3D;&gt; drink.drinkDate &lt;&#x3D; currentTime
+  //   );
+  //   const futureDrinks &#x3D; drinkTimes.filter(
+  //     (drink) &#x3D;&gt; drink.drinkDate &gt; currentTime
+  //   );
+
+  //   const totalPastAlcoholGrams &#x3D; pastDrinks.reduce(
+  //     (sum, drink) &#x3D;&gt; sum + (drink.alcohol || 0),
+  //     0
+  //   );
+
+  //   if (pastDrinks.length &gt; 0) {
+  //     const lastDrinkTime &#x3D; new Date(
+  //       Math.max(...pastDrinks.map((drink) &#x3D;&gt; drink.drinkDate.getTime()))
+  //     );
+  //     const timeElapsedHours &#x3D; Math.max(
+  //       0,
+  //       (currentTime.getTime() - lastDrinkTime.getTime()) / (1000 * 60 * 60)
+  //     );
+
+  //     this.bac &#x3D;
+  //       (totalPastAlcoholGrams / (weightInGrams * bodyWaterConstant)) * 100 -
+  //       metabolismRate * timeElapsedHours;
+  //     this.bac &#x3D; Math.max(this.bac, 0); // Ensure BAC does not go negative
+  //   } else {
+  //     this.bac &#x3D; 0;
+  //   }
+
+  //   // Calculate sober time (including future drinks)
+  //   const allAlcoholGrams &#x3D; drinkTimes.reduce(
+  //     (sum, drink) &#x3D;&gt; sum + (drink.alcohol || 0),
+  //     0
+  //   );
+  //   const soberHours &#x3D;
+  //     allAlcoholGrams / (metabolismRate * weightInGrams * bodyWaterConstant);
+
+  //   const earliestAllDrinkTime &#x3D; new Date(
+  //     Math.min(...drinkTimes.map((drink) &#x3D;&gt; drink.drinkDate.getTime()))
+  //   );
+  //   const estimatedSoberTime &#x3D; new Date(
+  //     Math.max(earliestAllDrinkTime.getTime()) +
+  //       soberHours * 100 * 60 * 60 * 1000
+  //   );
+
+  //   this.soberTime &#x3D; estimatedSoberTime;
+  // }
   calculateBAC(): void {
-    if (!this.userData) {
-      console.error(&#x27;User data not available for BAC calculation&#x27;);
+    if (
+      !this.userData ||
+      typeof this.userData.weight !&#x3D;&#x3D; &#x27;number&#x27; ||
+      !this.userData.gender
+    ) {
+      console.error(&#x27;User data not available or invalid for BAC calculation.&#x27;);
       this.bac &#x3D; 0;
+      this.soberTime &#x3D; null;
       return;
     }
 
@@ -1500,60 +1761,163 @@ export class HomeComponent implements OnInit {
     const metabolismRate &#x3D; 0.015;
     const weightInGrams &#x3D; weight * 1000;
     const currentTime &#x3D; new Date();
-    // Construct full date objects for drink times
-    const drinkTimes &#x3D; this.drinksForTheDay.map((drink) &#x3D;&gt; {
-      const [hours, minutes] &#x3D; drink.time.split(&#x27;:&#x27;).map(Number);
-      const drinkDate &#x3D; new Date(this.selectedDate);
-      drinkDate.setHours(hours, minutes, 0, 0);
-      return { ...drink, drinkDate };
-    });
 
-    const pastDrinks &#x3D; drinkTimes.filter(
-      (drink) &#x3D;&gt; drink.drinkDate &lt;&#x3D; currentTime
-    );
-    const futureDrinks &#x3D; drinkTimes.filter(
-      (drink) &#x3D;&gt; drink.drinkDate &gt; currentTime
-    );
-
-    const totalPastAlcoholGrams &#x3D; pastDrinks.reduce(
-      (sum, drink) &#x3D;&gt; sum + (drink.alcohol || 0),
-      0
-    );
-
-    if (pastDrinks.length &gt; 0) {
-      const lastDrinkTime &#x3D; new Date(
-        Math.max(...pastDrinks.map((drink) &#x3D;&gt; drink.drinkDate.getTime()))
-      );
-      const timeElapsedHours &#x3D; Math.max(
-        0,
-        (currentTime.getTime() - lastDrinkTime.getTime()) / (1000 * 60 * 60)
-      );
-
-      this.bac &#x3D;
-        (totalPastAlcoholGrams / (weightInGrams * bodyWaterConstant)) * 100 -
-        metabolismRate * timeElapsedHours;
-      this.bac &#x3D; Math.max(this.bac, 0); // Ensure BAC does not go negative
+    // Ensure selectedDate is a valid Date object
+    let selectedDateObj: Date;
+    if (
+      this.selectedDate instanceof Date &amp;&amp;
+      !isNaN(this.selectedDate.getTime())
+    ) {
+      selectedDateObj &#x3D; this.selectedDate;
+    } else if (
+      typeof this.selectedDate &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ||
+      typeof this.selectedDate &#x3D;&#x3D;&#x3D; &#x27;number&#x27;
+    ) {
+      selectedDateObj &#x3D; new Date(this.selectedDate);
+      if (isNaN(selectedDateObj.getTime())) {
+        console.error(&#x27;Invalid selectedDate for BAC calculation.&#x27;);
+        this.bac &#x3D; 0;
+        this.soberTime &#x3D; null;
+        return;
+      }
     } else {
+      console.error(&#x27;selectedDate is not a valid type for BAC calculation.&#x27;);
       this.bac &#x3D; 0;
+      this.soberTime &#x3D; null;
+      return;
     }
 
-    // Calculate sober time (including future drinks)
-    const allAlcoholGrams &#x3D; drinkTimes.reduce(
-      (sum, drink) &#x3D;&gt; sum + (drink.alcohol || 0),
-      0
-    );
-    const soberHours &#x3D;
-      allAlcoholGrams / (metabolismRate * weightInGrams * bodyWaterConstant);
+    const allDrinksToday &#x3D; (this.drinksForTheDay || []) // Handle if drinksForTheDay is null/undefined
+      .map((drink) &#x3D;&gt; {
+        if (
+          !drink ||
+          typeof drink.time !&#x3D;&#x3D; &#x27;string&#x27; ||
+          !drink.time.includes(&#x27;:&#x27;)
+        ) {
+          console.warn(
+            &#x27;Skipping drink due to invalid format or missing time:&#x27;,
+            drink
+          );
+          return null;
+        }
+        const [hours, minutes] &#x3D; drink.time.split(&#x27;:&#x27;).map(Number);
+        if (isNaN(hours) || isNaN(minutes)) {
+          console.warn(
+            &#x27;Skipping drink due to invalid time parsing:&#x27;,
+            drink.time
+          );
+          return null;
+        }
+        const drinkDate &#x3D; new Date(selectedDateObj);
+        drinkDate.setHours(hours, minutes, 0, 0);
+        return { ...drink, drinkDate, alcohol: Number(drink.alcohol) || 0 };
+      })
+      .filter((drink) &#x3D;&gt; drink !&#x3D;&#x3D; null) as {
+      alcohol: number;
+      drinkDate: Date;
+      [key: string]: any;
+    }[]; // Type assertion after filter
 
-    const earliestAllDrinkTime &#x3D; new Date(
-      Math.min(...drinkTimes.map((drink) &#x3D;&gt; drink.drinkDate.getTime()))
-    );
-    const estimatedSoberTime &#x3D; new Date(
-      Math.max(earliestAllDrinkTime.getTime()) +
-        soberHours * 100 * 60 * 60 * 1000
+    allDrinksToday.sort(
+      (a, b) &#x3D;&gt; a.drinkDate.getTime() - b.drinkDate.getTime()
     );
 
-    this.soberTime &#x3D; estimatedSoberTime;
+    // --- Calculate Current BAC ---
+    let currentBacInternal &#x3D; 0;
+    let lastProcessedDrinkTimeForBac: Date | null &#x3D; null;
+
+    const pastAndCurrentDrinks &#x3D; allDrinksToday.filter(
+      (drink) &#x3D;&gt; drink.drinkDate &lt;&#x3D; currentTime
+    );
+
+    if (pastAndCurrentDrinks.length &gt; 0) {
+      // Initialize with the time of the first relevant drink
+      lastProcessedDrinkTimeForBac &#x3D; new Date(
+        pastAndCurrentDrinks[0].drinkDate.getTime()
+      );
+
+      for (const drink of pastAndCurrentDrinks) {
+        // 1. Metabolize BAC from lastProcessedDrinkTimeForBac up to current drink&#x27;s time
+        if (
+          currentBacInternal &gt; 0 &amp;&amp;
+          drink.drinkDate &gt; lastProcessedDrinkTimeForBac
+        ) {
+          const hoursElapsed &#x3D;
+            (drink.drinkDate.getTime() -
+              lastProcessedDrinkTimeForBac.getTime()) /
+            (1000 * 60 * 60);
+          currentBacInternal -&#x3D; metabolismRate * hoursElapsed;
+          currentBacInternal &#x3D; Math.max(0, currentBacInternal);
+        }
+
+        // Update lastProcessedDrinkTimeForBac to current drink&#x27;s time
+        lastProcessedDrinkTimeForBac &#x3D; new Date(drink.drinkDate.getTime());
+
+        // 2. Add BAC from the current drink
+        // Widmark formula: BAC (g/100mL or %) &#x3D; (Alcohol in grams / (Body weight in grams * r)) * 100
+        currentBacInternal +&#x3D;
+          (drink.alcohol / (weightInGrams * bodyWaterConstant)) * 100;
+      }
+
+      // 3. After processing all past drinks, metabolize from the time of the *last consumed past drink* up to current time
+      if (
+        currentBacInternal &gt; 0 &amp;&amp;
+        lastProcessedDrinkTimeForBac &amp;&amp;
+        currentTime &gt; lastProcessedDrinkTimeForBac
+      ) {
+        const hoursElapsedSinceLastDrink &#x3D;
+          (currentTime.getTime() - lastProcessedDrinkTimeForBac.getTime()) /
+          (1000 * 60 * 60);
+        currentBacInternal -&#x3D; metabolismRate * hoursElapsedSinceLastDrink;
+      }
+    }
+    this.bac &#x3D; Math.max(0, currentBacInternal); // Ensure BAC is not negative
+
+    // --- Estimate Sober Time (using all drinks for the day) ---
+    let simulatedBac &#x3D; 0;
+    let currentSimTime: Date | null &#x3D; null;
+
+    if (allDrinksToday.length &#x3D;&#x3D;&#x3D; 0) {
+      this.soberTime &#x3D; null; // No drinks, no sober time to project based on them.
+    } else {
+      // Start simulation from the time of the first drink
+      currentSimTime &#x3D; new Date(allDrinksToday[0].drinkDate.getTime());
+      // simulatedBac is already 0
+
+      for (const drink of allDrinksToday) {
+        // 1. Metabolize existing BAC from currentSimTime up to this drink&#x27;s time
+        if (simulatedBac &gt; 0 &amp;&amp; drink.drinkDate &gt; currentSimTime) {
+          const hoursToDrink &#x3D;
+            (drink.drinkDate.getTime() - currentSimTime.getTime()) /
+            (1000 * 60 * 60);
+          simulatedBac -&#x3D; metabolismRate * hoursToDrink;
+          simulatedBac &#x3D; Math.max(0, simulatedBac);
+        }
+
+        // 2. Advance simulation time to the current drink&#x27;s time (handles drinks at same time correctly)
+        currentSimTime &#x3D; new Date(
+          Math.max(currentSimTime.getTime(), drink.drinkDate.getTime())
+        );
+
+        // 3. Add BAC from this drink
+        simulatedBac +&#x3D;
+          (drink.alcohol / (weightInGrams * bodyWaterConstant)) * 100;
+      }
+
+      // 4. After all drinks, if BAC &gt; 0, calculate time to zero from currentSimTime (time of last drink&#x27;s effect)
+      if (simulatedBac &gt; 0 &amp;&amp; currentSimTime) {
+        const hoursToSober &#x3D; simulatedBac / metabolismRate;
+        this.soberTime &#x3D; new Date(
+          currentSimTime.getTime() + hoursToSober * 60 * 60 * 1000
+        );
+      } else if (currentSimTime) {
+        // Already sober by the time of (or after processing) the last drink
+        this.soberTime &#x3D; new Date(currentSimTime.getTime());
+      } else {
+        // Should not happen if allDrinksToday has items, but as a fallback:
+        this.soberTime &#x3D; null;
+      }
+    }
   }
 
   /**
@@ -1571,10 +1935,21 @@ export class HomeComponent implements OnInit {
    * Sets proper data on date change.
    * @param event The event that triggers this method.
    */
-  onDateChange(event: any) {
-    this.selectedDate &#x3D; new Date(event.target.value);
-    this.dateService.setSelectedDate(this.selectedDate);
-    this.fetchDrinksForTheDay();
+  onDateChange(direction: string) {
+    const originalDate &#x3D; new Date(document.getElementById(&#x27;date&#x27;)!.innerHTML);
+
+    if (direction &#x3D;&#x3D;&#x3D; &#x27;back&#x27;) {
+      const prevDay &#x3D; originalDate;
+      prevDay.setDate(originalDate.getDate() - 1);
+      this.dateService.setSelectedDate(prevDay);
+    } else if (direction &#x3D;&#x3D;&#x3D; &#x27;forward&#x27;) {
+      const nextDay &#x3D; originalDate;
+      nextDay.setDate(originalDate.getDate() + 1);
+      this.dateService.setSelectedDate(nextDay);
+    }
+    // Since angular animations only trigger when the bound element&#x27;s state changes
+    // we need this key to always change
+    this.dateAnimationKey++;
   }
 
   /**
@@ -1597,20 +1972,7 @@ export class HomeComponent implements OnInit {
    * Redirects to drink list page.
    */
   redirectToDrinks() {
-    this.router.navigate([&#x27;/tracking/drinklist&#x27;]);
-  }
-
-  /**
-   * Shows alert for drink deletion.
-   * @param drink The currently clicked drink.
-   */
-  onDrinkClick(drink: any): void {
-    const confirmDelete &#x3D; window.confirm(
-      &#x60;Are you sure you want to delete the drink ${drink.name}?&#x60;
-    );
-    if (confirmDelete) {
-      this.deleteDrinkFromFirestore(drink);
-    }
+    this.navigationService.navigate(&#x27;/tracking/drinklist&#x27;);
   }
 
   /**
@@ -1671,153 +2033,228 @@ export class HomeComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;home-container&quot;&gt;
-  &lt;div class&#x3D;&quot;date-picker-container&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;zt-input date-picker&quot;&gt;
+  &lt;i role&#x3D;&quot;button&quot; (click)&#x3D;&quot;onDateChange(&#x27;back&#x27;)&quot; class&#x3D;&quot;material-icons&quot;
+    &gt;arrow_circle_down&lt;/i
+  &gt;
+  &lt;span id&#x3D;&quot;date&quot; [@fadeDate]&#x3D;&quot;dateAnimationKey&quot;&gt;{{
+    getFormattedDate(selectedDate)
+  }}&lt;/span&gt;
+  &lt;i role&#x3D;&quot;button&quot; (click)&#x3D;&quot;onDateChange(&#x27;forward&#x27;)&quot; class&#x3D;&quot;material-icons&quot;
+    &gt;arrow_circle_up&lt;/i
+  &gt;
+&lt;/div&gt;
 
-    &lt;div class&#x3D;&quot;date-display-box&quot; (click)&#x3D;&quot;openDatePicker()&quot;&gt;
-      {{ selectedDate | date: &#x27;yyyy-MM-dd&#x27; }}
+&lt;div *ngIf&#x3D;&quot;drinksForTheDay.length &gt; 0&quot;&gt;
+  &lt;ul class&#x3D;&quot;drink-list&quot;&gt;
+    &lt;li *ngFor&#x3D;&quot;let drink of drinksForTheDay&quot; [@slideGrow]&gt;
+      &lt;span class&#x3D;&quot;drink-name&quot;&gt;{{ drink.name }}&lt;/span&gt;
+      &lt;div class&#x3D;&quot;drink-li-data&quot;&gt;
+        &lt;span&gt;{{ drink.time }}&lt;/span&gt;
+        &lt;span
+          &gt;{{ drink.calories | trimDecimals : 2 }} kcal -
+          {{ drink.amount }} ml&lt;/span
+        &gt;
+      &lt;/div&gt;
+      &lt;i
+        role&#x3D;&quot;button&quot;
+        (click)&#x3D;&quot;deleteDrinkFromFirestore(drink)&quot;
+        class&#x3D;&quot;material-icons close-button&quot;
+        &gt;highlight_remove&lt;/i
+      &gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+&lt;div *ngIf&#x3D;&quot;drinksForTheDay.length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;no-drinks&quot;&gt;
+  &lt;p&gt;No drinks recorded for this day&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;info-container&quot; *ngIf&#x3D;&quot;totalDrinks !&#x3D; 0 &amp;&amp; isTotalsShown&quot; @scale&gt;
+  &lt;i class&#x3D;&quot;material-icons hide-button&quot; role&#x3D;&quot;button&quot; (click)&#x3D;&quot;hideTotals()&quot;
+    &gt;close&lt;/i
+  &gt;
+  &lt;div class&#x3D;&quot;info-div&quot;&gt;
+    &lt;div class&#x3D;&quot;total-calories&quot;&gt;
+      &lt;span&gt;Total calories&lt;/span&gt;
+      &lt;span&gt;{{ totalCalories | trimDecimals : 2 }} kcal&lt;/span&gt;
     &lt;/div&gt;
-
-    &lt;div class&#x3D;&quot;date-picker-field&quot;&gt;
-      &lt;input type&#x3D;&quot;date&quot; [value]&#x3D;&quot;getFormattedDate(selectedDate)&quot; (change)&#x3D;&quot;onDateChange($event)&quot; #dateInput
-        class&#x3D;&quot;hidden-date-input&quot; /&gt;
+    &lt;div class&#x3D;&quot;number-of-drinks&quot;&gt;
+      &lt;span&gt;Number of drinks&lt;/span&gt;
+      &lt;span&gt;{{ totalDrinks }}&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;estimated-bac&quot;&gt;
+      &lt;span&gt;Estimated BAC&lt;/span&gt;
+      &lt;span&gt;{{ bac | number : &quot;1.2-2&quot; }}%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;estimated-sober-time&quot;&gt;
+      &lt;span&gt;Estimated sober time&lt;/span&gt;
+      &lt;span&gt;{{ soberTime | date : &quot;MMM dd EEE HH:mm:ss&quot; }}&lt;/span&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-
-  &lt;div *ngIf&#x3D;&quot;drinksForTheDay.length &gt; 0&quot;&gt;
-    &lt;ul&gt;
-      &lt;li *ngFor&#x3D;&quot;let drink of drinksForTheDay&quot;&gt;
-        &lt;span class&#x3D;&quot;drink-name&quot;&gt;{{ drink.name }}&lt;/span&gt;
-        &lt;span (click)&#x3D;&quot;onDrinkClick(drink)&quot; class&#x3D;&quot;bi bi-x-lg remove-drink&quot; style&#x3D;&quot;cursor: pointer;&quot;&gt;&lt;/span&gt;
-        &lt;br&gt; {{ drink.amount }} ml - {{ drink.time }} - {{ drink.calories |
-        trimDecimals:2 }} kcal
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;
-  &lt;div *ngIf&#x3D;&quot;drinksForTheDay.length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;no-drinks&quot;&gt;
-    &lt;p&gt;No drinks recorded for this day&lt;/p&gt;
-  &lt;/div&gt;
-
-  &lt;div class&#x3D;&quot;info-container&quot; *ngIf&#x3D;&quot;totalDrinks !&#x3D; 0&quot;&gt;
-    &lt;div class&#x3D;&quot;calorie-total&quot;&gt;
-      &lt;p&gt;Total calories:&lt;span class&#x3D;&quot;info-container-right&quot;&gt;{{ totalCalories | trimDecimals:2 }} kcal&lt;/span&gt;&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;drinks-total&quot;&gt;
-      &lt;p&gt;Number of drinks:&lt;span class&#x3D;&quot;info-container-right&quot;&gt;{{ totalDrinks }}&lt;/span&gt;&lt;/p&gt;
-    &lt;/div&gt;
-
-    &lt;div class&#x3D;&quot;bac-display&quot;&gt;
-      &lt;h3&gt;Estimated BAC:&lt;span class&#x3D;&quot;info-container-right&quot;&gt;{{ bac | number: &#x27;1.2-2&#x27; }}%&lt;/span&gt;&lt;/h3&gt;
-      &lt;p *ngIf&#x3D;&quot;soberTime&quot;&gt;Sober:&lt;span class&#x3D;&quot;info-container-right&quot;&gt;~ {{ soberTime | date: &#x27;EEE MMM dd yyyy HH:mm:ss&#x27;
-          }}&lt;/span&gt;&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class&#x3D;&quot;add-drink-container&quot;&gt;
-    &lt;button mat-flat-button (click)&#x3D;&quot;redirectToDrinks()&quot; class&#x3D;&quot;add-drink-button&quot;&gt;Add Drink&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;zt-button-div&quot;&gt;
+  &lt;button (click)&#x3D;&quot;redirectToDrinks()&quot; class&#x3D;&quot;zt-button blue&quot;&gt;Add Drink&lt;/button&gt;
+  &lt;button
+    (click)&#x3D;&quot;showTotals()&quot;
+    class&#x3D;&quot;zt-button purple&quot;
+    [ngClass]&#x3D;&quot;drinksForTheDay.length &#x3D;&#x3D; 0 ? &#x27;disabled-button&#x27; : &#x27;&#x27;&quot;
+    [disabled]&#x3D;&quot;drinksForTheDay.length &#x3D;&#x3D; 0&quot;
+  &gt;
+    Totals
+  &lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="styleData">
                 <p class="comment">
                     <code>./home.component.scss</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">.home-container {
-  width: 40vh;
-  overflow-y: auto;
-  height: 85vh;
-  margin-top: -10%;
-}
+                <pre class="line-numbers"><code class="language-scss">@use &quot;variables&quot; as *;
 
-.date-picker-container {
+.date-picker {
   display: flex;
-  flex-direction: column;
   align-items: center;
-}
+  justify-content: center;
+  column-gap: 4.5rem;
 
-.date-display-box {
-  background-color: #212121;
-  color: white;
-  border-radius: 50px 50px 50px 50px;
-  width: 100%;
-  text-align: center;
-  min-height: 6vh;
-  padding: 20px;
-  cursor: pointer;
+  i {
+    &amp;:first-of-type {
+      position: relative;
+      transform: rotate(90deg);
+
+      &amp;:active {
+        top: 2px;
+      }
+    }
+
+    &amp;:last-of-type {
+      position: relative;
+      transform: rotate(90deg);
+
+      &amp;:active {
+        top: 2px;
+      }
+    }
+  }
 }
 
 .info-container {
-  padding-top: 5%;
-}
-
-.info-container-right {
-  float: right;
-}
-
-ul &gt; li {
-  text-align: center;
-}
-
-.add-drink-container {
-  text-align: center;
+  position: absolute;
+  border-radius: 1rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  background-color: $ztBlack;
+  display: flex;
   align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2vh;
-}
+  flex-direction: column;
+  row-gap: 1.5rem;
+  padding-top: 3rem;
 
-.add-drink-button {
-  margin-top: 5%;
-  width: 65%;
-  height: 3.5rem;
-  border-radius: 50px 50px 50px 50px;
-  font-size: large;
-  color: white;
-  background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
+  .hide-button {
+    position: absolute;
+    right: 0;
+    padding-right: 2rem;
+  }
+
+  .info-div {
+    padding-top: 5rem;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 1.5rem;
+
+      span:first-of-type {
+        color: gray;
+      }
+
+      span:last-of-type {
+        font-size: 2rem;
+      }
+    }
+  }
 }
 
 .no-drinks {
-  text-align: center;
+  display: flex;
+  height: 6rem;
+  padding-top: 1rem;
+  justify-content: center;
+  align-items: center;
 }
 
-.home-container ul {
-  position: relative;
+.disabled-button {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+input.search {
+  margin-bottom: 1rem;
+}
+
+ul.drink-list {
   list-style: none;
-  padding: 0;
-  background-color: #21212180;
-  border-radius: 20px 20px 20px 20px;
-  border: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
-  max-height: 30vh;
   overflow-y: auto;
-}
+  max-height: 20rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background-color: $ztGray;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 
-ul li:not(:last-child) {
-  border-bottom: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
-}
+  &amp;::-webkit-scrollbar {
+    display: none;
+  }
 
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 20rem;
+    height: 3rem;
 
-.home-container li {
-  position: relative;
-  cursor: pointer;
-  padding: 20px;
-}
+    &amp;:not(:last-child) {
+      border-bottom: 1px solid black;
+    }
 
-.remove-drink {
-  color: red;
-  float: right;
-  margin-right: -1vh;
-  margin-top: -1.5vh;
-}
+    .drink-name {
+      padding-left: 1rem;
+      display: flex;
+      justify-content: left;
+      width: 100%;
+    }
 
-.hidden-date-input {
-  position: absolute;
-  width: 0;
-  height: 0;
-  opacity: 0;
-}
+    .drink-li-data {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-right: 0.5rem;
+      right: 0;
+      width: 15rem;
 
-.date-picker-field {
-  padding-bottom: 10%;
+      span:last-of-type {
+        font-size: 0.7rem;
+        color: gray;
+      }
+    }
+
+    .close-button {
+      position: relative;
+      right: 0;
+      color: red;
+      font-size: 2rem;
+      justify-content: flex-end;
+      display: flex;
+      cursor: pointer;
+      padding-right: 0.5rem;
+    }
+  }
 }
 </code></pre>
     </div>
@@ -1847,8 +2284,8 @@ ul li:not(:last-child) {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="home-container">  <div class="date-picker-container">    <div class="date-display-box" (click)="openDatePicker()">      {{ selectedDate | date: \'yyyy-MM-dd\' }}    </div>    <div class="date-picker-field">      <input type="date" [value]="getFormattedDate(selectedDate)" (change)="onDateChange($event)" #dateInput        class="hidden-date-input" />    </div>  </div>  <div *ngIf="drinksForTheDay.length > 0">    <ul>      <li *ngFor="let drink of drinksForTheDay">        <span class="drink-name">{{ drink.name }}</span>        <span (click)="onDrinkClick(drink)" class="bi bi-x-lg remove-drink" style="cursor: pointer;"></span>        <br> {{ drink.amount }} ml - {{ drink.time }} - {{ drink.calories |        trimDecimals:2 }} kcal      </li>    </ul>  </div>  <div *ngIf="drinksForTheDay.length === 0" class="no-drinks">    <p>No drinks recorded for this day</p>  </div>  <div class="info-container" *ngIf="totalDrinks != 0">    <div class="calorie-total">      <p>Total calories:<span class="info-container-right">{{ totalCalories | trimDecimals:2 }} kcal</span></p>    </div>    <div class="drinks-total">      <p>Number of drinks:<span class="info-container-right">{{ totalDrinks }}</span></p>    </div>    <div class="bac-display">      <h3>Estimated BAC:<span class="info-container-right">{{ bac | number: \'1.2-2\' }}%</span></h3>      <p *ngIf="soberTime">Sober:<span class="info-container-right">~ {{ soberTime | date: \'EEE MMM dd yyyy HH:mm:ss\'          }}</span></p>    </div>  </div>  <div class="add-drink-container">    <button mat-flat-button (click)="redirectToDrinks()" class="add-drink-button">Add Drink</button>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
+        var COMPONENT_TEMPLATE = '<div><div class="zt-input date-picker">  <i role="button" (click)="onDateChange(\'back\')" class="material-icons"    >arrow_circle_down</i  >  <span id="date" [@fadeDate]="dateAnimationKey">{{    getFormattedDate(selectedDate)  }}</span>  <i role="button" (click)="onDateChange(\'forward\')" class="material-icons"    >arrow_circle_up</i  ></div><div *ngIf="drinksForTheDay.length > 0">  <ul class="drink-list">    <li *ngFor="let drink of drinksForTheDay" [@slideGrow]>      <span class="drink-name">{{ drink.name }}</span>      <div class="drink-li-data">        <span>{{ drink.time }}</span>        <span          >{{ drink.calories | trimDecimals : 2 }} kcal -          {{ drink.amount }} ml</span        >      </div>      <i        role="button"        (click)="deleteDrinkFromFirestore(drink)"        class="material-icons close-button"        >highlight_remove</i      >    </li>  </ul></div><div *ngIf="drinksForTheDay.length === 0" class="no-drinks">  <p>No drinks recorded for this day</p></div><div class="info-container" *ngIf="totalDrinks != 0 && isTotalsShown" @scale>  <i class="material-icons hide-button" role="button" (click)="hideTotals()"    >close</i  >  <div class="info-div">    <div class="total-calories">      <span>Total calories</span>      <span>{{ totalCalories | trimDecimals : 2 }} kcal</span>    </div>    <div class="number-of-drinks">      <span>Number of drinks</span>      <span>{{ totalDrinks }}</span>    </div>    <div class="estimated-bac">      <span>Estimated BAC</span>      <span>{{ bac | number : "1.2-2" }}%</span>    </div>    <div class="estimated-sober-time">      <span>Estimated sober time</span>      <span>{{ soberTime | date : "MMM dd EEE HH:mm:ss" }}</span>    </div>  </div></div><div class="zt-button-div">  <button (click)="redirectToDrinks()" class="zt-button blue">Add Drink</button>  <button    (click)="showTotals()"    class="zt-button purple"    [ngClass]="drinksForTheDay.length == 0 ? \'disabled-button\' : \'\'"    [disabled]="drinksForTheDay.length == 0"  >    Totals  </button></div></div>'
+    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RedirectComponent', 'selector': 'app-redirect'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HomeComponent'};
 </script>

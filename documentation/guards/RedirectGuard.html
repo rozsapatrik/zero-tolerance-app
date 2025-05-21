@@ -79,109 +79,53 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content component">
+               <div class="content guard">
                    <div class="content-data">
 
 
 
 
+
+
+
+
+
+
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Components</li>
-  <li class="breadcrumb-item"
-  >
-  LandingPageComponent</li>
+    <li class="breadcrumb-item">Guards</li>
+    <li class="breadcrumb-item" >RedirectGuard</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
-            <a href="#info" class="nav-link active"
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
                 role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
         <li class="nav-item">
-            <a href="#source" class="nav-link"
+            <a href="#source" 
+                class="nav-link"
+                
                 role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
-        </li>
-        <li class="nav-item">
-            <a href="#templateData" class="nav-link"
-                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
-        </li>
-        <li class="nav-item">
-            <a href="#styleData" class="nav-link"
-                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
-        </li>
-        <li class="nav-item">
-            <a href="#tree" class="nav-link"
-                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>src/app/pages/components/landing-page/landing-page.component.ts</code>
-</p>
-
-
-    <p class="comment">
-        <h3>Description</h3>
-    </p>
-    <p class="comment">
-        <p>Displays the landing page.</p>
-
-    </p>
-
-
-
-
-<section data-compodoc="block-metadata">
-    <h3>Metadata</h3>
-    <table class="table table-sm table-hover metadata">
-        <tbody>
+        <div class="tab-pane fade active in" id="info">
+            <p class="comment">
+            <h3>File</h3>
+            </p>
+            <p class="comment">
+                <code>src/app/core/guards/redirect.guard.ts</code>
+            </p>
 
 
 
 
 
 
-
-
-
-
-
-
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-landing-page</code></td>
-            </tr>
-
-
-
-            <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./landing-page.component.scss</code></td>
-            </tr>
-
-
-
-            <tr>
-                <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./landing-page.component.html</code></td>
-            </tr>
-
-
-
-
-
-
-
-
-        </tbody>
-    </table>
-</section>
-
-    <section data-compodoc="block-index">
+                <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -195,10 +139,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#redirectToLogin" >redirectToLogin</a>
-                            </li>
-                            <li>
-                                <a href="#redirectToRegister" >redirectToRegister</a>
+                                <a href="#canActivate" >canActivate</a>
                             </li>
                         </ul>
                     </td>
@@ -212,18 +153,18 @@
     </table>
 </section>
 
-    <section data-compodoc="block-constructor">
+                <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(router: Router, navigationService: <a href="../injectables/NavigationService.html" target="_self">NavigationService</a>)</code>
+<code>constructor(authService: <a href="../injectables/AuthenticationService.html" target="_self">AuthenticationService</a>, navigationService: <a href="../injectables/NavigationService.html" target="_self">NavigationService</a>, router: Router)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pages/components/landing-page/landing-page.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/core/guards/redirect.guard.ts:10</a></div>
                             </td>
                         </tr>
 
@@ -242,10 +183,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>router</td>
+                                                        <td>authService</td>
                                                   
                                                         <td>
-                                                                    <code>Router</code>
+                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -253,7 +194,7 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <p>Router for routing.</p>
+                                                                <p>Service for user authentication.</p>
 
                                                         </td>
                                                 </tr>
@@ -262,6 +203,22 @@
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/NavigationService.html" target="_self" >NavigationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service for loading spinner navigation.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
                                                         </td>
                                                   
                                                     <td>
@@ -280,11 +237,7 @@
         </table>
 </section>
 
-
-
-
-
-    <section data-compodoc="block-methods">
+                <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -293,55 +246,16 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="redirectToLogin"></a>
+                    <a name="canActivate"></a>
                     <span class="name">
-                        <span ><b>redirectToLogin</b></span>
-                        <a href="#redirectToLogin"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>canActivate</b></span>
+                        <a href="#canActivate"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>redirectToLogin()</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="33"
-                                    class="link-to-prism">src/app/pages/components/landing-page/landing-page.component.ts:33</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>Redirects to the login page.</p>
-</div>
-
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                        </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="redirectToRegister"></a>
-                    <span class="name">
-                        <span ><b>redirectToRegister</b></span>
-                        <a href="#redirectToRegister"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>redirectToRegister()</code>
+<code>canActivate()</code>
                 </td>
             </tr>
 
@@ -349,136 +263,78 @@
                     <tr>
                         <td class="col-md-4">
                             <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/app/pages/components/landing-page/landing-page.component.ts:26</a></div>
+                                    class="link-to-prism">src/app/core/guards/redirect.guard.ts:26</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Redirects to the register page.</p>
+                        <div class="io-description"><p>Redirects a UrlTree so redirecting to it works.</p>
 </div>
 
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                            <b>Returns : </b>    <code>Observable | Promise | boolean | UrlTree</code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Returns if no redirect happened.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
     </table>
 </section>
+        </div>
 
-</div>
 
+        <div class="tab-pane fade  tab-source-code" id="source">
+            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { CanActivate, Router, UrlTree } from &#x27;@angular/router&#x27;;
+import { map, Observable, take } from &#x27;rxjs&#x27;;
+import { AuthenticationService } from &#x27;../services/authentication.service&#x27;;
+import { NavigationService } from &#x27;../services/navigation.service&#x27;;
 
-    <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
-import { Router } from &#x27;@angular/router&#x27;;
-import { NavigationService } from &#x27;src/app/core/services/navigation.service&#x27;;
-
-/**
- * Displays the landing page.
- */
-@Component({
-  selector: &#x27;app-landing-page&#x27;,
-  templateUrl: &#x27;./landing-page.component.html&#x27;,
-  styleUrls: [&#x27;./landing-page.component.scss&#x27;],
+@Injectable({
+  providedIn: &#x27;root&#x27;,
 })
-export class LandingPageComponent {
+export class RedirectGuard implements CanActivate {
   /**
    *
-   * @param router Router for routing.
+   * @param authService Service for user authentication.
+   * @param navigationService Service for loading spinner navigation.
    */
   constructor(
-    private router: Router,
-    private navigationService: NavigationService
+    private authService: AuthenticationService,
+    private navigationService: NavigationService,
+    private router: Router
   ) {}
 
   /**
-   * Redirects to the register page.
+   * Redirects a UrlTree so redirecting to it works.
+   * @returns Returns if no redirect happened.
    */
-  redirectToRegister() {
-    this.navigationService.navigate(&#x27;/auth/register&#x27;);
+  canActivate():
+    | Observable&lt;boolean | UrlTree&gt;
+    | Promise&lt;boolean | UrlTree&gt;
+    | boolean
+    | UrlTree {
+    return this.authService.isUser().pipe(
+      take(1),
+      map((user) &#x3D;&gt; {
+        if (user) {
+          return this.router.createUrlTree([&#x27;/tracking/home&#x27;]);
+        } else {
+          return this.router.createUrlTree([&#x27;/pages/landing&#x27;]);
+        }
+      })
+    );
   }
-
-  /**
-   * Redirects to the login page.
-   */
-  redirectToLogin() {
-    this.navigationService.navigate(&#x27;/auth/login&#x27;);
-  }
 }
 </code></pre>
-    </div>
-
-    <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div&gt;
-  &lt;p&gt;Welcome to&lt;/p&gt;
-  &lt;h1 class&#x3D;&quot;landing&quot;&gt;Zero Tolerance&lt;/h1&gt;
-  &lt;i class&#x3D;&quot;material-icons&quot;&gt;no_drinks&lt;/i&gt;
-&lt;/div&gt;
-&lt;div class&#x3D;&quot;zt-button-div&quot;&gt;
-  &lt;button class&#x3D;&quot;zt-button purple&quot; (click)&#x3D;&quot;redirectToLogin()&quot;&gt;Sign In&lt;/button&gt;
-  &lt;button class&#x3D;&quot;zt-button blue&quot; (click)&#x3D;&quot;redirectToRegister()&quot;&gt;Sign Up&lt;/button&gt;
-&lt;/div&gt;
-</code></pre>
-    </div>
-
-    <div class="tab-pane fade " id="styleData">
-                <p class="comment">
-                    <code>./landing-page.component.scss</code>
-                </p>
-                <pre class="line-numbers"><code class="language-scss">h1.landing {
-  font-size: 2.25rem;
-  font-weight: bold;
-  padding-bottom: 1rem;
-}
-
-i {
-  font-size: 4rem;
-  padding-bottom: 2rem;
-}
-</code></pre>
-    </div>
-
-    <div class="tab-pane fade " id="tree">
-        <div id="tree-container"></div>
-        <div class="tree-legend">
-            <div class="title">
-                <b>Legend</b>
-            </div>
-            <div>
-                <div class="color htmlelement"></div><span>Html element</span>
-            </div>
-            <div>
-                <div class="color component"></div><span>Component</span>
-            </div>
-            <div>
-                <div class="color directive"></div><span>Html element with directive</span>
-            </div>
         </div>
-    </div>
-
-    
 </div>
-
-<script src="../js/libs/vis.min.js"></script>
-<script src="../js/libs/htmlparser.js"></script>
-<script src="../js/libs/deep-iterator.js"></script>
-<script>
-        var COMPONENT_TEMPLATE = '<div><div>  <p>Welcome to</p>  <h1 class="landing">Zero Tolerance</h1>  <i class="material-icons">no_drinks</i></div><div class="zt-button-div">  <button class="zt-button purple" (click)="redirectToLogin()">Sign In</button>  <button class="zt-button blue" (click)="redirectToRegister()">Sign Up</button></div></div>'
-    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RedirectComponent', 'selector': 'app-redirect'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
-    var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'LandingPageComponent'};
-</script>
-<script src="../js/tree.js"></script>
-
-
-
-
-
-
 
 
 
@@ -515,8 +371,8 @@ i {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'LandingPageComponent.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'guard';
+            var COMPODOC_CURRENT_PAGE_URL = 'RedirectGuard.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

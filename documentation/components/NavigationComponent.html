@@ -198,7 +198,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#isOpen" >isOpen</a>
+                                <a href="#menuState" >menuState</a>
                             </li>
                         </ul>
                     </td>
@@ -212,6 +212,9 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                <a href="#navigateWithMenuClose" >navigateWithMenuClose</a>
+                            </li>
                             <li>
                                 <a href="#toggleMenu" >toggleMenu</a>
                             </li>
@@ -227,6 +230,89 @@
     </table>
 </section>
 
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: Router, spinner: NgxSpinnerService, navigationService: <a href="../injectables/NavigationService.html" target="_self">NavigationService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/shared/navigation/navigation.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Hides the loading spinner when the navigation has ended.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Router for routing.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>spinner</td>
+                                                  
+                                                        <td>
+                                                                    <code>NgxSpinnerService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>navigationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NavigationService.html" target="_self" >NavigationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
 
 
@@ -237,6 +323,80 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateWithMenuClose"></a>
+                    <span class="name">
+                        <span ><b>navigateWithMenuClose</b></span>
+                        <a href="#navigateWithMenuClose"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateWithMenuClose(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/app/shared/navigation/navigation.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Navigates to destination after navigation menu.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>path</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The path of the destination page.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -257,15 +417,15 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="21"
-                                    class="link-to-prism">src/app/shared/navigation/navigation.component.ts:21</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/app/shared/navigation/navigation.component.ts:44</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Toggles navigation menu.</p>
+                        <div class="io-description"><p>Toggles the navigation menu</p>
 </div>
 
                         <div class="io-description">
@@ -286,27 +446,33 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="isOpen"></a>
+                    <a name="menuState"></a>
                     <span class="name">
-                        <span ><b>isOpen</b></span>
-                        <a href="#isOpen"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>menuState</b></span>
+                        <a href="#menuState"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
+                        <i>Type : </i>    <code>&quot;closed&quot; | &quot;open&quot; | &quot;closing&quot; | &quot;closingSoft&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;closed&#x27;</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/shared/navigation/navigation.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/shared/navigation/navigation.component.ts:39</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Flag to check if menu is open.</p>
+                    <div class="io-description"><p>State variable for menu state.</p>
 </div>
                 </td>
             </tr>
@@ -320,6 +486,10 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ViewEncapsulation } from &#x27;@angular/core&#x27;;
+import { NavigationEnd, Router } from &#x27;@angular/router&#x27;;
+import { NgxSpinnerService } from &#x27;ngx-spinner&#x27;;
+import { delay, filter } from &#x27;rxjs/operators&#x27;;
+import { NavigationService } from &#x27;src/app/core/services/navigation.service&#x27;;
 
 /**
  * Handles the navigation menu.
@@ -328,130 +498,267 @@
   selector: &#x27;app-navigation&#x27;,
   templateUrl: &#x27;./navigation.component.html&#x27;,
   styleUrls: [&#x27;./navigation.component.scss&#x27;],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class NavigationComponent {
   /**
-   * Flag to check if menu is open.
+   * Hides the loading spinner when the navigation has ended.
+   * @param router Router for routing.
    */
-  isOpen &#x3D; false;
+  constructor(
+    private router: Router,
+    private spinner: NgxSpinnerService,
+    private navigationService: NavigationService
+  ) {
+    this.router.events
+      .pipe(
+        filter((event) &#x3D;&gt; event instanceof NavigationEnd),
+        delay(300)
+      )
+      .subscribe(() &#x3D;&gt; {
+        this.spinner.hide();
+      });
+  }
 
   /**
-   * Toggles navigation menu.
+   * State variable for menu state.
+   */
+  menuState: &#x27;closed&#x27; | &#x27;open&#x27; | &#x27;closing&#x27; | &#x27;closingSoft&#x27; &#x3D; &#x27;closed&#x27;;
+
+  /**
+   * Toggles the navigation menu
    */
   toggleMenu() {
-    this.isOpen &#x3D; !this.isOpen;
+    if (this.menuState &#x3D;&#x3D;&#x3D; &#x27;closed&#x27;) {
+      this.menuState &#x3D; &#x27;open&#x27;;
+    } else if (this.menuState &#x3D;&#x3D;&#x3D; &#x27;open&#x27;) {
+      this.menuState &#x3D; &#x27;closing&#x27;;
+      setTimeout(() &#x3D;&gt; {
+        this.menuState &#x3D; &#x27;closed&#x27;;
+      }, 500);
+    }
+  }
+
+  /**
+   * Navigates to destination after navigation menu.
+   * @param path The path of the destination page.
+   */
+  navigateWithMenuClose(path: string) {
+    let hideDelay &#x3D; 300;
+
+    // Increased delay so we don&#x27;t see the profile picture loading in.
+    if (path &#x3D;&#x3D;&#x3D; &#x27;/profile/profile&#x27;) {
+      hideDelay &#x3D; 700;
+    }
+
+    this.navigationService.navigate(
+      path,
+      undefined,
+      () &#x3D;&gt; {
+        this.menuState &#x3D; &#x27;closingSoft&#x27;;
+        setTimeout(() &#x3D;&gt; (this.menuState &#x3D; &#x27;closed&#x27;), 500);
+      },
+      hideDelay,
+      500
+    );
   }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;hamburger-menu-container&quot; [class.open]&#x3D;&quot;isOpen&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div
+  class&#x3D;&quot;hamburger-menu-container&quot;
+  [ngClass]&#x3D;&quot;{
+    open: menuState &#x3D;&#x3D;&#x3D; &#x27;open&#x27;,
+    closing: menuState &#x3D;&#x3D;&#x3D; &#x27;closing&#x27;,
+    closingSoft: menuState &#x3D;&#x3D;&#x3D; &#x27;closingSoft&#x27;
+  }&quot;
+  (click)&#x3D;&quot;toggleMenu()&quot;
+&gt;
   &lt;div class&#x3D;&quot;menu-content&quot;&gt;
     &lt;ul&gt;
-      &lt;a href&#x3D;&quot;/tracking/home&quot;&gt;
+      &lt;a
+        (click)&#x3D;&quot;navigateWithMenuClose(&#x27;/tracking/home&#x27;)&quot;
+        (click)&#x3D;&quot;toggleMenu()&quot;
+      &gt;
         &lt;li&gt;Home&lt;/li&gt;
       &lt;/a&gt;
-      &lt;a href&#x3D;&quot;/pages/aboutus&quot;&gt;
+      &lt;a
+        (click)&#x3D;&quot;navigateWithMenuClose(&#x27;/pages/aboutus&#x27;)&quot;
+        (click)&#x3D;&quot;toggleMenu()&quot;
+      &gt;
         &lt;li&gt;About Us&lt;/li&gt;
       &lt;/a&gt;
-      &lt;a href&#x3D;&quot;/profile/profile&quot;&gt;
+      &lt;a
+        (click)&#x3D;&quot;navigateWithMenuClose(&#x27;/profile/profile&#x27;)&quot;
+        (click)&#x3D;&quot;toggleMenu()&quot;
+      &gt;
         &lt;li&gt;Profile&lt;/li&gt;
       &lt;/a&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class&#x3D;&quot;menu-overlay&quot; (click)&#x3D;&quot;toggleMenu()&quot; *ngIf&#x3D;&quot;isOpen&quot;&gt;&lt;/div&gt;
 
-&lt;button class&#x3D;&quot;hamburger-icon&quot; (click)&#x3D;&quot;toggleMenu()&quot;&gt;
-  &lt;i class&#x3D;&quot;bi bi-list&quot;&gt;&lt;/i&gt;
-&lt;/button&gt;</code></pre>
+&lt;div class&#x3D;&quot;hamburger-icon-container&quot;&gt;
+  &lt;button class&#x3D;&quot;hamburger-icon&quot; (click)&#x3D;&quot;toggleMenu()&quot;&gt;
+    &lt;i
+      class&#x3D;&quot;material-icons&quot;
+      [class.icon-visible]&#x3D;&quot;
+        menuState &#x3D;&#x3D;&#x3D; &#x27;closed&#x27; ||
+        menuState &#x3D;&#x3D;&#x3D; &#x27;closing&#x27; ||
+        menuState &#x3D;&#x3D;&#x3D; &#x27;closingSoft&#x27;
+      &quot;
+      [class.icon-hidden]&#x3D;&quot;menuState &#x3D;&#x3D;&#x3D; &#x27;open&#x27;&quot;
+      &gt;menu&lt;/i
+    &gt;
+    &lt;i
+      class&#x3D;&quot;material-icons&quot;
+      [class.icon-visible]&#x3D;&quot;menuState &#x3D;&#x3D;&#x3D; &#x27;open&#x27;&quot;
+      [class.icon-hidden]&#x3D;&quot;
+        menuState &#x3D;&#x3D;&#x3D; &#x27;closed&#x27; ||
+        menuState &#x3D;&#x3D;&#x3D; &#x27;closing&#x27; ||
+        menuState &#x3D;&#x3D;&#x3D; &#x27;closingSoft&#x27;
+      &quot;
+      &gt;menu_open&lt;/i
+    &gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div
+  class&#x3D;&quot;backdrop&quot;
+  [ngClass]&#x3D;&quot;{
+    closing: menuState &#x3D;&#x3D;&#x3D; &#x27;closing&#x27; || menuState &#x3D;&#x3D;&#x3D; &#x27;closingSoft&#x27;
+  }&quot;
+  *ngIf&#x3D;&quot;menuState !&#x3D;&#x3D; &#x27;closed&#x27;&quot;
+  (click)&#x3D;&quot;toggleMenu()&quot;
+&gt;&lt;/div&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="styleData">
                 <p class="comment">
                     <code>./navigation.component.scss</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">.hamburger-icon {
-  position: fixed;
-  top: 5px;
-  left: 5px;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
-  z-index: 1000;
+                <pre class="line-numbers"><code class="language-scss">@use &quot;variables&quot; as *;
+
+.hamburger-icon-container {
+  padding-top: 0rem;
+
+  .hamburger-icon {
+    position: fixed;
+    background: none;
+    border: none;
+    color: $ztWhite;
+    cursor: pointer;
+    z-index: 1000;
+    padding-top: 0.375rem;
+    padding-left: 0.375rem;
+
+    @media (min-width: 500px) {
+      padding-left: 0.75rem;
+    }
+  }
+
+  i {
+    position: absolute;
+    transition: opacity 0.5s ease;
+  }
+
+  .icon-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .icon-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .hamburger-menu-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  background: rgb(20, 0, 40);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba($color: $ztBlack, $alpha: 1);
   transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   z-index: 997;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+
+  &amp;.open {
+    transform: translateX(0);
+    transition: transform 0.3s ease-out, opacity 0.1s ease-out;
+    pointer-events: auto;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &amp;.closing {
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in, opacity 0.5s ease-in;
+    pointer-events: auto;
+    visibility: visible;
+    opacity: 0;
+  }
+
+  &amp;.closingSoft {
+    transform: translateX(-100%);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: transform 1s ease-in;
+  }
 }
 
-.hamburger-menu-container.open {
-  transform: translateX(0);
-}
+.backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba($color: $ztBlack, $alpha: 0.5);
+  z-index: 996;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
 
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 100;
+  &amp;.closing {
+    opacity: 0;
+  }
 }
 
 .menu-content {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
-  color: white;
+  color: $ztWhite;
   z-index: 999;
-}
 
-.menu-content ul {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin-top: 3vh;
-}
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    row-gap: 0.5rem;
+  }
 
-.menu-content li {
-  margin-top: 15px;
-  padding-right: 12vh;
-  padding-left: 12vh;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
-  border-radius: 15px;
-  cursor: pointer;
-  background-image: linear-gradient(135deg, rgba(132, 0, 255, 0.5) 0%, rgba(72, 0, 155, 0.5) 100%);
-  width: 100%;
-}
+  li {
+    cursor: pointer;
+    width: 100%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
 
-.menu-content a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.2rem;
-  width: 100%;
-  display: inline-block;
-  text-align: center;
-}
-
-a &gt; span {
-  padding-right: 10px;
+  a {
+    color: $ztWhite;
+    text-decoration: none;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.25rem;
+  }
 }
 </code></pre>
     </div>
@@ -481,8 +788,8 @@ a &gt; span {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="hamburger-menu-container" [class.open]="isOpen">  <div class="menu-content">    <ul>      <a href="/tracking/home">        <li>Home</li>      </a>      <a href="/pages/aboutus">        <li>About Us</li>      </a>      <a href="/profile/profile">        <li>Profile</li>      </a>    </ul>  </div></div><div class="menu-overlay" (click)="toggleMenu()" *ngIf="isOpen"></div><button class="hamburger-icon" (click)="toggleMenu()">  <i class="bi bi-list"></i></button></div>'
-    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
+        var COMPONENT_TEMPLATE = '<div><div  class="hamburger-menu-container"  [ngClass]="{    open: menuState === \'open\',    closing: menuState === \'closing\',    closingSoft: menuState === \'closingSoft\'  }"  (click)="toggleMenu()">  <div class="menu-content">    <ul>      <a        (click)="navigateWithMenuClose(\'/tracking/home\')"        (click)="toggleMenu()"      >        <li>Home</li>      </a>      <a        (click)="navigateWithMenuClose(\'/pages/aboutus\')"        (click)="toggleMenu()"      >        <li>About Us</li>      </a>      <a        (click)="navigateWithMenuClose(\'/profile/profile\')"        (click)="toggleMenu()"      >        <li>Profile</li>      </a>    </ul>  </div></div><div class="hamburger-icon-container">  <button class="hamburger-icon" (click)="toggleMenu()">    <i      class="material-icons"      [class.icon-visible]="        menuState === \'closed\' ||        menuState === \'closing\' ||        menuState === \'closingSoft\'      "      [class.icon-hidden]="menuState === \'open\'"      >menu</i    >    <i      class="material-icons"      [class.icon-visible]="menuState === \'open\'"      [class.icon-hidden]="        menuState === \'closed\' ||        menuState === \'closing\' ||        menuState === \'closingSoft\'      "      >menu_open</i    >  </button></div><div  class="backdrop"  [ngClass]="{    closing: menuState === \'closing\' || menuState === \'closingSoft\'  }"  *ngIf="menuState !== \'closed\'"  (click)="toggleMenu()"></div></div>'
+    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RedirectComponent', 'selector': 'app-redirect'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'NavigationComponent'};
 </script>

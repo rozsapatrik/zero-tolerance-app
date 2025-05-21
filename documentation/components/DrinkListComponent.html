@@ -129,7 +129,8 @@
     </p>
     <p class="comment">
         <p>Lists out all the drinks in the database.
-If the user clicks on a specific drink they can add it to their tracking after providing the necessary data.</p>
+If the user clicks on a specific drink they can add it to their tracking after providing the necessary data.
+Animation for drink list form.</p>
 
     </p>
 
@@ -195,6 +196,9 @@ If the user clicks on a specific drink they can add it to their tracking after p
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#drankForm" >drankForm</a>
+                            </li>
+                            <li>
                                 <a href="#drinkAmounts" >drinkAmounts</a>
                             </li>
                             <li>
@@ -211,9 +215,6 @@ If the user clicks on a specific drink they can add it to their tracking after p
                             </li>
                             <li>
                                 <a href="#selectedDrink" >selectedDrink</a>
-                            </li>
-                            <li>
-                                <a href="#tempAmounts" >tempAmounts</a>
                             </li>
                         </ul>
                     </td>
@@ -238,10 +239,13 @@ If the user clicks on a specific drink they can add it to their tracking after p
                                 <a href="#getDrinks" >getDrinks</a>
                             </li>
                             <li>
-                                <a href="#initializeDrinkData" >initializeDrinkData</a>
+                                <a href="#ngOnInit" >ngOnInit</a>
                             </li>
                             <li>
-                                <a href="#ngOnInit" >ngOnInit</a>
+                                <a href="#onCloseClick" >onCloseClick</a>
+                            </li>
+                            <li>
+                                <a href="#onDrinkClick" >onDrinkClick</a>
                             </li>
                             <li>
                                 <a href="#selectDrink" >selectDrink</a>
@@ -254,6 +258,26 @@ If the user clicks on a specific drink they can add it to their tracking after p
 
 
 
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#amount" >amount</a>
+                                </li>
+                                <li>
+                                    <a href="#hour" >hour</a>
+                                </li>
+                                <li>
+                                    <a href="#minute" >minute</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
         </tbody>
     </table>
 </section>
@@ -264,12 +288,12 @@ If the user clicks on a specific drink they can add it to their tracking after p
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(afs: AngularFirestore, dateService: <a href="../injectables/DateService.html" target="_self">DateService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, notyfService: <a href="../injectables/NotyfService.html" target="_self">NotyfService</a>)</code>
+<code>constructor(afs: AngularFirestore, dateService: <a href="../injectables/DateService.html" target="_self">DateService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, notyfService: <a href="../injectables/NotyfService.html" target="_self">NotyfService</a>, navigationService: <a href="../injectables/NavigationService.html" target="_self">NavigationService</a>, spinnerService: NgxSpinnerService)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:95</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:126</a></div>
                             </td>
                         </tr>
 
@@ -351,6 +375,38 @@ If the user clicks on a specific drink they can add it to their tracking after p
 
                                                         </td>
                                                 </tr>
+                                                <tr>
+                                                        <td>navigationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NavigationService.html" target="_self" >NavigationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service for spinner loading navigation.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>spinnerService</td>
+                                                  
+                                                        <td>
+                                                                    <code>NgxSpinnerService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service for spinner loading.</p>
+
+                                                        </td>
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -391,8 +447,8 @@ If the user clicks on a specific drink they can add it to their tracking after p
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="175"
-                                    class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:175</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="236"
+                                    class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:236</a></div>
                         </td>
                     </tr>
 
@@ -427,7 +483,7 @@ If the user clicks on a specific drink they can add it to their tracking after p
 
 
                                             <td>
-                                                    <p>The drink tracking to be uploaded</p>
+                                                    <p>The currently selected drink.</p>
 
                                             </td>
                                         </tr>
@@ -439,7 +495,8 @@ If the user clicks on a specific drink they can add it to their tracking after p
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>If the data submitted is not valid.</p>
+
                             </div>
                 </td>
             </tr>
@@ -465,8 +522,8 @@ If the user clicks on a specific drink they can add it to their tracking after p
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="164"
-                                    class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:164</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="224"
+                                    class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:224</a></div>
                         </td>
                     </tr>
 
@@ -504,8 +561,8 @@ If the user clicks on a specific drink they can add it to their tracking after p
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="138"
-                                    class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:138</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="175"
+                                    class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:175</a></div>
                         </td>
                     </tr>
 
@@ -531,31 +588,70 @@ If the user clicks on a specific drink they can add it to their tracking after p
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="initializeDrinkData"></a>
+                    <a name="ngOnInit"></a>
                     <span class="name">
-                        <span ><b>initializeDrinkData</b></span>
-                        <a href="#initializeDrinkData"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>initializeDrinkData(drinkName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>ngOnInit()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="128"
-                                    class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:128</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="149"
+                                    class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:149</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Initializes a temporary value to store drink data later</p>
+                        <div class="io-description"><p>Gets all the drinks on initialization</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onCloseClick"></a>
+                    <span class="name">
+                        <span ><b>onCloseClick</b></span>
+                        <a href="#onCloseClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onCloseClick(event: MouseEvent)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="208"
+                                    class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:208</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Adds back the ability to click on the X.</p>
 </div>
 
                             <div class="io-description">
@@ -572,9 +668,9 @@ If the user clicks on a specific drink they can add it to their tracking after p
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>drinkName</td>
+                                                <td>event</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        <code>MouseEvent</code>
                                             </td>
 
                                             <td>
@@ -583,7 +679,7 @@ If the user clicks on a specific drink they can add it to their tracking after p
 
 
                                             <td>
-                                                    <p>The name of the given drink</p>
+                                                    <p>The event for clicking the X.</p>
 
                                             </td>
                                         </tr>
@@ -605,37 +701,89 @@ If the user clicks on a specific drink they can add it to their tracking after p
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="ngOnInit"></a>
+                    <a name="onDrinkClick"></a>
                     <span class="name">
-                        <span ><b>ngOnInit</b></span>
-                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>onDrinkClick</b></span>
+                        <a href="#onDrinkClick"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>ngOnInit()</code>
+<code>onDrinkClick(event: MouseEvent, drink: <a href="../interfaces/Drink.html" target="_self">Drink</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="114"
-                                    class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:114</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="195"
+                                    class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:195</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Gets all the drinks on initialization</p>
+                        <div class="io-description"><p>Stops mouse events on the drink when overlay is open.</p>
 </div>
 
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>MouseEvent</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The event for clicling on a drink.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>drink</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Drink.html" target="_self" >Drink</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The clicked drink.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>When a drink is selected</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -660,8 +808,8 @@ If the user clicks on a specific drink they can add it to their tracking after p
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="156"
-                                    class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:156</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="217"
+                                    class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:217</a></div>
                         </td>
                     </tr>
 
@@ -724,6 +872,49 @@ If the user clicks on a specific drink they can add it to their tracking after p
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="drankForm"></a>
+                    <span class="name">
+                        <span ><b>drankForm</b></span>
+                        <a href="#drankForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormGroup({
+    amount: new FormControl(null, [Validators.required, Validators.min(1)]),
+    hour: new FormControl(null, [
+      Validators.required,
+      Validators.min(0),
+      Validators.max(23),
+    ]),
+    minute: new FormControl(null, [
+      Validators.required,
+      Validators.min(0),
+      Validators.max(59),
+    ]),
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The from group for the drink.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="drinkAmounts"></a>
                     <span class="name">
                         <span ><b>drinkAmounts</b></span>
@@ -744,7 +935,7 @@ If the user clicks on a specific drink they can add it to their tracking after p
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:74</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:110</a></div>
                         </td>
                     </tr>
 
@@ -781,7 +972,7 @@ If the user clicks on a specific drink they can add it to their tracking after p
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:58</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:94</a></div>
                         </td>
                     </tr>
 
@@ -818,7 +1009,7 @@ If the user clicks on a specific drink they can add it to their tracking after p
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:66</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:102</a></div>
                         </td>
                     </tr>
 
@@ -855,7 +1046,7 @@ If the user clicks on a specific drink they can add it to their tracking after p
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:70</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:106</a></div>
                         </td>
                     </tr>
 
@@ -887,7 +1078,7 @@ If the user clicks on a specific drink they can add it to their tracking after p
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:95</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:126</a></div>
                         </td>
                     </tr>
 
@@ -924,7 +1115,7 @@ If the user clicks on a specific drink they can add it to their tracking after p
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:62</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:98</a></div>
                         </td>
                     </tr>
 
@@ -937,55 +1128,93 @@ If the user clicks on a specific drink they can add it to their tracking after p
 
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="tempAmounts"></a>
-                    <span class="name">
-                        <span ><b>tempAmounts</b></span>
-                        <a href="#tempAmounts"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>literal type</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>{}</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:89</a></div>
-                        </td>
-                    </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Temporary data for consumed drink.</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
 </section>
 
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="amount"></a>
+                        <span class="name"><b>amount</b><a href="#amount"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>amount()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:159</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hour"></a>
+                        <span class="name"><b>hour</b><a href="#hour"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>hour()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:163</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="minute"></a>
+                        <span class="name"><b>minute</b><a href="#minute"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>minute()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">src/app/tracking/components/drink-list/drink-list.component.ts:167</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { AngularFirestore } from &#x27;@angular/fire/compat/firestore&#x27;;
+import { trigger, transition, style, animate } from &#x27;@angular/animations&#x27;;
 import { map, Observable } from &#x27;rxjs&#x27;;
 import { DateService } from &#x27;src/app/core/services/date.service&#x27;;
 import { UserService } from &#x27;src/app/core/services/user/user.service&#x27;;
 import { NotyfService } from &#x27;src/app/core/services/notyf/notyf.service&#x27;;
+import { FormControl, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { NavigationService } from &#x27;src/app/core/services/navigation.service&#x27;;
+import { NgxSpinnerService } from &#x27;ngx-spinner&#x27;;
 
 /**
  * Interface for a drink.
@@ -1027,13 +1256,45 @@ interface FirestoreDocumentData {
 /**
  * Lists out all the drinks in the database.
  * If the user clicks on a specific drink they can add it to their tracking after providing the necessary data.
+ * Animation for drink list form.
  */
 @Component({
   selector: &#x27;app-drink-list&#x27;,
   templateUrl: &#x27;./drink-list.component.html&#x27;,
   styleUrls: [&#x27;./drink-list.component.scss&#x27;],
+  animations: [
+    trigger(&#x27;scale&#x27;, [
+      transition(&#x27;:enter&#x27;, [
+        style({ transform: &#x27;scale(0.8)&#x27;, opacity: 0 }),
+        animate(&#x27;200ms ease-out&#x27;, style({ transform: &#x27;scale(1)&#x27;, opacity: 1 })),
+      ]),
+      transition(&#x27;:leave&#x27;, [
+        animate(
+          &#x27;200ms ease-in&#x27;,
+          style({ transform: &#x27;scale(0.8)&#x27;, opacity: 0 })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class DrinkListComponent {
+  /**
+   * The from group for the drink.
+   */
+  drankForm &#x3D; new FormGroup({
+    amount: new FormControl(null, [Validators.required, Validators.min(1)]),
+    hour: new FormControl(null, [
+      Validators.required,
+      Validators.min(0),
+      Validators.max(23),
+    ]),
+    minute: new FormControl(null, [
+      Validators.required,
+      Validators.min(0),
+      Validators.max(59),
+    ]),
+  });
+
   /**
    * List of the drinks from the database.
    */
@@ -1065,12 +1326,7 @@ export class DrinkListComponent {
       category: string;
     }
   &gt; &#x3D; new Map();
-  /**
-   * Temporary data for consumed drink.
-   */
-  tempAmounts: {
-    [key: string]: { ml: number; cps: number; time: string; date: string };
-  } &#x3D; {};
+
   /**
    * The selected date.
    */
@@ -1082,12 +1338,16 @@ export class DrinkListComponent {
    * @param dateService Service for proper date usage.
    * @param userService Service for user data.
    * @param notyfService Service for displaying messages.
+   * @param navigationService Service for spinner loading navigation.
+   * @param spinnerService Service for spinner loading.
    */
   constructor(
     private afs: AngularFirestore,
     private dateService: DateService,
     private userService: UserService,
-    private notyfService: NotyfService
+    private notyfService: NotyfService,
+    private navigationService: NavigationService,
+    private spinnerService: NgxSpinnerService
   ) {}
 
   /**
@@ -1103,14 +1363,16 @@ export class DrinkListComponent {
     });
   }
 
-  /**
-   * Initializes a temporary value to store drink data later
-   * @param drinkName The name of the given drink
-   */
-  initializeDrinkData(drinkName: string): void {
-    if (!this.tempAmounts[drinkName]) {
-      this.tempAmounts[drinkName] &#x3D; { ml: 0, time: &#x27;&#x27;, date: &#x27;&#x27;, cps: 0 };
-    }
+  get amount() {
+    return this.drankForm.get(&#x27;amount&#x27;);
+  }
+
+  get hour() {
+    return this.drankForm.get(&#x27;hour&#x27;);
+  }
+
+  get minute() {
+    return this.drankForm.get(&#x27;minute&#x27;);
   }
 
   /**
@@ -1132,11 +1394,34 @@ export class DrinkListComponent {
   }
 
   /**
+   * Stops mouse events on the drink when overlay is open.
+   * @param event The event for clicling on a drink.
+   * @param drink The clicked drink.
+   * @returns When a drink is selected
+   */
+  onDrinkClick(event: MouseEvent, drink: Drink): void {
+    if (this.selectedDrink &#x3D;&#x3D;&#x3D; drink) {
+      event.stopPropagation();
+      return;
+    }
+
+    this.selectDrink(drink);
+  }
+
+  /**
+   * Adds back the ability to click on the X.
+   * @param event The event for clicking the X.
+   */
+  onCloseClick(event: MouseEvent): void {
+    event.stopPropagation();
+    this.selectedDrink &#x3D; null;
+  }
+
+  /**
    * Sets the selected drink
    * @param drink The selected drink
    */
   selectDrink(drink: Drink): void {
-    this.initializeDrinkData(drink.name);
     this.selectedDrink &#x3D; this.selectedDrink &#x3D;&#x3D;&#x3D; drink ? null : drink;
   }
 
@@ -1152,10 +1437,26 @@ export class DrinkListComponent {
 
   /**
    * Stores the newly tracked drink in Firestore
-   * @param drink The drink tracking to be uploaded
+   * @param drink The currently selected drink.
+   * @returns If the data submitted is not valid.
    */
   async addDrinkAmount(drink: Drink): Promise&lt;void&gt; {
-    const drinkData &#x3D; this.tempAmounts[drink.name];
+    if (!this.drankForm.valid) {
+      this.notyfService.error(&#x27;Please provde valid data&#x27;);
+      return;
+    }
+
+    this.spinnerService.show();
+
+    // This is needed so the form can be empty with strings then converted into numbers for checks.
+    const drinkData &#x3D; {
+      amount:
+        this.drankForm.value.amount &#x3D;&#x3D; null ? 0 : this.drankForm.value.amount,
+      hour: this.drankForm.value.hour &#x3D;&#x3D; null ? 0 : this.drankForm.value.hour,
+      minute:
+        this.drankForm.value.minute &#x3D;&#x3D; null ? 0 : this.drankForm.value.minute,
+    };
+
     const formattedDate &#x3D; &#x60;${this.selectedDate.getFullYear()}-${(
       this.selectedDate.getMonth() + 1
     )
@@ -1165,9 +1466,30 @@ export class DrinkListComponent {
       .toString()
       .padStart(2, &#x27;0&#x27;)}&#x60;;
 
-    if (drinkData &amp;&amp; drinkData.ml &gt; 0 &amp;&amp; drinkData.time &amp;&amp; this.selectedDate) {
+    console.log(drinkData.hour);
+    console.log(this.selectedDate);
+
+    console.log(Boolean(drinkData.hour));
+
+    if (
+      drinkData &amp;&amp;
+      drinkData.amount &gt; 0 &amp;&amp;
+      drinkData.hour &gt;&#x3D; 0 &amp;&amp;
+      drinkData.minute &gt;&#x3D; 0 &amp;&amp;
+      this.selectedDate
+    ) {
+      // After the checks we turn the numbers into properly formatted time strings.
+      const preparedHour &#x3D;
+        drinkData.hour &lt; 10
+          ? &#x27;0&#x27; + drinkData.hour.toString()
+          : drinkData.hour.toString();
+      const preparedMinute &#x3D;
+        drinkData.minute &lt; 10
+          ? &#x27;0&#x27; + drinkData.minute.toString()
+          : drinkData.minute.toString();
+
       const formattedTime &#x3D; new Date(
-        &#x60;1970-01-01T${drinkData.time}:00&#x60;
+        &#x60;1970-01-01T${preparedHour}:${preparedMinute}:00&#x60;
       ).toLocaleTimeString(&#x27;en-GB&#x27;, {
         hour: &#x27;2-digit&#x27;,
         minute: &#x27;2-digit&#x27;,
@@ -1187,8 +1509,8 @@ export class DrinkListComponent {
         updatedDrinkAmounts &#x3D; existingData ? existingData.drinkAmounts : {};
       }
 
-      const calories &#x3D; drink.caloriesPerServing * (drinkData.ml / 100);
-      const alcohol &#x3D; (drink.abv / 100) * drinkData.ml * 0.789;
+      const calories &#x3D; drink.caloriesPerServing * (drinkData.amount / 100);
+      const alcohol &#x3D; (drink.abv / 100) * drinkData.amount * 0.789;
 
       // Generates a unique entryId for the drink
       const entryId &#x3D; &#x60;${new Date().getTime()}-${Math.random()}&#x60;;
@@ -1196,7 +1518,7 @@ export class DrinkListComponent {
       if (updatedDrinkAmounts[drink.name]) {
         updatedDrinkAmounts[drink.name].push({
           id: entryId,
-          amount: drinkData.ml,
+          amount: drinkData.amount,
           calories: calories,
           alcohol: alcohol,
           time: formattedTime,
@@ -1206,7 +1528,7 @@ export class DrinkListComponent {
         updatedDrinkAmounts[drink.name] &#x3D; [
           {
             id: entryId,
-            amount: drinkData.ml,
+            amount: drinkData.amount,
             calories: calories,
             alcohol: alcohol,
             time: formattedTime,
@@ -1224,15 +1546,24 @@ export class DrinkListComponent {
       try {
         // Stores the updated data to Firestore, merging with existing document.
         await docRef.set(drinkAmountData, { merge: true });
+        this.navigationService.navigate(
+          &#x27;/tracking/home&#x27;,
+          undefined,
+          undefined,
+          1000,
+          1000
+        );
         this.notyfService.success(&#x27;Drink added&#x27;);
 
         // Clears the temporary data.
-        this.tempAmounts[drink.name] &#x3D; { ml: 0, time: &#x27;&#x27;, date: &#x27;&#x27;, cps: 0 };
       } catch (error) {
         this.notyfService.error(&#x27;Something went wrong&#x27;);
+        this.spinnerService.hide();
         console.error(&#x27;Error adding drink to Firestore: &#x27;, error);
       }
     } else {
+      this.spinnerService.hide();
+      this.notyfService.error(&#x27;Please provide valid data&#x27;);
       console.error(&#x27;Invalid data&#x27;);
     }
   }
@@ -1241,143 +1572,186 @@ export class DrinkListComponent {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;drink-list&quot;&gt;
-  &lt;h1&gt;Add Drink&lt;/h1&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;h1&gt;Add Drink&lt;/h1&gt;
 
-  &lt;input type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;Search drink&quot; [(ngModel)]&#x3D;&quot;searchTerm&quot; (input)&#x3D;&quot;filterDrinks()&quot; class&#x3D;&quot;search-bar&quot; /&gt;
+&lt;input
+  type&#x3D;&quot;text&quot;
+  placeholder&#x3D;&quot;Search drink&quot;
+  [(ngModel)]&#x3D;&quot;searchTerm&quot;
+  (input)&#x3D;&quot;filterDrinks()&quot;
+  class&#x3D;&quot;zt-input search&quot;
+/&gt;
 
-  &lt;ul&gt;
-    &lt;li *ngFor&#x3D;&quot;let drink of filteredDrinks&quot; (click)&#x3D;&quot;selectDrink(drink)&quot;&gt;
-      {{ drink.name }}
-      &lt;div *ngIf&#x3D;&quot;selectedDrink &#x3D;&#x3D;&#x3D; drink&quot; class&#x3D;&quot;drink-details&quot;&gt;
-        &lt;span class&#x3D;&quot;bi bi-x-lg close-drink-detail&quot;&gt;&lt;/span&gt;
-        &lt;p class&#x3D;&quot;drink-name&quot;&gt;{{drink.name}}&lt;/p&gt;
-        &lt;p&gt;ABV: {{ drink.abv}}&lt;/p&gt;
-        &lt;p&gt;Kcal/Serving: {{ drink.caloriesPerServing}}&lt;/p&gt;
-        &lt;p&gt;Category: {{ drink.category}}&lt;/p&gt;
-        &lt;p&gt;Size: {{ drink.ml}} ml&lt;/p&gt;
-        &lt;div&gt;
-          &lt;p&gt;Amount (ml)&lt;/p&gt;
-          &lt;input type&#x3D;&quot;number&quot; [(ngModel)]&#x3D;&quot;tempAmounts[drink.name].ml&quot; min&#x3D;&quot;0&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot;
-            class&#x3D;&quot;drinkMlInput&quot;&gt;
-          &lt;p&gt;Time&lt;/p&gt;
-          &lt;input type&#x3D;&quot;time&quot; [(ngModel)]&#x3D;&quot;tempAmounts[drink.name].time&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot;
-            class&#x3D;&quot;drinkTimeInput&quot;&gt;
-          &lt;button (click)&#x3D;&quot;addDrinkAmount(drink)&quot; class&#x3D;&quot;add-drink-button&quot;&gt;Add&lt;/button&gt;
-        &lt;/div&gt;
+&lt;ul class&#x3D;&quot;drink-list&quot;&gt;
+  &lt;li
+    *ngFor&#x3D;&quot;let drink of filteredDrinks&quot;
+    (click)&#x3D;&quot;onDrinkClick($event, drink)&quot;
+    role&#x3D;&quot;button&quot;
+  &gt;
+    &lt;span&gt;{{ drink.name }}&lt;/span&gt;
+    &lt;div *ngIf&#x3D;&quot;selectedDrink &#x3D;&#x3D;&#x3D; drink&quot; class&#x3D;&quot;drink-details&quot; @scale&gt;
+      &lt;div class&#x3D;&quot;drink-details-top&quot;&gt;
+        &lt;i class&#x3D;&quot;material-icons close-button&quot; (click)&#x3D;&quot;onCloseClick($event)&quot;
+          &gt;close&lt;/i
+        &gt;
+        &lt;p class&#x3D;&quot;drink-name&quot;&gt;{{ drink.name }}&lt;/p&gt;
       &lt;/div&gt;
-    &lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;</code></pre>
+      &lt;div class&#x3D;&quot;drink-details-content&quot;&gt;
+        &lt;p&gt;{{ drink.caloriesPerServing }} kcal/100 ml&lt;/p&gt;
+        &lt;p&gt;{{ drink.abv }} %&lt;/p&gt;
+        &lt;p&gt;{{ drink.ml }} ml&lt;/p&gt;
+        &lt;p&gt;{{ drink.category }}&lt;/p&gt;
+        &lt;form
+          [formGroup]&#x3D;&quot;drankForm&quot;
+          (ngSubmit)&#x3D;&quot;addDrinkAmount(drink)&quot;
+          class&#x3D;&quot;drink-form&quot;
+        &gt;
+          &lt;input
+            type&#x3D;&quot;number&quot;
+            inputmode&#x3D;&quot;decimal&quot;
+            pattern&#x3D;&quot;^[0-9]+(\.[0-9]{0,1})?$&quot;
+            formControlName&#x3D;&quot;amount&quot;
+            min&#x3D;&quot;0&quot;
+            (click)&#x3D;&quot;$event.stopPropagation()&quot;
+            class&#x3D;&quot;zt-input&quot;
+            placeholder&#x3D;&quot;Amount (ml)&quot;
+            [ngClass]&#x3D;&quot;{&#x27;input-error&#x27;: (amount?.touched &amp;&amp; amount?.errors?.[&#x27;required&#x27;]) || (amount?.touched &amp;&amp; amount?.errors?.[&#x27;min&#x27;])}&quot;
+          /&gt;
+          &lt;div class&#x3D;&quot;time-div&quot;&gt;
+            &lt;input
+              type&#x3D;&quot;number&quot;
+              inputmode&#x3D;&quot;decimal&quot;
+              pattern&#x3D;&quot;^[0-9]+(\.[0-9]{0,1})?$&quot;
+              formControlName&#x3D;&quot;hour&quot;
+              (click)&#x3D;&quot;$event.stopPropagation()&quot;
+              class&#x3D;&quot;zt-input&quot;
+              placeholder&#x3D;&quot;Hour&quot;
+              [ngClass]&#x3D;&quot;{&#x27;input-error&#x27;: (hour?.touched &amp;&amp; hour?.errors?.[&#x27;required&#x27;]) || (hour?.touched &amp;&amp; hour?.errors?.[&#x27;min&#x27;]) || (hour?.touched &amp;&amp; hour?.errors?.[&#x27;max&#x27;])}&quot;
+            /&gt;
+            &lt;input
+              type&#x3D;&quot;number&quot;
+              inputmode&#x3D;&quot;decimal&quot;
+              pattern&#x3D;&quot;^[0-9]+(\.[0-9]{0,1})?$&quot;
+              formControlName&#x3D;&quot;minute&quot;
+              (click)&#x3D;&quot;$event.stopPropagation()&quot;
+              class&#x3D;&quot;zt-input&quot;
+              placeholder&#x3D;&quot;Minute&quot;
+              [ngClass]&#x3D;&quot;{&#x27;input-error&#x27;: (minute?.touched &amp;&amp; minute?.errors?.[&#x27;required&#x27;]) || (minute?.touched &amp;&amp; minute?.errors?.[&#x27;min&#x27;]) || (minute?.touched &amp;&amp; minute?.errors?.[&#x27;max&#x27;])}&quot;
+            /&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;zt-button-div&quot;&gt;
+            &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;zt-button blue&quot;&gt;Add&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="styleData">
                 <p class="comment">
                     <code>./drink-list.component.scss</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">.drink-list {
-  width: 35vh;
-  position: relative;
-  overflow-y: auto;
-  height: 85vh;
-  margin-top: -10%;
+                <pre class="line-numbers"><code class="language-scss">@use &quot;variables&quot; as *;
+
+input.search {
+  margin-bottom: 1rem;
 }
 
-.drink-list ul {
-  position: relative; 
+ul.drink-list {
   list-style: none;
-  padding: 0;
-  margin-top: 5vh;
-  background-color: #21212180;
-  border-radius: 20px 20px 20px 20px;
-  border: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
-  max-height: 30vh;
   overflow-y: auto;
-}
+  max-height: 20rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background-color: $ztGray;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
 
-.drink-list &gt; h1 {
-  text-align: center;
-  font-size: 5vh;
-  margin-bottom: 5vh;
-  // margin-top: 5vh;
-}
+  &amp;::-webkit-scrollbar {
+    display: none;
+  }
 
-.drink-list li {
-  position: relative;
-  cursor: pointer;
-  text-align: center;
-  padding: 20px;
-}
+  li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 20rem;
+    height: 3rem;
+    padding-right: 0.5rem;
 
-ul li:not(:last-child) {
-  border-bottom: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
-}
+    span {
+      width: 100%;
+      text-align: center;
+      padding-left: 1rem;
+    }
 
-.drink-details {
-  padding: 1vh;
-  position: fixed;
-  top: 0;
-  margin-top: 28vh;
-  margin-left: -5vh;
-  width: 40vh;
-  color: rgb(201, 201, 201);
+    &amp;:not(:last-child) {
+      border-bottom: 1px solid black;
+    }
 
-  z-index: 10;
-  background-color: #212121;
-  border-radius: 20px 20px 20px 20px;
-  border: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
-  text-align: center;
-}
+    .drink-details {
+      display: flex;
+      flex-direction: column;
+      background-color: $ztGray;
+      position: absolute;
+      z-index: 20;
+      top: 8rem;
+      width: 20rem;
+      border-radius: 1rem;
+      cursor: default;
 
-.drink-name {
-  margin-bottom: 2vh;
-  color: white;
-}
+      .drink-details-top {
+        display: flex;
+        flex-direction: row-reverse;
+        .drink-name {
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+          width: 100%;
+          padding-left: 2.125rem;
+        }
 
-div.drink-details div:last-of-type {
-  margin-top: 5vh;
-}
+        .close-button {
+          position: relative;
+          right: 0;
+          color: red;
+          font-size: 2rem;
+          display: flex;
+          justify-content: flex-end;
+          cursor: pointer;
+          padding-top: 0.125rem;
+          padding-right: 0.125rem;
+        }
+      }
 
-.search-bar {
-  background-color: #212121;
-  color: white;
-  border-radius: 50px 50px 50px 50px;
-  width: 100%;
-  text-align: center;
-  min-height: 6vh;
-  padding-bottom: 0%;
-}
+      .drink-details-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
 
-.drinkMlInput,
-.drinkTimeInput {
-  background-color: #212121;
-  color: white;
-  border-radius: 50px 50px 50px 50px;
-  width: 100%;
-  text-align: center;
-  min-height: 6vh;
-  padding-bottom: 0%;
-  border: 0.2vh rgba($color: gray, $alpha: 0.2) solid;
-}
+        .zt-input {
+          background-color: rgba($color: #fff, $alpha: 0.1);
+          width: 18rem;
+          width: 100%;
+        }
 
-.drinkMlInput {
-  margin-bottom: 1vh;
-}
+        .drink-form {
+          padding-top: 1rem;
+        }
 
-.add-drink-button {
-  margin-top: 20%;
-  width: 60%;
-  height: 3.5rem;
-  border-radius: 50px 50px 50px 50px;
-  font-size: large;
-  color: white;
-  background-image: linear-gradient(135deg, #002fff 0%, #00076e 100%);
-}
+        .time-div {
+          display: flex;
+          flex-direction: row;
+          column-gap: 0.5rem;
+        }
 
-.close-drink-detail {
-  color: rgb(255, 0, 0);
-  margin-left: 40%;
-  position: absolute;
+        .zt-button-div {
+          padding-bottom: 1rem;
+        }
+      }
+    }
+  }
 }
 </code></pre>
     </div>
@@ -1407,8 +1781,8 @@ div.drink-details div:last-of-type {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="drink-list">  <h1>Add Drink</h1>  <input type="text" placeholder="Search drink" [(ngModel)]="searchTerm" (input)="filterDrinks()" class="search-bar" />  <ul>    <li *ngFor="let drink of filteredDrinks" (click)="selectDrink(drink)">      {{ drink.name }}      <div *ngIf="selectedDrink === drink" class="drink-details">        <span class="bi bi-x-lg close-drink-detail"></span>        <p class="drink-name">{{drink.name}}</p>        <p>ABV: {{ drink.abv}}</p>        <p>Kcal/Serving: {{ drink.caloriesPerServing}}</p>        <p>Category: {{ drink.category}}</p>        <p>Size: {{ drink.ml}} ml</p>        <div>          <p>Amount (ml)</p>          <input type="number" [(ngModel)]="tempAmounts[drink.name].ml" min="0" (click)="$event.stopPropagation()"            class="drinkMlInput">          <p>Time</p>          <input type="time" [(ngModel)]="tempAmounts[drink.name].time" (click)="$event.stopPropagation()"            class="drinkTimeInput">          <button (click)="addDrinkAmount(drink)" class="add-drink-button">Add</button>        </div>      </div>    </li>  </ul></div></div>'
-    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
+        var COMPONENT_TEMPLATE = '<div><h1>Add Drink</h1><input  type="text"  placeholder="Search drink"  [(ngModel)]="searchTerm"  (input)="filterDrinks()"  class="zt-input search"/><ul class="drink-list">  <li    *ngFor="let drink of filteredDrinks"    (click)="onDrinkClick($event, drink)"    role="button"  >    <span>{{ drink.name }}</span>    <div *ngIf="selectedDrink === drink" class="drink-details" @scale>      <div class="drink-details-top">        <i class="material-icons close-button" (click)="onCloseClick($event)"          >close</i        >        <p class="drink-name">{{ drink.name }}</p>      </div>      <div class="drink-details-content">        <p>{{ drink.caloriesPerServing }} kcal/100 ml</p>        <p>{{ drink.abv }} %</p>        <p>{{ drink.ml }} ml</p>        <p>{{ drink.category }}</p>        <form          [formGroup]="drankForm"          (ngSubmit)="addDrinkAmount(drink)"          class="drink-form"        >          <input            type="number"            inputmode="decimal"            pattern="^[0-9]+(\.[0-9]{0,1})?$"            formControlName="amount"            min="0"            (click)="$event.stopPropagation()"            class="zt-input"            placeholder="Amount (ml)"            [ngClass]="{\'input-error\': (amount?.touched && amount?.errors?.[\'required\']) || (amount?.touched && amount?.errors?.[\'min\'])}"          />          <div class="time-div">            <input              type="number"              inputmode="decimal"              pattern="^[0-9]+(\.[0-9]{0,1})?$"              formControlName="hour"              (click)="$event.stopPropagation()"              class="zt-input"              placeholder="Hour"              [ngClass]="{\'input-error\': (hour?.touched && hour?.errors?.[\'required\']) || (hour?.touched && hour?.errors?.[\'min\']) || (hour?.touched && hour?.errors?.[\'max\'])}"            />            <input              type="number"              inputmode="decimal"              pattern="^[0-9]+(\.[0-9]{0,1})?$"              formControlName="minute"              (click)="$event.stopPropagation()"              class="zt-input"              placeholder="Minute"              [ngClass]="{\'input-error\': (minute?.touched && minute?.errors?.[\'required\']) || (minute?.touched && minute?.errors?.[\'min\']) || (minute?.touched && minute?.errors?.[\'max\'])}"            />          </div>          <div class="zt-button-div">            <button type="submit" class="zt-button blue">Add</button>          </div>        </form>      </div>    </div>  </li></ul></div>'
+    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RedirectComponent', 'selector': 'app-redirect'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DrinkListComponent'};
 </script>

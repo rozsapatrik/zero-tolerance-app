@@ -373,8 +373,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/app/profile/components/stats/stats.component.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/profile/components/stats/stats.component.ts:51</a></div>
                         </td>
                     </tr>
 
@@ -416,8 +416,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="69"
-                                    class="link-to-prism">src/app/profile/components/stats/stats.component.ts:69</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/app/profile/components/stats/stats.component.ts:72</a></div>
                         </td>
                     </tr>
 
@@ -458,8 +458,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="87"
-                                    class="link-to-prism">src/app/profile/components/stats/stats.component.ts:87</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="90"
+                                    class="link-to-prism">src/app/profile/components/stats/stats.component.ts:90</a></div>
                         </td>
                     </tr>
 
@@ -535,8 +535,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="116"
-                                    class="link-to-prism">src/app/profile/components/stats/stats.component.ts:116</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/app/profile/components/stats/stats.component.ts:124</a></div>
                         </td>
                     </tr>
 
@@ -611,8 +611,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="56"
-                                    class="link-to-prism">src/app/profile/components/stats/stats.component.ts:56</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/app/profile/components/stats/stats.component.ts:59</a></div>
                         </td>
                     </tr>
 
@@ -663,8 +663,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/app/profile/components/stats/stats.component.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/profile/components/stats/stats.component.ts:51</a></div>
                         </td>
                     </tr>
 
@@ -855,7 +855,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>[400, 400]</code>
+                        <i>Default value : </i><code>[200, 200]</code>
                     </td>
                 </tr>
                     <tr>
@@ -890,7 +890,7 @@ import { UserService } from &#x27;src/app/core/services/user/user.service&#x27;;
 @Component({
   selector: &#x27;app-stats&#x27;,
   templateUrl: &#x27;./stats.component.html&#x27;,
-  styleUrls: [&#x27;./stats.component.scss&#x27;]
+  styleUrls: [&#x27;./stats.component.scss&#x27;],
 })
 export class StatsComponent implements OnInit {
   /**
@@ -900,12 +900,12 @@ export class StatsComponent implements OnInit {
   /**
    * Default for pie chart.
    */
-  pieChartView: [number, number] &#x3D; [400, 400];
+  pieChartView: [number, number] &#x3D; [200, 200];
   /**
    * Position of the legend for graph.
    */
   legendPosPie: LegendPosition &#x3D; LegendPosition.Below;
-  
+
   /**
    * Data of the bar graph.
    */
@@ -916,11 +916,14 @@ export class StatsComponent implements OnInit {
   pieChartData: { name: string; value: number }[] &#x3D; [];
 
   /**
-   * 
+   *
    * @param afs Angular Firestore.
    * @param userService Service for user data.
    */
-  constructor(private afs: AngularFirestore, private userService: UserService) {}
+  constructor(
+    private afs: AngularFirestore,
+    private userService: UserService
+  ) {}
 
   /**
    * Listens for event to re-arrange charts if needed.
@@ -980,11 +983,16 @@ export class StatsComponent implements OnInit {
       const docRef &#x3D; this.afs.collection(&#x27;drankDrinks&#x27;).doc(docId);
       const docSnapshot &#x3D; await docRef.get().toPromise();
 
-      const drinkData &#x3D; docSnapshot?.data() as {drinkAmounts?: Record&lt;string, any[]&gt;};
+      const drinkData &#x3D; docSnapshot?.data() as {
+        drinkAmounts?: Record&lt;string, any[]&gt;;
+      };
       const drinksForTheDay &#x3D; drinkData?.drinkAmounts ?? {};
       const drinkCount &#x3D; Object.values(drinksForTheDay).flat().length;
 
-      return { name: &#x60;${day.date.getMonth() + 1}.${day.date.getDate()}&#x60;, value: drinkCount };
+      return {
+        name: &#x60;${day.date.getMonth() + 1}.${day.date.getDate()}&#x60;,
+        value: drinkCount,
+      };
     });
 
     this.graphData &#x3D; await Promise.all(promises);
@@ -1000,11 +1008,13 @@ export class StatsComponent implements OnInit {
       .where(&#x27;__name__&#x27;, &#x27;&gt;&#x3D;&#x27;, &#x60;${currentUserID}-&#x60;)
       .where(&#x27;__name__&#x27;, &#x27;&lt;&#x3D;&#x27;, &#x60;${currentUserID}~&#x60;)
       .get();
-  
+
     const categoryCounts: { [key: string]: number } &#x3D; {};
-  
+
     querySnapshot.forEach((doc) &#x3D;&gt; {
-      const docData &#x3D; doc.data() as { drinkAmounts?: Record&lt;string, { category?: string }&gt; };
+      const docData &#x3D; doc.data() as {
+        drinkAmounts?: Record&lt;string, { category?: string }&gt;;
+      };
       const drinkAmounts &#x3D; docData?.drinkAmounts || {};
       Object.values(drinkAmounts).forEach((drinkEntries: any) &#x3D;&gt; {
         // Check if drinkEntries is an array or an object
@@ -1016,79 +1026,117 @@ export class StatsComponent implements OnInit {
         }
       });
     });
-    this.pieChartData &#x3D; Object.entries(categoryCounts).map(([category, count]) &#x3D;&gt; ({
-      name: category,
-      value: count,
-    }));
+    this.pieChartData &#x3D; Object.entries(categoryCounts).map(
+      ([category, count]) &#x3D;&gt; ({
+        name: category,
+        value: count,
+      })
+    );
   }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;stats-container&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;charts-container&quot;&gt;
+  &lt;ngx-charts-bar-vertical
+    [view]&#x3D;&quot;[350, 200]&quot;
+    [results]&#x3D;&quot;graphData&quot;
+    [gradient]&#x3D;&quot;false&quot;
+    [xAxis]&#x3D;&quot;true&quot;
+    [yAxis]&#x3D;&quot;true&quot;
+    [legend]&#x3D;&quot;false&quot;
+    [showXAxisLabel]&#x3D;&quot;true&quot;
+    [showYAxisLabel]&#x3D;&quot;false&quot;
+    [xAxisLabel]&#x3D;&quot;&#x27;Drinking Frequency (drinks/day)&#x27;&quot;
+    [animations]&#x3D;&quot;false&quot;
+  &gt;
+  &lt;/ngx-charts-bar-vertical&gt;
 
-  &lt;div class&#x3D;&quot;chart-section&quot;&gt;
-    &lt;ngx-charts-bar-vertical [view]&#x3D;&quot;barChartView&quot; [results]&#x3D;&quot;graphData&quot; [gradient]&#x3D;&quot;false&quot; [xAxis]&#x3D;&quot;true&quot;
-      [yAxis]&#x3D;&quot;true&quot; [legend]&#x3D;&quot;false&quot; [showXAxisLabel]&#x3D;&quot;true&quot; [showYAxisLabel]&#x3D;&quot;false&quot;
-      [xAxisLabel]&#x3D;&quot;&#x27;Drinking Frequency (drinks/day)&#x27;&quot; [animations]&#x3D;&quot;false&quot;&gt;
-    &lt;/ngx-charts-bar-vertical&gt;
-  &lt;/div&gt;
-
-  &lt;div class&#x3D;&quot;chart-section&quot;&gt;
-    &lt;ngx-charts-pie-chart [view]&#x3D;&quot;pieChartView&quot; [results]&#x3D;&quot;pieChartData&quot; [legend]&#x3D;&quot;false&quot; [labels]&#x3D;&quot;false&quot;
-      [doughnut]&#x3D;&quot;false&quot; [explodeSlices]&#x3D;&quot;false&quot; [gradient]&#x3D;&quot;false&quot; [animations]&#x3D;&quot;false&quot;
-      [legendPosition]&#x3D;&quot;legendPosPie&quot;&gt;
-    &lt;/ngx-charts-pie-chart&gt;
-  &lt;/div&gt;
-  &lt;p class&#x3D;&quot;chart-label&quot; style&#x3D;&quot;text-align: center;&quot;&gt;Distribution of Drinks (by category)&lt;/p&gt;
-&lt;/div&gt;</code></pre>
+  &lt;ngx-charts-pie-chart
+    [view]&#x3D;&quot;[300, 300]&quot;
+    [results]&#x3D;&quot;pieChartData&quot;
+    [legend]&#x3D;&quot;false&quot;
+    [labels]&#x3D;&quot;false&quot;
+    [doughnut]&#x3D;&quot;false&quot;
+    [explodeSlices]&#x3D;&quot;false&quot;
+    [gradient]&#x3D;&quot;false&quot;
+    [animations]&#x3D;&quot;false&quot;
+    [legendPosition]&#x3D;&quot;legendPosPie&quot;
+  &gt;
+  &lt;/ngx-charts-pie-chart&gt;
+  &lt;p class&#x3D;&quot;chart-label&quot; style&#x3D;&quot;text-align: center&quot;&gt;
+    Distribution of Drinks (by category)
+  &lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="styleData">
                 <p class="comment">
                     <code>./stats.component.scss</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">.stats-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  overflow-y: auto;
-  height: 80vh;
-}
+                <pre class="line-numbers"><code class="language-scss">// .stats-container {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 20px;
+//   overflow-y: auto;
+//   height: 80vh;
+// }
 
-.chart-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-}
+// .chart-container {
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-around;
+//   align-items: center;
+// }
 
-.chart-section {
-  flex: 1 1 auto;
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-height: 35vh;
-}
+// .chart-section {
+//   flex: 1 1 auto;
+//   max-width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   max-height: 35vh;
+// }
+
+// ::ng-deep .ngx-charts text {
+//   fill: white !important;
+// }
+
+// @media (min-aspect-ratio: 4/3) {
+//   .stats-container {
+//     flex-direction: row;
+//     justify-content: center;
+//   }
+
+//   .chart-section {
+//     flex: 1 1 50%;
+//     max-width: 50%;
+//   }
+// }
 
 ::ng-deep .ngx-charts text {
   fill: white !important;
 }
 
-@media (min-aspect-ratio: 4/3) {
-  .stats-container {
-    flex-direction: row;
-    justify-content: center;
-  }
+.charts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  max-height: 40rem;
+  overflow: hidden;
+}
 
-  .chart-section {
-    flex: 1 1 50%;
-    max-width: 50%;
-  }
-}</code></pre>
+.chart-container ::ng-deep ngx-charts-bar-vertical,
+.chart-container ::ng-deep ngx-charts-pie-chart {
+  width: 100% !important;
+  max-width: 100%;
+  height: auto;
+}
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="tree">
@@ -1116,8 +1164,8 @@ export class StatsComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="stats-container">  <div class="chart-section">    <ngx-charts-bar-vertical [view]="barChartView" [results]="graphData" [gradient]="false" [xAxis]="true"      [yAxis]="true" [legend]="false" [showXAxisLabel]="true" [showYAxisLabel]="false"      [xAxisLabel]="\'Drinking Frequency (drinks/day)\'" [animations]="false">    </ngx-charts-bar-vertical>  </div>  <div class="chart-section">    <ngx-charts-pie-chart [view]="pieChartView" [results]="pieChartData" [legend]="false" [labels]="false"      [doughnut]="false" [explodeSlices]="false" [gradient]="false" [animations]="false"      [legendPosition]="legendPosPie">    </ngx-charts-pie-chart>  </div>  <p class="chart-label" style="text-align: center;">Distribution of Drinks (by category)</p></div></div>'
-    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
+        var COMPONENT_TEMPLATE = '<div><div class="charts-container">  <ngx-charts-bar-vertical    [view]="[350, 200]"    [results]="graphData"    [gradient]="false"    [xAxis]="true"    [yAxis]="true"    [legend]="false"    [showXAxisLabel]="true"    [showYAxisLabel]="false"    [xAxisLabel]="\'Drinking Frequency (drinks/day)\'"    [animations]="false"  >  </ngx-charts-bar-vertical>  <ngx-charts-pie-chart    [view]="[300, 300]"    [results]="pieChartData"    [legend]="false"    [labels]="false"    [doughnut]="false"    [explodeSlices]="false"    [gradient]="false"    [animations]="false"    [legendPosition]="legendPosPie"  >  </ngx-charts-pie-chart>  <p class="chart-label" style="text-align: center">    Distribution of Drinks (by category)  </p></div></div>'
+    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RedirectComponent', 'selector': 'app-redirect'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'StatsComponent'};
 </script>

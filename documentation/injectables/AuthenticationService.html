@@ -157,6 +157,14 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#checkEmailExists" >checkEmailExists</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#checkUsernameExists" >checkUsernameExists</a>
+                            </li>
+                            <li>
                                 <a href="#getUser" >getUser</a>
                             </li>
                             <li>
@@ -195,12 +203,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(auth: Auth, fireAuth: AngularFireAuth)</code>
+<code>constructor(auth: Auth, fireAuth: AngularFireAuth, afs: AngularFirestore)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/core/services/authentication.service.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/core/services/authentication.service.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -250,6 +258,20 @@
 
                                                         </td>
                                                 </tr>
+                                                <tr>
+                                                        <td>afs</td>
+                                                  
+                                                        <td>
+                                                                    <code>AngularFirestore</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -264,6 +286,160 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkEmailExists"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>checkEmailExists</b></span>
+                        <a href="#checkEmailExists"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>checkEmailExists(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="105"
+                                    class="link-to-prism">src/app/core/services/authentication.service.ts:105</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Checks if e-mail already exists in database.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>email</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The input e-mail.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Returns if there is a match found.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkUsernameExists"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>checkUsernameExists</b></span>
+                        <a href="#checkUsernameExists"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>checkUsernameExists(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="91"
+                                    class="link-to-prism">src/app/core/services/authentication.service.ts:91</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Checks if username already exists in database.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>username</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The input username.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Returns true if there is a match found.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -284,8 +460,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="40"
-                                    class="link-to-prism">src/app/core/services/authentication.service.ts:40</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/app/core/services/authentication.service.ts:49</a></div>
                         </td>
                     </tr>
 
@@ -323,8 +499,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="52"
-                                    class="link-to-prism">src/app/core/services/authentication.service.ts:52</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/app/core/services/authentication.service.ts:67</a></div>
                         </td>
                     </tr>
 
@@ -362,8 +538,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="45"
-                                    class="link-to-prism">src/app/core/services/authentication.service.ts:45</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/core/services/authentication.service.ts:56</a></div>
                         </td>
                     </tr>
 
@@ -401,8 +577,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="32"
-                                    class="link-to-prism">src/app/core/services/authentication.service.ts:32</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/app/core/services/authentication.service.ts:42</a></div>
                         </td>
                     </tr>
 
@@ -492,8 +668,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="69"
-                                    class="link-to-prism">src/app/core/services/authentication.service.ts:69</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="119"
+                                    class="link-to-prism">src/app/core/services/authentication.service.ts:119</a></div>
                         </td>
                     </tr>
 
@@ -582,8 +758,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="76"
-                                    class="link-to-prism">src/app/core/services/authentication.service.ts:76</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="126"
+                                    class="link-to-prism">src/app/core/services/authentication.service.ts:126</a></div>
                         </td>
                     </tr>
 
@@ -621,8 +797,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="59"
-                                    class="link-to-prism">src/app/core/services/authentication.service.ts:59</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="78"
+                                    class="link-to-prism">src/app/core/services/authentication.service.ts:78</a></div>
                         </td>
                     </tr>
 
@@ -718,7 +894,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/core/services/authentication.service.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/core/services/authentication.service.ts:23</a></div>
                         </td>
                     </tr>
 
@@ -739,28 +915,38 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { AngularFireAuth } from &#x27;@angular/fire/compat/auth&#x27;;
-import { Auth, signInWithEmailAndPassword, authState, createUserWithEmailAndPassword, updateProfile } from &#x27;@angular/fire/auth&#x27;;
-import { from, map, Observable, switchMap } from &#x27;rxjs&#x27;;
+import {
+  Auth,
+  signInWithEmailAndPassword,
+  authState,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from &#x27;@angular/fire/auth&#x27;;
+import { firstValueFrom, from, map, Observable, switchMap } from &#x27;rxjs&#x27;;
+import { AngularFirestore } from &#x27;@angular/fire/compat/firestore&#x27;;
 
 /**
  * Service for user authentication.
  */
 @Injectable({
-  providedIn: &#x27;root&#x27;
+  providedIn: &#x27;root&#x27;,
 })
 export class AuthenticationService {
-
   /**
    * Observable that gets the current user&#x27;s authetntication state
    */
   currentUser$ &#x3D; authState(this.auth);
-  
+
   /**
-   * 
+   *
    * @param auth Authentication.
    * @param fireAuth Angular Firebase Authentication.
    */
-  constructor(private auth: Auth, private fireAuth: AngularFireAuth) { }
+  constructor(
+    private auth: Auth,
+    private fireAuth: AngularFireAuth,
+    private afs: AngularFirestore
+  ) {}
 
   /**
    * Logs in user.
@@ -768,36 +954,76 @@ export class AuthenticationService {
    * @param password Current user&#x27;s password.
    * @returns Logged in user.
    */
-  login(username: string, password: string){
-    return from(
-      signInWithEmailAndPassword(this.auth, username, password));
+  login(username: string, password: string) {
+    return from(signInWithEmailAndPassword(this.auth, username, password));
   }
 
   /**
    * Returns an observable of the currently aunthenticated user
    */
-  getUser(){ return this.currentUser$; }
+  getUser() {
+    return this.currentUser$;
+  }
 
   /**
    * Checks if the user is currently authenticated based on the user from AngularFireAuth and the current user from Auth
    */
-  isUser(): Observable&lt;boolean&gt;{
-    return this.fireAuth.user.pipe(map(user &#x3D;&gt; {return user?.email &#x3D;&#x3D; this.auth.currentUser?.email;}));
+  isUser(): Observable&lt;boolean&gt; {
+    return this.fireAuth.user.pipe(
+      map((user) &#x3D;&gt; {
+        return user?.email &#x3D;&#x3D; this.auth.currentUser?.email;
+      })
+    );
   }
 
   /**
    * Checks if the currently authenticated user is an admin by checking if the email matches the admin email.
    */
-  isAdmin(): Observable&lt;boolean&gt;{
-    return this.fireAuth.user.pipe(map(user &#x3D;&gt; {return user?.email &#x3D;&#x3D; &quot;admin@zt.com&quot;}));
+  isAdmin(): Observable&lt;boolean&gt; {
+    return this.fireAuth.user.pipe(
+      map((user) &#x3D;&gt; {
+        return user?.email &#x3D;&#x3D; &#x27;admin@zt.com&#x27;;
+      })
+    );
   }
 
   /**
    * Registers a new user with the given email and password, and sets the user&#x27;s display name to the provided username.
    */
-  registerUser(username: string, email: string, password: string){
-    return from(createUserWithEmailAndPassword(this.auth, email, password))
-    .pipe(switchMap(({user}) &#x3D;&gt; updateProfile(user, {displayName: username})));
+  registerUser(username: string, email: string, password: string) {
+    return from(
+      createUserWithEmailAndPassword(this.auth, email, password)
+    ).pipe(
+      switchMap(({ user }) &#x3D;&gt; updateProfile(user, { displayName: username }))
+    );
+  }
+
+  /**
+   * Checks if username already exists in database.
+   * @param username The input username.
+   * @returns Returns true if there is a match found.
+   */
+  async checkUsernameExists(username: string): Promise&lt;boolean&gt; {
+    const snapshot &#x3D; await firstValueFrom(
+      this.afs
+        .collection(&#x27;user&#x27;, (ref) &#x3D;&gt; ref.where(&#x27;username&#x27;, &#x27;&#x3D;&#x3D;&#x27;, username))
+        .get()
+    );
+    return !snapshot.empty;
+  }
+
+  /**
+   * Checks if e-mail already exists in database.
+   * @param email The input e-mail.
+   * @returns Returns if there is a match found.
+   */
+  async checkEmailExists(email: string): Promise&lt;boolean&gt; {
+    const snapshot &#x3D; await firstValueFrom(
+      this.afs
+        .collection(&#x27;user&#x27;, (ref) &#x3D;&gt; ref.where(&#x27;email&#x27;, &#x27;&#x3D;&#x3D;&#x27;, email))
+        .get()
+    );
+    return !snapshot.empty;
   }
 
   /**
@@ -805,14 +1031,16 @@ export class AuthenticationService {
    * @param username Username to be logged in with.
    * @param password Password to be logged in with.
    */
-  loginUser(username: string, password: string){
+  loginUser(username: string, password: string) {
     return from(signInWithEmailAndPassword(this.auth, username, password));
   }
 
   /**
    * Logs out the currently authenticated user.
    */
-  logoutUser(){ return from(this.auth.signOut()); }
+  logoutUser() {
+    return from(this.auth.signOut());
+  }
 }
 </code></pre>
     </div>

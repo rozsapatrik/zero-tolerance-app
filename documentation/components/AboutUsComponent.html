@@ -334,36 +334,29 @@ export class AboutUsComponent {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;innerContainer&quot;&gt;
-    &lt;h1&gt;About Us&lt;/h1&gt;
-    &lt;p&gt;Thank you for using our application! &lt;br&gt;
-        The goal of this app is to provide you with a platform where &lt;br&gt; you can track and keep track of your drinking habits. &lt;br&gt;
-        This app is for personal use only and should not be used commercially in any form.
-    &lt;/p&gt;
-&lt;/div&gt;</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;h1&gt;About Us&lt;/h1&gt;
+&lt;p&gt;
+  Thank you for using Zero Tolerance!&lt;br /&gt;
+  Out goal is to provide you with a platform where you can track your drinking
+  habits.&lt;br /&gt;
+  This app is for personal use only and should not be used commercially in any
+  form.
+&lt;/p&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="styleData">
                 <p class="comment">
                     <code>./about-us.component.scss</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">.innerContainer {
-    width: 80%;
-    height: 100%;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 70%;
+                <pre class="line-numbers"><code class="language-scss">* {
+  width: 20rem;
 }
 
-.innerContainer &gt; h1 {
-    font-size: 5vh;
-    padding-bottom: 10vh;
+h1 {
+  padding-bottom: 1rem;
 }
-
-.innerContainer &gt; p {
-    font-size: large;
-}</code></pre>
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="tree">
@@ -391,8 +384,8 @@ export class AboutUsComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="innerContainer">    <h1>About Us</h1>    <p>Thank you for using our application! <br>        The goal of this app is to provide you with a platform where <br> you can track and keep track of your drinking habits. <br>        This app is for personal use only and should not be used commercially in any form.    </p></div></div>'
-    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
+        var COMPONENT_TEMPLATE = '<div><h1>About Us</h1><p>  Thank you for using Zero Tolerance!<br />  Out goal is to provide you with a platform where you can track your drinking  habits.<br />  This app is for personal use only and should not be used commercially in any  form.</p></div>'
+    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RedirectComponent', 'selector': 'app-redirect'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AboutUsComponent'};
 </script>

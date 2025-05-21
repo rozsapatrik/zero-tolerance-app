@@ -425,8 +425,22 @@ export class AppComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;app-navigation&gt;&lt;/app-navigation&gt;
-&lt;router-outlet&gt;&lt;/router-outlet&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;app-wrapper&quot;&gt;
+  &lt;app-navigation&gt;&lt;/app-navigation&gt;
+  &lt;ngx-spinner
+    bdColor&#x3D;&quot;rgba(0, 0, 0, 1)&quot;
+    size&#x3D;&quot;medium&quot;
+    color&#x3D;&quot;#fff&quot;
+    type&#x3D;&quot;line-spin-clockwise-fade-rotating&quot;
+    [fullScreen]&#x3D;&quot;false&quot;
+  &gt;
+  &lt;/ngx-spinner&gt;
+  &lt;div class&#x3D;&quot;app-content&quot;&gt;
+    &lt;div class&#x3D;&quot;main-content&quot;&gt;
+      &lt;router-outlet&gt;&lt;/router-outlet&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
     </div>
 
@@ -462,8 +476,8 @@ export class AppComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><app-navigation></app-navigation><router-outlet></router-outlet></div>'
-    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
+        var COMPONENT_TEMPLATE = '<div><div class="app-wrapper">  <app-navigation></app-navigation>  <ngx-spinner    bdColor="rgba(0, 0, 0, 1)"    size="medium"    color="#fff"    type="line-spin-clockwise-fade-rotating"    [fullScreen]="false"  >  </ngx-spinner>  <div class="app-content">    <div class="main-content">      <router-outlet></router-outlet>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AdminFormComponent', 'selector': 'app-admin-form'},{'name': 'AdminPageComponent', 'selector': 'app-admin-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DrinkListComponent', 'selector': 'app-drink-list'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LandingPageComponent', 'selector': 'app-landing-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RedirectComponent', 'selector': 'app-redirect'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StatsComponent', 'selector': 'app-stats'},{'name': 'UpdateProfileComponent', 'selector': 'app-update-profile'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AppComponent'};
 </script>
