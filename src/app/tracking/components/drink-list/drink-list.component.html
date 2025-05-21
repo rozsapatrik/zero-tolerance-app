@@ -16,56 +16,60 @@
   >
     <span>{{ drink.name }}</span>
     <div *ngIf="selectedDrink === drink" class="drink-details" @scale>
-      <i class="material-icons close-button" (click)="onCloseClick($event)"
-        >close</i
-      >
-      <p class="drink-name">{{ drink.name }}</p>
-      <p>{{ drink.caloriesPerServing }} kcal/100 ml</p>
-      <p>{{ drink.abv }} %</p>
-      <p>{{ drink.ml }} ml</p>
-      <p>{{ drink.category }}</p>
-      <form
-        [formGroup]="drankForm"
-        (ngSubmit)="addDrinkAmount(drink)"
-        class="drink-form"
-      >
-        <input
-          type="number"
-          inputmode="decimal"
-          pattern="^[0-9]+(\.[0-9]{0,1})?$"
-          formControlName="amount"
-          min="0"
-          (click)="$event.stopPropagation()"
-          class="zt-input"
-          placeholder="Amount (ml)"
-          [ngClass]="{'input-error': (amount?.touched && amount?.errors?.['required']) || (amount?.touched && amount?.errors?.['min'])}"
-        />
-        <div class="time-div">
+      <div class="drink-details-top">
+        <i class="material-icons close-button" (click)="onCloseClick($event)"
+          >close</i
+        >
+        <p class="drink-name">{{ drink.name }}</p>
+      </div>
+      <div class="drink-details-content">
+        <p>{{ drink.caloriesPerServing }} kcal/100 ml</p>
+        <p>{{ drink.abv }} %</p>
+        <p>{{ drink.ml }} ml</p>
+        <p>{{ drink.category }}</p>
+        <form
+          [formGroup]="drankForm"
+          (ngSubmit)="addDrinkAmount(drink)"
+          class="drink-form"
+        >
           <input
             type="number"
             inputmode="decimal"
             pattern="^[0-9]+(\.[0-9]{0,1})?$"
-            formControlName="hour"
+            formControlName="amount"
+            min="0"
             (click)="$event.stopPropagation()"
             class="zt-input"
-            placeholder="Hour"
-            [ngClass]="{'input-error': (hour?.touched && hour?.errors?.['required']) || (hour?.touched && hour?.errors?.['min']) || (hour?.touched && hour?.errors?.['max'])}"
+            placeholder="Amount (ml)"
+            [ngClass]="{'input-error': (amount?.touched && amount?.errors?.['required']) || (amount?.touched && amount?.errors?.['min'])}"
           />
-          <input
-            type="number"
-            inputmode="decimal"
-            pattern="^[0-9]+(\.[0-9]{0,1})?$"
-            formControlName="minute"
-            (click)="$event.stopPropagation()"
-            class="zt-input"
-            placeholder="Minute"
-            [ngClass]="{'input-error': (minute?.touched && minute?.errors?.['required']) || (minute?.touched && minute?.errors?.['min']) || (minute?.touched && minute?.errors?.['max'])}"
-          />
-        </div>
-        <div class="zt-button-div">
-          <button type="submit" class="zt-button blue">Add</button>
-        </div>
-      </form>
+          <div class="time-div">
+            <input
+              type="number"
+              inputmode="decimal"
+              pattern="^[0-9]+(\.[0-9]{0,1})?$"
+              formControlName="hour"
+              (click)="$event.stopPropagation()"
+              class="zt-input"
+              placeholder="Hour"
+              [ngClass]="{'input-error': (hour?.touched && hour?.errors?.['required']) || (hour?.touched && hour?.errors?.['min']) || (hour?.touched && hour?.errors?.['max'])}"
+            />
+            <input
+              type="number"
+              inputmode="decimal"
+              pattern="^[0-9]+(\.[0-9]{0,1})?$"
+              formControlName="minute"
+              (click)="$event.stopPropagation()"
+              class="zt-input"
+              placeholder="Minute"
+              [ngClass]="{'input-error': (minute?.touched && minute?.errors?.['required']) || (minute?.touched && minute?.errors?.['min']) || (minute?.touched && minute?.errors?.['max'])}"
+            />
+          </div>
+          <div class="zt-button-div">
+            <button type="submit" class="zt-button blue">Add</button>
+          </div>
+        </form>
+      </div>
     </div>
   </li>
 </ul>

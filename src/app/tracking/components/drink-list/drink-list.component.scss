@@ -24,6 +24,7 @@ ul.drink-list {
     align-items: center;
     width: 20rem;
     height: 3rem;
+    padding-right: 0.5rem;
 
     span {
       width: 100%;
@@ -45,44 +46,53 @@ ul.drink-list {
       width: 20rem;
       border-radius: 1rem;
       cursor: default;
-      padding-left: 1rem;
-      padding-right: 1rem;
 
-      .zt-input {
-        background-color: rgba($color: #fff, $alpha: 0.1);
-        width: 18rem;
-        width: 100%;
-      }
-
-      .close-button {
-        position: relative;
-        right: 0;
-        color: red;
-        font-size: 2rem;
+      .drink-details-top {
         display: flex;
-        justify-content: flex-end;
-        cursor: pointer;
-        padding-top: 0.125rem;
-        padding-right: 0.125rem;
+        flex-direction: row-reverse;
+        .drink-name {
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+          width: 100%;
+          padding-left: 2.125rem;
+        }
+
+        .close-button {
+          position: relative;
+          right: 0;
+          color: red;
+          font-size: 2rem;
+          display: flex;
+          justify-content: flex-end;
+          cursor: pointer;
+          padding-top: 0.125rem;
+          padding-right: 0.125rem;
+        }
       }
 
-      .drink-name {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-      }
+      .drink-details-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
 
-      .drink-form {
-        padding-top: 1rem;
-      }
+        .zt-input {
+          background-color: rgba($color: #fff, $alpha: 0.1);
+          width: 18rem;
+          width: 100%;
+        }
 
-      .time-div {
-        display: flex;
-        flex-direction: row;
-        column-gap: 0.5rem;
-      }
+        .drink-form {
+          padding-top: 1rem;
+        }
 
-      .zt-button-div {
-        padding-bottom: 1rem;
+        .time-div {
+          display: flex;
+          flex-direction: row;
+          column-gap: 0.5rem;
+        }
+
+        .zt-button-div {
+          padding-bottom: 1rem;
+        }
       }
     }
   }
