@@ -404,19 +404,6 @@ export class HomeComponent implements OnInit {
   }
 
   /**
-   * Shows alert for drink deletion.
-   * @param drink The currently clicked drink.
-   */
-  onDrinkClick(drink: any): void {
-    const confirmDelete = window.confirm(
-      `Are you sure you want to delete the drink ${drink.name}?`
-    );
-    if (confirmDelete) {
-      this.deleteDrinkFromFirestore(drink);
-    }
-  }
-
-  /**
    * Removes the selected drink from the user's consumed drinks.
    * @param drink The drink to be deleted.
    */
