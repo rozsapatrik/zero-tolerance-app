@@ -1,17 +1,17 @@
 # Zero Tolerance
 
-GitHub: [https://github.com/rozsapatrik/zero-tolerance-app/tree/new-design]
+GitHub: https://github.com/rozsapatrik/zero-tolerance-app/tree/new-design
 
 # Előkövetelmények verziószáma
 
-Node: 16.14.2 [https://nodejs.org/en/blog/release/v16.14.2]
+Node: 16.14.2 https://nodejs.org/en/blog/release/v16.14.2<br>
 Angular CLI: 15.2.11 (terminálban az alábbi parancs: 'npm install -g @angular/cli@15.2.11')
 
 # Beüzemelés módja:
 
-A projektet be lehet üzemelni több féleképpen is.
-A legegyszerűbb mód az ha szimplán a böngészőnkbe ellátogatunk a https://zero-tolerance-app.web.app/ oldalra.
-Ha lokálisan akarjuk futtatni a projektet akkor arra is van lehetőség vagy egy IDE-ből vagy parancssorból.
+A projektet be lehet üzemelni több féleképpen is.<br>
+A legegyszerűbb mód az ha szimplán a böngészőnkbe ellátogatunk a https://zero-tolerance-app.web.app/ oldalra.<br>
+Ha lokálisan akarjuk futtatni a projektet akkor arra is van lehetőség vagy egy IDE-ből vagy parancssorból.<br>
 A lokális beüzemelés előtt győződjünk meg arról, hogy rendelkezünk a megfeleő verziójú előkövetelményekkel.
 
 # Beüzemelés (1. módszer)
@@ -38,12 +38,12 @@ Látogassunk el a https://zero-tolerance-app.web.app/ oldalra bármelyik böngé
 
 Előfordulhat hogy hibát dob az interfaces.d.ts fájl a node_modules/@angular/fire/compat/firestore mappában az adott sorokon
 
-- export interface DocumentSnapshotExists<T>...
-- export interface DocumentSnapshot<T>...
-- export interface QuerySnapshot<T>...
-- export interface DocumentChange<T>...
+- export interface DocumentSnapshotExists`<T>`...
+- export interface DocumentSnapshot`<T>`...
+- export interface QuerySnapshot`<T>`...
+- export interface DocumentChange`<T>`...
 
-Az említett sorokban menjünk a fejlécek végére és adjuk hozzá az alábbit: <T>
-Példa:
-Ebből: export interface DocumentSnapshotExists<T> extends firebase.firestore.DocumentSnapshot
-Ez lesz: export interface DocumentSnapshotExists<T> extends firebase.firestore.DocumentSnapshot<T>
+Az említett sorokban menjünk a fejlécek végére és adjuk hozzá az alábbit: `<T>`<br>
+Példa:<br>
+Ebből: export interface DocumentSnapshotExists`<T>` extends firebase.firestore.DocumentSnapshot<br>
+Ez lesz: export interface DocumentSnapshotExists`<T>` extends firebase.firestore.DocumentSnapshot`<T>`
