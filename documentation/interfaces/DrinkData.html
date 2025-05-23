@@ -481,85 +481,12 @@ export class HomeComponent implements OnInit {
   }
 
   /**
-   * Calculates approximate blood alcohol content for given day.
-   * @returns If user data is not present then returns.
+   * Calculates estimated BAC and sober time
+   * @returns The date object for today&#x27;s drinks or nothing if there is an error.
    */
-  // calculateBAC(): void {
-  //   if (!this.userData) {
-  //     console.error(&#x27;User data not available for BAC calculation&#x27;);
-  //     this.bac &#x3D; 0;
-  //     return;
-  //   }
-
-  //   const { weight, gender } &#x3D; this.userData;
-  //   const bodyWaterConstant &#x3D; gender &#x3D;&#x3D;&#x3D; &#x27;male&#x27; ? 0.58 : 0.49;
-  //   const metabolismRate &#x3D; 0.015;
-  //   const weightInGrams &#x3D; weight * 1000;
-  //   const currentTime &#x3D; new Date();
-  //   // Construct full date objects for drink times
-  //   const drinkTimes &#x3D; this.drinksForTheDay.map((drink) &#x3D;&gt; {
-  //     const [hours, minutes] &#x3D; drink.time.split(&#x27;:&#x27;).map(Number);
-  //     const drinkDate &#x3D; new Date(this.selectedDate);
-  //     drinkDate.setHours(hours, minutes, 0, 0);
-  //     return { ...drink, drinkDate };
-  //   });
-
-  //   const pastDrinks &#x3D; drinkTimes.filter(
-  //     (drink) &#x3D;&gt; drink.drinkDate &lt;&#x3D; currentTime
-  //   );
-  //   const futureDrinks &#x3D; drinkTimes.filter(
-  //     (drink) &#x3D;&gt; drink.drinkDate &gt; currentTime
-  //   );
-
-  //   const totalPastAlcoholGrams &#x3D; pastDrinks.reduce(
-  //     (sum, drink) &#x3D;&gt; sum + (drink.alcohol || 0),
-  //     0
-  //   );
-
-  //   if (pastDrinks.length &gt; 0) {
-  //     const lastDrinkTime &#x3D; new Date(
-  //       Math.max(...pastDrinks.map((drink) &#x3D;&gt; drink.drinkDate.getTime()))
-  //     );
-  //     const timeElapsedHours &#x3D; Math.max(
-  //       0,
-  //       (currentTime.getTime() - lastDrinkTime.getTime()) / (1000 * 60 * 60)
-  //     );
-
-  //     this.bac &#x3D;
-  //       (totalPastAlcoholGrams / (weightInGrams * bodyWaterConstant)) * 100 -
-  //       metabolismRate * timeElapsedHours;
-  //     this.bac &#x3D; Math.max(this.bac, 0); // Ensure BAC does not go negative
-  //   } else {
-  //     this.bac &#x3D; 0;
-  //   }
-
-  //   // Calculate sober time (including future drinks)
-  //   const allAlcoholGrams &#x3D; drinkTimes.reduce(
-  //     (sum, drink) &#x3D;&gt; sum + (drink.alcohol || 0),
-  //     0
-  //   );
-  //   const soberHours &#x3D;
-  //     allAlcoholGrams / (metabolismRate * weightInGrams * bodyWaterConstant);
-
-  //   const earliestAllDrinkTime &#x3D; new Date(
-  //     Math.min(...drinkTimes.map((drink) &#x3D;&gt; drink.drinkDate.getTime()))
-  //   );
-  //   const estimatedSoberTime &#x3D; new Date(
-  //     Math.max(earliestAllDrinkTime.getTime()) +
-  //       soberHours * 100 * 60 * 60 * 1000
-  //   );
-
-  //   this.soberTime &#x3D; estimatedSoberTime;
-  // }
   calculateBAC(): void {
-    if (
-      !this.userData ||
-      typeof this.userData.weight !&#x3D;&#x3D; &#x27;number&#x27; ||
-      !this.userData.gender
-    ) {
+    if (!this.userData) {
       console.error(&#x27;User data not available or invalid for BAC calculation.&#x27;);
-      this.bac &#x3D; 0;
-      this.soberTime &#x3D; null;
       return;
     }
 
@@ -568,53 +495,13 @@ export class HomeComponent implements OnInit {
     const metabolismRate &#x3D; 0.015;
     const weightInGrams &#x3D; weight * 1000;
     const currentTime &#x3D; new Date();
+    let selectedDateObj &#x3D; this.selectedDate;
 
-    // Ensure selectedDate is a valid Date object
-    let selectedDateObj: Date;
-    if (
-      this.selectedDate instanceof Date &amp;&amp;
-      !isNaN(this.selectedDate.getTime())
-    ) {
-      selectedDateObj &#x3D; this.selectedDate;
-    } else if (
-      typeof this.selectedDate &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ||
-      typeof this.selectedDate &#x3D;&#x3D;&#x3D; &#x27;number&#x27;
-    ) {
-      selectedDateObj &#x3D; new Date(this.selectedDate);
-      if (isNaN(selectedDateObj.getTime())) {
-        console.error(&#x27;Invalid selectedDate for BAC calculation.&#x27;);
-        this.bac &#x3D; 0;
-        this.soberTime &#x3D; null;
-        return;
-      }
-    } else {
-      console.error(&#x27;selectedDate is not a valid type for BAC calculation.&#x27;);
-      this.bac &#x3D; 0;
-      this.soberTime &#x3D; null;
-      return;
-    }
-
-    const allDrinksToday &#x3D; (this.drinksForTheDay || []) // Handle if drinksForTheDay is null/undefined
+    // Handle drinksForTheDay being null or undefined
+    // Construct full date objects for drink times
+    const allDrinksToday &#x3D; (this.drinksForTheDay || [])
       .map((drink) &#x3D;&gt; {
-        if (
-          !drink ||
-          typeof drink.time !&#x3D;&#x3D; &#x27;string&#x27; ||
-          !drink.time.includes(&#x27;:&#x27;)
-        ) {
-          console.warn(
-            &#x27;Skipping drink due to invalid format or missing time:&#x27;,
-            drink
-          );
-          return null;
-        }
         const [hours, minutes] &#x3D; drink.time.split(&#x27;:&#x27;).map(Number);
-        if (isNaN(hours) || isNaN(minutes)) {
-          console.warn(
-            &#x27;Skipping drink due to invalid time parsing:&#x27;,
-            drink.time
-          );
-          return null;
-        }
         const drinkDate &#x3D; new Date(selectedDateObj);
         drinkDate.setHours(hours, minutes, 0, 0);
         return { ...drink, drinkDate, alcohol: Number(drink.alcohol) || 0 };
@@ -623,13 +510,13 @@ export class HomeComponent implements OnInit {
       alcohol: number;
       drinkDate: Date;
       [key: string]: any;
-    }[]; // Type assertion after filter
+    }[]; // Type assertion after filter for array
 
     allDrinksToday.sort(
       (a, b) &#x3D;&gt; a.drinkDate.getTime() - b.drinkDate.getTime()
     );
 
-    // --- Calculate Current BAC ---
+    // Calculate current BAC
     let currentBacInternal &#x3D; 0;
     let lastProcessedDrinkTimeForBac: Date | null &#x3D; null;
 
@@ -644,7 +531,7 @@ export class HomeComponent implements OnInit {
       );
 
       for (const drink of pastAndCurrentDrinks) {
-        // 1. Metabolize BAC from lastProcessedDrinkTimeForBac up to current drink&#x27;s time
+        // Metabolize BAC from lastProcessedDrinkTimeForBac up to current drink&#x27;s time
         if (
           currentBacInternal &gt; 0 &amp;&amp;
           drink.drinkDate &gt; lastProcessedDrinkTimeForBac
@@ -657,16 +544,14 @@ export class HomeComponent implements OnInit {
           currentBacInternal &#x3D; Math.max(0, currentBacInternal);
         }
 
-        // Update lastProcessedDrinkTimeForBac to current drink&#x27;s time
         lastProcessedDrinkTimeForBac &#x3D; new Date(drink.drinkDate.getTime());
 
-        // 2. Add BAC from the current drink
-        // Widmark formula: BAC (g/100mL or %) &#x3D; (Alcohol in grams / (Body weight in grams * r)) * 100
+        // Add BAC from the current drink
         currentBacInternal +&#x3D;
           (drink.alcohol / (weightInGrams * bodyWaterConstant)) * 100;
       }
 
-      // 3. After processing all past drinks, metabolize from the time of the *last consumed past drink* up to current time
+      // Metabolize from the time of the last consumed past drink up to current time
       if (
         currentBacInternal &gt; 0 &amp;&amp;
         lastProcessedDrinkTimeForBac &amp;&amp;
@@ -678,21 +563,20 @@ export class HomeComponent implements OnInit {
         currentBacInternal -&#x3D; metabolismRate * hoursElapsedSinceLastDrink;
       }
     }
-    this.bac &#x3D; Math.max(0, currentBacInternal); // Ensure BAC is not negative
+    this.bac &#x3D; Math.max(0, currentBacInternal);
 
-    // --- Estimate Sober Time (using all drinks for the day) ---
+    // Estimate sober time for the day
     let simulatedBac &#x3D; 0;
     let currentSimTime: Date | null &#x3D; null;
 
     if (allDrinksToday.length &#x3D;&#x3D;&#x3D; 0) {
-      this.soberTime &#x3D; null; // No drinks, no sober time to project based on them.
+      this.soberTime &#x3D; null;
     } else {
       // Start simulation from the time of the first drink
       currentSimTime &#x3D; new Date(allDrinksToday[0].drinkDate.getTime());
-      // simulatedBac is already 0
 
       for (const drink of allDrinksToday) {
-        // 1. Metabolize existing BAC from currentSimTime up to this drink&#x27;s time
+        // Metabolize existing BAC from currentSimTime up to this drink&#x27;s time
         if (simulatedBac &gt; 0 &amp;&amp; drink.drinkDate &gt; currentSimTime) {
           const hoursToDrink &#x3D;
             (drink.drinkDate.getTime() - currentSimTime.getTime()) /
@@ -701,27 +585,26 @@ export class HomeComponent implements OnInit {
           simulatedBac &#x3D; Math.max(0, simulatedBac);
         }
 
-        // 2. Advance simulation time to the current drink&#x27;s time (handles drinks at same time correctly)
+        // Advance simulation time to the current drink&#x27;s time
         currentSimTime &#x3D; new Date(
           Math.max(currentSimTime.getTime(), drink.drinkDate.getTime())
         );
 
-        // 3. Add BAC from this drink
+        // Add BAC from this drink
         simulatedBac +&#x3D;
           (drink.alcohol / (weightInGrams * bodyWaterConstant)) * 100;
       }
 
-      // 4. After all drinks, if BAC &gt; 0, calculate time to zero from currentSimTime (time of last drink&#x27;s effect)
+      // Calculate time to zero from currentSimTime (time of last drink&#x27;s effect)
       if (simulatedBac &gt; 0 &amp;&amp; currentSimTime) {
         const hoursToSober &#x3D; simulatedBac / metabolismRate;
         this.soberTime &#x3D; new Date(
           currentSimTime.getTime() + hoursToSober * 60 * 60 * 1000
         );
       } else if (currentSimTime) {
-        // Already sober by the time of (or after processing) the last drink
         this.soberTime &#x3D; new Date(currentSimTime.getTime());
       } else {
-        // Should not happen if allDrinksToday has items, but as a fallback:
+        // Shouldn&#x27;t happen if allDrinksToday but fallback
         this.soberTime &#x3D; null;
       }
     }
