@@ -82,20 +82,46 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1>ZeroToleranceApp</h1>
-<p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 15.2.0.</p>
-<h2>Development server</h2>
-<p>Run <code>ng serve</code> for a dev server. Navigate to <code>http://localhost:4200/</code>. The application will automatically reload if you change any of the source files.</p>
-<h2>Code scaffolding</h2>
-<p>Run <code>ng generate component component-name</code> to generate a new component. You can also use <code>ng generate directive|pipe|service|class|guard|interface|enum|module</code>.</p>
-<h2>Build</h2>
-<p>Run <code>ng build</code> to build the project. The build artifacts will be stored in the <code>dist/</code> directory.</p>
-<h2>Running unit tests</h2>
-<p>Run <code>ng test</code> to execute the unit tests via <a href="https://karma-runner.github.io">Karma</a>.</p>
-<h2>Running end-to-end tests</h2>
-<p>Run <code>ng e2e</code> to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.</p>
-<h2>Further help</h2>
-<p>To get more help on the Angular CLI use <code>ng help</code> or go check out the <a href="https://angular.io/cli">Angular CLI Overview and Command Reference</a> page.</p>
+<h1>Zero Tolerance</h1>
+<p>GitHub: <a href="https://github.com/rozsapatrik/zero-tolerance-app/tree/new-design">https://github.com/rozsapatrik/zero-tolerance-app/tree/new-design</a></p>
+<h1>Előkövetelmények verziószáma</h1>
+<p>Node: 16.14.2 <a href="https://nodejs.org/en/blog/release/v16.14.2">https://nodejs.org/en/blog/release/v16.14.2</a><br>
+Angular CLI: 15.2.11 (terminálban az alábbi parancs: &#39;npm install -g @angular/<a href="mailto:cli@15.2.11">cli@15.2.11</a>&#39;)</p>
+<h1>Beüzemelés módja:</h1>
+<p>A projektet be lehet üzemelni több féleképpen is.<br>
+A legegyszerűbb mód az ha szimplán a böngészőnkbe ellátogatunk a <a href="https://zero-tolerance-app.web.app/">https://zero-tolerance-app.web.app/</a> oldalra.<br>
+Ha lokálisan akarjuk futtatni a projektet akkor arra is van lehetőség vagy egy IDE-ből vagy parancssorból.<br>
+A lokális beüzemelés előtt győződjünk meg arról, hogy rendelkezünk a megfeleő verziójú előkövetelményekkel.</p>
+<h1>Beüzemelés (1. módszer)</h1>
+<p>Látogassunk el a <a href="https://zero-tolerance-app.web.app/">https://zero-tolerance-app.web.app/</a> oldalra bármelyik böngészőben.</p>
+<h1>Beüzemelés (2. módszer)</h1>
+<ol>
+<li>Nyissuk meg a projekt mappáját a fájlkezelőben</li>
+<li>Nyissunk az adott mappában egy parancssort (jobb klikk -&gt; &#39;Megnyitás terminálban&#39;)</li>
+<li>Adjuk ki az alábbi parancsot: &#39;npm install&#39;</li>
+<li>Miután lefuttott az előző parancs akkor adjuk ki az alábbi parancsot: &#39;ng serve&#39;</li>
+<li>Miután azt látjuk a parancssorban, hogy: &#39;Compiled successfully&#39; nyissuk meg a böngészőben az alábbi oldalt: <a href="http://localhost:4200">http://localhost:4200</a></li>
+</ol>
+<h1>Beüzemelés (3. módszer)</h1>
+<ol>
+<li>Nyissuk meg a projektet egy IDE-ben (pl: Visual Studio Code)</li>
+<li>Nyissuk meg az IDE terminálját (Visual Studio Code-ban CTRL+J)</li>
+<li>Adjuk ki az alábbi parancsot: &#39;npm install&#39;</li>
+<li>Miután lefuttott az előző parancs akkor adjuk ki az alábbi parancsot: &#39;ng serve&#39;</li>
+<li>Miután azt látjuk a konzolban, hogy: &#39;Compiled successfully&#39; nyissuk meg a böngészőben az alábbi oldalt: <a href="http://localhost:4200">http://localhost:4200</a></li>
+</ol>
+<h1>Esetleges Fire compat probléma lokális futtatás esetén</h1>
+<p>Előfordulhat hogy hibát dob az interfaces.d.ts fájl a node_modules/@angular/fire/compat/firestore mappában az adott sorokon</p>
+<ul>
+<li>export interface DocumentSnapshotExists<code>&lt;T&gt;</code>...</li>
+<li>export interface DocumentSnapshot<code>&lt;T&gt;</code>...</li>
+<li>export interface QuerySnapshot<code>&lt;T&gt;</code>...</li>
+<li>export interface DocumentChange<code>&lt;T&gt;</code>...</li>
+</ul>
+<p>Az említett sorokban menjünk a fejlécek végére és adjuk hozzá az alábbit: <code>&lt;T&gt;</code><br>
+Példa:<br>
+Ebből: export interface DocumentSnapshotExists<code>&lt;T&gt;</code> extends firebase.firestore.DocumentSnapshot<br>
+Ez lesz: export interface DocumentSnapshotExists<code>&lt;T&gt;</code> extends firebase.firestore.DocumentSnapshot<code>&lt;T&gt;</code></p>
 
 
 
