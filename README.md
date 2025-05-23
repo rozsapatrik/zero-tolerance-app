@@ -1,5 +1,7 @@
 # Zero Tolerance
 
+GitHub: [https://github.com/rozsapatrik/zero-tolerance-app/tree/new-design]
+
 # Előkövetelmények verziószáma
 
 Node: 16.14.2 [https://nodejs.org/en/blog/release/v16.14.2]
