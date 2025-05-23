@@ -293,7 +293,6 @@ export class HomeComponent implements OnInit {
     const currentTime = new Date();
     let selectedDateObj = this.selectedDate;
 
-    // Handle drinksForTheDay being null or undefined
     // Construct full date objects for drink times
     const allDrinksToday = (this.drinksForTheDay || [])
       .map((drink) => {
@@ -306,13 +305,12 @@ export class HomeComponent implements OnInit {
       alcohol: number;
       drinkDate: Date;
       [key: string]: any;
-    }[]; // Type assertion after filter for array
+    }[];
 
     allDrinksToday.sort(
       (a, b) => a.drinkDate.getTime() - b.drinkDate.getTime()
     );
 
-    // Calculate current BAC
     let currentBacInternal = 0;
     let lastProcessedDrinkTimeForBac: Date | null = null;
 
@@ -321,7 +319,6 @@ export class HomeComponent implements OnInit {
     );
 
     if (pastAndCurrentDrinks.length > 0) {
-      // Initialize with the time of the first relevant drink
       lastProcessedDrinkTimeForBac = new Date(
         pastAndCurrentDrinks[0].drinkDate.getTime()
       );
@@ -342,7 +339,6 @@ export class HomeComponent implements OnInit {
 
         lastProcessedDrinkTimeForBac = new Date(drink.drinkDate.getTime());
 
-        // Add BAC from the current drink
         currentBacInternal +=
           (drink.alcohol / (weightInGrams * bodyWaterConstant)) * 100;
       }
@@ -368,7 +364,6 @@ export class HomeComponent implements OnInit {
     if (allDrinksToday.length === 0) {
       this.soberTime = null;
     } else {
-      // Start simulation from the time of the first drink
       currentSimTime = new Date(allDrinksToday[0].drinkDate.getTime());
 
       for (const drink of allDrinksToday) {
@@ -381,12 +376,10 @@ export class HomeComponent implements OnInit {
           simulatedBac = Math.max(0, simulatedBac);
         }
 
-        // Advance simulation time to the current drink's time
         currentSimTime = new Date(
           Math.max(currentSimTime.getTime(), drink.drinkDate.getTime())
         );
 
-        // Add BAC from this drink
         simulatedBac +=
           (drink.alcohol / (weightInGrams * bodyWaterConstant)) * 100;
       }
@@ -399,9 +392,6 @@ export class HomeComponent implements OnInit {
         );
       } else if (currentSimTime) {
         this.soberTime = new Date(currentSimTime.getTime());
-      } else {
-        // Shouldn't happen if allDrinksToday but fallback
-        this.soberTime = null;
       }
     }
   }
