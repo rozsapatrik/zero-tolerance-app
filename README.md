@@ -1,27 +1,33 @@
-# ZeroToleranceApp
+# Zero Tolerance
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+# Előkövetelmények verziószáma
 
-## Development server
+Node: 16.14.2 [https://nodejs.org/en/blog/release/v16.14.2]
+Angular CLI: 15.2.11 (terminálban az alábbi parancs: 'npm install -g @angular/cli@15.2.11')
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Beüzemelés módja:
 
-## Code scaffolding
+A projektet be lehet üzemelni több féleképpen is.
+A legegyszerűbb mód az ha szimplán a böngészőnkbe ellátogatunk a https://zero-tolerance-app.web.app/ oldalra.
+Ha lokálisan akarjuk futtatni a projektet akkor arra is van lehetőség vagy egy IDE-ből vagy parancssorból.
+A lokális beüzemelés előtt győződjünk meg arról, hogy rendelkezünk a megfeleő verziójú előkövetelményekkel.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Beüzemelés (1. módszer)
 
-## Build
+Látogassunk el a https://zero-tolerance-app.web.app/ oldalra bármelyik böngészőben.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Beüzemelés (2. módszer)
 
-## Running unit tests
+1. Nyissuk meg a projekt mappáját a fájlkezelőben
+2. Nyissunk az adott mappában egy parancssort (jobb klikk -> 'Megnyitás terminálban')
+3. Adjuk ki az alábbi parancsot: 'npm install'
+4. Miután lefuttott az előző parancs akkor adjuk ki az alábbi parancsot: 'ng serve'
+5. Miután azt látjuk a parancssorban, hogy: 'Compiled successfully' nyissuk meg a böngészőben az alábbi oldalt: http://localhost:4200
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Beüzemelés (3. módszer)
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Nyissuk meg a projektet egy IDE-ben (pl: Visual Studio Code)
+2. Nyissuk meg az IDE terminálját (Visual Studio Code-ban CTRL+J)
+3. Adjuk ki az alábbi parancsot: 'npm install'
+4. Miután lefuttott az előző parancs akkor adjuk ki az alábbi parancsot: 'ng serve'
+5. Miután azt látjuk a konzolban, hogy: 'Compiled successfully' nyissuk meg a böngészőben az alábbi oldalt: http://localhost:4200
