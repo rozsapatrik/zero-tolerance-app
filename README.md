@@ -34,7 +34,7 @@ Látogassunk el a https://zero-tolerance-app.web.app/ oldalra bármelyik böngé
 
 # Fire compat probléma lokális futtatás esetén (opcionális)
 
-Előfordulhat hogy hibát dob az interfaces.d.ts fájl a node_modules/fire/compat/firestore mappában az adott sorokon
+Előfordulhat hogy hibát dob az interfaces.d.ts fájl a node_modules/@angular/fire/compat/firestore mappában az adott sorokon
 
 - export interface DocumentSnapshotExists<T>...
 - export interface DocumentSnapshot<T>...
