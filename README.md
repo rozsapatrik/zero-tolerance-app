@@ -31,3 +31,17 @@ Látogassunk el a https://zero-tolerance-app.web.app/ oldalra bármelyik böngé
 3. Adjuk ki az alábbi parancsot: 'npm install'
 4. Miután lefuttott az előző parancs akkor adjuk ki az alábbi parancsot: 'ng serve'
 5. Miután azt látjuk a konzolban, hogy: 'Compiled successfully' nyissuk meg a böngészőben az alábbi oldalt: http://localhost:4200
+
+# Fire compat probléma lokális futtatás esetén (opcionális)
+
+Előfordulhat hogy hibát dob az interfaces.d.ts fájl a node_modules/fire/compat/firestore mappában az adott sorokon
+
+- export interface DocumentSnapshotExists<T>...
+- export interface DocumentSnapshot<T>...
+- export interface QuerySnapshot<T>...
+- export interface DocumentChange<T>...
+
+Az említett sorokban menjünk a fejlécek végére és adjuk hozzá az alábbit: <T>
+Példa:
+Ebből: export interface DocumentSnapshotExists<T> extends firebase.firestore.DocumentSnapshot
+Ez lesz: export interface DocumentSnapshotExists<T> extends firebase.firestore.DocumentSnapshot<T>
