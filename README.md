@@ -34,7 +34,7 @@ Látogassunk el a https://zero-tolerance-app.web.app/ oldalra bármelyik böngé
 4. Miután lefuttott az előző parancs akkor adjuk ki az alábbi parancsot: 'ng serve'
 5. Miután azt látjuk a konzolban, hogy: 'Compiled successfully' nyissuk meg a böngészőben az alábbi oldalt: http://localhost:4200
 
-# Fire compat probléma lokális futtatás esetén (opcionális)
+# Esetleges Fire compat probléma lokális futtatás esetén
 
 Előfordulhat hogy hibát dob az interfaces.d.ts fájl a node_modules/@angular/fire/compat/firestore mappában az adott sorokon
 
